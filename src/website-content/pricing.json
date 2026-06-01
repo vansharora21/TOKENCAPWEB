@@ -1,0 +1,40 @@
+{
+  "model": "open-source",
+  "license": "MIT",
+  "price": 0,
+  "currency": "USD",
+  "tagline": "Free. Forever. Open source.",
+  "description": "TokenCap is MIT-licensed open-source software. There is no paid tier, no usage limits, no account required, and no subscription. Install it globally with npm and run it in any project.",
+  "tiers": [
+    {
+      "name": "Open Source",
+      "price": 0,
+      "billing": "free",
+      "description": "Everything. No limits.",
+      "features": [
+        "TOKENCAP.md — full project snapshot",
+        "TOKENCAP_GRAPH.md — JS/TS dependency graph",
+        "TOKENCAP_MEMORY.md — developer context memory",
+        "8 context profiles (compact → Gemini 1.5 Pro)",
+        "Git integration: diffs, status, branch, commits",
+        "Automatic secret redaction",
+        "VS Code / Cursor extension",
+        "Watch mode (CLI)",
+        "All future features",
+        "MIT license — use in any project"
+      ],
+      "cta": "npm install -g tokencap",
+      "highlighted": true
+    }
+  ],
+  "faq": [
+    {
+      "question": "Will it always be free?",
+      "answer": "Yes. TokenCap is MIT-licensed open-source software. The license guarantees you can use, modify, and distribute it without restriction."
+    },
+    {
+      "question": "Is there a VS Code Marketplace listing?",
+      "answer": "Yes. Search for TokenCap by VanshArora21 in the VS Code Extensions marketplace, or install via the VSIX package directly."
+    }
+  ]
+}

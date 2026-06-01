@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Getting Started",
+    "slug": "getting-started",
+    "order": 1,
+    "content": "Install TokenCap globally with npm:\n\n```bash\nnpm install -g tokencap\n```\n\nThen run from your project root:\n\n```bash\ntokencap make\n```\n\nThis generates three files in your project root:\n\n- `TOKENCAP.md` — compressed project snapshot (all languages)\n- `TOKENCAP_GRAPH.md` — dependency graph (JS/TS projects)\n- `TOKENCAP_MEMORY.md` — developer context memory (all projects)\n\nFor VS Code, install the TokenCap extension from the marketplace (publisher: VanshArora21). It auto-captures on every file save."
+  },
+  {
+    "title": "Configuration",
+    "slug": "configuration",
+    "order": 2,
+    "content": "Create a `.tokencap.json` file in your project root to customize behavior:\n\n```json\n{\n  \"profile\": \"balanced\",\n  \"outputPath\": \"TOKENCAP.md\",\n  \"maxFiles\": 90,\n  \"maxSourceBytes\": 220000,\n  \"maxFileBytes\": 14000,\n  \"maxDiffBytes\": 50000,\n  \"includeGitDiff\": true,\n  \"includeFileContents\": true,\n  \"excludePatterns\": [\"node_modules/**\", \"dist/**\", \"build/**\", \"coverage/**\"],\n  \"redactSecrets\": true\n}\n```\n\nRun `tokencap init` to auto-generate this file. Run `tokencap config` to see the fully resolved configuration including profile defaults.\n\n**Config resolution order:** defaults → profile overrides → .tokencap.json → CLI flags"
+  },
+  {
+    "title": "Context Profiles",
+    "slug": "profiles",
+    "order": 3,
+    "content": "TokenCap ships with 8 context profiles tuned for different AI models and use cases.\n\n| Profile | Max Files | Source Budget | Use Case |\n| --- | --- | --- | --- |\n| `compact` | 45 | 90KB | Local LLMs, tight windows |\n| `balanced` | 90 | 220KB | Default — most models |\n| `deep` | 140 | 420KB | Complex codebases |\n| `gpt-4o` | 80 | 150KB | OpenAI GPT-4o |\n| `claude-3-5-sonnet` | 120 | 250KB | Anthropic Claude |\n| `gemini-1.5-flash` | 200 | 600KB | Gemini Flash |\n| `gemini-1.5-pro` | 400 | 1.2MB | Gemini Pro |\n| `llama-3-8b` | 25 | 40KB | Local Llama |\n\nSelect a profile via CLI flag or `.tokencap.json`:\n\n```bash\ntokencap make --profile claude-3-5-sonnet\n```"
+  },
+  {
+    "title": "Project Knowledge Graph",
+    "slug": "graph",
+    "order": 4,
+    "content": "TokenCap scans all JS/TS source files and maps how they connect to each other.\n\n```bash\ntokencap graph\n```\n\nThis generates `TOKENCAP_GRAPH.md` containing:\n\n- **Changed Files** — files with unstaged/staged Git changes\n- **File Relationships** — `source → dependency` import edges\n- **Important Nodes** — files classified by type\n- **All Scanned Files** — grouped by classification\n\n**Supported file extensions:** `.ts`, `.tsx`, `.js`, `.jsx`, `.mjs`, `.cjs`\n\n**Import patterns parsed:**\n- `import x from \"./file\"`\n- `import { x } from \"../file\"`\n- `export { x } from \"./file\"`\n- `const x = require(\"./file\")`\n\n**Node classification:**\n\n| Pattern | Type |\n| --- | --- |\n| `/app/`, `/pages/`, `page.*`, `route.*`, `layout.*` | `route` |\n| `/api/` + `route.*` | `api` |\n| Uppercase name, `/components/`, `/ui/`, `.tsx` | `component` |\n| `/lib/`, `/services/`, `/utils/`, `/hooks/` | `service` |\n| `schema.prisma`, `/models/`, `/db/`, `/database/` | `database` |\n| `next.config.*`, `vite.config.*`, `tsconfig.*`, `package.json` | `config` |\n\n**Note:** Only local relative imports are followed. External packages (react, lodash, etc.) are ignored."
+  },
+  {
+    "title": "Context Memory Layer",
+    "slug": "memory",
+    "order": 5,
+    "content": "Preserve your developer context across sessions.\n\n```bash\ntokencap memory\n```\n\nThis:\n1. Creates `.tokencap-notes.md` if it doesn't exist\n2. Reads your notes\n3. Combines with Git context (branch + changed files)\n4. Writes `TOKENCAP_MEMORY.md`\n\n**Edit `.tokencap-notes.md` directly:**\n\n```md\n## Current Task\nFix login redirect after successful authentication.\n\n## Developer Intent\nImprove auth flow without changing the DB schema.\n\n## Known Issues\n- Session sometimes not ready before redirect.\n\n## Constraints\n- Do not modify Prisma schema.\n\n## Decisions Made\n- Using server-side session validation.\n\n## Next Steps\n- Test login flow.\n- Check middleware.\n```\n\nThe file is re-read every time you run `tokencap memory` or `tokencap make`."
+  },
+  {
+    "title": "Secret Redaction",
+    "slug": "secret-redaction",
+    "order": 6,
+    "content": "TokenCap automatically redacts secrets before writing any file content to disk. Redaction is enabled by default (`redactSecrets: true`).\n\n**Patterns detected and redacted:**\n\n- OpenAI API keys: `sk-...` → `[REDACTED_OPENAI_KEY]`\n- GitHub PATs: `ghp_...`, `github_pat_...` → `[REDACTED]`\n- Slack tokens: `xox...` → `[REDACTED]`\n- AWS access keys: `AKIA...` → `[REDACTED]`\n- Google API keys: `AIza...` → `[REDACTED]`\n- Bearer tokens (≥20 chars)\n- Generic variable assignments: `api_key=`, `token=`, `secret=`, `password=`, `passwd=`, `pwd=`\n\nTo disable redaction (not recommended for shared snapshots):\n\n```json\n{ \"redactSecrets\": false }\n```"
+  },
+  {
+    "title": "CLI Reference",
+    "slug": "cli",
+    "order": 7,
+    "content": "All commands run from your project root.\n\n**`tokencap make`** — Generate all three files\n```bash\ntokencap make [--root <path>] [--out <path>] [--profile <name>]\n              [--max-files <n>] [--max-bytes <n>] [--max-file-bytes <n>]\n              [--max-diff-bytes <n>] [--no-diff] [--no-contents]\n```\n\n**`tokencap graph`** — Knowledge graph only\n```bash\ntokencap graph [--root <path>]\n```\n\n**`tokencap memory`** — Context memory only\n```bash\ntokencap memory [--root <path>]\n```\n\n**`tokencap watch`** — Background watcher\n```bash\ntokencap watch [--debounce <ms>] [--root <path>]\n```\n\n**`tokencap init`** — Create config file\n```bash\ntokencap init [--force]\n```\n\n**`tokencap config`** — Print resolved config\n```bash\ntokencap config [--profile <name>] [--root <path>]\n```"
+  },
+  {
+    "title": "VS Code Extension",
+    "slug": "vscode",
+    "order": 8,
+    "content": "The TokenCap VS Code extension brings all functionality directly into your editor.\n\n**Installation:** Search for `TokenCap` by `VanshArora21` in the VS Code Extensions panel, or install the VSIX package manually.\n\n**Auto Capture:** After installing, TokenCap starts watching your workspace immediately. Every time you save a file, it waits 30 seconds (configurable) then regenerates all three snapshot files.\n\n**Status Bar:** A `$(files) TokenCap • HH:MM` item appears in the status bar showing your last snapshot time. Click it to open the command menu.\n\n**Command Menu (Quick-Pick):**\n- Make Snapshot Now\n- Open TokenCap Snapshot\n- Toggle Auto Capture ON/OFF\n- Create Config File\n\n**VS Code Settings:**\n\n| Setting | Default | Description |\n| --- | --- | --- |\n| `tokencap.autoCapture` | `true` | Auto-regenerate on save |\n| `tokencap.debounceMs` | `30000` | Wait time after save |\n| `tokencap.outputPath` | `TOKENCAP.md` | Output file path |\n| `tokencap.profile` | `balanced` | Context profile |\n| `tokencap.maxFiles` | `90` | Max files in snapshot |\n| `tokencap.maxSourceBytes` | `220000` | Source byte budget |\n| `tokencap.maxFileBytes` | `14000` | Per-file byte limit |\n| `tokencap.maxDiffBytes` | `50000` | Diff byte budget |\n| `tokencap.includeGitDiff` | `true` | Include git diffs |\n| `tokencap.includeFileContents` | `true` | Include file contents |"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "t1",
+    "note": "Testimonials require real user feedback. These are placeholder slots with suggested sources.",
+    "suggestedSource": "npm download stats, GitHub issues, VS Code Marketplace reviews",
+    "slots": [
+      {
+        "slot": 1,
+        "suggestedAudience": "Next.js developer using Claude or GPT-4",
+        "suggestedTheme": "No more re-explaining the project at the start of every session"
+      },
+      {
+        "slot": 2,
+        "suggestedAudience": "Solo developer or indie hacker",
+        "suggestedTheme": "The graph feature helped me discover a circular dependency I never knew about"
+      },
+      {
+        "slot": 3,
+        "suggestedAudience": "Team lead / senior engineer",
+        "suggestedTheme": "We use it to onboard new engineers — just point them at TOKENCAP.md"
+      },
+      {
+        "slot": 4,
+        "suggestedAudience": "Developer using local LLMs",
+        "suggestedTheme": "The compact profile fits perfectly in llama-3-8b's context window"
+      }
+    ]
+  }
+]

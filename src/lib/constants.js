@@ -1,0 +1,33 @@
+export const siteConfig = {
+  name: "TokenCap",
+  description:
+    "TokenCap is a local-first developer tool that generates AI-ready snapshots of your codebase, including a dependency graph, context memory, and Git-aware file selection.",
+  url: "https://tokencap.dev",
+  keywords: [
+    "tokencap",
+    "AI context",
+    "codebase snapshot",
+    "LLM context",
+    "developer handoff",
+    "code handoff",
+    "AI coding tool",
+    "VS Code extension",
+    "project knowledge graph",
+    "context window",
+    "token optimization",
+    "local-first",
+    "privacy-first",
+    "git-aware",
+    "secret redaction",
+    "developer productivity",
+    "open source",
+    "MIT license",
+    "Next.js",
+    "React developer tools",
+  ],
+  ogTitle: "TokenCap — Compress your codebase for AI handoffs",
+  ogDescription:
+    "Generate structured, AI-ready snapshots of your project in seconds. Dependency graph, context memory, Git diffs, secret redaction. Local-first. Free. Open source.",
+  twitterCard: "summary_large_image",
+  canonicalUrl: "https://tokencap.dev",
+};

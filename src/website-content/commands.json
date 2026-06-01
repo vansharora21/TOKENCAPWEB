@@ -1,0 +1,60 @@
+[
+  {
+    "command": "tokencap make",
+    "description": "Generate all three output files in one shot: TOKENCAP.md (main snapshot), TOKENCAP_GRAPH.md (project dependency graph), and TOKENCAP_MEMORY.md (developer context memory).",
+    "example": "tokencap make",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--out <path>", "description": "Snapshot output path. Default: TOKENCAP.md" },
+      { "flag": "--profile <name>", "description": "Context profile: compact, balanced, deep, gpt-4o, claude-3-5-sonnet, gemini-1.5-flash, gemini-1.5-pro, llama-3-8b" },
+      { "flag": "--max-files <n>", "description": "Maximum number of files to include" },
+      { "flag": "--max-bytes <n>", "description": "Total source byte budget" },
+      { "flag": "--max-file-bytes <n>", "description": "Per-file content byte limit" },
+      { "flag": "--max-diff-bytes <n>", "description": "Git diff byte budget" },
+      { "flag": "--no-diff", "description": "Skip Git diff snippets" },
+      { "flag": "--no-contents", "description": "Skip selected file contents" }
+    ]
+  },
+  {
+    "command": "tokencap graph",
+    "description": "Generate TOKENCAP_GRAPH.md — a dependency graph of your JS/TS project. Scans all source files, resolves imports and exports, and classifies each file as a route, component, service, API, database model, or config.",
+    "example": "tokencap graph",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap memory",
+    "description": "Generate TOKENCAP_MEMORY.md from your .tokencap-notes.md file combined with live Git context. Auto-creates the notes file from a template if it doesn't exist yet.",
+    "example": "tokencap memory",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap watch",
+    "description": "Start a background watcher that regenerates all snapshot files automatically whenever a file changes. Powered by chokidar with configurable debounce.",
+    "example": "tokencap watch --debounce 5000",
+    "options": [
+      { "flag": "--debounce <ms>", "description": "Milliseconds to wait after a change before regenerating. Default: 30000" },
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap init",
+    "description": "Create a default .tokencap.json configuration file in your project root. Safe — will not overwrite an existing config unless you pass --force.",
+    "example": "tokencap init",
+    "options": [
+      { "flag": "--force", "description": "Overwrite an existing .tokencap.json" }
+    ]
+  },
+  {
+    "command": "tokencap config",
+    "description": "Print the fully resolved configuration as JSON — showing the merged result of defaults, profile overrides, .tokencap.json, and any CLI flags. Useful for debugging your setup.",
+    "example": "tokencap config --profile deep",
+    "options": [
+      { "flag": "--profile <name>", "description": "Profile to resolve" },
+      { "flag": "--root <path>", "description": "Workspace root" }
+    ]
+  }
+]

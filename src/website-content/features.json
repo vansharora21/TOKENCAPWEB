@@ -1,0 +1,124 @@
+[
+  {
+    "id": "auto-capture",
+    "title": "Auto Capture on Save",
+    "description": "Every time you save a file in VS Code, TokenCap debounces and automatically regenerates your snapshot. You never have to remember to run it. The status bar shows the exact time of the last update.",
+    "category": "VS Code",
+    "importance": 1,
+    "technicalDetail": "Debounce interval configurable via tokencap.debounceMs. Default: 30,000ms. Skips TOKENCAP.md, .tokencap.json, and all generated output files to prevent re-trigger loops."
+  },
+  {
+    "id": "knowledge-graph",
+    "title": "Project Knowledge Graph",
+    "description": "Automatically maps how your files connect to each other. Scans every JS/TS file, follows every import, export, and require, resolves paths to actual files, and classifies each node as a route, component, service, API, database model, or config file.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Generates TOKENCAP_GRAPH.md. Supports .ts, .tsx, .js, .jsx, .mjs, .cjs. Parses ES import/export and CommonJS require. Classifies nodes by path pattern and filename conventions.",
+    "languageSupport": "JS/TS projects only"
+  },
+  {
+    "id": "context-memory",
+    "title": "Context Memory Layer",
+    "description": "Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps — TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Parses markdown sections into structured data."
+  },
+  {
+    "id": "secret-redaction",
+    "title": "Automatic Secret Redaction",
+    "description": "TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] — so you can safely share your snapshot with anyone.",
+    "category": "Security",
+    "importance": 1,
+    "technicalDetail": "Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments."
+  },
+  {
+    "id": "context-profiles",
+    "title": "Context Window Profiles",
+    "description": "Different AI models have different context limits. TokenCap ships with profiles tuned for eight model families — from llama-3-8b at 40KB to Gemini 1.5 Pro at 1.2MB. Switch profiles with a single flag.",
+    "category": "AI Optimization",
+    "importance": 2,
+    "profiles": [
+      { "name": "compact", "maxFiles": 45, "maxSourceBytes": 90000, "use": "Tight context windows" },
+      { "name": "balanced", "maxFiles": 90, "maxSourceBytes": 220000, "use": "Default production profile" },
+      { "name": "deep", "maxFiles": 140, "maxSourceBytes": 420000, "use": "Complex codebases" },
+      { "name": "gpt-4o", "maxFiles": 80, "maxSourceBytes": 150000, "use": "OpenAI GPT-4o" },
+      { "name": "claude-3-5-sonnet", "maxFiles": 120, "maxSourceBytes": 250000, "use": "Anthropic Claude" },
+      { "name": "gemini-1.5-flash", "maxFiles": 200, "maxSourceBytes": 600000, "use": "Gemini Flash" },
+      { "name": "gemini-1.5-pro", "maxFiles": 400, "maxSourceBytes": 1200000, "use": "Gemini Pro" },
+      { "name": "llama-3-8b", "maxFiles": 25, "maxSourceBytes": 40000, "use": "Local LLMs" }
+    ]
+  },
+  {
+    "id": "git-integration",
+    "title": "Deep Git Integration",
+    "description": "TokenCap reads your Git state automatically — current branch, recent commits, staged and unstaged diffs, and changed file paths. Changed files are ranked higher in the snapshot so they always appear first.",
+    "category": "Git",
+    "importance": 1,
+    "technicalDetail": "Uses git status --short, git diff --cached, git diff, git log --oneline -8, git rev-parse. Separates staged vs unstaged diffs into distinct sections. Changed files receive +120 ranking score."
+  },
+  {
+    "id": "file-ranking",
+    "title": "Intelligent File Ranking",
+    "description": "Not every file deserves the same attention. TokenCap scores and ranks files by relevance — changed files, source files, project metadata, and documentation surface first within your token budget.",
+    "category": "Optimization",
+    "importance": 2,
+    "technicalDetail": "Scoring: changed files +120, important project files (package.json, README, tsconfig) +70, high-signal docs +35, src/ files +30, test files +18. Large files penalized by floor(size/12000)."
+  },
+  {
+    "id": "structural-outlines",
+    "title": "Structural Outlines for Large Files",
+    "description": "When a file exceeds your token budget and gets truncated, TokenCap doesn't just cut it off. It generates a structural outline of classes, functions, and methods so you still know what's inside.",
+    "category": "Intelligence",
+    "importance": 3,
+    "technicalDetail": "Regex-based outline extraction for JS/TS functions, classes, interfaces, Python defs, Rust fns, and Go funcs. Capped at 30 definitions per file."
+  },
+  {
+    "id": "todo-detection",
+    "title": "TODO / FIXME / HACK Detection",
+    "description": "Every TODO, FIXME, and HACK comment across your selected files is extracted and surfaced in a dedicated section — so technical debt is always visible in your handoff.",
+    "category": "Intelligence",
+    "importance": 3,
+    "technicalDetail": "Case-insensitive regex scan across all selected files. Each entry includes file path, line number, and the full comment line. Capped at maxTodos (default: 100)."
+  },
+  {
+    "id": "token-estimation",
+    "title": "Real-Time Token Estimation",
+    "description": "Always know how large your snapshot is before you paste it into an AI tool. TokenCap estimates token count in real-time and displays it in the VS Code status bar and CLI output.",
+    "category": "Optimization",
+    "importance": 2,
+    "technicalDetail": "Estimates tokens as bytes / 4. Covers both source file bytes and Git diff bytes."
+  },
+  {
+    "id": "watch-mode",
+    "title": "Watch Mode",
+    "description": "Run TokenCap as a persistent background process. It watches your workspace for file changes and automatically regenerates all snapshot files after a configurable debounce delay.",
+    "category": "CLI",
+    "importance": 2,
+    "technicalDetail": "Built on chokidar. Ignores generated output files, node_modules, dist, build, coverage. Default debounce: 30,000ms, configurable via --debounce."
+  },
+  {
+    "id": "config-system",
+    "title": "Flexible Configuration",
+    "description": "Drop a .tokencap.json into your project root to override any default. Tune file budgets, include/exclude patterns, diff settings, profile, and more — all scoped to the project.",
+    "category": "Configuration",
+    "importance": 2,
+    "technicalDetail": "Config resolution order: defaults → profile overrides → .tokencap.json → CLI flags. Supports includePatterns, excludePatterns with glob matching."
+  },
+  {
+    "id": "multilanguage-snapshot",
+    "title": "Multi-Language Snapshot",
+    "description": "The main snapshot works across every language TokenCap can read. Python, Go, Rust, Java, C++, Ruby, PHP, Swift, Kotlin, SQL, YAML, and more — if it's a text file, it's in your snapshot.",
+    "category": "Compatibility",
+    "importance": 2,
+    "technicalDetail": "Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants."
+  },
+  {
+    "id": "vscode-status-bar",
+    "title": "VS Code Status Bar Integration",
+    "description": "A persistent status bar item shows your auto-capture state and last snapshot time at all times. Click it to open the full command menu instantly.",
+    "category": "VS Code",
+    "importance": 2,
+    "technicalDetail": "Displays '$(files) TokenCap • HH:MM' format. Tooltip shows status, auto-capture state, last run time, file count, and estimated tokens. Command: tokencap.showMenu."
+  }
+]

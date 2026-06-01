@@ -1,0 +1,58 @@
+[
+  {
+    "question": "Does TokenCap upload my code anywhere?",
+    "answer": "No. TokenCap runs entirely on your machine. It reads your files, runs git commands locally, and writes Markdown files to your project root. Nothing is sent to any server, cloud service, or external API."
+  },
+  {
+    "question": "How does secret redaction work?",
+    "answer": "Before writing any file content to the snapshot, TokenCap scans each file for known credential patterns and replaces them with [REDACTED]. It catches OpenAI keys (sk-...), GitHub Personal Access Tokens (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic variable assignments like api_key=, token=, secret=, and password=. Redaction is on by default and can be toggled via the redactSecrets config option."
+  },
+  {
+    "question": "What languages does TokenCap support?",
+    "answer": "The main snapshot (TOKENCAP.md) works with any text-based language — Python, Go, Rust, Java, C++, Ruby, PHP, Swift, Kotlin, SQL, YAML, and all JS/TS variants. The knowledge graph (TOKENCAP_GRAPH.md) parses import relationships only for JS/TS files (.js, .jsx, .ts, .tsx, .mjs, .cjs). The memory layer (TOKENCAP_MEMORY.md) is language-agnostic."
+  },
+  {
+    "question": "Do I need to configure anything to get started?",
+    "answer": "No. Install it with npm install -g tokencap and run tokencap make from your project root. It works with sensible defaults immediately. When you're ready to customize, run tokencap init to create a .tokencap.json config file."
+  },
+  {
+    "question": "How do I choose the right profile for my AI model?",
+    "answer": "Use the --profile flag or set it in .tokencap.json. Each profile is tuned for a specific model's context window: compact (90KB) for local LLMs, balanced (220KB, default) for most models, deep (420KB) for large codebases, and named profiles (gpt-4o, claude-3-5-sonnet, gemini-1.5-flash, gemini-1.5-pro, llama-3-8b) for specific models."
+  },
+  {
+    "question": "What is TOKENCAP_GRAPH.md?",
+    "answer": "It's an automatically generated dependency map of your JS/TS project. TokenCap scans every source file, follows every import, export, and require statement, resolves paths to actual files, and classifies each file as a route, component, service, API endpoint, database model, or config file. Generates with tokencap graph or as part of tokencap make."
+  },
+  {
+    "question": "What is TOKENCAP_MEMORY.md and .tokencap-notes.md?",
+    "answer": ".tokencap-notes.md is a simple Markdown file you edit manually to record your current task, developer intent, known issues, constraints, decisions made, and next steps. TokenCap combines your notes with live Git context (branch, changed files) to produce TOKENCAP_MEMORY.md — a persistent context file for your AI assistant or the next developer picking up the work."
+  },
+  {
+    "question": "How does file ranking work? Which files are included first?",
+    "answer": "TokenCap scores every file in your project before selecting which ones to include in the snapshot. Changed files (from git status) get the highest score (+120), followed by important project files like package.json and README (+70), high-signal documentation (+35), src/ files (+30), and test files (+18). Larger files are penalized slightly to maximize file count diversity within the byte budget."
+  },
+  {
+    "question": "Can I exclude specific files or folders from the snapshot?",
+    "answer": "Yes. Add an excludePatterns array to .tokencap.json with glob patterns like node_modules/**, dist/**, or **/*.test.ts. You can also use includePatterns to only include specific files. node_modules, dist, build, coverage, .next, and .git are always excluded regardless of config."
+  },
+  {
+    "question": "What happens when a file is too large for the token budget?",
+    "answer": "Instead of including the full content and blowing your budget, TokenCap truncates the file at the byte limit and prepends a structural outline. The outline lists all classes, functions, and methods detected in the file so you still know what's in there — even if the full content isn't included."
+  },
+  {
+    "question": "Can I use TokenCap without VS Code?",
+    "answer": "Yes. The CLI (tokencap) works independently of VS Code. Install it globally with npm install -g tokencap and run it from any terminal. All features including watch mode, graph generation, and memory generation are available from the CLI."
+  },
+  {
+    "question": "Is TokenCap free?",
+    "answer": "Yes. TokenCap is open-source and released under the MIT license. There is no paid tier, no usage limits, and no account required."
+  },
+  {
+    "question": "How does the VS Code extension differ from the CLI?",
+    "answer": "The VS Code extension adds auto-capture on save (so you never have to run a command), a status bar indicator showing last update time and token count, and a one-click command menu. Under the hood it calls the same core logic as the CLI. The CLI is better for CI/CD pipelines and non-VS Code workflows."
+  },
+  {
+    "question": "Will TokenCap slow down my editor?",
+    "answer": "No. The extension uses a 30-second debounce by default — it waits 30 seconds after the last save before regenerating. You can increase this with the tokencap.debounceMs setting. The snapshot generation itself runs synchronously but is typically fast (under 500ms for most projects)."
+  }
+]
