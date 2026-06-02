@@ -10,11 +10,11 @@ export const metadata = buildMetadata({
 
 export default function CliPage() {
   const sidebarItems = [
-    { label: "Introduction", icon: "info", href: "#" },
-    { label: "Core Concepts", icon: "extension", href: "#" },
+    { label: "Introduction", icon: "info", href: "/docs" },
+    { label: "Core Concepts", icon: "extension", href: "/docs/getting-started" },
     { label: "CLI Reference", icon: "terminal", href: "#install", active: true },
-    { label: "API", icon: "api", href: "#" },
-    { label: "Advanced", icon: "auto_awesome", href: "#" },
+    { label: "VS Code Extension", icon: "extension", href: "/vscode" },
+    { label: "Changelog", icon: "auto_awesome", href: "/changelog" },
   ];
 
   const communityItems = [
@@ -23,11 +23,15 @@ export default function CliPage() {
   ];
 
   const tableOptions = [
-    { flag: "--version, -v", description: "Print the installed version of TokenCap.", defaultVal: "n/a" },
-    { flag: "--config, -c", description: "Path to a custom configuration file.", defaultVal: "tokencap.config.js" },
-    { flag: "--silent, -s", description: "Suppress all non-error output to the terminal.", defaultVal: "false" },
-    { flag: "--json", description: "Format all CLI output as raw JSON strings.", defaultVal: "false" },
-    { flag: "--force, -f", description: "Bypass validation checks and overwrite local files.", defaultVal: "false" },
+    { flag: "--profile <name>", description: "Select context profile (compact, balanced, deep, gpt-4o, etc.).", defaultVal: "balanced" },
+    { flag: "--root <path>", description: "Specify the workspace root directory.", defaultVal: "." },
+    { flag: "--out <path>", description: "Snapshot output path (for main snapshot).", defaultVal: "TOKENCAP.md" },
+    { flag: "--max-files <n>", description: "Maximum number of files to include in snapshot.", defaultVal: "90" },
+    { flag: "--max-bytes <n>", description: "Total source byte budget for files combined.", defaultVal: "220000" },
+    { flag: "--max-file-bytes <n>", description: "Per-file content byte limit.", defaultVal: "14000" },
+    { flag: "--no-diff", description: "Skip including Git diff snippets in the snapshot.", defaultVal: "false" },
+    { flag: "--no-contents", description: "Skip selected source file contents (outline only).", defaultVal: "false" },
+    { flag: "--debounce <ms>", description: "Regeneration debounce delay in watch mode.", defaultVal: "3000" },
   ];
 
   return (
@@ -36,7 +40,7 @@ export default function CliPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v2.4.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.2.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -76,7 +80,7 @@ export default function CliPage() {
         <header className="mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-white mb-3">CLI Reference</h1>
           <p className="text-[#ccc3d8] text-base max-w-2xl leading-relaxed">
-            Master the TokenCap command-line interface. A powerful, low-latency toolkit designed for rapid token engineering and asset management.
+            Master the TokenCap command-line interface. A powerful, local-first utility designed to package codebase context for AI tools.
           </p>
         </header>
 
@@ -89,7 +93,7 @@ export default function CliPage() {
             <h2 className="text-xl font-bold text-white">Install globally</h2>
           </div>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
-            Get started by installing the TokenCap CLI via npm, yarn, or pnpm. This provides the <code className="text-[#d2bbff]">tc</code> global command.
+            Get started by installing the TokenCap CLI globally via npm. This provides the <code className="text-[#d2bbff]">tokencap</code> executable.
           </p>
           <div className="glass-panel rounded-xl overflow-hidden terminal-glow">
             <div className="bg-[#18181b] px-4 py-2 flex justify-between items-center border-b border-white/5">
@@ -103,9 +107,9 @@ export default function CliPage() {
             <div className="p-4 font-mono text-[13px] leading-relaxed flex items-center justify-between gap-4">
               <div className="flex gap-2 overflow-x-auto scrollbar-none">
                 <span className="text-[#4edea3] select-none">$</span>
-                <span className="text-white whitespace-nowrap">npm install -g @tokencap/cli</span>
+                <span className="text-white whitespace-nowrap">npm install -g tokencap</span>
               </div>
-              <CopyButton text="npm install -g @tokencap/cli" className="shrink-0" />
+              <CopyButton text="npm install -g tokencap" className="shrink-0" />
             </div>
           </div>
         </section>
@@ -114,25 +118,27 @@ export default function CliPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Generate Snapshot */}
           <section id="snapshot" className="flex flex-col">
-            <h3 className="text-lg font-bold text-white mb-2">Generate snapshot</h3>
+            <h3 className="text-lg font-bold text-white mb-2">Generate snapshot (make)</h3>
             <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
-              Capture the current state of all tracked assets into a secure, versioned JSON snapshot.
+              Generate all three files: main snapshot, project knowledge graph, and developer context memory in one command.
             </p>
             <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
               <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
-                <span className="font-mono text-xs text-zinc-500">Terminal — tc snapshot</span>
-                <CopyButton text="tc snapshot --name 'q3-audit'" />
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap make</span>
+                <CopyButton text="tokencap make --profile balanced" />
               </div>
               <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
                 <div className="flex gap-2 overflow-x-auto scrollbar-none">
                   <span className="text-[#d2bbff] select-none">&gt;</span>
-                  <span className="text-white whitespace-nowrap">tc snapshot --name "q3-audit"</span>
+                  <span className="text-white whitespace-nowrap">tokencap make --profile balanced</span>
                 </div>
-                <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Validating chain data...</span></div>
-                <div className="text-[#4edea3]">✔ <span className="text-white">Fetching metadata...</span></div>
+                <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Scanning files...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Generating TOKENCAP_GRAPH.md...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Generating TOKENCAP_MEMORY.md...</span></div>
                 <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
-                  <span className="whitespace-nowrap">Snapshot created: ./snapshots/q3-audit.tc.json</span><br />
-                  <span className="whitespace-nowrap">Size: 142.5KB</span>
+                  <span className="whitespace-nowrap">Generated: TOKENCAP.md</span><br />
+                  <span className="whitespace-nowrap">Generated: TOKENCAP_GRAPH.md</span><br />
+                  <span className="whitespace-nowrap">Generated: TOKENCAP_MEMORY.md</span>
                 </div>
               </div>
             </div>
@@ -142,21 +148,21 @@ export default function CliPage() {
           <section id="watch" className="flex flex-col">
             <h3 className="text-lg font-bold text-white mb-2">Watch mode</h3>
             <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
-              Automatically re-sync and hot-reload your local environment when on-chain events occur.
+              Start a background watcher that regenerates all snapshot files automatically whenever a file changes.
             </p>
             <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
               <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
-                <span className="font-mono text-xs text-zinc-500">Terminal — tc watch</span>
-                <CopyButton text="tc watch --verbose" />
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap watch</span>
+                <CopyButton text="tokencap watch --debounce 3000" />
               </div>
               <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
                 <div className="flex gap-2 overflow-x-auto scrollbar-none">
                   <span className="text-[#d2bbff] select-none">&gt;</span>
-                  <span className="text-white whitespace-nowrap">tc watch --verbose</span>
+                  <span className="text-white whitespace-nowrap">tokencap watch --debounce 3000</span>
                 </div>
-                <div className="mt-3 text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:21] Watching for contract events...</div>
-                <div className="text-[#00a572] whitespace-nowrap overflow-x-auto scrollbar-none">● <span className="text-white">Event: Transfer detected (0x12...a3)</span></div>
-                <div className="text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:45] Re-indexing local cache...</div>
+                <div className="mt-3 text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:21] Watching workspace for changes...</div>
+                <div className="text-[#00a572] whitespace-nowrap overflow-x-auto scrollbar-none">● <span className="text-white">Change detected in src/app/login/page.tsx</span></div>
+                <div className="text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:45] Debouncing and regenerating snapshot files...</div>
                 <div className="cli-cursor text-white mt-1"></div>
               </div>
             </div>
@@ -168,51 +174,51 @@ export default function CliPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <h2 className="text-xl font-bold text-white">Configuration</h2>
             <span className="bg-[#2a2a2c] px-3 py-1 rounded-full font-mono text-[12px] text-[#4edea3] border border-[#4a4455] self-start sm:self-auto">
-              tokencap.config.js
+              .tokencap.json
             </span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-4">
               <p className="text-sm leading-relaxed text-[#ccc3d8]">
-                Initialize a new project configuration or print the currently resolved tree including environment overrides.
+                Initialize a local project configuration or print the currently resolved configuration including profile defaults.
               </p>
               <div className="p-4 border border-[#4a4455]/20 rounded-xl bg-[#0e0e10] flex justify-between items-start">
                 <div>
-                  <p className="font-mono text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">INITIALIZE PROJECT</p>
-                  <code className="font-mono text-sm text-[#d2bbff] font-bold">tc init</code>
-                  <p className="text-xs text-[#ccc3d8] mt-2">Creates a scaffold with default resolvers and security layers.</p>
+                  <p className="font-mono text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">INITIALIZE CONFIG</p>
+                  <code className="font-mono text-sm text-[#d2bbff] font-bold">tokencap init</code>
+                  <p className="text-xs text-[#ccc3d8] mt-2">Creates a default config file .tokencap.json in your workspace root.</p>
                 </div>
-                <CopyButton text="tc init" className="mt-1" />
+                <CopyButton text="tokencap init" className="mt-1" />
               </div>
               <div className="p-4 border border-[#4a4455]/20 rounded-xl bg-[#0e0e10] flex justify-between items-start">
                 <div>
-                  <p className="font-mono text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">DEBUG RESOLUTION</p>
-                  <code className="font-mono text-sm text-[#d2bbff] font-bold">tc config --print</code>
-                  <p className="text-xs text-[#ccc3d8] mt-2">Outputs the full merged JSON config to stdout.</p>
+                  <p className="font-mono text-[10px] text-zinc-500 mb-1.5 uppercase tracking-wider">RESOLVE CONFIG</p>
+                  <code className="font-mono text-sm text-[#d2bbff] font-bold">tokencap config</code>
+                  <p className="text-xs text-[#ccc3d8] mt-2">Prints resolved configuration tree combined with CLI overrides.</p>
                 </div>
-                <CopyButton text="tc config --print" className="mt-1" />
+                <CopyButton text="tokencap config" className="mt-1" />
               </div>
             </div>
             <div className="glass-panel rounded-xl overflow-hidden terminal-glow">
               <div className="p-4 font-mono text-[13px] leading-relaxed bg-black/40 relative">
                 <div className="absolute top-4 right-4">
-                  <CopyButton text={`{\n  "network": "mainnet",\n  "caching": {\n    "enabled": true,\n    "ttl": 3600\n  },\n  "integrations": ["ledger", "trezor"]\n}`} />
+                  <CopyButton text={`{\n  "profile": "balanced",\n  "outputPath": "TOKENCAP.md",\n  "maxFiles": 90,\n  "maxSourceBytes": 220000,\n  "maxFileBytes": 14000,\n  "includeGitDiff": true,\n  "includeFileContents": true,\n  "excludePatterns": ["node_modules/**", "dist/**"],\n  "redactSecrets": true\n}`} />
                 </div>
                 <div className="text-zinc-500">// Resolved Config Output</div>
                 <div className="text-white mt-3 leading-normal overflow-x-auto scrollbar-none">
                   {"{"}
                   <br />
-                  &nbsp;&nbsp;<span className="text-[#4edea3]">"network"</span>: <span className="text-[#adc6ff]">"mainnet"</span>,
+                  &nbsp;&nbsp;<span className="text-[#4edea3]">"profile"</span>: <span className="text-[#adc6ff]">"balanced"</span>,
                   <br />
-                  &nbsp;&nbsp;<span className="text-[#4edea3]">"caching"</span>: {"{"}
+                  &nbsp;&nbsp;<span className="text-[#4edea3]">"outputPath"</span>: <span className="text-[#adc6ff]">"TOKENCAP.md"</span>,
                   <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#4edea3]">"enabled"</span>: <span className="text-[#d2bbff]">true</span>,
+                  &nbsp;&nbsp;<span className="text-[#4edea3]">"maxFiles"</span>: <span className="text-[#d2bbff]">90</span>,
                   <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#4edea3]">"ttl"</span>: <span className="text-[#d2bbff]">3600</span>
+                  &nbsp;&nbsp;<span className="text-[#4edea3]">"maxSourceBytes"</span>: <span className="text-[#d2bbff]">220000</span>,
                   <br />
-                  &nbsp;&nbsp;{"}"},
+                  &nbsp;&nbsp;<span className="text-[#4edea3]">"includeGitDiff"</span>: <span className="text-[#d2bbff]">true</span>,
                   <br />
-                  &nbsp;&nbsp;<span className="text-[#4edea3]">"integrations"</span>: [<span className="text-[#adc6ff]">"ledger"</span>, <span className="text-[#adc6ff]">"trezor"</span>]
+                  &nbsp;&nbsp;<span className="text-[#4edea3]">"redactSecrets"</span>: <span className="text-[#d2bbff]">true</span>
                   <br />
                   {"}"}
                 </div>
@@ -250,13 +256,13 @@ export default function CliPage() {
         <section className="relative h-64 rounded-xl overflow-hidden">
           <img 
             className="w-full h-full object-cover opacity-40" 
-            alt="Hardware components" 
+            alt="Terminal lines mockup" 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXi8Pwd8DdwTmDNW-bPR4NmXzIYKQdDp_BjxnLS7ir8sJpUJPK1eh8e1mw5GTO3YYLMwJ3jyFyAm-rrqp-GN5oy1y4qGKjMwlfP3FCIUs723Ehq2eNk6Yynckh0Q7RNTFGK1Ag1fWXml6NIy-wGnR7P-D9fOthBOON9DeY6nnjKTPDeTJz_Yje5Wgmy0-wd6S96y8ZCMzeDZKwxd3ZKSrN8bTCS1FFhGUwjKjAyXCZshn1GJm1HLab_2pkE8QIhRyBEgmuWueZnzwi"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#131315] to-transparent flex items-end p-8">
             <div>
               <h4 className="text-xl font-bold text-white mb-1">Built for speed.</h4>
-              <p className="text-sm text-[#ccc3d8]">Rust-powered core ensures sub-50ms execution times.</p>
+              <p className="text-sm text-[#ccc3d8]">Highly optimized JS parser engine ensures execution times in milliseconds.</p>
             </div>
           </div>
         </section>

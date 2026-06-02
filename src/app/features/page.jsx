@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v2.4.0 Engine
+            v0.2.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -36,7 +36,7 @@ export default function FeaturesPage() {
           </div>
           <h3 className="text-xl font-semibold text-white mb-2">Auto Capture on Save</h3>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
-            Sync your context instantly. TokenCap monitors file changes and updates your active context buffer in real-time.
+            Sync your context instantly. TokenCap monitors file saves and automatically updates snapshot files in the background.
           </p>
           <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 overflow-hidden font-mono text-[13px]">
             <div className="flex gap-1 mb-2">
@@ -45,8 +45,8 @@ export default function FeaturesPage() {
               <div className="w-2 h-2 rounded-full bg-green-500/50"></div>
             </div>
             <code className="block whitespace-pre text-[#4edea3]">
-              [10:42:01] <span className="text-[#ccc3d8]">Captured:</span> main.ts{"\n"}
-              [10:42:04] <span className="text-[#ccc3d8]">Syncing context...</span>
+              [10:42:01] <span className="text-[#ccc3d8]">Saved:</span> page.tsx{"\n"}
+              [10:42:04] <span className="text-[#ccc3d8]">Regenerating files...</span>
             </code>
           </div>
         </div>
@@ -58,18 +58,18 @@ export default function FeaturesPage() {
           </div>
           <h3 className="text-xl font-semibold text-white mb-2">Git-Aware Snapshots</h3>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
-            Version control your context. Automatically exclude .gitignore files and tag snapshots by branch or commit.
+            Prioritize active edits. Surfaces unstaged/staged diffs and ranks recently changed files higher in LLM snapshots.
           </p>
           <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-4 flex flex-col justify-between h-[84px]">
             <div className="flex justify-between items-center">
               <span className="text-[11px] font-mono font-medium text-[#ccc3d8] opacity-60 uppercase tracking-wider">BRANCH</span>
-              <span className="text-[11px] font-mono font-medium text-[#4edea3]">main</span>
+              <span className="text-[11px] font-mono font-medium text-[#4edea3]">feature/auth</span>
             </div>
             <div className="space-y-1">
               <div className="h-1 w-full bg-[#2a2a2c] rounded-full overflow-hidden">
                 <div className="h-full bg-[#4edea3] w-2/3"></div>
               </div>
-              <span className="text-[10px] text-[#ccc3d8] font-mono block">Processing diff...</span>
+              <span className="text-[10px] text-[#ccc3d8] font-mono block">Prioritizing changed files...</span>
             </div>
           </div>
         </div>
@@ -81,16 +81,16 @@ export default function FeaturesPage() {
           </div>
           <h3 className="text-xl font-semibold text-white mb-2">Secret Redaction</h3>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
-            LLM safety first. Automatically detects and hides API keys, tokens, and sensitive env variables.
+            LLM safety first. Automatically detects and redacts OpenAI keys, GitHub PATs, AWS credentials, and environment variables.
           </p>
           <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 font-mono text-[13px] h-[84px] flex flex-col justify-center">
             <div>
-              <span className="text-[#ccc3d8]">STRIPE_KEY=</span>
-              <span className="bg-[#d2bbff]/30 text-[#d2bbff] px-1 rounded text-xs ml-1">HIDDEN:STRIPE_PK</span>
+              <span className="text-[#ccc3d8]">OPENAI_KEY=</span>
+              <span className="bg-[#d2bbff]/30 text-[#d2bbff] px-1 rounded text-xs ml-1">REDACTED_OPENAI_KEY</span>
             </div>
             <div className="mt-1">
-              <span className="text-[#ccc3d8]">DB_PASS=</span>
-              <span className="bg-[#d2bbff]/30 text-[#d2bbff] px-1 rounded text-xs ml-1">HIDDEN:PASSWORD</span>
+              <span className="text-[#ccc3d8]">DB_PASSWORD=</span>
+              <span className="bg-[#d2bbff]/30 text-[#d2bbff] px-1 rounded text-xs ml-1">REDACTED</span>
             </div>
           </div>
         </div>
@@ -102,17 +102,17 @@ export default function FeaturesPage() {
           </div>
           <h3 className="text-xl font-semibold text-white mb-2">Structural Outlines</h3>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
-            Tokens are expensive. Only send function signatures and class definitions to keep prompts lean.
+            Save valuable tokens. Large files get truncated, but their functions, classes, and method signatures remain as outlines.
           </p>
           <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 h-[84px] flex flex-col justify-center font-mono text-[13px]">
             <div className="space-y-1">
               <div className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-sm opacity-40">expand_more</span>
-                <span className="text-white">class Engine {"{"} ... {"}"}</span>
+                <span className="text-white">class Parser {"{"} ... {"}"}</span>
               </div>
               <div className="pl-6 flex items-center gap-1">
                 <span className="material-symbols-outlined text-sm opacity-40">chevron_right</span>
-                <span className="text-[#ccc3d8]">public init()</span>
+                <span className="text-[#ccc3d8]">resolveImports()</span>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function FeaturesPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Context Profiles</h3>
                 <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 max-w-sm">
-                  Switch between "Frontend Fix", "Backend Review", or "Security Audit" presets with a single CLI command.
+                  Select from profiles tuned for specific models like `gpt-4o`, `claude-3-5-sonnet`, `gemini-1.5-pro`, or `compact`/`balanced`/`deep` presets.
                 </p>
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function FeaturesPage() {
               <div className="absolute -right-4 -bottom-4 w-full h-full bg-[#7c3aed]/10 rounded-full blur-2xl"></div>
               <div className="flex items-center gap-2 mb-2 relative z-10">
                 <span className="w-3 h-3 rounded-full bg-[#4edea3]"></span>
-                <span className="font-mono text-[13px] text-white">Active: Security</span>
+                <span className="font-mono text-[13px] text-white">Active: balanced</span>
               </div>
               <div className="space-y-1.5 opacity-50 relative z-10">
                 <div className="h-1.5 w-full bg-[#4a4455] rounded"></div>
@@ -156,7 +156,7 @@ export default function FeaturesPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">CLI + VS Code Support</h3>
                 <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 max-w-sm">
-                  Run from your terminal or use the integrated VS Code Extension. Seamless integration into your existing workflow.
+                  Run from your terminal or use the integrated VS Code Extension. Seamless integration into your existing codebase workflow.
                 </p>
               </div>
             </div>
@@ -168,10 +168,10 @@ export default function FeaturesPage() {
               <div className="p-3 font-mono text-[13px] flex-grow flex flex-col justify-center">
                 <div>
                   <span className="text-[#d2bbff] mr-1.5">&gt;</span>
-                  <span className="text-white">tcap capture</span>
+                  <span className="text-white">tokencap make</span>
                 </div>
                 <div className="text-[#4edea3] mt-1">
-                  ✓ <span className="text-[#ccc3d8]">Bundle created (12KB)</span>
+                  ✓ <span className="text-[#ccc3d8]">Generated snapshots</span>
                 </div>
               </div>
             </div>
@@ -205,12 +205,12 @@ export default function FeaturesPage() {
           <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
             <span className="material-symbols-outlined text-[#d2bbff]">speed</span>
           </div>
-          <h3 className="text-xl font-semibold text-white mb-2">Large Project Optimization</h3>
+          <h3 className="text-xl font-semibold text-white mb-2">Project Knowledge Graph</h3>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
-            Engineered for monorepos. Multi-threaded scanning ensures instant snapshots even in 1M+ line projects.
+            Generate import maps and classify codebase components (routes, components, services, database models, etc.).
           </p>
           <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 font-mono text-[13px]">
-            <div className="text-[10px] text-[#ccc3d8] mb-1.5 opacity-60">INDEXING...</div>
+            <div className="text-[10px] text-[#ccc3d8] mb-1.5 opacity-60">BUILDING GRAPH...</div>
             <div className="grid grid-cols-4 gap-1">
               <div className="h-4 bg-[#7c3aed]/40 rounded-sm animate-pulse"></div>
               <div className="h-4 bg-[#7c3aed]/20 rounded-sm"></div>
@@ -227,12 +227,15 @@ export default function FeaturesPage() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-[#7c3aed]/5 blur-[120px] rounded-full"></div>
           <h2 className="text-4xl font-bold tracking-tight text-white mb-6 relative z-10">Start capturing context.</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
-            <button className="bg-[#7c3aed] text-white px-8 py-3 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(124,58,237,0.15)]">
+            <a
+              href="/docs"
+              className="bg-[#7c3aed] text-white px-8 py-3 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(124,58,237,0.15)]"
+            >
               Get Started Free
-            </button>
+            </a>
             <div className="flex items-center gap-3 px-4 py-3 bg-[#2a2a2c] rounded-xl border border-[#4a4455] font-mono text-[13px]">
-              <span className="text-[#ccc3d8]">curl -sL tokencap.sh | sh</span>
-              <CopyButton text="curl -sL tokencap.sh | sh" />
+              <span className="text-[#ccc3d8]">npm install -g tokencap</span>
+              <CopyButton text="npm install -g tokencap" />
             </div>
           </div>
         </div>

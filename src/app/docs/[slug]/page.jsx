@@ -67,7 +67,7 @@ export default async function DocsSlugPage({ params }) {
           </div>
           <div>
             <h2 className="text-sm font-bold text-white leading-none">Documentation</h2>
-            <span className="font-mono text-[9px] text-zinc-500 mt-1 uppercase tracking-wider block">v2.4.0</span>
+            <span className="font-mono text-[9px] text-zinc-500 mt-1 uppercase tracking-wider block">v0.2.0</span>
           </div>
         </div>
         <nav className="space-y-1 flex-grow">
@@ -157,8 +157,8 @@ export default async function DocsSlugPage({ params }) {
           <div className="mt-8 p-4 bg-[#7c3aed]/10 border border-[#7c3aed]/20 rounded-xl relative overflow-hidden">
             <div className="relative z-10">
               <h6 className="font-bold text-white text-xs mb-1">New Release</h6>
-              <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">V2.4.0 adds native VS Code extension support.</p>
-              <a className="text-[11px] text-[#d2bbff] font-bold underline hover:text-[#7c3aed] transition-colors" href="#">
+              <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">V0.2.0 adds Project Knowledge Graph and Context Memory Layer.</p>
+              <a className="text-[11px] text-[#d2bbff] font-bold underline hover:text-[#7c3aed] transition-colors" href="/changelog">
                 Check changelog
               </a>
             </div>
