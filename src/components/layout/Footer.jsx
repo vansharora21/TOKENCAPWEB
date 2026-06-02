@@ -27,7 +27,7 @@ function Footer() {
             <div className="flex items-center gap-2.5">
               <div className="relative w-7 h-7 overflow-hidden rounded-lg bg-[#141416] border border-white/10 flex items-center justify-center">
                 <img 
-                  src="/logos/tokencap-logo.jpg" 
+                  src="/logos/tokencap-logo.png" 
                   alt="TokenCap emblem" 
                   className="absolute w-[180%] h-auto max-w-none left-1/2 -translate-x-1/2 top-[-8%]" 
                 />
@@ -41,7 +41,7 @@ function Footer() {
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-3 gap-8 text-sm">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 text-sm">
             {/* Column 1: Product */}
             <div className="space-y-3">
               <h4 className="font-semibold text-white tracking-wide text-xs uppercase text-zinc-400">Product</h4>

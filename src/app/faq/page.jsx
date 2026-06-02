@@ -69,7 +69,7 @@ export default function FaqPage() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow px-6 py-12 md:px-12 max-w-4xl">
+      <main className="flex-grow px-6 py-12 md:px-12 max-w-4xl min-w-0">
         <header className="mb-12">
           <span className="text-[#d2bbff] font-mono text-[10px] font-semibold tracking-widest block mb-1 uppercase">SUPPORT CENTER</span>
           <h1 className="text-4xl font-bold tracking-tight text-white mb-3">Frequently Asked Questions</h1>

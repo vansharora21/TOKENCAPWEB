@@ -82,7 +82,7 @@ export default function VscodePage() {
                 </div>
 
                 {/* Command Palette Overlay */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-80 glass-panel rounded-lg shadow-2xl p-1 flex flex-col gap-1 z-20">
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-xs glass-panel rounded-lg shadow-2xl p-1 flex flex-col gap-1 z-20">
                   <div className="px-3 py-1.5 border-b border-white/10 flex items-center justify-between">
                     <span className="text-[9px] font-mono text-zinc-500 tracking-wider">TOKEN CAP COMMANDS</span>
                     <span className="text-[9px] font-mono text-[#d2bbff] font-semibold">6 FOUND</span>

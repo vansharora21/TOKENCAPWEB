@@ -19,7 +19,7 @@ function ProductPreview() {
       {/* Pane Grid */}
       <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] h-[480px]">
         {/* Left Sidebar (File Explorer) */}
-        <div className="border-r border-white/5 bg-[#0a0a0c]/60 p-4 font-mono text-xs select-none">
+        <div className="hidden md:block border-r border-white/5 bg-[#0a0a0c]/60 p-4 font-mono text-xs select-none">
           <h3 className="text-zinc-500 uppercase tracking-wider text-[10px] font-bold mb-4">Project Tree</h3>
           <div className="space-y-3">
             {/* Folder: src */}
@@ -63,7 +63,7 @@ function ProductPreview() {
         </div>
 
         {/* Right Code Panel (Markdown Viewer) */}
-        <div className="bg-[#0b0c10]/20 p-6 overflow-y-auto font-mono text-xs sm:text-sm text-zinc-300 leading-relaxed border-t md:border-t-0 border-white/5">
+        <div className="bg-[#0b0c10]/20 p-6 overflow-y-auto font-mono text-xs sm:text-sm text-zinc-300 leading-relaxed">
           <div className="space-y-6">
             <div>
               <span className="text-zinc-500 select-none">#</span> <span className="text-white font-bold">TokenCap Project Snapshot</span>

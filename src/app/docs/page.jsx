@@ -105,9 +105,9 @@ export default function DocsPage() {
                 <CopyButton text="npm install -g tokencap" />
               </div>
               <div className="p-4 font-mono text-[13px]">
-                <div className="flex gap-2">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
                   <span className="text-[#7c3aed] select-none">&gt;</span>
-                  <span className="text-[#4edea3]">npm install -g tokencap</span>
+                  <span className="text-[#4edea3] whitespace-nowrap">npm install -g tokencap</span>
                 </div>
               </div>
             </div>
@@ -161,26 +161,26 @@ export default function DocsPage() {
                   <CopyButton text="tokencap watch --debounce 3000" />
                 </div>
                 <div className="p-4 font-mono text-[13px] bg-[#09090b]">
-                  <div className="flex gap-2 text-white">
+                  <div className="flex gap-2 text-white overflow-x-auto scrollbar-none">
                     <span className="text-[#7c3aed]">&gt;</span>
-                    <span>tokencap watch --debounce 3000</span>
+                    <span className="whitespace-nowrap">tokencap watch --debounce 3000</span>
                   </div>
-                  <div className="mt-3 text-zinc-500 leading-relaxed">
+                  <div className="mt-3 text-zinc-500 leading-relaxed whitespace-nowrap overflow-x-auto scrollbar-none">
                     [14:02:11] Watching .env files for changes...<br />
                     [14:02:45] Found change in .env.local<br />
                     [14:02:45] <span className="text-[#00a572] font-semibold">SUCCESS</span> Tokens updated and encrypted.
                   </div>
                 </div>
               </div>
-              <div className="rounded-lg overflow-hidden border border-[#4a4455]/30 bg-[#0e0e10] p-4 flex items-center justify-between">
-                <div className="font-mono text-[13px]">
-                  <div className="flex gap-2">
-                    <span className="text-[#7c3aed]">&gt;</span>
-                    <span className="text-[#4edea3]">tokencap config</span>
+              <div className="rounded-lg overflow-hidden border border-[#4a4455]/30 bg-[#0e0e10] p-4 flex items-center justify-between gap-4">
+                <div className="font-mono text-[13px] min-w-0">
+                  <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                    <span className="text-[#7c3aed] select-none">&gt;</span>
+                    <span className="text-[#4edea3] whitespace-nowrap">tokencap config</span>
                   </div>
                   <p className="mt-1 text-zinc-500 italic text-xs">Open the global interactive configuration panel.</p>
                 </div>
-                <CopyButton text="tokencap config" />
+                <CopyButton text="tokencap config" className="shrink-0" />
               </div>
             </div>
           </section>

@@ -72,7 +72,7 @@ export default function CliPage() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow px-6 py-12 md:px-12">
+      <main className="flex-grow px-6 py-12 md:px-12 min-w-0">
         <header className="mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-white mb-3">CLI Reference</h1>
           <p className="text-[#ccc3d8] text-base max-w-2xl leading-relaxed">
@@ -100,12 +100,12 @@ export default function CliPage() {
               </div>
               <span className="font-mono text-xs text-zinc-500">bash</span>
             </div>
-            <div className="p-4 font-mono text-[13px] leading-relaxed flex items-center justify-between">
-              <div className="flex gap-2">
+            <div className="p-4 font-mono text-[13px] leading-relaxed flex items-center justify-between gap-4">
+              <div className="flex gap-2 overflow-x-auto scrollbar-none">
                 <span className="text-[#4edea3] select-none">$</span>
-                <span className="text-white">npm install -g @tokencap/cli</span>
+                <span className="text-white whitespace-nowrap">npm install -g @tokencap/cli</span>
               </div>
-              <CopyButton text="npm install -g @tokencap/cli" />
+              <CopyButton text="npm install -g @tokencap/cli" className="shrink-0" />
             </div>
           </div>
         </section>
@@ -124,15 +124,15 @@ export default function CliPage() {
                 <CopyButton text="tc snapshot --name 'q3-audit'" />
               </div>
               <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
-                <div className="flex gap-2">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
                   <span className="text-[#d2bbff] select-none">&gt;</span>
-                  <span className="text-white">tc snapshot --name "q3-audit"</span>
+                  <span className="text-white whitespace-nowrap">tc snapshot --name "q3-audit"</span>
                 </div>
                 <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Validating chain data...</span></div>
                 <div className="text-[#4edea3]">✔ <span className="text-white">Fetching metadata...</span></div>
-                <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs">
-                  <span>Snapshot created:</span> ./snapshots/q3-audit.tc.json<br />
-                  <span>Size:</span> 142.5KB
+                <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
+                  <span className="whitespace-nowrap">Snapshot created: ./snapshots/q3-audit.tc.json</span><br />
+                  <span className="whitespace-nowrap">Size: 142.5KB</span>
                 </div>
               </div>
             </div>
@@ -150,13 +150,13 @@ export default function CliPage() {
                 <CopyButton text="tc watch --verbose" />
               </div>
               <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
-                <div className="flex gap-2">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
                   <span className="text-[#d2bbff] select-none">&gt;</span>
-                  <span className="text-white">tc watch --verbose</span>
+                  <span className="text-white whitespace-nowrap">tc watch --verbose</span>
                 </div>
-                <div className="mt-3 text-zinc-500">[14:02:21] Watching for contract events...</div>
-                <div className="text-[#00a572]">● <span className="text-white">Event: Transfer detected (0x12...a3)</span></div>
-                <div className="text-zinc-500">[14:02:45] Re-indexing local cache...</div>
+                <div className="mt-3 text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:21] Watching for contract events...</div>
+                <div className="text-[#00a572] whitespace-nowrap overflow-x-auto scrollbar-none">● <span className="text-white">Event: Transfer detected (0x12...a3)</span></div>
+                <div className="text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:45] Re-indexing local cache...</div>
                 <div className="cli-cursor text-white mt-1"></div>
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function CliPage() {
                   <CopyButton text={`{\n  "network": "mainnet",\n  "caching": {\n    "enabled": true,\n    "ttl": 3600\n  },\n  "integrations": ["ledger", "trezor"]\n}`} />
                 </div>
                 <div className="text-zinc-500">// Resolved Config Output</div>
-                <div className="text-white mt-3 leading-normal">
+                <div className="text-white mt-3 leading-normal overflow-x-auto scrollbar-none">
                   {"{"}
                   <br />
                   &nbsp;&nbsp;<span className="text-[#4edea3]">"network"</span>: <span className="text-[#adc6ff]">"mainnet"</span>,
