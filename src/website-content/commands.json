@@ -56,5 +56,43 @@
       { "flag": "--profile <name>", "description": "Profile to resolve" },
       { "flag": "--root <path>", "description": "Workspace root" }
     ]
+  },
+  {
+    "command": "tokencap debug:start",
+    "description": "Initialize a new debug session, optionally running a command to capture stdout/stderr, failed tests, and stack traces.",
+    "example": "tokencap debug:start -- npm test",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap debug",
+    "description": "Regenerate the active debug handoff report using current workspace state and custom notes from .tokencap-debug.md.",
+    "example": "tokencap debug",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap debug:log",
+    "description": "Add a timestamped progress update or discovery note to the active debug session timeline.",
+    "example": "tokencap debug:log \"Found issue in auth middleware\"",
+    "options": []
+  },
+  {
+    "command": "tokencap debug:end",
+    "description": "End the active debug session, generate the final handoff report, and archive the session under .tokencap/debug/archive/.",
+    "example": "tokencap debug:end",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap debug:history",
+    "description": "List all archived debug sessions with their timestamps and summaries.",
+    "example": "tokencap debug:history",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
   }
 ]

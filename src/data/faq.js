@@ -13,4 +13,5 @@ export const faqItems = [
   { question: "Is TokenCap free?", answer: "Yes. TokenCap is open-source and released under the MIT license. There is no paid tier, no usage limits, and no account required." },
   { question: "How does the VS Code extension differ from the CLI?", answer: "The VS Code extension adds auto-capture on save, a status bar indicator showing last update time and token count, and a one-click command menu." },
   { question: "Will TokenCap slow down my editor?", answer: "No. The extension uses a 30-second debounce by default. The snapshot generation itself runs synchronously but is typically fast for most projects." },
+  { question: "What is AI Debug Handoff Mode and how does it work?", answer: "AI Debug Handoff Mode is a session-based debugging memory system designed to preserve runtime error states, failed tests, and execution timelines. Run 'tokencap debug:start -- <command>' (like npm test) to intercept output, extract stack traces, and rank files by priority. Once done, 'tokencap debug:end' packages the findings and archives the session." },
 ];

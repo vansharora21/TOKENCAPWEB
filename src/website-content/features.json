@@ -120,5 +120,21 @@
     "category": "VS Code",
     "importance": 2,
     "technicalDetail": "Displays '$(files) TokenCap • HH:MM' format. Tooltip shows status, auto-capture state, last run time, file count, and estimated tokens. Command: tokencap.showMenu."
+  },
+  {
+    "id": "debug-handoff",
+    "title": "AI Debug Handoff Mode",
+    "description": "Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) in a dedicated folder (.tokencap/debug/) so that other developers or AI assistants can immediately continue investigation without starting over.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Archives ended sessions under .tokencap/debug/archive/."
+  },
+  {
+    "id": "automated-cli-capture",
+    "title": "Automated CLI Capture",
+    "description": "Execute any command under the debug runner (e.g. npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.",
+    "category": "CLI",
+    "importance": 1,
+    "technicalDetail": "Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces."
   }
 ]

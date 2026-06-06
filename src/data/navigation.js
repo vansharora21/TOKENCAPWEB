@@ -13,7 +13,7 @@ export const footerNavigation = [
     links: [
       { label: "Features", href: "/features" },
       { label: "VS Code", href: "/vscode" },
-      { label: "CLI Reference", href: "/docs/cli" },
+      { label: "CLI Reference", href: "/docs#cli" },
       { label: "Roadmap", href: "/roadmap" },
       { label: "Changelog", href: "/changelog" },
     ],
@@ -21,11 +21,11 @@ export const footerNavigation = [
   {
     title: "Documentation",
     links: [
-      { label: "Getting Started", href: "/docs/getting-started" },
-      { label: "Configuration", href: "/docs/configuration" },
-      { label: "Context Profiles", href: "/docs/profiles" },
-      { label: "Knowledge Graph", href: "/docs/graph" },
-      { label: "Memory Layer", href: "/docs/memory" },
+      { label: "Getting Started", href: "/docs#getting-started" },
+      { label: "Configuration", href: "/docs#configuration" },
+      { label: "Context Profiles", href: "/docs#profiles" },
+      { label: "Knowledge Graph", href: "/docs#graph" },
+      { label: "Memory Layer", href: "/docs#memory" },
     ],
   },
   {
@@ -39,12 +39,12 @@ export const footerNavigation = [
 ];
 
 export const docsNavigation = [
-  { label: "Getting Started", href: "/docs/getting-started" },
-  { label: "Configuration", href: "/docs/configuration" },
-  { label: "Context Profiles", href: "/docs/profiles" },
-  { label: "Project Knowledge Graph", href: "/docs/graph" },
-  { label: "Context Memory Layer", href: "/docs/memory" },
-  { label: "Secret Redaction", href: "/docs/secret-redaction" },
-  { label: "CLI Reference", href: "/docs/cli" },
-  { label: "VS Code Extension", href: "/docs/vscode" },
+  { label: "Getting Started", href: "/docs#getting-started" },
+  { label: "Configuration", href: "/docs#configuration" },
+  { label: "Context Profiles", href: "/docs#profiles" },
+  { label: "Project Knowledge Graph", href: "/docs#graph" },
+  { label: "Context Memory Layer", href: "/docs#memory" },
+  { label: "Secret Redaction", href: "/docs#secret-redaction" },
+  { label: "CLI Reference", href: "/docs#cli" },
+  { label: "VS Code Extension", href: "/docs#vscode" },
 ];

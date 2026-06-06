@@ -58,6 +58,11 @@ Every TODO, FIXME, and HACK comment across your selected files is extracted and 
 
 > ⚙️ *Technical Detail:* Case-insensitive regex scan across all selected files. Each entry includes file path, line number, and the full comment line. Capped at maxTodos (default: 100).
 
+#### 🔹 AI Debug Handoff Mode
+Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) in a dedicated folder (.tokencap/debug/) so that other developers or AI assistants can immediately continue investigation without starting over.
+
+> ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Archives ended sessions under .tokencap/debug/archive/.
+
 ### 📁 Security
 
 #### 🔹 Automatic Secret Redaction
@@ -106,6 +111,11 @@ Always know how large your snapshot is before you paste it into an AI tool. Toke
 Run TokenCap as a persistent background process. It watches your workspace for file changes and automatically regenerates all snapshot files after a configurable debounce delay.
 
 > ⚙️ *Technical Detail:* Built on chokidar. Ignores generated output files, node_modules, dist, build, coverage. Default debounce: 30,000ms, configurable via --debounce.
+
+#### 🔹 Automated CLI Capture
+Execute any command under the debug runner (e.g. npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.
+
+> ⚙️ *Technical Detail:* Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces.
 
 ### 📁 Configuration
 
@@ -211,6 +221,67 @@ tokencap config --profile deep
 | `--profile <name>` | Profile to resolve |
 | `--root <path>` | Workspace root |
 
+### 🛠️ `tokencap debug:start`
+
+Initialize a new debug session, optionally running a command to capture stdout/stderr, failed tests, and stack traces.
+
+**Example:**
+```bash
+tokencap debug:start -- npm test
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+
+### 🛠️ `tokencap debug`
+
+Regenerate the active debug handoff report using current workspace state and custom notes from .tokencap-debug.md.
+
+**Example:**
+```bash
+tokencap debug
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+
+### 🛠️ `tokencap debug:log`
+
+Add a timestamped progress update or discovery note to the active debug session timeline.
+
+**Example:**
+```bash
+tokencap debug:log "Found issue in auth middleware"
+```
+
+### 🛠️ `tokencap debug:end`
+
+End the active debug session, generate the final handoff report, and archive the session under .tokencap/debug/archive/.
+
+**Example:**
+```bash
+tokencap debug:end
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+
+### 🛠️ `tokencap debug:history`
+
+List all archived debug sessions with their timestamps and summaries.
+
+**Example:**
+```bash
+tokencap debug:history
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+
 ## 📦 Metadata & License
 
 - **NPM Package Name:** `tokencap`
@@ -218,4 +289,4 @@ tokencap config --profile deep
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 2/6/2026.*
+*Generated automatically from `website-content` JSON source files on 7/6/2026.*

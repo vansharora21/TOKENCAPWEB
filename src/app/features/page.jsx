@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.2.0 Engine
+            v0.3.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">

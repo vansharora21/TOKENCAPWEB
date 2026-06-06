@@ -13,7 +13,7 @@ const faqItems = [
         <div className="bg-[#1c1b1d] rounded-lg p-3 border border-[#4a4455]/40 font-mono text-xs text-[#4edea3]">
           <code>
             # TokenCap Project Snapshot<br />
-            &gt; version: 0.2.0<br />
+            &gt; version: 0.3.0<br />
             &gt; profile: balanced
           </code>
         </div>
@@ -42,7 +42,7 @@ const faqItems = [
   },
   {
     question: "What is the Project Knowledge Graph?",
-    answer: "In v0.2, TokenCap generates `TOKENCAP_GRAPH.md` which maps import/export and require relationships across your JS/TS files, classifying routes, components, services, database models, and configuration files.",
+    answer: "TokenCap generates `TOKENCAP_GRAPH.md` which maps import/export and require relationships across your JS/TS files, classifying routes, components, services, database models, and configuration files.",
   },
   {
     question: "Is TokenCap open source?",

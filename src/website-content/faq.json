@@ -54,5 +54,9 @@
   {
     "question": "Will TokenCap slow down my editor?",
     "answer": "No. The extension uses a 30-second debounce by default — it waits 30 seconds after the last save before regenerating. You can increase this with the tokencap.debounceMs setting. The snapshot generation itself runs synchronously but is typically fast (under 500ms for most projects)."
+  },
+  {
+    "question": "What is AI Debug Handoff Mode and how does it work?",
+    "answer": "AI Debug Handoff Mode is a session-based debugging memory system designed to preserve runtime error states, failed tests, and execution timelines. Run 'tokencap debug:start -- <command>' (like npm test) to run your tests/builds. TokenCap intercepts any output, extracts error stack traces, and ranks workspace files by likelihood of containing the bug. Once you are done investigating, 'tokencap debug:end' packages the findings and archives the session for future reference."
   }
 ]

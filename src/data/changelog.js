@@ -1,5 +1,22 @@
 export const changelogItems = [
   {
+    version: "0.3.0",
+    title: "AI Debug Handoff Mode",
+    date: "2026-06-07",
+    status: "released",
+    highlights: [
+      "AI Debug Handoff Mode: Session-based debugging memory subsystem that captures runtime environments, command failures, error stack traces, and priority files",
+      "Automated CLI Capture: Run 'tokencap debug:start -- <command>' (e.g., npm test) to run a command and automatically capture failed tests, error logs, and stack traces",
+      "Investigation Order: Automatically ranks files to investigate using stack traces, suspected files, git changes, and dependency graph neighbors",
+      "Session Timeline: Log custom events or progress manually via 'tokencap debug:log \"message\"' with timestamping",
+      "Session History & Archiving: Ended debug sessions are automatically archived to '.tokencap/debug/archive/' instead of being deleted",
+      "Five new commands: tokencap debug:start, tokencap debug, tokencap debug:log, tokencap debug:end, and tokencap debug:history",
+      "Automatic test runner parser support for Jest, Vitest, Mocha, Node test runner, pytest, and Go test",
+      "Auto-created debug templates: '.tokencap-debug.md' in the project root to edit Problem statement, Attempted Fixes, and Unresolved Questions",
+      "Highly modularized structure under src/debug/"
+    ],
+  },
+  {
     version: "0.1.0",
     title: "Initial Release",
     date: "2026-05-01",

@@ -13,7 +13,7 @@
       "links": [
         { "label": "Features", "href": "/features" },
         { "label": "VS Code Extension", "href": "/vscode" },
-        { "label": "CLI Reference", "href": "/docs/cli" },
+        { "label": "CLI Reference", "href": "/docs#cli" },
         { "label": "Roadmap", "href": "/roadmap" },
         { "label": "Changelog", "href": "/changelog" }
       ]
@@ -21,11 +21,11 @@
     {
       "heading": "Documentation",
       "links": [
-        { "label": "Getting Started", "href": "/docs/getting-started" },
-        { "label": "Configuration", "href": "/docs/configuration" },
-        { "label": "Context Profiles", "href": "/docs/profiles" },
-        { "label": "Knowledge Graph", "href": "/docs/graph" },
-        { "label": "Memory Layer", "href": "/docs/memory" }
+        { "label": "Getting Started", "href": "/docs#getting-started" },
+        { "label": "Configuration", "href": "/docs#configuration" },
+        { "label": "Context Profiles", "href": "/docs#profiles" },
+        { "label": "Knowledge Graph", "href": "/docs#graph" },
+        { "label": "Memory Layer", "href": "/docs#memory" }
       ]
     },
     {
@@ -38,7 +38,7 @@
     }
   ],
   "cta": {
-    "primary": { "label": "Install via npm", "href": "/docs/getting-started" },
+    "primary": { "label": "Install via npm", "href": "/docs#getting-started" },
     "secondary": { "label": "View on GitHub", "href": "https://github.com/vansharora21/TOKENCAP", "external": true }
   }
 }

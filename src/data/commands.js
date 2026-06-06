@@ -5,4 +5,9 @@ export const commands = [
   { command: "tokencap watch", description: "Start a background watcher that regenerates all snapshot files automatically.", result: "Watch mode active with configurable debounce." },
   { command: "tokencap init", description: "Create a default .tokencap.json configuration file in your project root.", result: "Config file template created." },
   { command: "tokencap config", description: "Print the fully resolved configuration as JSON.", result: "Resolved config output displayed." },
+  { command: "tokencap debug:start", description: "Initialize a new debug session and run a command to capture stdout/stderr, failed tests, and stack traces.", result: "Debug session started with auto-captured failure context." },
+  { command: "tokencap debug", description: "Regenerate the active debug handoff report using current workspace state and custom notes.", result: "Active debug report updated." },
+  { command: "tokencap debug:log", description: "Add a timestamped event or custom progress note to the active debug session timeline.", result: "Timeline event logged." },
+  { command: "tokencap debug:end", description: "End the active debug session, generate the final handoff report, and archive it.", result: "Session ended and archived." },
+  { command: "tokencap debug:history", description: "List all archived debug sessions with their timestamps and summaries.", result: "Archived sessions history listed." },
 ];
