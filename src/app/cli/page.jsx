@@ -32,6 +32,16 @@ export default function CliPage() {
     { flag: "--no-diff", description: "Skip including Git diff snippets in the snapshot.", defaultVal: "false" },
     { flag: "--no-contents", description: "Skip selected source file contents (outline only).", defaultVal: "false" },
     { flag: "--debounce <ms>", description: "Regeneration debounce delay in watch mode.", defaultVal: "3000" },
+    { flag: "--mode <name>", description: "Pack mode: review | debug | architecture | minimal (for pack command).", defaultVal: "review" },
+    { flag: "--budget <number>", description: "Pack token budget (for pack command).", defaultVal: "20000" },
+    { flag: "--staged", description: "Analyze only staged changes (for diff command).", defaultVal: "false" },
+    { flag: "--last", description: "Analyze changes in the last commit (for diff command).", defaultVal: "false" },
+    { flag: "--pr", description: "Generate PR summary description (for diff command).", defaultVal: "false" },
+    { flag: "--prompt", description: "Generate AI code review prompt (for diff command).", defaultVal: "false" },
+    { flag: "--json", description: "Output machine-readable JSON analysis (for diff/graph commands).", defaultVal: "false" },
+    { flag: "--open", description: "Open interactive HTML graph viewer in browser (for graph command).", defaultVal: "false" },
+    { flag: "--ai", description: "Generate detailed narrative AI summary (for graph command).", defaultVal: "false" },
+    { flag: "--diff", description: "Generate graph structural diff vs last run (for graph command).", defaultVal: "false" },
   ];
 
   return (
@@ -40,7 +50,7 @@ export default function CliPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.3.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.5.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -164,6 +174,58 @@ export default function CliPage() {
                 <div className="text-[#00a572] whitespace-nowrap overflow-x-auto scrollbar-none">● <span className="text-white">Change detected in src/app/login/page.tsx</span></div>
                 <div className="text-zinc-500 whitespace-nowrap overflow-x-auto scrollbar-none">[14:02:45] Debouncing and regenerating snapshot files...</div>
                 <div className="cli-cursor text-white mt-1"></div>
+              </div>
+            </div>
+          </section>
+
+          {/* Context Packing */}
+          <section id="pack" className="flex flex-col">
+            <h3 className="text-lg font-bold text-white mb-2">Context packing (pack)</h3>
+            <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
+              Pack your project workspace into a token-budgeted, importance-scored context pack for LLMs.
+            </p>
+            <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
+              <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap pack</span>
+                <CopyButton text="tokencap pack --mode review --budget 20000" />
+              </div>
+              <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                  <span className="text-[#d2bbff] select-none">&gt;</span>
+                  <span className="text-white whitespace-nowrap">tokencap pack --mode review --budget 20000</span>
+                </div>
+                <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Analyzing file graph centrality...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Applying representation tiers...</span></div>
+                <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
+                  <span className="whitespace-nowrap">Generated: .tokencap/packs/review.md (18,450 tokens)</span><br />
+                  <span className="whitespace-nowrap">Tiers: 12 full, 8 outlined, 5 AST, 14 reference-only</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Change Intelligence */}
+          <section id="diff" className="flex flex-col">
+            <h3 className="text-lg font-bold text-white mb-2">Change intelligence (diff)</h3>
+            <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
+              Perform semantic change analysis to determine risk rating, breaking changes, and suggested tests.
+            </p>
+            <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
+              <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap diff</span>
+                <CopyButton text="tokencap diff --staged" />
+              </div>
+              <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                  <span className="text-[#d2bbff] select-none">&gt;</span>
+                  <span className="text-white whitespace-nowrap">tokencap diff --staged</span>
+                </div>
+                <div className="mt-3 text-zinc-500 whitespace-nowrap">[14:03:01] Analyzing 5 staged files...</div>
+                <div className="text-yellow-400 font-bold whitespace-nowrap">Risk Rating: MEDIUM</div>
+                <div className="text-white text-xs mt-2 p-3 bg-white/5 rounded border border-white/5 leading-normal overflow-x-auto scrollbar-none">
+                  - Modified API: /api/auth/login<br />
+                  - Suggested Tests: Session expiry, redirect validation
+                </div>
               </div>
             </div>
           </section>

@@ -1,27 +1,27 @@
 [
   {
-    "version": "0.4.0",
+    "version": "0.6.0",
     "title": "Multi-Language Graph",
     "description": "Extend the project knowledge graph beyond JS/TS. Add import parsers for Python (import, from x import), Go (import blocks), Rust (use declarations), and Java (import statements). All non-JS projects will get fully resolved dependency graphs.",
     "status": "planned",
     "source": "README.md Roadmap"
   },
   {
-    "version": "0.5.0",
+    "version": "0.6.0",
     "title": "Visual Graph Export",
     "description": "Export the project knowledge graph as a Mermaid diagram embedded directly inside TOKENCAP_GRAPH.md. Renders as a visual dependency map in GitHub, VS Code, and any Markdown viewer that supports Mermaid.",
     "status": "planned",
     "source": "README.md Roadmap"
   },
   {
-    "version": "0.6.0",
+    "version": "0.7.0",
     "title": "Incremental Snapshots",
     "description": "Only re-process changed files on subsequent runs instead of scanning the full project every time. Dramatically reduces generation time for large codebases.",
     "status": "exploratory",
     "source": "Architecture analysis — current full-scan approach in collectFiles()"
   },
   {
-    "version": "0.6.0",
+    "version": "0.7.0",
     "title": "Graph Cycle Detection",
     "description": "Detect circular import dependencies in the project graph and surface them as warnings in TOKENCAP_GRAPH.md.",
     "status": "exploratory",

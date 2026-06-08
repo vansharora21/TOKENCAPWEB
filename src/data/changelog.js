@@ -1,5 +1,32 @@
 export const changelogItems = [
   {
+    version: "0.5.0",
+    title: "AI Context Packing & Graph Features",
+    date: "2026-06-08",
+    status: "released",
+    highlights: [
+      "AI Context Packing (tokencap pack): A token-budgeted, importance-scored context compressor that uses AST analysis and git history to prioritize files under a strict token budget (e.g. 20,000 tokens) using smart truncation (full content, structural outlines, AST summaries, or reference-only).",
+      "Multiple Pack Modes: Optimize your pack for specific tasks: --mode review (code review), --mode debug (debugging context), --mode architecture (high-level system structure), or --mode minimal (fastest summary).",
+      "Interactive Knowledge Graph Viewer: Run 'tokencap graph --open' to view a self-contained, interactive HTML representation of your file dependency graph, rendered with Cytoscape.js.",
+      "Narrative AI Architecture Summary: Run 'tokencap graph --ai' to generate a detailed markdown summary of your subsystems, component breakdown, and module descriptions.",
+      "Graph Structural Diffing: Run 'tokencap graph --diff' to see how relationships, files, and modules have changed between runs.",
+      "JSON Export: Run 'tokencap graph --json' to export raw node/edge details to .tokencap/graph/ for custom integrations."
+    ],
+  },
+  {
+    version: "0.4.0",
+    title: "AI Change Intelligence Engine",
+    date: "2026-06-07",
+    status: "released",
+    highlights: [
+      "AI Change Intelligence Engine (tokencap diff): Transforms raw code changes into meaningful, AI-readable insights, answering what changed, why it matters, what could break, and what should be tested.",
+      "Smart Semantic Classification: Groups changed files into semantic layers (e.g. Authentication, Payment, Database, API, Frontend, Security, Middleware, Config, etc.) to determine the overall risk level.",
+      "Breaking Change Detection: Scans diff files for deleted exports, changed function signatures, Prisma field changes, and major dependency bumps.",
+      "API Endpoint Mapping: Extracts added/modified/deleted API routes and automatically generates suggested test cases.",
+      "Interactive Prompts & Summaries: Generates optimized AI code review prompts and PR summaries to streamline developer handoff (options --pr, --prompt, --json)."
+    ],
+  },
+  {
     version: "0.3.0",
     title: "AI Debug Handoff Mode",
     date: "2026-06-07",

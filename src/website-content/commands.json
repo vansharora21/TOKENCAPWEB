@@ -16,10 +16,37 @@
     ]
   },
   {
+    "command": "tokencap pack",
+    "description": "Compresses the project workspace into a token-budgeted, importance-scored context pack specifically designed for LLM prompts.",
+    "example": "tokencap pack --mode review --budget 20000",
+    "options": [
+      { "flag": "--mode <name>", "description": "Pack mode: review | debug | architecture | minimal" },
+      { "flag": "--budget <number>", "description": "Pack token budget. Default: 20000" },
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap diff",
+    "description": "Performs a semantic 'Change Intelligence' analysis on your edits (unstaged, staged, or last commit).",
+    "example": "tokencap diff --staged --pr",
+    "options": [
+      { "flag": "--staged", "description": "Analyze only staged changes (prior to a commit)" },
+      { "flag": "--last", "description": "Analyze changes in the last commit (HEAD~1..HEAD)" },
+      { "flag": "--pr", "description": "Generate PR summary description" },
+      { "flag": "--prompt", "description": "Generate optimized AI code review prompt" },
+      { "flag": "--json", "description": "Output machine-readable JSON analysis" },
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
     "command": "tokencap graph",
     "description": "Generate TOKENCAP_GRAPH.md — a dependency graph of your JS/TS project. Scans all source files, resolves imports and exports, and classifies each file as a route, component, service, API, database model, or config.",
-    "example": "tokencap graph",
+    "example": "tokencap graph --open --ai --diff",
     "options": [
+      { "flag": "--open", "description": "Open interactive graph viewer in browser" },
+      { "flag": "--ai", "description": "Generate AI narrative summary" },
+      { "flag": "--diff", "description": "Generate graph diff vs last run" },
+      { "flag": "--json", "description": "Output machine-readable JSON" },
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
     ]
   },

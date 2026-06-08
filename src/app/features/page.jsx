@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.3.0 Engine
+            v0.5.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -26,6 +26,108 @@ export default function FeaturesPage() {
           TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed and developer ergonomics.
         </p>
       </header>
+
+      {/* Version History / What's New */}
+      <section className="mb-24">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-10 h-10 rounded-lg bg-[#7c3aed]/10 flex items-center justify-center text-[#d2bbff]">
+            <span className="material-symbols-outlined text-base">history</span>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-white leading-tight">Version Release Highlights</h2>
+            <p className="text-xs text-[#ccc3d8]/60 mt-1">Full evolutionary path and changelog items for TokenCap CLI.</p>
+          </div>
+        </div>
+        <div className="space-y-6">
+          {/* v0.5.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.5.0</span>
+                <h3 className="text-xl font-bold text-white">AI Context Packing & Graph Features</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 8, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>AI Context Packing (<code>tokencap pack</code>)</strong> — A token-budgeted, importance-scored context compressor. AST-analysis and git history prioritizes files under a strict token budget using smart truncation.</li>
+              <li><strong>Multiple Pack Modes</strong> — Optimize packs for specific tasks: <code>--mode review</code>, <code>--mode debug</code>, <code>--mode architecture</code>, or <code>--mode minimal</code>.</li>
+              <li><strong>Interactive Knowledge Graph Viewer</strong> — Run <code>tokencap graph --open</code> to open an HTML graph visualization powered by Cytoscape.js.</li>
+              <li><strong>Narrative AI Architecture Summary</strong> — Run <code>tokencap graph --ai</code> to generate a subsystem and module summary (<code>ai-graph-summary.md</code>).</li>
+              <li><strong>Graph Structural Diffing</strong> — Run <code>tokencap graph --diff</code> to see structural changes vs previous graph runs.</li>
+              <li><strong>JSON Export</strong> — Run <code>tokencap graph --json</code> to export raw node/edge details to JSON.</li>
+            </ul>
+          </div>
+
+          {/* v0.4.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.4.0</span>
+                <h3 className="text-xl font-bold text-white">AI Change Intelligence Engine</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 7, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>AI Change Intelligence Engine (<code>tokencap diff</code>)</strong> — Transforms raw changes into semantic insights (what changed, risk analysis, what can break, what to test).</li>
+              <li><strong>Smart Semantic Classification</strong> — Groups changed files into functional layers (Authentication, API, Database, Frontend) to calculate risk levels.</li>
+              <li><strong>Breaking Change Detection</strong> — Scans diffs for deleted exports, changed signatures, database schema edits, or major dependency bumps.</li>
+              <li><strong>API Endpoint Mapping</strong> — Extracts added/modified API routes and generates suggested test scenarios.</li>
+              <li><strong>PR Summaries & Review Prompts</strong> — Generates GitHub PR descriptions and AI code review prompts via <code>--pr</code> and <code>--prompt</code>.</li>
+            </ul>
+          </div>
+
+          {/* v0.3.0 */}
+          <div className="glass-card p-8 rounded-xl border-white/5 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-zinc-800 text-zinc-400 px-2.5 py-1 rounded-md text-xs font-mono">v0.3.0</span>
+                <h3 className="text-xl font-bold text-white">AI Debug Handoff Mode</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 7, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>AI Debug Handoff Mode</strong> — Preserves debugging context (command logs, stack traces, failed tests, uncommitted diffs) in <code>active.md</code>.</li>
+              <li><strong>Automated CLI Capture</strong> — Run <code>tokencap debug:start -- npm test</code> to auto-capture failed tests and stack traces.</li>
+              <li><strong>Investigation Order</strong> — Ranks suspected files using stack traces, git changed files, and dependency graph neighbors.</li>
+              <li><strong>Session Timeline & History</strong> — Log custom events manually; ended sessions are archived under history folder.</li>
+            </ul>
+          </div>
+
+          {/* v0.2.0 */}
+          <div className="glass-card p-8 rounded-xl border-white/5 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-zinc-800 text-zinc-400 px-2.5 py-1 rounded-md text-xs font-mono">v0.2.0</span>
+                <h3 className="text-xl font-bold text-white">Intelligence Layer</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 1, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Project Knowledge Graph</strong> — Generates <code>TOKENCAP_GRAPH.md</code> mapping file dependencies across JS/TS source files.</li>
+              <li><strong>Context Memory Layer</strong> — Generates <code>TOKENCAP_MEMORY.md</code> merging developer intent notes with automated Git context.</li>
+              <li><strong>Node Classification</strong> — Groups workspace files into route, api, component, service, database, or config.</li>
+            </ul>
+          </div>
+
+          {/* v0.1.0 */}
+          <div className="glass-card p-8 rounded-xl border-white/5 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-zinc-800 text-zinc-400 px-2.5 py-1 rounded-md text-xs font-mono">v0.1.0</span>
+                <h3 className="text-xl font-bold text-white">Initial Release</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">May 1, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Core Snapshots</strong> — Generates <code>TOKENCAP.md</code> with file contents, git branch, diffs, TODOs, and estimated token counts.</li>
+              <li><strong>VS Code Extension</strong> — Debounced auto capture on save, status bar indicators, and a one-click command palette.</li>
+              <li><strong>Context Profiles</strong> — 8 profiles (compact, balanced, deep, gpt-4o, claude-3-5-sonnet, gemini-1.5-pro, etc.).</li>
+              <li><strong>Secret Redaction</strong> — Automatically filters api keys, credentials, and passwords from files.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -200,22 +302,64 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        {/* 8: Large Project Optimization */}
+        {/* 8: Project Knowledge Graph & Interactive Viewer */}
         <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full rounded-lg">
           <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
-            <span className="material-symbols-outlined text-[#d2bbff]">speed</span>
+            <span className="material-symbols-outlined text-[#d2bbff]">account_tree</span>
           </div>
-          <h3 className="text-xl font-semibold text-white mb-2">Project Knowledge Graph</h3>
+          <h3 className="text-xl font-semibold text-white mb-2">Interactive Graph Viewer</h3>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
-            Generate import maps and classify codebase components (routes, components, services, database models, etc.).
+            Map out dependencies with Cytoscape.js (`--open`), generate narrative architecture summaries (`--ai`), and track structural changes (`--diff`).
           </p>
-          <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 font-mono text-[13px]">
+          <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 font-mono text-[13px] h-[84px] flex flex-col justify-center">
             <div className="text-[10px] text-[#ccc3d8] mb-1.5 opacity-60">BUILDING GRAPH...</div>
             <div className="grid grid-cols-4 gap-1">
               <div className="h-4 bg-[#7c3aed]/40 rounded-sm animate-pulse"></div>
-              <div className="h-4 bg-[#7c3aed]/20 rounded-sm"></div>
+              <div className="h-4 bg-[#4edea3]/60 rounded-sm"></div>
               <div className="h-4 bg-[#7c3aed]/60 rounded-sm animate-pulse"></div>
-              <div className="h-4 bg-[#7c3aed]/30 rounded-sm"></div>
+              <div className="h-4 bg-[#4edea3]/30 rounded-sm"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* 9: AI Context Packing */}
+        <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full rounded-lg">
+          <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
+            <span className="material-symbols-outlined text-[#d2bbff]">package_2</span>
+          </div>
+          <h3 className="text-xl font-semibold text-white mb-2">AI Context Packing</h3>
+          <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
+            Token-budgeted, importance-scored context compression. Prioritizes critical files and truncates others using AST analysis.
+          </p>
+          <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 font-mono text-[13px] h-[84px] flex flex-col justify-center">
+            <div className="flex justify-between items-center text-xs mb-1">
+              <span className="text-[#ccc3d8]">Token Budget:</span>
+              <span className="text-[#4edea3]">20,000</span>
+            </div>
+            <div className="w-full bg-[#2a2a2c] h-2 rounded-full overflow-hidden">
+              <div className="bg-[#4edea3] h-full" style={{ width: "65%" }}></div>
+            </div>
+            <span className="text-[10px] text-zinc-500 mt-1.5 block">AST compression & git ranking</span>
+          </div>
+        </div>
+
+        {/* 10: AI Change Intelligence */}
+        <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full rounded-lg">
+          <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
+            <span className="material-symbols-outlined text-[#d2bbff]">difference</span>
+          </div>
+          <h3 className="text-xl font-semibold text-white mb-2">AI Change Intelligence</h3>
+          <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
+            Deterministic risk rating and semantic layering. Scans for breaking changes and maps endpoint additions or modifications.
+          </p>
+          <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 font-mono text-[13px] h-[84px] flex flex-col justify-center">
+            <div className="flex justify-between items-center text-xs">
+              <span className="text-[#ccc3d8]">Risk Level:</span>
+              <span className="text-red-400 font-bold">HIGH</span>
+            </div>
+            <div className="text-[11px] text-[#ccc3d8] mt-1">
+              API routes modified: 3<br />
+              Breaking changes: Yes
             </div>
           </div>
         </div>

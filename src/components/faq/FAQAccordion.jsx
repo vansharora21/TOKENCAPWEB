@@ -13,7 +13,7 @@ const faqItems = [
         <div className="bg-[#1c1b1d] rounded-lg p-3 border border-[#4a4455]/40 font-mono text-xs text-[#4edea3]">
           <code>
             # TokenCap Project Snapshot<br />
-            &gt; version: 0.3.0<br />
+            &gt; version: 0.5.0<br />
             &gt; profile: balanced
           </code>
         </div>

@@ -154,17 +154,54 @@ tokencap make
 | `--no-diff` | Skip Git diff snippets |
 | `--no-contents` | Skip selected file contents |
 
+### 🛠️ `tokencap pack`
+
+Compresses the project workspace into a token-budgeted, importance-scored context pack specifically designed for LLM prompts.
+
+**Example:**
+```bash
+tokencap pack --mode review --budget 20000
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--mode <name>` | Pack mode: review | debug | architecture | minimal |
+| `--budget <number>` | Pack token budget. Default: 20000 |
+| `--root <path>` | Workspace root. Default: current directory |
+
+### 🛠️ `tokencap diff`
+
+Performs a semantic 'Change Intelligence' analysis on your edits (unstaged, staged, or last commit).
+
+**Example:**
+```bash
+tokencap diff --staged --pr
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--staged` | Analyze only staged changes (prior to a commit) |
+| `--last` | Analyze changes in the last commit (HEAD~1..HEAD) |
+| `--pr` | Generate PR summary description |
+| `--prompt` | Generate optimized AI code review prompt |
+| `--json` | Output machine-readable JSON analysis |
+| `--root <path>` | Workspace root. Default: current directory |
+
 ### 🛠️ `tokencap graph`
 
 Generate TOKENCAP_GRAPH.md — a dependency graph of your JS/TS project. Scans all source files, resolves imports and exports, and classifies each file as a route, component, service, API, database model, or config.
 
 **Example:**
 ```bash
-tokencap graph
+tokencap graph --open --ai --diff
 ```
 
 | Option / Flag | Description |
 | --- | --- |
+| `--open` | Open interactive graph viewer in browser |
+| `--ai` | Generate AI narrative summary |
+| `--diff` | Generate graph diff vs last run |
+| `--json` | Output machine-readable JSON |
 | `--root <path>` | Workspace root. Default: current directory |
 
 ### 🛠️ `tokencap memory`
@@ -289,4 +326,4 @@ tokencap debug:history
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 7/6/2026.*
+*Generated automatically from `website-content` JSON source files on 8/6/2026.*

@@ -17,6 +17,8 @@ function getIconForSlug(slug) {
     case "profiles": return "settings_input_component";
     case "graph": return "account_tree";
     case "memory": return "inventory_2";
+    case "pack": return "package_2";
+    case "diff": return "difference";
     case "secret-redaction": return "enhanced_encryption";
     case "cli": return "terminal";
     case "vscode": return "extension";
@@ -42,7 +44,7 @@ export default function DocsPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.3.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.5.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -131,7 +133,7 @@ export default function DocsPage() {
         <div className="mt-8 p-4 bg-[#7c3aed]/10 border border-[#7c3aed]/20 rounded-xl relative overflow-hidden">
           <div className="relative z-10">
             <h6 className="font-bold text-white text-xs mb-1">New Release</h6>
-            <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">v0.3.0 adds AI Debug Handoff Mode, auto-captures failures, logs custom events, and auto-archives sessions.</p>
+            <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">v0.5.0 adds AI Context Packing (tokencap pack), Multiple Pack Modes, and Interactive Knowledge Graph Viewer (graph --open).</p>
             <a className="text-[11px] text-[#d2bbff] font-bold underline hover:text-[#7c3aed] transition-colors" href="/changelog">
               Check changelog
             </a>
