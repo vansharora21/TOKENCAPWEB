@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { GradientBackground } from "@/components/shared/GradientBackground";
+import { SearchModal } from "@/components/shared/SearchModal";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
@@ -41,11 +42,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#0a0a0c] antialiased`}>
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
       </head>
       <body className="min-h-screen bg-[#0a0a0c] text-foreground">
         <div className="relative flex min-h-screen flex-col overflow-hidden">
           <GradientBackground />
+          <SearchModal />
           <Navbar />
           <div className="relative flex-1">{children}</div>
           <Footer />

@@ -38,15 +38,15 @@ A persistent status bar item shows your auto-capture state and last snapshot tim
 
 ### 📁 Intelligence
 
-#### 🔹 Project Knowledge Graph
-Automatically maps how your files connect to each other. Scans every JS/TS file, follows every import, export, and require, resolves paths to actual files, and classifies each node as a route, component, service, API, database model, or config file.
+#### 🔹 Graph Intelligence Upgrade
+TokenCap maps your project topology as a code intelligence graph. Visualizes files and imports in a dark-mode, three-panel Obsidian-style viewer with hover highlights, local graph mode, cluster filtering, and node inspector.
 
-> ⚙️ *Technical Detail:* Generates TOKENCAP_GRAPH.md. Supports .ts, .tsx, .js, .jsx, .mjs, .cjs. Parses ES import/export and CommonJS require. Classifies nodes by path pattern and filename conventions.
+> ⚙️ *Technical Detail:* Generates TOKENCAP_GRAPH.md, exports JSON, and updates TOKENCAP.md. Classifies into 13 node types, evaluates 4-tier risk scoring, detects logical clusters, and supports presets (--full, --minimal, --quiet).
 
 #### 🔹 Context Memory Layer
 Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps — TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.
 
-> ⚙️ *Technical Detail:* Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Parses markdown sections into structured data.
+> ⚙️ *Technical Detail:* Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Executed automatically as part of tokencap make.
 
 #### 🔹 Structural Outlines for Large Files
 When a file exceeds your token budget and gets truncated, TokenCap doesn't just cut it off. It generates a structural outline of classes, functions, and methods so you still know what's inside.
@@ -61,7 +61,7 @@ Every TODO, FIXME, and HACK comment across your selected files is extracted and 
 #### 🔹 AI Debug Handoff Mode
 Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) in a dedicated folder (.tokencap/debug/) so that other developers or AI assistants can immediately continue investigation without starting over.
 
-> ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Archives ended sessions under .tokencap/debug/archive/.
+> ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
 ### 📁 Security
 
@@ -113,7 +113,7 @@ Run TokenCap as a persistent background process. It watches your workspace for f
 > ⚙️ *Technical Detail:* Built on chokidar. Ignores generated output files, node_modules, dist, build, coverage. Default debounce: 30,000ms, configurable via --debounce.
 
 #### 🔹 Automated CLI Capture
-Execute any command under the debug runner (e.g. npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.
+Execute any command under the debug runner (e.g. tokencap debug --start -- npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.
 
 > ⚙️ *Technical Detail:* Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces.
 
@@ -135,43 +135,48 @@ The main snapshot works across every language TokenCap can read. Python, Go, Rus
 
 ### 🛠️ `tokencap make`
 
-Generate all three output files in one shot: TOKENCAP.md (main snapshot), TOKENCAP_GRAPH.md (project dependency graph), and TOKENCAP_MEMORY.md (developer context memory).
+Generate the complete TokenCap snapshot: TOKENCAP.md (main snapshot), TOKENCAP_GRAPH.md (project dependency graph), and TOKENCAP_MEMORY.md (developer context memory) in one shot.
 
 **Example:**
 ```bash
-tokencap make
+tokencap make --profile balanced
 ```
 
 | Option / Flag | Description |
 | --- | --- |
 | `--root <path>` | Workspace root. Default: current directory |
 | `--out <path>` | Snapshot output path. Default: TOKENCAP.md |
-| `--profile <name>` | Context profile: compact, balanced, deep, gpt-4o, claude-3-5-sonnet, gemini-1.5-flash, gemini-1.5-pro, llama-3-8b |
+| `--profile <name>` | Context profile: compact | balanced | deep | gpt-4o | claude-3-5-sonnet | gemini-1.5-flash | gemini-1.5-pro | llama-3-8b |
 | `--max-files <n>` | Maximum number of files to include |
 | `--max-bytes <n>` | Total source byte budget |
 | `--max-file-bytes <n>` | Per-file content byte limit |
 | `--max-diff-bytes <n>` | Git diff byte budget |
 | `--no-diff` | Skip Git diff snippets |
-| `--no-contents` | Skip selected file contents |
+| `--no-contents` | Skip file contents (structure only) |
 
-### 🛠️ `tokencap pack`
+### 🛠️ `tokencap graph`
 
-Compresses the project workspace into a token-budgeted, importance-scored context pack specifically designed for LLM prompts.
+Generate a code knowledge graph. Maps imports/exports across JS/TS source files and classifies nodes (route, service, component, controller, database, config, etc.) with risk ratings and automatic cluster detection.
 
 **Example:**
 ```bash
-tokencap pack --mode review --budget 20000
+tokencap graph --full
 ```
 
 | Option / Flag | Description |
 | --- | --- |
-| `--mode <name>` | Pack mode: review | debug | architecture | minimal |
-| `--budget <number>` | Pack token budget. Default: 20000 |
 | `--root <path>` | Workspace root. Default: current directory |
+| `--open` | Open Obsidian-style interactive graph viewer in default browser |
+| `--full` | Runs full graph intelligence: JSON export + AI summary + graph diff + HTML viewer + opens browser |
+| `--minimal` | Generates only graph-data.json, nodes.json, edges.json. Fastest, no HTML or AI summaries |
+| `--quiet` | Suppress logs, displaying only a summary of nodes, edges, clusters, and high-impact files |
+| `--diff` | Generate graph-diff.md and graph-diff.json comparing current vs previous graph run |
+| `--ai` | Generate AI narrative summary only |
+| `--json` | Export JSON files only |
 
 ### 🛠️ `tokencap diff`
 
-Performs a semantic 'Change Intelligence' analysis on your edits (unstaged, staged, or last commit).
+Perform semantic Change Intelligence analysis on your edits to detect breaking changes, evaluate risk levels (LOW to CRITICAL), map API endpoints, and suggest test cases.
 
 **Example:**
 ```bash
@@ -180,46 +185,47 @@ tokencap diff --staged --pr
 
 | Option / Flag | Description |
 | --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
 | `--staged` | Analyze only staged changes (prior to a commit) |
 | `--last` | Analyze changes in the last commit (HEAD~1..HEAD) |
+| `--json` | Export machine-readable analyzed-diff.json |
 | `--pr` | Generate PR summary description |
 | `--prompt` | Generate optimized AI code review prompt |
-| `--json` | Output machine-readable JSON analysis |
-| `--root <path>` | Workspace root. Default: current directory |
 
-### 🛠️ `tokencap graph`
+### 🛠️ `tokencap debug`
 
-Generate TOKENCAP_GRAPH.md — a dependency graph of your JS/TS project. Scans all source files, resolves imports and exports, and classifies each file as a route, component, service, API, database model, or config.
+Manage interactive debug sessions. Captures command failures (stdout/stderr, failed tests, stack traces), tracks changed/related files, and maintains a timestamped session timeline.
 
 **Example:**
 ```bash
-tokencap graph --open --ai --diff
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--open` | Open interactive graph viewer in browser |
-| `--ai` | Generate AI narrative summary |
-| `--diff` | Generate graph diff vs last run |
-| `--json` | Output machine-readable JSON |
-| `--root <path>` | Workspace root. Default: current directory |
-
-### 🛠️ `tokencap memory`
-
-Generate TOKENCAP_MEMORY.md from your .tokencap-notes.md file combined with live Git context. Auto-creates the notes file from a template if it doesn't exist yet.
-
-**Example:**
-```bash
-tokencap memory
+tokencap debug --start -- npm test
 ```
 
 | Option / Flag | Description |
 | --- | --- |
 | `--root <path>` | Workspace root. Default: current directory |
+| `--start` | Start a new debug session (append '-- <command>' to auto-capture execution failures) |
+| `--end` | End active session, compile the final handoff report, and archive it |
+| `--log "message"` | Add a timestamped event or discovery note to the active investigation timeline |
+
+### 🛠️ `tokencap pack`
+
+Compresses the codebase into a token-budgeted, importance-scored context pack for LLMs using AST structure outlines, git history, and importance tiers.
+
+**Example:**
+```bash
+tokencap pack --mode review --budget 15000
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+| `--mode <name>` | Select compression mode: review | debug | architecture | minimal |
+| `--budget <n>` | Maximum token budget for output pack. Default: 20000 |
 
 ### 🛠️ `tokencap watch`
 
-Start a background watcher that regenerates all snapshot files automatically whenever a file changes. Powered by chokidar with configurable debounce.
+Start a background watcher process that automatically regenerates all snapshot files when files change, with a configurable debounce delay.
 
 **Example:**
 ```bash
@@ -228,96 +234,8 @@ tokencap watch --debounce 5000
 
 | Option / Flag | Description |
 | --- | --- |
-| `--debounce <ms>` | Milliseconds to wait after a change before regenerating. Default: 30000 |
 | `--root <path>` | Workspace root. Default: current directory |
-
-### 🛠️ `tokencap init`
-
-Create a default .tokencap.json configuration file in your project root. Safe — will not overwrite an existing config unless you pass --force.
-
-**Example:**
-```bash
-tokencap init
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--force` | Overwrite an existing .tokencap.json |
-
-### 🛠️ `tokencap config`
-
-Print the fully resolved configuration as JSON — showing the merged result of defaults, profile overrides, .tokencap.json, and any CLI flags. Useful for debugging your setup.
-
-**Example:**
-```bash
-tokencap config --profile deep
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--profile <name>` | Profile to resolve |
-| `--root <path>` | Workspace root |
-
-### 🛠️ `tokencap debug:start`
-
-Initialize a new debug session, optionally running a command to capture stdout/stderr, failed tests, and stack traces.
-
-**Example:**
-```bash
-tokencap debug:start -- npm test
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--root <path>` | Workspace root. Default: current directory |
-
-### 🛠️ `tokencap debug`
-
-Regenerate the active debug handoff report using current workspace state and custom notes from .tokencap-debug.md.
-
-**Example:**
-```bash
-tokencap debug
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--root <path>` | Workspace root. Default: current directory |
-
-### 🛠️ `tokencap debug:log`
-
-Add a timestamped progress update or discovery note to the active debug session timeline.
-
-**Example:**
-```bash
-tokencap debug:log "Found issue in auth middleware"
-```
-
-### 🛠️ `tokencap debug:end`
-
-End the active debug session, generate the final handoff report, and archive the session under .tokencap/debug/archive/.
-
-**Example:**
-```bash
-tokencap debug:end
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--root <path>` | Workspace root. Default: current directory |
-
-### 🛠️ `tokencap debug:history`
-
-List all archived debug sessions with their timestamps and summaries.
-
-**Example:**
-```bash
-tokencap debug:history
-```
-
-| Option / Flag | Description |
-| --- | --- |
-| `--root <path>` | Workspace root. Default: current directory |
+| `--debounce <ms>` | Debounce delay in milliseconds before regenerating. Default: 30000 |
 
 ## 📦 Metadata & License
 
@@ -326,4 +244,4 @@ tokencap debug:history
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 8/6/2026.*
+*Generated automatically from `website-content` JSON source files on 14/6/2026.*

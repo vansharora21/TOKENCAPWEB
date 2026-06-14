@@ -9,11 +9,11 @@
   },
   {
     "id": "knowledge-graph",
-    "title": "Project Knowledge Graph",
-    "description": "Automatically maps how your files connect to each other. Scans every JS/TS file, follows every import, export, and require, resolves paths to actual files, and classifies each node as a route, component, service, API, database model, or config file.",
+    "title": "Graph Intelligence Upgrade",
+    "description": "TokenCap maps your project topology as a code intelligence graph. Visualizes files and imports in a dark-mode, three-panel Obsidian-style viewer with hover highlights, local graph mode, cluster filtering, and node inspector.",
     "category": "Intelligence",
     "importance": 1,
-    "technicalDetail": "Generates TOKENCAP_GRAPH.md. Supports .ts, .tsx, .js, .jsx, .mjs, .cjs. Parses ES import/export and CommonJS require. Classifies nodes by path pattern and filename conventions.",
+    "technicalDetail": "Generates TOKENCAP_GRAPH.md, exports JSON, and updates TOKENCAP.md. Classifies into 13 node types, evaluates 4-tier risk scoring, detects logical clusters, and supports presets (--full, --minimal, --quiet).",
     "languageSupport": "JS/TS projects only"
   },
   {
@@ -22,7 +22,7 @@
     "description": "Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps — TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.",
     "category": "Intelligence",
     "importance": 1,
-    "technicalDetail": "Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Parses markdown sections into structured data."
+    "technicalDetail": "Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Executed automatically as part of tokencap make."
   },
   {
     "id": "secret-redaction",
@@ -127,12 +127,12 @@
     "description": "Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) in a dedicated folder (.tokencap/debug/) so that other developers or AI assistants can immediately continue investigation without starting over.",
     "category": "Intelligence",
     "importance": 1,
-    "technicalDetail": "Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Archives ended sessions under .tokencap/debug/archive/."
+    "technicalDetail": "Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags."
   },
   {
     "id": "automated-cli-capture",
     "title": "Automated CLI Capture",
-    "description": "Execute any command under the debug runner (e.g. npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.",
+    "description": "Execute any command under the debug runner (e.g. tokencap debug --start -- npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.",
     "category": "CLI",
     "importance": 1,
     "technicalDetail": "Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces."

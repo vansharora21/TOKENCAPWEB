@@ -1,15 +1,32 @@
 export const commands = [
-  { command: "tokencap make", description: "Generate all three output files in one shot: TOKENCAP.md, TOKENCAP_GRAPH.md, and TOKENCAP_MEMORY.md.", result: "Main snapshot, graph, and memory files generated." },
-  { command: "tokencap pack", description: "Generate AI-optimized context pack within a token budget.", result: "Importance-scored and compressed context pack generated." },
-  { command: "tokencap diff", description: "Generate AI Change Intelligence report on working tree, staged, or last commit.", result: "Semantic changes, risk evaluation, and suggested tests generated." },
-  { command: "tokencap graph", description: "Generate TOKENCAP_GRAPH.md — a dependency graph of your JS/TS project.", result: "Import and export relationships collected from local files." },
-  { command: "tokencap memory", description: "Generate TOKENCAP_MEMORY.md from .tokencap-notes.md combined with Git context.", result: "Notes and branch state captured into persistent memory." },
-  { command: "tokencap watch", description: "Start a background watcher that regenerates all snapshot files automatically.", result: "Watch mode active with configurable debounce." },
-  { command: "tokencap init", description: "Create a default .tokencap.json configuration file in your project root.", result: "Config file template created." },
-  { command: "tokencap config", description: "Print the fully resolved configuration as JSON.", result: "Resolved config output displayed." },
-  { command: "tokencap debug:start", description: "Initialize a new debug session and run a command to capture stdout/stderr, failed tests, and stack traces.", result: "Debug session started with auto-captured failure context." },
-  { command: "tokencap debug", description: "Regenerate the active debug handoff report using current workspace state and custom notes.", result: "Active debug report updated." },
-  { command: "tokencap debug:log", description: "Add a timestamped event or custom progress note to the active debug session timeline.", result: "Timeline event logged." },
-  { command: "tokencap debug:end", description: "End the active debug session, generate the final handoff report, and archive it.", result: "Session ended and archived." },
-  { command: "tokencap debug:history", description: "List all archived debug sessions with their timestamps and summaries.", result: "Archived sessions history listed." },
+  {
+    command: "tokencap make",
+    description: "Generate the complete TokenCap snapshot: TOKENCAP.md, TOKENCAP_GRAPH.md, and TOKENCAP_MEMORY.md in one shot.",
+    result: "Main snapshot, graph, and memory files generated."
+  },
+  {
+    command: "tokencap graph",
+    description: "Generate project knowledge graph. Classifies nodes, detects clusters, calculates risk ratings, and opens interactive Obsidian-style HTML viewer.",
+    result: "Code intelligence graph data, summaries, diffs, and HTML viewer generated."
+  },
+  {
+    command: "tokencap diff",
+    description: "Generate semantic Change Intelligence report mapping breaking changes, endpoint edits, and test recommendations.",
+    result: "Change report, PR description, and AI code review prompt generated."
+  },
+  {
+    command: "tokencap debug",
+    description: "Initialize, log, and end session-based debugging memory with automated CLI command output and stack trace capture.",
+    result: "Active debug session managed, timeline logged, and handoff report compiled."
+  },
+  {
+    command: "tokencap pack",
+    description: "Compresses the workspace into a token-budgeted, AST-aware, and git-history prioritized context pack for LLMs.",
+    result: "Token-budgeted context pack file generated under .tokencap/packs/."
+  },
+  {
+    command: "tokencap watch",
+    description: "Start a background watcher that automatically regenerates snapshots on file saves with a configurable debounce delay.",
+    result: "Workspace watcher initialized and active in background."
+  }
 ];

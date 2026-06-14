@@ -1,5 +1,21 @@
 [
   {
+    "version": "0.6.0",
+    "title": "Graph Intelligence & Unified CLI",
+    "date": "2026-06-14",
+    "status": "released",
+    "highlights": [
+      "Graph Intelligence Upgrade: TokenCap Graph is now a comprehensive code intelligence graph with an Obsidian-style three-panel viewer, hover highlights, local graph mode, cluster filtering, and a right-side node inspector.",
+      "13 Node Classification Types: File nodes categorized into route, api, component, controller, service, database, middleware, config, utility, hook, package, test, and unknown.",
+      "4-Tier Risk Scoring: Dynamic risk tiers (CRITICAL, HIGH, MEDIUM, LOW) computed per node based on connectivity, type, and git change status.",
+      "Graph Presets: Simplifies flag usage with predefined presets: --full (diff + AI + HTML viewer), --minimal (JSON export only), and --quiet (suppress verbose logs).",
+      "Automatic Cluster Detection: Groups files into 9 logical domains (Authentication, Payments, Dashboard, Database, API, Frontend, Config, Testing, Utilities).",
+      "TOKENCAP.md Graph Summary: Injects a dynamic '## Project Graph Summary' section into your main workspace snapshot file after every graph run.",
+      "Simplified 6-Command CLI: Streamlined the CLI interface from 14 to 6 core commands: make, graph, diff, debug, pack, and watch.",
+      "Unified Debug Session: Unified all debugging sub-commands into flags under a single command: tokencap debug --start / --end / --log."
+    ]
+  },
+  {
     "version": "0.5.0",
     "title": "AI Context Packing & Graph Features",
     "date": "2026-06-08",

@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.5.0 Engine
+            v0.6.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -39,12 +39,33 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v0.5.0 */}
+          {/* v0.6.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.5.0</span>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.6.0</span>
+                <h3 className="text-xl font-bold text-white">Graph Intelligence & Unified CLI</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 14, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Graph Intelligence Upgrade</strong> — TokenCap Graph is now a comprehensive code intelligence graph with an Obsidian-style three-panel viewer, hover highlights, local graph mode, cluster filtering, and node inspector.</li>
+              <li><strong>13 Node Classifications</strong> — File nodes categorized into route, api, component, controller, service, database, middleware, config, utility, hook, package, test, and unknown.</li>
+              <li><strong>4-Tier Risk Scoring</strong> — Dynamic risk tiers (CRITICAL, HIGH, MEDIUM, LOW) computed per node based on connectivity, type, and git change status.</li>
+              <li><strong>Graph Presets</strong> — Predefined presets: <code>--full</code> (diff + AI + HTML viewer), <code>--minimal</code> (JSON export only), and <code>--quiet</code> (suppress verbose logs).</li>
+              <li><strong>Automatic Cluster Detection</strong> — Groups files into 9 logical domains (Authentication, Payments, Dashboard, Database, API, Frontend, Config, Testing, Utilities).</li>
+              <li><strong>TOKENCAP.md Graph Summary</strong> — Injects a dynamic <code>## Project Graph Summary</code> section into your main workspace snapshot file after every graph run.</li>
+              <li><strong>Simplified 6-Command CLI</strong> — Streamlined the CLI interface from 14 to 6 core commands: <code>make</code>, <code>graph</code>, <code>diff</code>, <code>debug</code>, <code>pack</code>, and <code>watch</code>.</li>
+              <li><strong>Unified Debug Session</strong> — Unified all debugging sub-commands into flags under a single command: <code>tokencap debug --start / --end / --log</code>.</li>
+            </ul>
+          </div>
+
+          {/* v0.5.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.5.0</span>
                 <h3 className="text-xl font-bold text-white">AI Context Packing & Graph Features</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 8, 2026</span>
@@ -60,7 +81,7 @@ export default function FeaturesPage() {
           </div>
 
           {/* v0.4.0 */}
-          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+          <div className="glass-card p-8 rounded-xl border-white/5 bg-white/5 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.4.0</span>
@@ -130,7 +151,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
         {/* 1: Auto Capture on Save */}
         <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full rounded-lg">
           <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
@@ -140,13 +161,13 @@ export default function FeaturesPage() {
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
             Sync your context instantly. TokenCap monitors file saves and automatically updates snapshot files in the background.
           </p>
-          <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 overflow-hidden font-mono text-[13px]">
-            <div className="flex gap-1 mb-2">
-              <div className="w-2 h-2 rounded-full bg-red-500/50"></div>
-              <div className="w-2 h-2 rounded-full bg-yellow-500/50"></div>
-              <div className="w-2 h-2 rounded-full bg-green-500/50"></div>
+          <div className="bg-[#0e0e10] rounded-lg border border-[#4a4455] p-3 overflow-hidden font-mono text-[13px] h-[84px] flex flex-col justify-center">
+            <div className="flex gap-1.5 mb-1.5 shrink-0">
+              <div className="w-1.5 h-1.5 rounded-full bg-red-500/50"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500/50"></div>
             </div>
-            <code className="block whitespace-pre text-[#4edea3]">
+            <code className="block whitespace-pre text-[#4edea3] leading-snug">
               [10:42:01] <span className="text-[#ccc3d8]">Saved:</span> page.tsx{"\n"}
               [10:42:04] <span className="text-[#ccc3d8]">Regenerating files...</span>
             </code>
@@ -289,7 +310,7 @@ export default function FeaturesPage() {
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 flex-grow">
             Your code never leaves your machine. Processing happens entirely on-device for maximum security.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="h-[84px] flex items-center gap-3 border border-[#4a4455] rounded-lg bg-[#0e0e10] p-3 justify-center">
             <div className="flex -space-x-2">
               <div className="w-8 h-8 rounded-full bg-[#2a2a2c] border-2 border-[#131315] flex items-center justify-center">
                 <span className="material-symbols-outlined text-sm text-zinc-400">home</span>
