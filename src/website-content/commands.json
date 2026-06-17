@@ -1,5 +1,29 @@
 [
   {
+    "command": "tokencap ask",
+    "description": "Smart context retrieval from a natural language question. Auto-detects target mode, retrieves relevant files, traverses the graph (BFS), applies a token budget, and generates a context package and suggested AI prompt.",
+    "example": "tokencap ask \"How does authentication work?\"",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--mode <name>", "description": "Override auto-detected mode: review | debug | architecture" },
+      { "flag": "--budget <n>", "description": "Custom token budget for the context pack. Default: 12000" },
+      { "flag": "--json", "description": "Also export a machine-readable context.json file" },
+      { "flag": "--no-prompt", "description": "Skip generating the prompt.md file" }
+    ]
+  },
+  {
+    "command": "tokencap context",
+    "description": "Manual context generation by topic keyword (e.g. auth, payments, dashboard). Finds files by topic, scores them, performs graph BFS, and generates a context package.",
+    "example": "tokencap context auth",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--mode <name>", "description": "Override context mode: review | debug | architecture" },
+      { "flag": "--budget <n>", "description": "Custom token budget for the context pack. Default: 8000" },
+      { "flag": "--json", "description": "Also export a machine-readable context.json file" },
+      { "flag": "--prompt", "description": "Generate a suggested AI prompt.md alongside the context" }
+    ]
+  },
+  {
     "command": "tokencap make",
     "description": "Generate the complete TokenCap snapshot: TOKENCAP.md (main snapshot), TOKENCAP_GRAPH.md (project dependency graph), and TOKENCAP_MEMORY.md (developer context memory) in one shot.",
     "example": "tokencap make --profile balanced",

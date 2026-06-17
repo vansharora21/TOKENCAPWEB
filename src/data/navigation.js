@@ -16,6 +16,7 @@ export const footerNavigation = [
       { label: "CLI Reference", href: "/docs#cli" },
       { label: "Roadmap", href: "/roadmap" },
       { label: "Changelog", href: "/changelog" },
+      { label: "Resources", href: "/resources" },
     ],
   },
   {

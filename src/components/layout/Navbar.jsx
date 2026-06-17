@@ -10,7 +10,7 @@ function Navbar() {
     { label: "Features", href: "/features" },
     { label: "Docs", href: "/docs" },
     { label: "CLI", href: "/cli" },
-    { label: "Pricing", href: "/pricing" },
+    { label: "Resources", href: "/resources" },
     { label: "About", href: "/about" },
   ];
 

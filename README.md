@@ -24,19 +24,12 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
-### 📁 VS Code
-
-#### 🔹 Auto Capture on Save
-Every time you save a file in VS Code, TokenCap debounces and automatically regenerates your snapshot. You never have to remember to run it. The status bar shows the exact time of the last update.
-
-> ⚙️ *Technical Detail:* Debounce interval configurable via tokencap.debounceMs. Default: 30,000ms. Skips TOKENCAP.md, .tokencap.json, and all generated output files to prevent re-trigger loops.
-
-#### 🔹 VS Code Status Bar Integration
-A persistent status bar item shows your auto-capture state and last snapshot time at all times. Click it to open the full command menu instantly.
-
-> ⚙️ *Technical Detail:* Displays '$(files) TokenCap • HH:MM' format. Tooltip shows status, auto-capture state, last run time, file count, and estimated tokens. Command: tokencap.showMenu.
-
 ### 📁 Intelligence
+
+#### 🔹 Smart Retrieval Engine
+Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.
+
+> ⚙️ *Technical Detail:* Scores files by combining Graph connectivity, context Memory logs, Git changed files, and Impact analysis. Auto-detects modes: review, debug, architecture. BFS traversal scans up to 2 hops away.
 
 #### 🔹 Graph Intelligence Upgrade
 TokenCap maps your project topology as a code intelligence graph. Visualizes files and imports in a dark-mode, three-panel Obsidian-style viewer with hover highlights, local graph mode, cluster filtering, and node inspector.
@@ -62,6 +55,18 @@ Every TODO, FIXME, and HACK comment across your selected files is extracted and 
 Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) in a dedicated folder (.tokencap/debug/) so that other developers or AI assistants can immediately continue investigation without starting over.
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
+
+### 📁 VS Code
+
+#### 🔹 Auto Capture on Save
+Every time you save a file in VS Code, TokenCap debounces and automatically regenerates your snapshot. You never have to remember to run it. The status bar shows the exact time of the last update.
+
+> ⚙️ *Technical Detail:* Debounce interval configurable via tokencap.debounceMs. Default: 30,000ms. Skips TOKENCAP.md, .tokencap.json, and all generated output files to prevent re-trigger loops.
+
+#### 🔹 VS Code Status Bar Integration
+A persistent status bar item shows your auto-capture state and last snapshot time at all times. Click it to open the full command menu instantly.
+
+> ⚙️ *Technical Detail:* Displays '$(files) TokenCap • HH:MM' format. Tooltip shows status, auto-capture state, last run time, file count, and estimated tokens. Command: tokencap.showMenu.
 
 ### 📁 Security
 
@@ -132,6 +137,40 @@ The main snapshot works across every language TokenCap can read. Python, Go, Rus
 > ⚙️ *Technical Detail:* Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants.
 
 ## 💻 CLI Commands
+
+### 🛠️ `tokencap ask`
+
+Smart context retrieval from a natural language question. Auto-detects target mode, retrieves relevant files, traverses the graph (BFS), applies a token budget, and generates a context package and suggested AI prompt.
+
+**Example:**
+```bash
+tokencap ask "How does authentication work?"
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+| `--mode <name>` | Override auto-detected mode: review | debug | architecture |
+| `--budget <n>` | Custom token budget for the context pack. Default: 12000 |
+| `--json` | Also export a machine-readable context.json file |
+| `--no-prompt` | Skip generating the prompt.md file |
+
+### 🛠️ `tokencap context`
+
+Manual context generation by topic keyword (e.g. auth, payments, dashboard). Finds files by topic, scores them, performs graph BFS, and generates a context package.
+
+**Example:**
+```bash
+tokencap context auth
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+| `--mode <name>` | Override context mode: review | debug | architecture |
+| `--budget <n>` | Custom token budget for the context pack. Default: 8000 |
+| `--json` | Also export a machine-readable context.json file |
+| `--prompt` | Generate a suggested AI prompt.md alongside the context |
 
 ### 🛠️ `tokencap make`
 
@@ -244,4 +283,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 14/6/2026.*
+*Generated automatically from `website-content` JSON source files on 17/6/2026.*

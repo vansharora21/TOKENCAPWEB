@@ -1,5 +1,22 @@
 export const changelogItems = [
   {
+    version: "0.7.0",
+    title: "Smart Retrieval Engine",
+    date: "2026-06-17",
+    status: "released",
+    highlights: [
+      "Smart Retrieval Engine: TokenCap transitions from generating full project context snapshots to automatically retrieving only the relevant files matching your questions.",
+      "tokencap ask \"question\" Flagship Command: Ask natural language questions (e.g. \"how does auth work?\") and TokenCap scans keywords, matches them to graph clusters, ranks files by relevance, performs BFS, and packages the result.",
+      "tokencap context <topic> Command: Manually build context package for a specific topic (e.g. payments, dashboard) with AST outlines and token budgets.",
+      "Multi-Source Relevance Scoring: Automatically ranks files by combining Graph topology (connectivity), Memory layer (active tasks), Git Diff (recently changed files), and Impact analysis.",
+      "Auto-Mode Detection: Questions are scanned to auto-detect the best output format: 'architecture' mode (for overview/structure), 'review' mode (for check/verify/audit), or 'debug' mode (for debug/fix/bug/error).",
+      "Graph BFS Traversal: Finds not only matching files but automatically traverses up to 2-hop dependencies and dependents to provide complete contextual imports.",
+      "Token-Budgeted Retrieval: Allocates files, structural outlines, or AST summaries dynamically using the pack engine's budget manager (default 12,000 tokens).",
+      "Automated Prompt Generation: Generates a tailored, ready-to-use AI prompt file alongside the retrieved context package.",
+      "CLI Command Upgrade: Added 'ask' and 'context' CLI commands, expanding TokenCap from 6 to 8 commands."
+    ],
+  },
+  {
     version: "0.6.0",
     title: "Graph Intelligence & Unified CLI",
     date: "2026-06-14",

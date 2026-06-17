@@ -1,5 +1,15 @@
 export const commands = [
   {
+    command: "tokencap ask",
+    description: "Ask a natural language question about your codebase and TokenCap automatically retrieves only the relevant files.",
+    result: "Smart context package and suggested AI prompt generated."
+  },
+  {
+    command: "tokencap context",
+    description: "Build a focused context package manually for a specific topic keyword.",
+    result: "Topic context package generated."
+  },
+  {
     command: "tokencap make",
     description: "Generate the complete TokenCap snapshot: TOKENCAP.md, TOKENCAP_GRAPH.md, and TOKENCAP_MEMORY.md in one shot.",
     result: "Main snapshot, graph, and memory files generated."

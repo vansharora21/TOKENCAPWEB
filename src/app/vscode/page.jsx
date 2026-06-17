@@ -16,7 +16,7 @@ export default function VscodePage() {
         <div className="space-y-6">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
             <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
-            V0.6.0 NOW AVAILABLE
+            V0.7.0 NOW AVAILABLE
           </div>
           <h1 className="text-5xl font-bold tracking-tight text-white leading-tight">
             The ultimate VS Code toolkit for <span className="text-[#d2bbff]">snapshot precision.</span>

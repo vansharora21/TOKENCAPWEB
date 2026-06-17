@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.6.0 Engine
+            v0.7.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -39,12 +39,33 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v0.6.0 */}
+          {/* v0.7.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.6.0</span>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.7.0</span>
+                <h3 className="text-xl font-bold text-white">Smart Retrieval Engine</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 17, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Smart Retrieval Engine</strong> — TokenCap moves from generic snapshots to smart question-based context retrieval, returning only relevant files instead of entire repositories.</li>
+              <li><strong>Flagship Ask Command (<code>tokencap ask "question"</code>)</strong> — Ask natural language questions; TokenCap auto-detects mode (architecture/review/debug), scores files, performs BFS, and generates a context snapshot.</li>
+              <li><strong>Keyword Topic Context (<code>tokencap context &lt;topic&gt;</code>)</strong> — Manually generate context packages based on a topic keyword like auth, payments, dashboard, or database.</li>
+              <li><strong>Multi-Source Relevance Scoring</strong> — Automatically ranks workspace files by combining dependency graph topology, context memory layers, git history status, and risk impact scores.</li>
+              <li><strong>Graph BFS Traversal</strong> — Follows file imports and exports up to 2 hops to capture all direct dependencies and dependents of matching files.</li>
+              <li><strong>Token-Budgeted Outputs</strong> — Fit retrieved files under a custom budget (default 12k tokens) by automatically applying representation tiers (full code, AST outline, summary, reference).</li>
+              <li><strong>AI Prompt Generation</strong> — Generates an optimized AI prompt file (<code>&lt;topic&gt;-prompt.md</code>) tailored to your topic alongside the context package.</li>
+              <li><strong>8-Command CLI Expansion</strong> — Added <code>ask</code> and <code>context</code> commands to the CLI suite, expanding from 6 to 8 commands.</li>
+            </ul>
+          </div>
+
+          {/* v0.6.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.6.0</span>
                 <h3 className="text-xl font-bold text-white">Graph Intelligence & Unified CLI</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 14, 2026</span>
@@ -62,7 +83,7 @@ export default function FeaturesPage() {
           </div>
 
           {/* v0.5.0 */}
-          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+          <div className="glass-card p-8 rounded-xl border-white/5 bg-white/5 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.5.0</span>

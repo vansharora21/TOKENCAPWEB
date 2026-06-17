@@ -1,5 +1,13 @@
 [
   {
+    "id": "smart-retrieval",
+    "title": "Smart Retrieval Engine",
+    "description": "Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Scores files by combining Graph connectivity, context Memory logs, Git changed files, and Impact analysis. Auto-detects modes: review, debug, architecture. BFS traversal scans up to 2 hops away."
+  },
+  {
     "id": "auto-capture",
     "title": "Auto Capture on Save",
     "description": "Every time you save a file in VS Code, TokenCap debounces and automatically regenerates your snapshot. You never have to remember to run it. The status bar shows the exact time of the last update.",

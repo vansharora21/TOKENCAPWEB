@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
       </head>
       <body className="min-h-screen bg-[#0a0a0c] text-foreground">
-        <div className="relative flex min-h-screen flex-col overflow-hidden">
+        <div className="relative flex min-h-screen flex-col overflow-x-hidden">
           <GradientBackground />
           <SearchModal />
           <Navbar />

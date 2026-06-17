@@ -32,13 +32,14 @@ export default function CliPage() {
     { flag: "--no-diff", description: "Skip including Git diff snippets in the snapshot.", defaultVal: "false" },
     { flag: "--no-contents", description: "Skip selected source file contents (outline only).", defaultVal: "false" },
     { flag: "--debounce <ms>", description: "Regeneration debounce delay in watch mode.", defaultVal: "3000" },
-    { flag: "--mode <name>", description: "Pack mode: review | debug | architecture | minimal (for pack command).", defaultVal: "review" },
-    { flag: "--budget <number>", description: "Pack token budget (for pack command).", defaultVal: "20000" },
+    { flag: "--mode <name>", description: "Retrieval/pack mode: review | debug | architecture | minimal.", defaultVal: "review" },
+    { flag: "--budget <number>", description: "Custom token budget for ask/context/pack commands.", defaultVal: "12000 / 8000 / 20000" },
     { flag: "--staged", description: "Analyze only staged changes (for diff command).", defaultVal: "false" },
     { flag: "--last", description: "Analyze changes in the last commit (for diff command).", defaultVal: "false" },
     { flag: "--pr", description: "Generate PR summary description (for diff command).", defaultVal: "false" },
-    { flag: "--prompt", description: "Generate AI code review prompt (for diff command).", defaultVal: "false" },
-    { flag: "--json", description: "Output machine-readable JSON analysis (for diff/graph commands).", defaultVal: "false" },
+    { flag: "--prompt", description: "Generate AI prompt/review prompt (for ask/context/diff commands).", defaultVal: "true (ask)" },
+    { flag: "--no-prompt", description: "Skip prompt.md generation (for ask command).", defaultVal: "false" },
+    { flag: "--json", description: "Output machine-readable JSON (for ask/context/diff/graph commands).", defaultVal: "false" },
     { flag: "--open", description: "Open interactive HTML graph viewer in browser (for graph command).", defaultVal: "false" },
     { flag: "--ai", description: "Generate detailed narrative AI summary (for graph command).", defaultVal: "false" },
     { flag: "--diff", description: "Generate graph structural diff vs last run (for graph command).", defaultVal: "false" },
@@ -50,7 +51,7 @@ export default function CliPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.6.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.7.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -126,6 +127,58 @@ export default function CliPage() {
 
         {/* Grid for Commands */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Smart Context Retrieval (ask) */}
+          <section id="ask" className="flex flex-col">
+            <h3 className="text-lg font-bold text-white mb-2">Smart context retrieval (ask)</h3>
+            <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
+              Ask a natural language question and TokenCap automatically retrieves only the relevant files.
+            </p>
+            <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
+              <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap ask</span>
+                <CopyButton text="tokencap ask &quot;How does authentication work?&quot;" />
+              </div>
+              <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                  <span className="text-[#d2bbff] select-none">&gt;</span>
+                  <span className="text-white whitespace-nowrap">tokencap ask "How does authentication work?"</span>
+                </div>
+                <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Analyzing question keywords...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Matching clusters: Authentication (95%)</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Performing 2-hop BFS import search...</span></div>
+                <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
+                  <span className="whitespace-nowrap">Generated: .tokencap/context/auth-context.md</span><br />
+                  <span className="whitespace-nowrap">Generated: .tokencap/context/auth-prompt.md</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Topic Context (context) */}
+          <section id="context" className="flex flex-col">
+            <h3 className="text-lg font-bold text-white mb-2">Topic context (context)</h3>
+            <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
+              Manually compile prompt-optimized context files for a specific keyword or topic.
+            </p>
+            <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
+              <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap context</span>
+                <CopyButton text="tokencap context payments --budget 8000" />
+              </div>
+              <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                  <span className="text-[#d2bbff] select-none">&gt;</span>
+                  <span className="text-white whitespace-nowrap">tokencap context payments --budget 8000</span>
+                </div>
+                <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Compiling payments context...</span></div>
+                <div className="text-zinc-500">[14:04:12] Token Budget Allocated: 8,000 tokens</div>
+                <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
+                  <span className="whitespace-nowrap">Generated: .tokencap/context/payments-context.md</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Generate Snapshot */}
           <section id="snapshot" className="flex flex-col">
             <h3 className="text-lg font-bold text-white mb-2">Generate snapshot (make)</h3>
