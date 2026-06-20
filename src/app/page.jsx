@@ -17,11 +17,15 @@ export default function HomePage() {
   return (
     <PageWrapper container={false} className="space-y-0">
       {/* Hero & Preview Section */}
-      <div className="border-b border-white/5 py-12 sm:py-16 lg:py-20">
+      <div className="border-b border-white/5 py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-          <Hero />
-          <div className="mt-16">
-            <ProductPreview />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-5">
+              <Hero />
+            </div>
+            <div className="lg:col-span-7 w-full">
+              <ProductPreview />
+            </div>
           </div>
         </div>
       </div>

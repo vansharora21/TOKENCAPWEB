@@ -1,5 +1,21 @@
 [
   {
+    "version": "0.8.0",
+    "title": "Agent Intelligence Engine",
+    "date": "2026-06-20",
+    "status": "released",
+    "highlights": [
+      "Agent Intelligence Engine: TokenCap evolves from a context generator to an AI Project Intelligence Platform by analyzing your repository and automatically generating a complete Agent Skill Pack.",
+      "tokencap agent Flagship Command: Scans your repository and automatically builds detailed instructions teaching an AI agent your architecture, conventions, risk maps, and rules.",
+      "8-Phase Pipeline: Sequences analysis from Tech Stack → Architecture → Project Rules → Risk Map → Review Groups → Agent Skills → Agent Pack → Machine-readable JSON.",
+      "agent-pack.md Payload: Generates a single, paste-ready markdown file optimized for ChatGPT, Claude, Gemini, Cursor, Windsurf, Cline, Roo Code, and OpenHands.",
+      "agent.json Export: Structured machine-readable format containing system definitions and agentInjectHooks for future automated injection integrations (v0.9+).",
+      "Focused Mode Flags: Added --full (default), --architecture, --rules, and --skills to generate focused sub-sections of the intelligence pack.",
+      "Zero New Dependencies: Built entirely on top of the existing Graph, Diff, Memory, and Pack engines with no new dependencies.",
+      "9-Command CLI suite: Added 'agent' command to the command-line CLI suite, expanding from 8 to 9 commands."
+    ]
+  },
+  {
     "version": "0.7.0",
     "title": "Smart Retrieval Engine",
     "date": "2026-06-17",

@@ -1,5 +1,17 @@
 [
   {
+    "command": "tokencap agent",
+    "description": "Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.",
+    "example": "tokencap agent --full",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--full", "description": "Run full 8-phase intelligence pipeline (default)" },
+      { "flag": "--architecture", "description": "Focused generation of tech stack and architecture details" },
+      { "flag": "--rules", "description": "Focused generation of project coding rules and conventions" },
+      { "flag": "--skills", "description": "Focused generation of agent skill definitions and instructions" }
+    ]
+  },
+  {
     "command": "tokencap ask",
     "description": "Smart context retrieval from a natural language question. Auto-detects target mode, retrieves relevant files, traverses the graph (BFS), applies a token budget, and generates a context package and suggested AI prompt.",
     "example": "tokencap ask \"How does authentication work?\"",

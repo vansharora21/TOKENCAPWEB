@@ -5,14 +5,18 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Changelog",
-  description: "TokenCap release history and intelligence layer updates.",
+  description: "Track the evolution of TokenCap from a token-budgeted context generator to a complete AI Project Intelligence Platform.",
   path: "/changelog",
 });
 
 export default function ChangelogPage() {
   return (
-    <PageWrapper className="space-y-12 py-12 sm:py-16 lg:py-20">
-      <SectionHeading eyebrow="Changelog" title="Release history." description="Every release note comes directly from the website content bundle." />
+    <PageWrapper className="space-y-8 py-12 sm:py-16 lg:py-20">
+      <SectionHeading 
+        eyebrow="Release History" 
+        title="Evolution of Context" 
+        description="Track the evolution of TokenCap from a token-budgeted context generator to a complete AI Project Intelligence Platform." 
+      />
       <ChangelogList />
     </PageWrapper>
   );

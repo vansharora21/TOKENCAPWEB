@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.7.0 Engine
+            v0.8.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -39,12 +39,33 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v0.7.0 */}
+          {/* v0.8.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.7.0</span>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.8.0</span>
+                <h3 className="text-xl font-bold text-white">Agent Intelligence Engine</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 20, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Agent Intelligence Engine</strong> — TokenCap evolves from a context generator to an AI Project Intelligence Platform by analyzing your repository and automatically generating a complete Agent Skill Pack.</li>
+              <li><strong>Flagship Agent Command (<code>tokencap agent</code>)</strong> — Scans your repository and automatically builds detailed instructions teaching an AI agent your architecture, conventions, risk maps, and rules.</li>
+              <li><strong>8-Phase Pipeline</strong> — Sequences analysis from Tech Stack → Architecture → Project Rules → Risk Map → Review Groups → Agent Skills → Agent Pack → Machine-readable JSON.</li>
+              <li><strong>agent-pack.md Payload</strong> — Generates a single, paste-ready markdown file optimized for ChatGPT, Claude, Gemini, Cursor, Windsurf, Cline, Roo Code, and OpenHands.</li>
+              <li><strong>agent.json Export</strong> — Structured machine-readable format containing system definitions and agentInjectHooks for future automated injection integrations (v0.9+).</li>
+              <li><strong>Focused Mode Flags</strong> — Added --full (default), --architecture, --rules, and --skills to generate focused sub-sections of the intelligence pack.</li>
+              <li><strong>Zero New Dependencies</strong> — Built entirely on top of the existing Graph, Diff, Memory, and Pack engines with no new dependencies.</li>
+              <li><strong>9-Command CLI suite</strong> — Added 'agent' command to the command-line CLI suite, expanding from 8 to 9 commands.</li>
+            </ul>
+          </div>
+
+          {/* v0.7.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.7.0</span>
                 <h3 className="text-xl font-bold text-white">Smart Retrieval Engine</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 17, 2026</span>
@@ -62,10 +83,10 @@ export default function FeaturesPage() {
           </div>
 
           {/* v0.6.0 */}
-          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+          <div className="glass-card p-8 rounded-xl border-white/5 bg-white/5 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.6.0</span>
+                <span className="bg-zinc-800 text-zinc-400 px-2.5 py-1 rounded-md text-xs font-mono">v0.6.0</span>
                 <h3 className="text-xl font-bold text-white">Graph Intelligence & Unified CLI</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 14, 2026</span>

@@ -1,5 +1,10 @@
 export const commands = [
   {
+    command: "tokencap agent",
+    description: "Analyze your repository and automatically generate a complete, prompt-ready Agent Skill Pack.",
+    result: "Agent Skill Pack (agent-pack.md) and machine-readable agent.json generated."
+  },
+  {
     command: "tokencap ask",
     description: "Ask a natural language question about your codebase and TokenCap automatically retrieves only the relevant files.",
     result: "Smart context package and suggested AI prompt generated."

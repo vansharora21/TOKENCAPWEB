@@ -138,6 +138,23 @@ The main snapshot works across every language TokenCap can read. Python, Go, Rus
 
 ## 💻 CLI Commands
 
+### 🛠️ `tokencap agent`
+
+Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.
+
+**Example:**
+```bash
+tokencap agent --full
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+| `--full` | Run full 8-phase intelligence pipeline (default) |
+| `--architecture` | Focused generation of tech stack and architecture details |
+| `--rules` | Focused generation of project coding rules and conventions |
+| `--skills` | Focused generation of agent skill definitions and instructions |
+
 ### 🛠️ `tokencap ask`
 
 Smart context retrieval from a natural language question. Auto-detects target mode, retrieves relevant files, traverses the graph (BFS), applies a token budget, and generates a context package and suggested AI prompt.
@@ -283,4 +300,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 17/6/2026.*
+*Generated automatically from `website-content` JSON source files on 21/6/2026.*

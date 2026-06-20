@@ -47,6 +47,7 @@ export const docsNavigation = [
   { label: "Context Memory Layer", href: "/docs#memory" },
   { label: "AI Context Packing", href: "/docs#pack" },
   { label: "AI Change Intelligence", href: "/docs#diff" },
+  { label: "Agent Intelligence", href: "/docs#agent" },
   { label: "Secret Redaction", href: "/docs#secret-redaction" },
   { label: "CLI Reference", href: "/docs#cli" },
   { label: "VS Code Extension", href: "/docs#vscode" },

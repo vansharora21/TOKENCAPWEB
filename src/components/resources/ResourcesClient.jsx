@@ -313,13 +313,13 @@ export function ResourcesClient() {
           </div>
           <div className="space-y-2">
             <div className="text-3xl sm:text-4xl font-bold text-[#d2bbff]">
-              v<AnimatedCounter end="0" />.7.0
+              v<AnimatedCounter end="0" />.8.0
             </div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">npm Package</p>
           </div>
           <div className="space-y-2">
             <div className="text-3xl sm:text-4xl font-bold text-[#d2bbff]">
-              v<AnimatedCounter end="0" />.7.0
+              v<AnimatedCounter end="0" />.8.0
             </div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">VS Code Extension</p>
           </div>

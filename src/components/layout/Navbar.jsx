@@ -9,7 +9,7 @@ function Navbar() {
   const navItems = [
     { label: "Features", href: "/features" },
     { label: "Docs", href: "/docs" },
-    { label: "CLI", href: "/cli" },
+    { label: "Timeline", href: "/changelog" },
     { label: "Resources", href: "/resources" },
     { label: "About", href: "/about" },
   ];
