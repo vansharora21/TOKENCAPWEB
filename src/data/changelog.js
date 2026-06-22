@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "0.9.0",
+    title: "Project Brain",
+    date: "2026-06-22",
+    status: "released",
+    description: "Introduces Project Brain for unified cluster-based intelligence query with fuzzy matching and 6 mode flags.",
+  },
+  {
     version: "0.8.0",
     title: "Agent Intelligence Engine",
     date: "2026-06-20",

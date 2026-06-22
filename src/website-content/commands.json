@@ -1,5 +1,19 @@
 [
   {
+    "command": "tokencap brain",
+    "description": "Project Brain — unified intelligence query about any part of your codebase (files, risk, architecture, dependencies, review groups, recent changes, and git timeline).",
+    "example": "tokencap brain auth",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--impact", "description": "Show affected file/feature count, critical files, and risk level." },
+      { "flag": "--architecture", "description": "Render dependency chain ASCII view for the cluster." },
+      { "flag": "--review", "description": "Show review group files and reason for grouping." },
+      { "flag": "--timeline", "description": "Show git commit history (date + message) for cluster files." },
+      { "flag": "--risk", "description": "Show risk areas and affected files." },
+      { "flag": "--deps", "description": "Show full depends-on and used-by lists." }
+    ]
+  },
+  {
     "command": "tokencap agent",
     "description": "Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.",
     "example": "tokencap agent --full",

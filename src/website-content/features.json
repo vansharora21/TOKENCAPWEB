@@ -1,5 +1,21 @@
 [
   {
+    "id": "project-brain",
+    "title": "Project Brain",
+    "description": "Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, git timeline — all from a single command.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Wraps all intelligence engines (Graph, Diff, Agent, Memory). Renders terminal views in 6 modes, builds brain-index.json for fast cluster -> file lookup, and supports fuzzy cluster matching."
+  },
+  {
+    "id": "agent-intelligence",
+    "title": "Agent Intelligence Engine",
+    "description": "Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Sequences analysis through an 8-phase pipeline (Tech Stack → Architecture → Rules → Risk Map → Review Groups → Skills → Pack → JSON) and generates paste-ready agent-pack.md / agent.json."
+  },
+  {
     "id": "smart-retrieval",
     "title": "Smart Retrieval Engine",
     "description": "Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.",

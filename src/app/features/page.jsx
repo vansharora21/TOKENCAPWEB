@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.8.0 Engine
+            v0.9.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -39,8 +39,30 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v0.8.0 */}
+          {/* v0.9.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.9.0</span>
+                <h3 className="text-xl font-bold text-white">Project Brain</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 22, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Project Brain</strong> — TokenCap now thinks in clusters, not just files, providing a unified project intelligence view.</li>
+              <li><strong>Flagship Brain Command (<code>tokencap brain &lt;topic&gt;</code>)</strong> — Ask about any part of your codebase and get a unified view: files, risk, architecture, dependencies, review groups, recent changes, and git timeline — all from a single command.</li>
+              <li><strong>Unified Knowledge Base</strong> — <code>tokencap make</code> builds <code>.tokencap/brain/knowledge.json</code>, aggregating all engines into a single queryable index.</li>
+              <li><strong>6 Brain Modes</strong> — Focus your analysis with <code>--impact</code>, <code>--architecture</code>, <code>--review</code>, <code>--timeline</code>, <code>--risk</code>, and <code>--deps</code> flags.</li>
+              <li><strong>Fuzzy Cluster Matching</strong> — Automatically matches topics (like Authentication) even if you enter partial names (like "auth").</li>
+              <li><strong>Overview Dashboard</strong> — Run without a topic to see an overview of all clusters with risk levels at a glance.</li>
+              <li><strong>Zero Extra Dependencies</strong> — Built cleanly on top of existing engines with no new package installations required.</li>
+              <li><strong>10-Command CLI</strong> — Added <code>brain</code> command to the suite, expanding TokenCap to 10 commands.</li>
+            </ul>
+          </div>
+
+          {/* v0.8.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">

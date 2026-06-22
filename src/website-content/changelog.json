@@ -1,5 +1,22 @@
 [
   {
+    "version": "0.9.0",
+    "title": "Project Brain",
+    "date": "2026-06-22",
+    "status": "released",
+    "highlights": [
+      "Project Brain: TokenCap now thinks in clusters, not just files, providing a unified project intelligence view.",
+      "tokencap brain <topic> Flagship Command: Ask about any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review groups, recent changes, and git timeline — all from a single command.",
+      "Unified Knowledge Base: tokencap make now builds .tokencap/brain/knowledge.json, aggregating all engines (Graph, Diff, Agent, Memory) into a single queryable index.",
+      "6 Brain Modes: Renders focused intelligence views via --impact, --architecture, --review, --timeline, --risk, and --deps flags.",
+      "Fuzzy Cluster Matching: tokencap brain auth finds the Authentication cluster even if the topic is partially matched.",
+      "No-Topic Overview: Running tokencap brain with no arguments lists all clusters with risk levels at a glance.",
+      "Brain Index: Builds .tokencap/brain/brain-index.json for fast cluster to file lookup.",
+      "Zero Extra Dependencies: Built entirely on top of the existing Graph, Diff, Memory, and Pack engines with no new package requirements.",
+      "10-Command CLI suite: Added 'brain' command to the command-line CLI suite, expanding from 9 to 10 commands."
+    ]
+  },
+  {
     "version": "0.8.0",
     "title": "Agent Intelligence Engine",
     "date": "2026-06-20",

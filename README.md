@@ -26,6 +26,16 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 Project Brain
+Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, git timeline — all from a single command.
+
+> ⚙️ *Technical Detail:* Wraps all intelligence engines (Graph, Diff, Agent, Memory). Renders terminal views in 6 modes, builds brain-index.json for fast cluster -> file lookup, and supports fuzzy cluster matching.
+
+#### 🔹 Agent Intelligence Engine
+Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.
+
+> ⚙️ *Technical Detail:* Sequences analysis through an 8-phase pipeline (Tech Stack → Architecture → Rules → Risk Map → Review Groups → Skills → Pack → JSON) and generates paste-ready agent-pack.md / agent.json.
+
 #### 🔹 Smart Retrieval Engine
 Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.
 
@@ -137,6 +147,25 @@ The main snapshot works across every language TokenCap can read. Python, Go, Rus
 > ⚙️ *Technical Detail:* Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants.
 
 ## 💻 CLI Commands
+
+### 🛠️ `tokencap brain`
+
+Project Brain — unified intelligence query about any part of your codebase (files, risk, architecture, dependencies, review groups, recent changes, and git timeline).
+
+**Example:**
+```bash
+tokencap brain auth
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+| `--impact` | Show affected file/feature count, critical files, and risk level. |
+| `--architecture` | Render dependency chain ASCII view for the cluster. |
+| `--review` | Show review group files and reason for grouping. |
+| `--timeline` | Show git commit history (date + message) for cluster files. |
+| `--risk` | Show risk areas and affected files. |
+| `--deps` | Show full depends-on and used-by lists. |
 
 ### 🛠️ `tokencap agent`
 
@@ -300,4 +329,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 21/6/2026.*
+*Generated automatically from `website-content` JSON source files on 22/6/2026.*

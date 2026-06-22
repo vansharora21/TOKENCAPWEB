@@ -44,9 +44,14 @@ export default function CliPage() {
     { flag: "--ai", description: "Generate detailed narrative AI summary (for graph command).", defaultVal: "false" },
     { flag: "--diff", description: "Generate graph structural diff vs last run (for graph command).", defaultVal: "false" },
     { flag: "--full", description: "Run full 8-phase pipeline (for agent command).", defaultVal: "true" },
-    { flag: "--architecture", description: "Focused generation of architecture mapping (for agent command).", defaultVal: "false" },
+    { flag: "--architecture", description: "Render dependency chain ASCII view (brain) or architecture mapping (agent).", defaultVal: "false" },
     { flag: "--rules", description: "Focused generation of coding rules (for agent command).", defaultVal: "false" },
     { flag: "--skills", description: "Focused generation of agent skill definitions (for agent command).", defaultVal: "false" },
+    { flag: "--impact", description: "Show affected file/feature count and risk summary (for brain command).", defaultVal: "false" },
+    { flag: "--review", description: "Show review group files and grouping reasons (for brain command).", defaultVal: "false" },
+    { flag: "--timeline", description: "Show git commit history for cluster files (for brain command).", defaultVal: "false" },
+    { flag: "--risk", description: "Show risk areas and affected files (for brain command).", defaultVal: "false" },
+    { flag: "--deps", description: "Show depends-on and used-by lists (for brain command).", defaultVal: "false" },
   ];
 
   return (
@@ -55,7 +60,7 @@ export default function CliPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.8.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.9.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -129,8 +134,53 @@ export default function CliPage() {
           </div>
         </section>
 
+        {/* Flagship Command: tokencap brain */}
+        <section id="brain" className="mb-12 glass-panel rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 p-6 md:p-8 terminal-glow">
+          <div className="flex flex-col lg:flex-row gap-8 justify-between items-stretch">
+            <div className="flex flex-col justify-between flex-grow max-w-xl">
+              <div>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider mb-3 inline-block">Flagship Command (v0.9)</span>
+                <h3 className="text-2xl font-bold text-white mb-2">Project Brain (brain)</h3>
+                <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6">
+                  Ask about any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, and git timeline — all from a single command.
+                </p>
+              </div>
+              <div className="space-y-3 font-sans text-xs text-[#ccc3d8]">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-[#4edea3]">check_circle</span>
+                  <span><strong>6 Brain Modes:</strong> Impact, Architecture, Review, Timeline, Risk, and Deps</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-[#4edea3]">check_circle</span>
+                  <span><strong>Fuzzy matching:</strong> Automatically matches topics even with partial input</span>
+                </div>
+              </div>
+            </div>
+            <div className="glass-panel rounded-xl overflow-hidden flex-grow flex flex-col min-w-[320px] bg-black">
+              <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap brain</span>
+                <CopyButton text="tokencap brain auth" />
+              </div>
+              <div className="p-4 font-mono text-[13px] flex-grow leading-relaxed">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                  <span className="text-[#d2bbff] select-none">&gt;</span>
+                  <span className="text-white whitespace-nowrap">tokencap brain auth</span>
+                </div>
+                <div className="mt-2 text-red-400">Risk: <span className="font-bold">CRITICAL (🔴)</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Fuzzy matched cluster: Authentication</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Resolved 6 files in cluster</span></div>
+                <div className="text-zinc-500">June 3 | Session Validation Added (authService.ts)</div>
+                <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
+                  <span className="whitespace-nowrap">Central File: authService.ts (8 importers)</span><br />
+                  <span className="whitespace-nowrap">Review Group: Auth + Schema</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Flagship Command: tokencap agent */}
-        <section id="agent" className="mb-12 glass-panel rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 p-6 md:p-8 terminal-glow">
+        <section id="agent" className="mb-12 glass-panel rounded-xl border-white/10 bg-white/5 p-6 md:p-8">
           <div className="flex flex-col lg:flex-row gap-8 justify-between items-stretch">
             <div className="flex flex-col justify-between flex-grow max-w-xl">
               <div>

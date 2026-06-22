@@ -5,18 +5,30 @@ import { CopyButton } from "@/components/shared/CopyButton";
 
 const SESSIONS = [
   {
+    cmd: "tokencap brain auth",
+    steps: [
+      { text: "[BRAIN] Loading .tokencap/brain/knowledge.json...", delay: 400 },
+      { text: "[BRAIN] Fuzzy-matched topic \"auth\" to cluster \"Authentication\" (100% match)", delay: 500 },
+      { text: "[BRAIN] Risk level: 🔴 CRITICAL | Files: 6", delay: 400 },
+      { text: "[BRAIN] Main File: src/services/authService.ts (8 importers)", delay: 450 },
+      { text: "[BRAIN] Recent Changes: June 3 - Session Validation Added", delay: 450 },
+      { text: "[BRAIN] Dependencies: Authentication → API → Frontend", delay: 500 },
+      { text: "[SUCCESS] Rendered terminal intelligence view for topic: auth", delay: 600 }
+    ]
+  },
+  {
     cmd: "tokencap watch .",
     steps: [
       { text: "[SCAN] Indexing project hierarchy...", delay: 400 },
       { text: "[SCAN] Found 142 files in /src", delay: 500 },
-      { text: "[INIT] TokenCap v0.8.0 active...", delay: 400 },
+      { text: "[INIT] TokenCap v0.9.0 active...", delay: 400 },
       { text: "WAIT", delay: 1500 },
       { text: "[DIFF] + src/hooks/useToken.ts [L12-15]", delay: 300 },
       { text: "[PUSH] Streaming context to TOKENCAP.md...", delay: 500 },
-      { text: "[INIT] TokenCap v0.8.0 active...", delay: 400 },
+      { text: "[INIT] TokenCap v0.9.0 active...", delay: 400 },
       { text: "WAIT", delay: 1500 },
       { text: "[SCAN] Indexing project hierarchy...", delay: 400 },
-      { text: "[INIT] TokenCap v0.8.0 active...", delay: 500 },
+      { text: "[INIT] TokenCap v0.9.0 active...", delay: 500 },
       { text: "[DIFF] + src/hooks/useToken.ts [L12-15]", delay: 300 },
       { text: "[DIFF] + src/auth/provider.ts [L42-88]", delay: 400 },
       { text: "[PUSH] Streaming context to TOKENCAP_MEMORY.md...", delay: 500 },
@@ -58,6 +70,13 @@ const SESSIONS = [
 ];
 
 const parseTerminalLine = (text) => {
+  if (text.startsWith("[BRAIN]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-[#c084fc] font-bold">[BRAIN]</span> {text.substring(7)}
+      </span>
+    );
+  }
   if (text.startsWith("[INIT]")) {
     return (
       <span className="text-[#4edea3]">
