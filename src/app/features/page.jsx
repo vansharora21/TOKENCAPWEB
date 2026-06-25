@@ -11,21 +11,31 @@ export const metadata = buildMetadata({
 export default function FeaturesPage() {
   return (
     <PageWrapper className="pt-24 pb-20 max-w-7xl mx-auto px-6">
-      {/* Header */}
-      <header className="mb-20 max-w-2xl">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
-          <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v1.0.0 Engine
-          </span>
+      {/* Header Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-center mb-20">
+        <header className="max-w-2xl">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
+            <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
+              v1.0.0 Engine
+            </span>
+          </div>
+          <h1 className="text-5xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
+            Precision engineered features.
+          </h1>
+          <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-xl">
+            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed and developer ergonomics.
+          </p>
+        </header>
+        <div className="relative group overflow-hidden rounded-2xl border border-white/10 bg-[#0e0e11] p-2 shadow-2xl flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#7c3aed]/10 via-transparent to-[#4edea3]/10 opacity-60 pointer-events-none"></div>
+          <img 
+            src="/images/home/tokencap-features-graphic.png" 
+            alt="TokenCap Project Brain & Context Layer Diagram" 
+            className="w-full h-auto rounded-xl object-cover border border-white/5 transition-transform duration-500 group-hover:scale-[1.02]"
+          />
         </div>
-        <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
-          Precision engineered features.
-        </h1>
-        <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-xl">
-          TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed and developer ergonomics.
-        </p>
-      </header>
+      </div>
 
       {/* Version History / What's New */}
       <section className="mb-24">
