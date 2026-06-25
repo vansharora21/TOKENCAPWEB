@@ -1,5 +1,19 @@
 [
   {
+    "version": "1.0.0",
+    "title": "Self-Loading Universal Context Layer",
+    "date": "2026-06-25",
+    "status": "released",
+    "highlights": [
+      "Self-Loading Universal Context Layer: AI automatically discovers and loads your project intelligence without manual context copying.",
+      "tokencap agent Command: Generates a root AGENTS.md file that redirects AI agents directly to the full onboarding suite under .tokencap/agent/START_HERE.md.",
+      "Onboarding Suite: Automatically compiles allowed-context.json (topic-to-file-glob mapper), model-instructions.md (custom guidelines per model), and context-manifest.json (machine-readable single source of truth).",
+      "--no-agents-file Flag: Prevents the creation of root AGENTS.md if you prefer to keep your repository root clean.",
+      "Topic-Based Context Packing: tokencap pack <topic> queries the Brain to boost relevance weights for that specific cluster, generating scoped context packs.",
+      "Future IDE Exporters: Built-in support and --export stub for generating IDE-specific rulesets (e.g. windsurf, cursor, cline, roocode) in v1.1."
+    ]
+  },
+  {
     "version": "0.9.0",
     "title": "Project Brain",
     "date": "2026-06-22",

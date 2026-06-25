@@ -1,8 +1,8 @@
 export const commands = [
   {
     command: "tokencap agent",
-    description: "Analyze your repository and automatically generate a complete, prompt-ready Agent Skill Pack.",
-    result: "Agent Skill Pack (agent-pack.md) and machine-readable agent.json generated."
+    description: "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json).",
+    result: "Self-loading context layer and root AGENTS.md file generated."
   },
   {
     command: "tokencap ask",
@@ -35,9 +35,9 @@ export const commands = [
     result: "Active debug session managed, timeline logged, and handoff report compiled."
   },
   {
-    command: "tokencap pack",
-    description: "Compresses the workspace into a token-budgeted, AST-aware, and git-history prioritized context pack for LLMs.",
-    result: "Token-budgeted context pack file generated under .tokencap/packs/."
+    command: "tokencap pack <topic>",
+    description: "Compresses the workspace into a token-budgeted, AST-aware, and git-history prioritized context pack. If a topic is provided, the pack engine scopes the context to files inside that cluster.",
+    result: "Topic-scoped, token-budgeted context pack generated under .tokencap/packs/."
   },
   {
     command: "tokencap watch",

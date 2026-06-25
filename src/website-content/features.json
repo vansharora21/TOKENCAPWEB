@@ -9,11 +9,11 @@
   },
   {
     "id": "agent-intelligence",
-    "title": "Agent Intelligence Engine",
-    "description": "Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.",
+    "title": "Self-Loading Universal Context Layer",
+    "description": "AI automatically discovers and loads your project intelligence without manual context copying. Generates a root AGENTS.md entry point that redirects AI agents directly to the onboarding suite under .tokencap/agent/START_HERE.md.",
     "category": "Intelligence",
     "importance": 1,
-    "technicalDetail": "Sequences analysis through an 8-phase pipeline (Tech Stack → Architecture → Rules → Risk Map → Review Groups → Skills → Pack → JSON) and generates paste-ready agent-pack.md / agent.json."
+    "technicalDetail": "Generates root AGENTS.md, START_HERE.md, allowed-context.json (topic glob mapper), model-instructions.md (custom guidelines), context-manifest.json, agent-pack.md, and agent.json."
   },
   {
     "id": "smart-retrieval",

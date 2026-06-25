@@ -16,7 +16,7 @@ export default function FeaturesPage() {
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
           <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
           <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-            v0.9.0 Engine
+            v1.0.0 Engine
           </span>
         </div>
         <h1 className="text-5xl font-bold tracking-tight text-white mb-4">
@@ -39,12 +39,31 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v0.9.0 */}
+          {/* v1.0.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.9.0</span>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.0.0</span>
+                <h3 className="text-xl font-bold text-white">Self-Loading Universal Context Layer</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 25, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Self-Loading Universal Context Layer</strong> — AI automatically discovers and loads your project intelligence without manual context copying.</li>
+              <li><strong>Auto-Discovery Entry Point (<code>AGENTS.md</code>)</strong> — Generates a root-level <code>AGENTS.md</code> file that directs AI agents directly to the full onboarding suite under <code>.tokencap/agent/START_HERE.md</code>.</li>
+              <li><strong>Universal Context Onboarding Suite</strong> — Compiles <code>START_HERE.md</code>, <code>allowed-context.json</code> (topic glob mapper), <code>model-instructions.md</code> (model-specific guidelines), and <code>context-manifest.json</code> (structured index).</li>
+              <li><strong>Clean Root Option</strong> — Use <code>--no-agents-file</code> flag to skip generating the root-level <code>AGENTS.md</code>.</li>
+              <li><strong>Topic-Based Context Packing</strong> — <code>tokencap pack &lt;topic&gt;</code> queries the Brain to boost relevance weights for that specific cluster, generating scoped context packs (e.g., <code>auth.md</code>, <code>payments.md</code>).</li>
+              <li><strong>Future IDE Exporters</strong> — Built-in structure and <code>--export</code> stub for generating IDE-specific rulesets (e.g. <code>--export cursor</code>, <code>--export windsurf</code>) planned for v1.1.</li>
+            </ul>
+          </div>
+
+          {/* v0.9.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v0.9.0</span>
                 <h3 className="text-xl font-bold text-white">Project Brain</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 22, 2026</span>

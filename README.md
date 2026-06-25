@@ -31,10 +31,10 @@ Query any part of your codebase and get a unified intelligence view: files, risk
 
 > ⚙️ *Technical Detail:* Wraps all intelligence engines (Graph, Diff, Agent, Memory). Renders terminal views in 6 modes, builds brain-index.json for fast cluster -> file lookup, and supports fuzzy cluster matching.
 
-#### 🔹 Agent Intelligence Engine
-Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.
+#### 🔹 Self-Loading Universal Context Layer
+AI automatically discovers and loads your project intelligence without manual context copying. Generates a root AGENTS.md entry point that redirects AI agents directly to the onboarding suite under .tokencap/agent/START_HERE.md.
 
-> ⚙️ *Technical Detail:* Sequences analysis through an 8-phase pipeline (Tech Stack → Architecture → Rules → Risk Map → Review Groups → Skills → Pack → JSON) and generates paste-ready agent-pack.md / agent.json.
+> ⚙️ *Technical Detail:* Generates root AGENTS.md, START_HERE.md, allowed-context.json (topic glob mapper), model-instructions.md (custom guidelines), context-manifest.json, agent-pack.md, and agent.json.
 
 #### 🔹 Smart Retrieval Engine
 Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.
@@ -169,7 +169,7 @@ tokencap brain auth
 
 ### 🛠️ `tokencap agent`
 
-Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.
+Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json).
 
 **Example:**
 ```bash
@@ -179,10 +179,12 @@ tokencap agent --full
 | Option / Flag | Description |
 | --- | --- |
 | `--root <path>` | Workspace root. Default: current directory |
-| `--full` | Run full 8-phase intelligence pipeline (default) |
+| `--full` | Run full Universal Context Layer pipeline (default) |
 | `--architecture` | Focused generation of tech stack and architecture details |
 | `--rules` | Focused generation of project coding rules and conventions |
 | `--skills` | Focused generation of agent skill definitions and instructions |
+| `--no-agents-file` | Skip generating the root-level AGENTS.md file |
+| `--export <target>` | Export rules directly to IDE rulesets (cursor | windsurf | cline | roocode) - planned v1.1 |
 
 ### 🛠️ `tokencap ask`
 
@@ -295,16 +297,17 @@ tokencap debug --start -- npm test
 
 ### 🛠️ `tokencap pack`
 
-Compresses the codebase into a token-budgeted, importance-scored context pack for LLMs using AST structure outlines, git history, and importance tiers.
+Compresses the codebase into a token-budgeted, importance-scored context pack for LLMs. If a topic is provided, the pack engine scopes the context to files inside that cluster.
 
 **Example:**
 ```bash
-tokencap pack --mode review --budget 15000
+tokencap pack auth --mode review --budget 15000
 ```
 
 | Option / Flag | Description |
 | --- | --- |
 | `--root <path>` | Workspace root. Default: current directory |
+| `<topic>` | Optional topic or cluster keyword (queries Brain to scope context pack) |
 | `--mode <name>` | Select compression mode: review | debug | architecture | minimal |
 | `--budget <n>` | Maximum token budget for output pack. Default: 20000 |
 
@@ -329,4 +332,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 22/6/2026.*
+*Generated automatically from `website-content` JSON source files on 25/6/2026.*

@@ -15,14 +15,16 @@
   },
   {
     "command": "tokencap agent",
-    "description": "Analyzes the repository and automatically generates a complete Agent Skill Pack teaching AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.",
+    "description": "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json).",
     "example": "tokencap agent --full",
     "options": [
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
-      { "flag": "--full", "description": "Run full 8-phase intelligence pipeline (default)" },
+      { "flag": "--full", "description": "Run full Universal Context Layer pipeline (default)" },
       { "flag": "--architecture", "description": "Focused generation of tech stack and architecture details" },
       { "flag": "--rules", "description": "Focused generation of project coding rules and conventions" },
-      { "flag": "--skills", "description": "Focused generation of agent skill definitions and instructions" }
+      { "flag": "--skills", "description": "Focused generation of agent skill definitions and instructions" },
+      { "flag": "--no-agents-file", "description": "Skip generating the root-level AGENTS.md file" },
+      { "flag": "--export <target>", "description": "Export rules directly to IDE rulesets (cursor | windsurf | cline | roocode) - planned v1.1" }
     ]
   },
   {
@@ -106,10 +108,11 @@
   },
   {
     "command": "tokencap pack",
-    "description": "Compresses the codebase into a token-budgeted, importance-scored context pack for LLMs using AST structure outlines, git history, and importance tiers.",
-    "example": "tokencap pack --mode review --budget 15000",
+    "description": "Compresses the codebase into a token-budgeted, importance-scored context pack for LLMs. If a topic is provided, the pack engine scopes the context to files inside that cluster.",
+    "example": "tokencap pack auth --mode review --budget 15000",
     "options": [
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "<topic>", "description": "Optional topic or cluster keyword (queries Brain to scope context pack)" },
       { "flag": "--mode <name>", "description": "Select compression mode: review | debug | architecture | minimal" },
       { "flag": "--budget <n>", "description": "Maximum token budget for output pack. Default: 20000" }
     ]

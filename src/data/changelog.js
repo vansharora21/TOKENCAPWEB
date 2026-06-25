@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.0.0",
+    title: "Self-Loading Universal Context Layer",
+    date: "2026-06-25",
+    status: "released",
+    description: "Launches the Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, context-manifest.json), topic-based pack compression, and future IDE exporter configurations.",
+  },
+  {
     version: "0.9.0",
     title: "Project Brain",
     date: "2026-06-22",
