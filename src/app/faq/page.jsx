@@ -17,10 +17,7 @@ export default function FaqPage() {
     { label: "Advanced", icon: "auto_awesome", href: "#" },
   ];
 
-  const communityItems = [
-    { label: "GitHub", icon: "code", href: "https://github.com/vansharora21/TOKENCAP" },
-    { label: "Discord", icon: "forum", href: "https://discord.gg" },
-  ];
+
 
   return (
     <PageWrapper className="max-w-7xl mx-auto flex">
@@ -60,10 +57,7 @@ export default function FaqPage() {
               <span className="material-symbols-outlined text-base">code</span>
               GitHub
             </a>
-            <a href="https://discord.gg" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
-              <span className="material-symbols-outlined text-base">forum</span>
-              Discord
-            </a>
+
           </div>
         </div>
       </aside>
@@ -86,13 +80,10 @@ export default function FaqPage() {
           <div className="md:col-span-2 glass-panel p-8 rounded-xl flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-bold text-white mb-1.5">Still have questions?</h3>
-              <p className="text-sm text-[#ccc3d8] leading-relaxed">Join our community discord for real-time help or shoot us an email.</p>
+              <p className="text-sm text-[#ccc3d8] leading-relaxed">Reach out to our team or shoot us an email for direct help.</p>
             </div>
             <div className="mt-6 flex gap-4">
               <button className="px-5 py-2.5 bg-[#7c3aed] text-white font-bold rounded-lg hover:shadow-[0_0_15px_rgba(124,58,237,0.4)] transition-all text-xs uppercase tracking-wider">
-                Ask Discord
-              </button>
-              <button className="px-5 py-2.5 border border-[#4a4455] text-white rounded-lg hover:bg-[#2a2a2c]/50 transition-colors text-xs uppercase tracking-wider font-bold">
                 Email Support
               </button>
             </div>

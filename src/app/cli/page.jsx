@@ -19,7 +19,6 @@ export default function CliPage() {
 
   const communityItems = [
     { label: "GitHub", icon: "code", href: "https://github.com/vansharora21/TOKENCAP" },
-    { label: "Discord", icon: "forum", href: "https://discord.gg" },
   ];
 
   const tableOptions = [

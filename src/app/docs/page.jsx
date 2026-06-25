@@ -77,10 +77,7 @@ export default function DocsPage() {
               <span className="material-symbols-outlined text-base">code</span>
               GitHub
             </a>
-            <a href="https://discord.gg" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
-              <span className="material-symbols-outlined text-base">forum</span>
-              Discord
-            </a>
+
           </div>
         </div>
       </aside>
