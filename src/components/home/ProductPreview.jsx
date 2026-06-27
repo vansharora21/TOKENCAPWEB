@@ -82,6 +82,20 @@ const SESSIONS = [
       { text: "[WRITE] Generated 8 contract files under .tokencap/agent/execution-contract/", delay: 500 },
       { text: "[SUCCESS] Execution Contract v1.1.0 generated successfully.", delay: 600 }
     ]
+  },
+  {
+    cmd: "tokencap constitution",
+    steps: [
+      { text: "[CONSTITUTION] Building Invariant Analysis Graph...", delay: 400 },
+      { text: "[CONSTITUTION] Inferred 14 API stability boundaries", delay: 450 },
+      { text: "[CONSTITUTION] Inferred 8 database schema invariants", delay: 400 },
+      { text: "[CONSTITUTION] Merged 3 manual rules from tokencap.constitution.yaml", delay: 450 },
+      { text: "[CONSTITUTION] Severity Summary: 2 IMMUTABLE, 4 CRITICAL, 8 HIGH, 6 WARNING", delay: 500 },
+      { text: "[SCORE] Calculated health score: 92 / 100", delay: 400 },
+      { text: "[WRITE] Rendered HTML UI to .tokencap/constitution/constitution-graph.html", delay: 500 },
+      { text: "[WRITE] Compiled law sheets under .tokencap/constitution/", delay: 450 },
+      { text: "[SUCCESS] Repository Constitution v1.2.0 compiled successfully.", delay: 600 }
+    ]
   }
 ];
 
@@ -231,6 +245,20 @@ const parseTerminalLine = (text) => {
     return (
       <span className="text-zinc-300">
         <span className="text-red-400 font-bold">[RECOVERY]</span> {text.substring(10)}
+      </span>
+    );
+  }
+  if (text.startsWith("[CONSTITUTION]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-rose-400 font-bold">[CONSTITUTION]</span> {text.substring(14)}
+      </span>
+    );
+  }
+  if (text.startsWith("[SCORE]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-cyan-400 font-bold">[SCORE]</span> {text.substring(7)}
       </span>
     );
   }

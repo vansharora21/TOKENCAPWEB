@@ -40,6 +40,11 @@ export const commands = [
     result: "Topic-scoped, token-budgeted context pack generated under .tokencap/packs/."
   },
   {
+    command: "tokencap constitution",
+    description: "Manage and inspect your Repository Constitution to enforce permanent laws regarding APIs, schemas, security, and compliance.",
+    result: "Repository Constitution analyzed, scored, and written under .tokencap/constitution/."
+  },
+  {
     command: "tokencap watch",
     description: "Start a background watcher that automatically regenerates snapshots on file saves with a configurable debounce delay.",
     result: "Workspace watcher initialized and active in background."

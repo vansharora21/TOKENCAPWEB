@@ -120,6 +120,19 @@
     ]
   },
   {
+    "command": "tokencap constitution",
+    "description": "Manage and inspect your Repository Constitution. Analyzes codebase invariants, schema rules, security boundaries, and API contracts to enforce permanent laws.",
+    "example": "tokencap constitution --diff",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--json", "description": "Output raw JSON rule list and graph data" },
+      { "flag": "--diff", "description": "Diff current constitution rules against the last run" },
+      { "flag": "--history", "description": "Show snapshot history and score tracking over time" },
+      { "flag": "--impact <file>", "description": "Query which constitution laws are affected by a specific file" },
+      { "flag": "search <query>", "description": "Search constitution rules by keyword, ID, severity, or category" }
+    ]
+  },
+  {
     "command": "tokencap watch",
     "description": "Start a background watcher process that automatically regenerates all snapshot files when files change, with a configurable debounce delay.",
     "example": "tokencap watch --debounce 5000",

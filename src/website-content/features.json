@@ -24,6 +24,14 @@
     "technicalDetail": "Generates 8 files under .tokencap/agent/execution-contract/. Implements scope drift detection, minimal solution check frameworks, build/test/lint confidence ratings, loop recovery heuristics, and semantic taxonomy classifications."
   },
   {
+    "id": "repository-constitution",
+    "title": "Repository Constitution",
+    "description": "Encode permanent engineering laws that AI agents must never violate (API contracts, schema invariants, architecture laws, security boundaries, and compliance rules). Health checks are scored on a 0-100 index.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Builds an internal ConstitutionGraph mapping categories, severities, and relationships. Generates structured JSON/YAML/Markdown sheets and an interactive HTML visualization. Supports manual rule overrides."
+  },
+  {
     "id": "smart-retrieval",
     "title": "Smart Retrieval Engine",
     "description": "Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.",

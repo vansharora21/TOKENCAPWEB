@@ -29,7 +29,7 @@ export default function FaqPage() {
           </div>
           <div>
             <h2 className="text-sm font-bold text-white leading-none">Documentation</h2>
-            <span className="font-mono text-[9px] text-zinc-500 mt-1 uppercase tracking-wider block">v1.1.0</span>
+            <span className="font-mono text-[9px] text-zinc-500 mt-1 uppercase tracking-wider block">v1.2.0</span>
           </div>
         </div>
         <nav className="space-y-1 flex-grow">
