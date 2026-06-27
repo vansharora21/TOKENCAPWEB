@@ -21,14 +21,14 @@ const SESSIONS = [
     steps: [
       { text: "[SCAN] Indexing project hierarchy...", delay: 400 },
       { text: "[SCAN] Found 142 files in /src", delay: 500 },
-      { text: "[INIT] TokenCap v0.9.0 active...", delay: 400 },
+      { text: "[INIT] TokenCap v1.1.0 active...", delay: 400 },
       { text: "WAIT", delay: 1500 },
       { text: "[DIFF] + src/hooks/useToken.ts [L12-15]", delay: 300 },
       { text: "[PUSH] Streaming context to TOKENCAP.md...", delay: 500 },
-      { text: "[INIT] TokenCap v0.9.0 active...", delay: 400 },
+      { text: "[INIT] TokenCap v1.1.0 active...", delay: 400 },
       { text: "WAIT", delay: 1500 },
       { text: "[SCAN] Indexing project hierarchy...", delay: 400 },
-      { text: "[INIT] TokenCap v0.9.0 active...", delay: 500 },
+      { text: "[INIT] TokenCap v1.1.0 active...", delay: 500 },
       { text: "[DIFF] + src/hooks/useToken.ts [L12-15]", delay: 300 },
       { text: "[DIFF] + src/auth/provider.ts [L42-88]", delay: 400 },
       { text: "[PUSH] Streaming context to TOKENCAP_MEMORY.md...", delay: 500 },
@@ -65,6 +65,22 @@ const SESSIONS = [
       { text: "[WRITE] Saved Agent Pack payload to agent-pack.md", delay: 400 },
       { text: "[WRITE] Saved Agent definitions with inject hooks to agent.json", delay: 400 },
       { text: "[SUCCESS] Agent Intelligence Pack generated successfully.", delay: 600 }
+    ]
+  },
+  {
+    cmd: "tokencap agent --execution",
+    steps: [
+      { text: "[PIPELINE] Initializing Execution Contract pipeline...", delay: 400 },
+      { text: "[STATE] Compiling current project state tracker (execution-state.md)...", delay: 450 },
+      { text: "[ALWAYS] Applying codebase tech-stack principles (engineering-principles.md)...", delay: 400 },
+      { text: "[PLAN] Building decision trees & mapping utilities (decision-framework.md)...", delay: 450 },
+      { text: "[DISCOVER] Setting up 12-step engineering workflow (execution-ladder.md)...", delay: 450 },
+      { text: "[IMPLEMENT] Activating Scope Drift Detection logic (execution-scope.md)...", delay: 500 },
+      { text: "[VERIFY] Creating auto-detected test/build criteria (verification-rules.md)...", delay: 400 },
+      { text: "[REVIEW] Scaffolding change classifications (change-classification.md)...", delay: 450 },
+      { text: "[RECOVERY] Preparing structured recovery protocols (recovery-mode.md)...", delay: 400 },
+      { text: "[WRITE] Generated 8 contract files under .tokencap/agent/execution-contract/", delay: 500 },
+      { text: "[SUCCESS] Execution Contract v1.1.0 generated successfully.", delay: 600 }
     ]
   }
 ];
@@ -159,6 +175,62 @@ const parseTerminalLine = (text) => {
     return (
       <span className="text-zinc-300">
         <span className="text-sky-400 font-bold">[PIPELINE]</span> {text.substring(10)}
+      </span>
+    );
+  }
+  if (text.startsWith("[STATE]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-cyan-400 font-bold">[STATE]</span> {text.substring(7)}
+      </span>
+    );
+  }
+  if (text.startsWith("[ALWAYS]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-yellow-400 font-bold">[ALWAYS]</span> {text.substring(8)}
+      </span>
+    );
+  }
+  if (text.startsWith("[PLAN]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-blue-400 font-bold">[PLAN]</span> {text.substring(6)}
+      </span>
+    );
+  }
+  if (text.startsWith("[DISCOVER]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-indigo-400 font-bold">[DISCOVER]</span> {text.substring(10)}
+      </span>
+    );
+  }
+  if (text.startsWith("[IMPLEMENT]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-fuchsia-400 font-bold">[IMPLEMENT]</span> {text.substring(11)}
+      </span>
+    );
+  }
+  if (text.startsWith("[VERIFY]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-[#4edea3] font-bold">[VERIFY]</span> {text.substring(8)}
+      </span>
+    );
+  }
+  if (text.startsWith("[REVIEW]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-rose-400 font-bold">[REVIEW]</span> {text.substring(8)}
+      </span>
+    );
+  }
+  if (text.startsWith("[RECOVERY]")) {
+    return (
+      <span className="text-zinc-300">
+        <span className="text-red-400 font-bold">[RECOVERY]</span> {text.substring(10)}
       </span>
     );
   }

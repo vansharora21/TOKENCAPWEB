@@ -16,6 +16,14 @@
     "technicalDetail": "Generates root AGENTS.md, START_HERE.md, allowed-context.json (topic glob mapper), model-instructions.md (custom guidelines), context-manifest.json, agent-pack.md, and agent.json."
   },
   {
+    "id": "execution-contract",
+    "title": "Execution Contract",
+    "description": "Teaches AI agents how to work, not just what to know. Generates an 8-file lifecycle contract covering state tracking, engineering principles, decision frameworks, execution scopes, verification rules, change classifications, and recovery modes.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Generates 8 files under .tokencap/agent/execution-contract/. Implements scope drift detection, minimal solution check frameworks, build/test/lint confidence ratings, loop recovery heuristics, and semantic taxonomy classifications."
+  },
+  {
     "id": "smart-retrieval",
     "title": "Smart Retrieval Engine",
     "description": "Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.",

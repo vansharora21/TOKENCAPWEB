@@ -1,8 +1,8 @@
 export const commands = [
   {
     command: "tokencap agent",
-    description: "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json).",
-    result: "Self-loading context layer and root AGENTS.md file generated."
+    description: "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer. Use --execution flag to generate the Execution Contract lifecycle suite.",
+    result: "Self-loading context layer, root AGENTS.md, and Execution Contract (with --execution) generated."
   },
   {
     command: "tokencap ask",

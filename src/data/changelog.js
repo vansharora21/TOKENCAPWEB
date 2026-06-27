@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.1.0",
+    title: "Execution Contract",
+    date: "2026-06-27",
+    status: "released",
+    description: "Introduces the Execution Contract (--execution) for engineering discipline: Scope Drift Detection, Minimal Solution First questions, Confidence Rating, and Recovery Mode.",
+  },
+  {
     version: "1.0.0",
     title: "Self-Loading Universal Context Layer",
     date: "2026-06-25",

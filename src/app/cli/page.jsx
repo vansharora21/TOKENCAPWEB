@@ -43,6 +43,9 @@ export default function CliPage() {
     { flag: "--ai", description: "Generate detailed narrative AI summary (for graph command).", defaultVal: "false" },
     { flag: "--diff", description: "Generate graph structural diff vs last run (for graph command).", defaultVal: "false" },
     { flag: "--full", description: "Run full 8-phase pipeline (for agent command).", defaultVal: "true" },
+    { flag: "--export <target>", description: "Export rules directly to Cursor, Windsurf, Cline, or Roo Code formats (for agent command).", defaultVal: "false" },
+    { flag: "--execution", description: "Generate the Execution Contract lifecycle suite under .tokencap/agent/execution-contract/ (for agent command).", defaultVal: "false" },
+    { flag: "--strict", description: "Strict mode: enables scope drift confirmation and gating rules (for agent command).", defaultVal: "false" },
     { flag: "--architecture", description: "Render dependency chain ASCII view (brain) or architecture mapping (agent).", defaultVal: "false" },
     { flag: "--rules", description: "Focused generation of coding rules (for agent command).", defaultVal: "false" },
     { flag: "--skills", description: "Focused generation of agent skill definitions (for agent command).", defaultVal: "false" },
@@ -59,7 +62,7 @@ export default function CliPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v0.9.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.1.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -186,37 +189,37 @@ export default function CliPage() {
                 <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider mb-3 inline-block">Flagship Command</span>
                 <h3 className="text-2xl font-bold text-white mb-2">Agent intelligence (agent)</h3>
                 <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6">
-                  Analyze your repository and automatically generate a complete Agent Skill Pack (<code>agent-pack.md</code>) and machine-readable definitions (<code>agent.json</code>) to teach AI agents your architecture, coding conventions, review rules, risk areas, and tech stack.
+                  Analyze your repository and automatically generate a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md) or Execution Contract (v1.1.0) under <code>.tokencap/agent/</code> to teach AI agents engineering discipline.
                 </p>
               </div>
               <div className="space-y-3 font-sans text-xs text-[#ccc3d8]">
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-base text-[#4edea3]">check_circle</span>
-                  <span><strong>8-Phase pipeline:</strong> Tech Stack → Architecture → Rules → Risk Map → Review Groups → Skills → Pack → JSON</span>
+                  <span><strong>Universal Onboarding:</strong> Generates root AGENTS.md, START_HERE.md, context-manifest.json</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-base text-[#4edea3]">check_circle</span>
-                  <span><strong>Paste-ready packs:</strong> Optimized for ChatGPT, Claude, Cursor, Cline, Roo Code, and more</span>
+                  <span><strong>Execution Contract (v1.1):</strong> 8 lifecycle files covering Scope Drift, Confidence Rating, and Recovery Mode</span>
                 </div>
               </div>
             </div>
             <div className="glass-panel rounded-xl overflow-hidden flex-grow flex flex-col min-w-[320px] bg-black">
               <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
                 <span className="font-mono text-xs text-zinc-500">Terminal — tokencap agent</span>
-                <CopyButton text="tokencap agent --full" />
+                <CopyButton text="tokencap agent --execution" />
               </div>
               <div className="p-4 font-mono text-[13px] flex-grow leading-relaxed">
                 <div className="flex gap-2 overflow-x-auto scrollbar-none">
                   <span className="text-[#d2bbff] select-none">&gt;</span>
-                  <span className="text-white whitespace-nowrap">tokencap agent --full</span>
+                  <span className="text-white whitespace-nowrap">tokencap agent --execution</span>
                 </div>
-                <div className="mt-2 text-[#4edea3]">✔ <span className="text-white">Mapping repository tech stack...</span></div>
-                <div className="text-[#4edea3]">✔ <span className="text-white">Analyzing codebase architecture...</span></div>
-                <div className="text-[#4edea3]">✔ <span className="text-white">Extracting style rules & guidelines...</span></div>
-                <div className="text-[#4edea3]">✔ <span className="text-white">Generating Agent Skill Pack...</span></div>
+                <div className="mt-2 text-[#4edea3]">✔ <span className="text-white">Initializing Execution Contract pipeline...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Compiling current state & engineering rules...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Activating Scope Drift Detection logic...</span></div>
+                <div className="text-[#4edea3]">✔ <span className="text-white">Generating 8 contract files...</span></div>
                 <div className="mt-3 p-3 bg-white/5 rounded border border-white/5 text-[#d2bbff] leading-normal text-xs overflow-x-auto scrollbar-none">
-                  <span className="whitespace-nowrap">Generated: agent-pack.md (14,250 tokens)</span><br />
-                  <span className="whitespace-nowrap">Generated: agent.json (with agentInjectHooks)</span>
+                  <span className="whitespace-nowrap">Generated: .tokencap/agent/execution-contract/</span><br />
+                  <span className="whitespace-nowrap">Includes: execution-state.md, execution-scope.md</span>
                 </div>
               </div>
             </div>

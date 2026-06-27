@@ -17,7 +17,7 @@ export default function FeaturesPage() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-              v1.0.0 Engine
+              v1.1.0 Engine
             </span>
           </div>
           <h1 className="text-5xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
@@ -36,7 +36,7 @@ export default function FeaturesPage() {
           />
         </div>
       </div>
-
+ 
       {/* Version History / What's New */}
       <section className="mb-24">
         <div className="flex items-center gap-3 mb-8">
@@ -49,12 +49,32 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v1.0.0 */}
+          {/* v1.1.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.0.0</span>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.1.0</span>
+                <h3 className="text-xl font-bold text-white">Execution Contract</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 27, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Execution Contract (<code>--execution</code>)</strong> — Teaches AI agents <em>how to work</em> with consistent engineering discipline across lifecycle stages (STATE, ALWAYS, PLAN, DISCOVER, IMPLEMENT, VERIFY, REVIEW, RECOVERY).</li>
+              <li><strong>Headline Feature: Scope Drift Detection</strong> — Tracks the agent's current workspace objective, scopes, confidence, and drift in real-time under <code>execution-scope.md</code>, alerting on expanded limits.</li>
+              <li><strong>Minimal Solution First</strong> — Enforces a strict decision framework before writing new code (checking configurations, existing utilities, components, services, and dependencies in order).</li>
+              <li><strong>Confidence Rating Verification</strong> — Generates build, test, and lint status reports with a percentage score, preventing agents from declaring tasks "Fixed" without proof.</li>
+              <li><strong>Structured Recovery Mode</strong> — Protocol to extract agents from reasoning loops, capturing hypotheses, previous attempts, unknowns, and next actions.</li>
+              <li><strong>Semantic Change Classification</strong> — Taxonomizes code modifications (Behavior, Architecture, Bug Fix, Refactor) and risk mappings for easier code review.</li>
+              <li><strong>Advisory vs Strict Mode</strong> — Preserve autonomy (advisory mode) or enforce strict gating rules and cross-cluster expansion barriers (<code>--strict</code>).</li>
+            </ul>
+          </div>
+
+          {/* v1.0.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.0.0</span>
                 <h3 className="text-xl font-bold text-white">Self-Loading Universal Context Layer</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 25, 2026</span>
@@ -390,6 +410,52 @@ export default function FeaturesPage() {
                   ✓ <span className="text-[#ccc3d8]">Generated snapshots</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Brain */}
+        <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full lg:col-span-2 rounded-lg">
+          <div className="flex flex-col sm:flex-row items-start sm:items-stretch justify-between gap-6 h-full">
+            <div className="flex flex-col justify-between flex-grow">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
+                  <span className="material-symbols-outlined text-[#d2bbff]">psychology</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Project Brain</h3>
+                <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 max-w-sm">
+                  Query repository clusters instead of raw files. Get immediate maps of risk, dependency chains, recent timelines, and review groups.
+                </p>
+              </div>
+            </div>
+            <div className="w-full sm:w-52 h-24 sm:h-auto bg-[#0e0e10] rounded-xl border border-[#4a4455] p-3 flex flex-col justify-center min-h-[96px] font-mono text-[11px] leading-snug">
+              <div className="text-purple-400 font-bold">$ tokencap brain auth</div>
+              <div className="text-[#4edea3] mt-1">Fuzzy-matched: Authentication</div>
+              <div className="text-zinc-500">Risk: 🔴 CRITICAL (6 files)</div>
+              <div className="text-[#d2bbff] mt-0.5">Central: authService.ts</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Execution Contract */}
+        <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full lg:col-span-2 rounded-lg">
+          <div className="flex flex-col sm:flex-row items-start sm:items-stretch justify-between gap-6 h-full">
+            <div className="flex flex-col justify-between flex-grow">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
+                  <span className="material-symbols-outlined text-[#d2bbff]">gavel</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Execution Contract</h3>
+                <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 max-w-sm">
+                  Teach AI agents engineering discipline. Implements Scope Drift Detection, Minimal Solution check framework, Confidence Rating, and Recovery Mode.
+                </p>
+              </div>
+            </div>
+            <div className="w-full sm:w-52 h-24 sm:h-auto bg-[#0e0e10] rounded-xl border border-[#4a4455] p-3 flex flex-col justify-center min-h-[96px] font-mono text-[11px] leading-snug">
+              <div className="text-purple-400 font-bold">$ tokencap agent --execution</div>
+              <div className="text-zinc-400 mt-1">Generating 8 contract files:</div>
+              <div className="text-[#4edea3]">✔ execution-state.md</div>
+              <div className="text-[#4edea3]">✔ execution-scope.md</div>
             </div>
           </div>
         </div>

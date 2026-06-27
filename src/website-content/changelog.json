@@ -1,5 +1,20 @@
 [
   {
+    "version": "1.1.0",
+    "title": "Execution Contract",
+    "date": "2026-06-27",
+    "status": "released",
+    "highlights": [
+      "Execution Contract: Introduces tokencap agent --execution to generate a complete Execution Contract lifecycle suite inside .tokencap/agent/execution-contract/.",
+      "Scope Drift Detection: Dynamically tracks objective, scope, and drift in real-time, enforcing warnings if the agent expands beyond original limits.",
+      "Minimal Solution First: Restricts new code generation until config, existing utilities, components, services, and installed dependencies are checked first.",
+      "Confidence Rating: Requires build/test/lint verification reports and assigns a percentage rating before declaring any task 'Fixed'.",
+      "Recovery Mode: Provides a structured protocol (hypothesis, previous attempts, unknowns, recommended next step) when stuck in a reasoning loop.",
+      "Change Classification: Automatically organizes modifications into Behavior/Architecture/Bug Fix/Refactoring taxonomy with risk assessments.",
+      "Advisory vs Strict Mode: Preserve freedom with advisory mode (default) or enforce gate checks and cluster gates with --strict mode."
+    ]
+  },
+  {
     "version": "1.0.0",
     "title": "Self-Loading Universal Context Layer",
     "date": "2026-06-25",

@@ -36,6 +36,11 @@ AI automatically discovers and loads your project intelligence without manual co
 
 > ⚙️ *Technical Detail:* Generates root AGENTS.md, START_HERE.md, allowed-context.json (topic glob mapper), model-instructions.md (custom guidelines), context-manifest.json, agent-pack.md, and agent.json.
 
+#### 🔹 Execution Contract
+Teaches AI agents how to work, not just what to know. Generates an 8-file lifecycle contract covering state tracking, engineering principles, decision frameworks, execution scopes, verification rules, change classifications, and recovery modes.
+
+> ⚙️ *Technical Detail:* Generates 8 files under .tokencap/agent/execution-contract/. Implements scope drift detection, minimal solution check frameworks, build/test/lint confidence ratings, loop recovery heuristics, and semantic taxonomy classifications.
+
 #### 🔹 Smart Retrieval Engine
 Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.
 
@@ -169,7 +174,7 @@ tokencap brain auth
 
 ### 🛠️ `tokencap agent`
 
-Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json).
+Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json). Use --execution flag to generate the Execution Contract.
 
 **Example:**
 ```bash
@@ -184,7 +189,9 @@ tokencap agent --full
 | `--rules` | Focused generation of project coding rules and conventions |
 | `--skills` | Focused generation of agent skill definitions and instructions |
 | `--no-agents-file` | Skip generating the root-level AGENTS.md file |
-| `--export <target>` | Export rules directly to IDE rulesets (cursor | windsurf | cline | roocode) - planned v1.1 |
+| `--export <target>` | Export rules directly to IDE rulesets (cursor | windsurf | cline | roocode) |
+| `--execution` | Also generate the Execution Contract lifecycle suite under .tokencap/agent/execution-contract/ |
+| `--strict` | Strict mode: enables scope drift confirmation and gating rules (requires --execution) |
 
 ### 🛠️ `tokencap ask`
 
@@ -332,4 +339,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 25/6/2026.*
+*Generated automatically from `website-content` JSON source files on 27/6/2026.*

@@ -15,7 +15,7 @@
   },
   {
     "command": "tokencap agent",
-    "description": "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json).",
+    "description": "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer (AGENTS.md, START_HERE.md, allowed-context.json, model-instructions.md, context-manifest.json). Use --execution flag to generate the Execution Contract.",
     "example": "tokencap agent --full",
     "options": [
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
@@ -24,7 +24,9 @@
       { "flag": "--rules", "description": "Focused generation of project coding rules and conventions" },
       { "flag": "--skills", "description": "Focused generation of agent skill definitions and instructions" },
       { "flag": "--no-agents-file", "description": "Skip generating the root-level AGENTS.md file" },
-      { "flag": "--export <target>", "description": "Export rules directly to IDE rulesets (cursor | windsurf | cline | roocode) - planned v1.1" }
+      { "flag": "--export <target>", "description": "Export rules directly to IDE rulesets (cursor | windsurf | cline | roocode)" },
+      { "flag": "--execution", "description": "Also generate the Execution Contract lifecycle suite under .tokencap/agent/execution-contract/" },
+      { "flag": "--strict", "description": "Strict mode: enables scope drift confirmation and gating rules (requires --execution)" }
     ]
   },
   {
