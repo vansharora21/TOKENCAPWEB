@@ -17,7 +17,7 @@ export default function FeaturesPage() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-              v1.1.0 Engine
+              v1.2.0 Engine
             </span>
           </div>
           <h1 className="text-5xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
@@ -49,12 +49,31 @@ export default function FeaturesPage() {
           </div>
         </div>
         <div className="space-y-6">
-          {/* v1.1.0 */}
+          {/* v1.2.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.1.0</span>
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.2.0</span>
+                <h3 className="text-xl font-bold text-white">Repository Constitution</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">June 27, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Repository Constitution (<code>tokencap constitution</code>)</strong> — Encodes permanent architectural, schema, security, and compliance laws that AI coding agents must never violate.</li>
+              <li><strong>Law Sheets Generation</strong> — Automatically parses codebase constraints into <code>api-contracts.yaml</code>, <code>schema-invariants.yaml</code>, <code>architecture-laws.md</code>, <code>security-boundaries.md</code>, <code>compliance-rules.md</code>, and <code>critical-flows.md</code>.</li>
+              <li><strong>Constitution Score</strong> — Dynamically scores repository health (0-100 index) across Architecture, API Stability, Schema, Security, and Compliance categories.</li>
+              <li><strong>ConstitutionGraph</strong> — Unifies the ruleset into a single internal model, rendering raw JSON/YAML, human-readable markdown summaries, and interactive graph visualizations.</li>
+              <li><strong>Manual Overrides</strong> — Supports custom rule definitions inside a local <code>tokencap.constitution.yaml</code>.</li>
+              <li><strong>AI Visibility</strong> — Injects constitution indices, severity constraints, and critical laws directly into agent onboarding entry points and compression context pack manifests.</li>
+            </ul>
+          </div>
+
+          {/* v1.1.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#d2bbff]/10 bg-white/5 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#2a2a2c] text-[#d2bbff] border border-[#d2bbff]/20 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.1.0</span>
                 <h3 className="text-xl font-bold text-white">Execution Contract</h3>
               </div>
               <span className="text-xs text-zinc-500 font-mono">June 27, 2026</span>
@@ -456,6 +475,29 @@ export default function FeaturesPage() {
               <div className="text-zinc-400 mt-1">Generating 8 contract files:</div>
               <div className="text-[#4edea3]">✔ execution-state.md</div>
               <div className="text-[#4edea3]">✔ execution-scope.md</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Repository Constitution */}
+        <div className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col h-full lg:col-span-2 rounded-lg">
+          <div className="flex flex-col sm:flex-row items-start sm:items-stretch justify-between gap-6 h-full">
+            <div className="flex flex-col justify-between flex-grow">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-[#353437] flex items-center justify-center mb-6 group-hover:bg-[#d2bbff]/20 transition-colors">
+                  <span className="material-symbols-outlined text-[#d2bbff]">menu_book</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Repository Constitution</h3>
+                <p className="text-sm leading-relaxed text-[#ccc3d8] mb-6 max-w-sm">
+                  Define permanent guidelines that AI agents must never violate (API contracts, database schema rules, security laws, GDPR/GDPR compliance). Includes health scoring index.
+                </p>
+              </div>
+            </div>
+            <div className="w-full sm:w-52 h-24 sm:h-auto bg-[#0e0e10] rounded-xl border border-[#4a4455] p-3 flex flex-col justify-center min-h-[96px] font-mono text-[11px] leading-snug">
+              <div className="text-purple-400 font-bold">$ tokencap constitution</div>
+              <div className="text-zinc-500 mt-1">Constitution Score: 92/100</div>
+              <div className="text-[#4edea3]">✔ Inferred 14 API laws</div>
+              <div className="text-amber-400">🛡 2 IMMUTABLE rules active</div>
             </div>
           </div>
         </div>

@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.2.0",
+    title: "Repository Constitution",
+    date: "2026-06-27",
+    status: "released",
+    description: "Introduces the Repository Constitution (tokencap constitution) to encode permanent engineering laws regarding API contracts, schemas, security, and compliance.",
+  },
+  {
     version: "1.1.0",
     title: "Execution Contract",
     date: "2026-06-27",

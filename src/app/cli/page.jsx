@@ -38,14 +38,16 @@ export default function CliPage() {
     { flag: "--pr", description: "Generate PR summary description (for diff command).", defaultVal: "false" },
     { flag: "--prompt", description: "Generate AI prompt/review prompt (for ask/context/diff commands).", defaultVal: "true (ask)" },
     { flag: "--no-prompt", description: "Skip prompt.md generation (for ask command).", defaultVal: "false" },
-    { flag: "--json", description: "Output machine-readable JSON (for ask/context/diff/graph/agent commands).", defaultVal: "false" },
+    { flag: "--json", description: "Output machine-readable JSON (for ask/context/diff/graph/agent/constitution commands).", defaultVal: "false" },
     { flag: "--open", description: "Open interactive HTML graph viewer in browser (for graph command).", defaultVal: "false" },
     { flag: "--ai", description: "Generate detailed narrative AI summary (for graph command).", defaultVal: "false" },
-    { flag: "--diff", description: "Generate graph structural diff vs last run (for graph command).", defaultVal: "false" },
+    { flag: "--diff", description: "Generate graph structural diff vs last run (for graph command) or constitution diff (for constitution command).", defaultVal: "false" },
     { flag: "--full", description: "Run full 8-phase pipeline (for agent command).", defaultVal: "true" },
     { flag: "--export <target>", description: "Export rules directly to Cursor, Windsurf, Cline, or Roo Code formats (for agent command).", defaultVal: "false" },
     { flag: "--execution", description: "Generate the Execution Contract lifecycle suite under .tokencap/agent/execution-contract/ (for agent command).", defaultVal: "false" },
     { flag: "--strict", description: "Strict mode: enables scope drift confirmation and gating rules (for agent command).", defaultVal: "false" },
+    { flag: "--history", description: "Show snapshot history and score tracking over time (for constitution command).", defaultVal: "false" },
+    { flag: "--impact <file>", description: "Query which constitution laws are affected by a file (for constitution command).", defaultVal: "N/A" },
     { flag: "--architecture", description: "Render dependency chain ASCII view (brain) or architecture mapping (agent).", defaultVal: "false" },
     { flag: "--rules", description: "Focused generation of coding rules (for agent command).", defaultVal: "false" },
     { flag: "--skills", description: "Focused generation of agent skill definitions (for agent command).", defaultVal: "false" },
@@ -62,7 +64,7 @@ export default function CliPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-6">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.1.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.2.0</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -380,6 +382,31 @@ export default function CliPage() {
                   - Modified API: /api/auth/login<br />
                   - Suggested Tests: Session expiry, redirect validation
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Repository Constitution */}
+          <section id="constitution" className="flex flex-col lg:col-span-2">
+            <h3 className="text-lg font-bold text-white mb-2">Repository constitution (constitution)</h3>
+            <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
+              Inspect permanent codebase laws, view compliance ratings, verify schema rules, or search for rules by severity or category.
+            </p>
+            <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
+              <div className="bg-[#18181b] px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                <span className="font-mono text-xs text-zinc-500">Terminal — tokencap constitution</span>
+                <CopyButton text="tokencap constitution" />
+              </div>
+              <div className="p-4 font-mono text-[13px] flex-grow bg-black leading-relaxed">
+                <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                  <span className="text-[#d2bbff] select-none">&gt;</span>
+                  <span className="text-white whitespace-nowrap">tokencap constitution</span>
+                </div>
+                <div className="mt-3 text-[#4edea3]">✔ <span className="text-white">Loading ConstitutionGraph...</span></div>
+                <div className="text-zinc-400">Constitution Score: 92 / 100</div>
+                <div className="text-rose-400 font-bold mt-2">Top Rules (Never Violate):</div>
+                <div className="text-zinc-300 ml-4">- 🔒 CONST-SEC-001 — Password hashing algorithm must not be changed.</div>
+                <div className="text-zinc-300 ml-4">- 🔴 CONST-COMP-001 — PCI-DSS compliance required for payment routes.</div>
               </div>
             </div>
           </section>

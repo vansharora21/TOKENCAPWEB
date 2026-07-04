@@ -1,5 +1,20 @@
 [
   {
+    "version": "1.2.0",
+    "title": "Repository Constitution",
+    "date": "2026-06-27",
+    "status": "released",
+    "highlights": [
+      "Repository Constitution: Introduces tokencap constitution and tokencap make integration to generate permanent laws that AI coding agents must never violate.",
+      "Inferred Law Sheets: Compiles api-contracts.yaml, schema-invariants.yaml, architecture-laws.md, security-boundaries.md, compliance-rules.md, and critical-flows.md under .tokencap/constitution/.",
+      "Single Source of Truth: Implements ConstitutionGraph internal model, rendering consistent rule lists across JSON, YAML, Markdown, and Interactive HTML UI.",
+      "Rule Structure & IDs: Uniquely identifies constraints (e.g. CONST-SEC-001) mapping stable fields: severity (IMMUTABLE, CRITICAL, etc.), confidence rating, failure effects, and file derivations.",
+      "Constitution Score: Computes overall health ratings (0-100) across Architecture, API Stability, Schema, Security, and Compliance areas.",
+      "Manual Overrides: Support for custom business logic or compliance rules defined inside tokencap.constitution.yaml.",
+      "AI Visibility: Automatically injects constitution scores, rules, and severity levels into agent onboarding START_HERE.md and context pack manifests."
+    ]
+  },
+  {
     "version": "1.1.0",
     "title": "Execution Contract",
     "date": "2026-06-27",

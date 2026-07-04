@@ -41,6 +41,11 @@ Teaches AI agents how to work, not just what to know. Generates an 8-file lifecy
 
 > ⚙️ *Technical Detail:* Generates 8 files under .tokencap/agent/execution-contract/. Implements scope drift detection, minimal solution check frameworks, build/test/lint confidence ratings, loop recovery heuristics, and semantic taxonomy classifications.
 
+#### 🔹 Repository Constitution
+Encode permanent engineering laws that AI agents must never violate (API contracts, schema invariants, architecture laws, security boundaries, and compliance rules). Health checks are scored on a 0-100 index.
+
+> ⚙️ *Technical Detail:* Builds an internal ConstitutionGraph mapping categories, severities, and relationships. Generates structured JSON/YAML/Markdown sheets and an interactive HTML visualization. Supports manual rule overrides.
+
 #### 🔹 Smart Retrieval Engine
 Ask a natural language question about your codebase and TokenCap finds only the relevant files. No more dumping entire repositories into AI. Features keywords extraction, multi-source relevance scoring, and auto-mode detection.
 
@@ -317,6 +322,24 @@ tokencap pack auth --mode review --budget 15000
 | `<topic>` | Optional topic or cluster keyword (queries Brain to scope context pack) |
 | `--mode <name>` | Select compression mode: review | debug | architecture | minimal |
 | `--budget <n>` | Maximum token budget for output pack. Default: 20000 |
+
+### 🛠️ `tokencap constitution`
+
+Manage and inspect your Repository Constitution. Analyzes codebase invariants, schema rules, security boundaries, and API contracts to enforce permanent laws.
+
+**Example:**
+```bash
+tokencap constitution --diff
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+| `--json` | Output raw JSON rule list and graph data |
+| `--diff` | Diff current constitution rules against the last run |
+| `--history` | Show snapshot history and score tracking over time |
+| `--impact <file>` | Query which constitution laws are affected by a specific file |
+| `search <query>` | Search constitution rules by keyword, ID, severity, or category |
 
 ### 🛠️ `tokencap watch`
 
