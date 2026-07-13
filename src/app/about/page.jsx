@@ -17,7 +17,7 @@ export default function AboutPage() {
             <span className="font-mono text-[11px] font-medium text-[#d2bbff] uppercase tracking-widest block mb-4">
               The Context Problem
             </span>
-            <h1 className="text-5xl font-bold tracking-tight text-white mb-6">
+            <h1 className="text-5xl font-bold tracking-tight text-white mb-6 font-nerdropol">
               Solving the LLM <br />context gap.
             </h1>
             <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-xl">
@@ -104,7 +104,7 @@ export default function AboutPage() {
       {/* Mission Statement & Founder Profile */}
       <section className="mb-20 py-16 border-t border-[#4a4455]/20">
         <div className="max-w-3xl">
-          <h2 className="text-4xl font-bold tracking-tight text-white mb-6 leading-tight">
+          <h2 className="text-4xl font-bold tracking-tight text-white mb-6 leading-tight font-vorcas">
             Our mission is to make developers <span className="text-[#d2bbff] italic font-serif">augmented</span>, not replaced.
           </h2>
           <div className="flex flex-col gap-4 text-sm text-[#ccc3d8] leading-relaxed">
@@ -129,7 +129,7 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section>
         <div className="bg-[#1c1b1d] rounded-2xl p-12 border border-[#4a4455]/30 flex flex-col items-center text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white mb-2">Ready to bridge the gap?</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-white mb-2 font-vorcas">Ready to bridge the gap?</h2>
           <p className="text-sm text-[#ccc3d8] mb-6 max-w-md">Get started with TokenCap to supercharge your AI workflow.</p>
           <div className="flex gap-4">
             <button className="bg-[#7c3aed] text-white px-6 py-2.5 rounded-lg font-mono text-[11px] uppercase tracking-wider font-bold hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all active:scale-95">

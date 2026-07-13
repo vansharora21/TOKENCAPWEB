@@ -50,7 +50,7 @@ export default function DocsPage() {
       <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-4">
           <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.2.0</p>
+          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.3.0</p>
         </div>
         <div className="mb-4">
           <DocsSearch />
@@ -89,7 +89,7 @@ export default function DocsPage() {
         <div className="max-w-3xl">
           {/* Header */}
           <header className="mb-12">
-            <h1 className="text-4xl font-bold tracking-tight text-white mb-3">
+            <h1 className="text-4xl font-bold tracking-tight text-white mb-3 font-nerdropol">
               TokenCap Documentation
             </h1>
             <p className="text-base leading-relaxed text-[#ccc3d8]">
@@ -99,7 +99,7 @@ export default function DocsPage() {
 
           {docsSections.map((section) => (
             <section key={section.slug} className="mb-16 scroll-mt-24" id={section.slug}>
-              <h2 className="text-3xl font-bold tracking-tight text-white mb-6 border-b border-[#4a4455]/20 pb-3">
+              <h2 className="text-3xl font-bold tracking-tight text-white mb-6 border-b border-[#4a4455]/20 pb-3 font-vorcas">
                 {section.title}
               </h2>
               <article className="prose prose-invert max-w-none">
@@ -139,7 +139,7 @@ export default function DocsPage() {
         <div className="mt-8 p-4 bg-[#7c3aed]/10 border border-[#7c3aed]/20 rounded-xl relative overflow-hidden">
           <div className="relative z-10">
             <h6 className="font-bold text-white text-xs mb-1">New Release</h6>
-            <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">v1.2.0 adds the Repository Constitution (tokencap constitution) to encode permanent engineering laws AI agents must never violate.</p>
+            <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">v1.3.0 adds the Incremental Intelligence Engine — only rebuilds what changed. Sub-100ms for single-file edits.</p>
             <a className="text-[11px] text-[#d2bbff] font-bold underline hover:text-[#7c3aed] transition-colors" href="/changelog">
               Check changelog
             </a>

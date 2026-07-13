@@ -17,10 +17,10 @@ export default function FeaturesPage() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#d2bbff]/10 border border-[#d2bbff]/20 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-[#d2bbff] uppercase tracking-wider">
-              v1.2.0 Engine
+              v1.3.0 Engine
             </span>
           </div>
-          <h1 className="text-5xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
+          <h1 className="text-5xl font-bold tracking-tight text-white mb-4 leading-[1.1] font-nerdropol">
             Precision engineered features.
           </h1>
           <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-xl">
@@ -44,11 +44,33 @@ export default function FeaturesPage() {
             <span className="material-symbols-outlined text-base">history</span>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white leading-tight">Version Release Highlights</h2>
+            <h2 className="text-2xl font-bold text-white leading-tight font-vorcas">Version Release Highlights</h2>
             <p className="text-xs text-[#ccc3d8]/60 mt-1">Full evolutionary path and changelog items for TokenCap CLI.</p>
           </div>
         </div>
         <div className="space-y-6">
+          {/* v1.3.0 */}
+          <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-[#7c3aed] text-white px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.3.0</span>
+                <h3 className="text-xl font-bold text-white">Incremental Intelligence Engine</h3>
+              </div>
+              <span className="text-xs text-zinc-500 font-mono">July 10, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-[#ccc3d8] list-disc list-inside">
+              <li><strong>Incremental Intelligence Engine</strong> — <code>tokencap make</code> now rebuilds only what changed. SHA-256 hash comparison, bidirectional dependency BFS, and per-cluster selective rebuilds replace full-scan defaults.</li>
+              <li><strong>SHA-256 Hash Cache</strong> — <code>.tokencap/cache/hashes.cache.json</code> stores file hashes with integrity checksum. Corrupted or missing cache triggers automatic full rebuild fallback.</li>
+              <li><strong>Impact Analysis</strong> — Changed files are mapped to affected clusters via <code>knowledge.json</code>, propagated to dependent clusters one level deep. If &gt;60% clusters are affected, a full rebuild is triggered instead.</li>
+              <li><strong>Selective Rebuild</strong> — Graph patches only dirty nodes and prunes ghost edges. Brain updates only affected clusters. Constitution re-evaluates only impacted rules via <code>getImpactedRules()</code>. Agent files update only sections referencing affected clusters.</li>
+              <li><strong>Delta Files</strong> — After every build, <code>.tokencap/delta/</code> writes <code>changed-files.json</code>, <code>affected-clusters.json</code>, <code>dirty-nodes.json</code>, and per-engine delta JSON files. AI agents consume only what changed.</li>
+              <li><strong>Versioned Delta History</strong> — <code>.tokencap/delta/history/</code> stores timestamped delta snapshots (last 10 by default) for rollback and audit.</li>
+              <li><strong>New CLI Flags</strong> — <code>--full</code> (force full rebuild), <code>--rebuild-brain</code>, <code>--rebuild-constitution</code>, <code>--rebuild-graph</code>, <code>--clean-cache</code>. Default is now incremental.</li>
+              <li><strong>Zero-Change Detection</strong> — If nothing changed, <code>tokencap make</code> exits in sub-100ms with no disk writes. "Intelligence is up to date."</li>
+            </ul>
+          </div>
+
           {/* v1.2.0 */}
           <div className="glass-card p-8 rounded-xl border-[#7c3aed]/20 bg-[#7c3aed]/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-[#7c3aed]/10 rounded-full blur-xl"></div>
@@ -591,7 +613,7 @@ export default function FeaturesPage() {
       <section className="mt-20">
         <div className="glass-card p-12 relative overflow-hidden rounded-xl border-[#7c3aed]/20 text-center">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-[#7c3aed]/5 blur-[120px] rounded-full"></div>
-          <h2 className="text-4xl font-bold tracking-tight text-white mb-6 relative z-10">Start capturing context.</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-white mb-6 relative z-10 font-vorcas">Start capturing context.</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
             <a
               href="/docs"

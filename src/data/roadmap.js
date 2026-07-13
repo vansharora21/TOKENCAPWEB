@@ -20,15 +20,15 @@ export const roadmapItems = [
     title: "Incremental Snapshots",
     description:
       "Only re-process changed files on subsequent runs instead of scanning the full project every time.",
-    status: "exploratory",
+    status: "planned",
     source: "Architecture analysis — current full-scan approach in collectFiles()",
   },
   {
-    version: "0.11.0",
+    version: "0.12.0",
     title: "Graph Cycle Detection",
     description:
       "Detect circular import dependencies in the project graph and surface them as warnings in TOKENCAP_GRAPH.md.",
-    status: "exploratory",
+    status: "planned",
     source: "Architecture analysis — buildGraph.js edge model supports cycle detection",
   },
 ];

@@ -1,21 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 function FinalCTA() {
   const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef(null);
   const command = "npm install -g tokencap";
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const handleCopy = async () => {
     try {
       if (typeof navigator !== "undefined" && navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
         await navigator.clipboard.writeText(command);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
       } else {
-        console.warn("Clipboard API not available in this environment.");
+        const textarea = document.createElement("textarea");
+        textarea.value = command;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
       }
+      setCopied(true);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy command", err);
     }
@@ -38,8 +53,8 @@ function FinalCTA() {
           </div>
 
           {/* Title */}
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">sync?</span>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight font-vorcas">
+            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400 anim-heading-gradient">sync?</span>
           </h2>
 
           {/* Description */}
@@ -68,7 +83,8 @@ function FinalCTA() {
               
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 hover:scale-[1.03] text-white px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-[0.98] cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.2)] focus:outline-none focus:ring-1 focus:ring-purple-400 shrink-0"
+                className="flex items-center gap-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 hover:scale-[1.03] text-white px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-[0.98] cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.2)] focus-visible:outline-2 focus-visible:outline-purple-400 shrink-0"
+                aria-label={copied ? "Copied to clipboard" : "Copy install command"}
               >
                 <span className="material-symbols-outlined text-[13px]">
                   {copied ? "check" : "content_copy"}

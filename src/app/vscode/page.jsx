@@ -16,10 +16,10 @@ export default function VscodePage() {
         <div className="space-y-6">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
             <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
-            V1.2.0 NOW AVAILABLE
+            V1.3.0 NOW AVAILABLE
           </div>
-          <h1 className="text-5xl font-bold tracking-tight text-white leading-tight">
-            The ultimate VS Code toolkit for <span className="text-[#d2bbff]">snapshot precision.</span>
+          <h1 className="text-5xl font-bold tracking-tight text-white leading-tight font-nerdropol">
+            The ultimate VS Code toolkit for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d2bbff] to-[#7c3aed] anim-heading-gradient">snapshot precision.</span>
           </h1>
           <p className="text-[#ccc3d8] text-base leading-relaxed">
             TokenCap seamlessly integrates into your editor to automate codebase snapshotting, import graph parsing, and context memory tracking on every file save.
@@ -29,14 +29,23 @@ export default function VscodePage() {
               href="https://marketplace.visualstudio.com/items?itemName=VanshArora21.tokencap"
               target="_blank"
               rel="noreferrer"
-              className="bg-[#7c3aed] text-white px-6 py-2.5 rounded-lg font-bold hover:brightness-110 transition-all active:scale-95 flex items-center gap-1.5 shadow-[0_0_20px_rgba(124,58,237,0.15)]"
+              className="bg-[#7c3aed] text-white px-6 py-2.5 rounded-lg font-bold hover:brightness-110 transition-all active:scale-95 flex items-center gap-1.5 shadow-[0_0_20px_rgba(124,58,237,0.15)] focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             >
               <span className="material-symbols-outlined text-sm">download</span>
-              Install Extension
+              VS Code Marketplace
+            </a>
+            <a
+              href="https://open-vsx.org/extension/VanshArora21/tokencap"
+              target="_blank"
+              rel="noreferrer"
+              className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
+            >
+              <span className="material-symbols-outlined text-sm">open_in_new</span>
+              Open VSX
             </a>
             <a
               href="/cli"
-              className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-1.5"
+              className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             >
               <span className="material-symbols-outlined text-sm">terminal</span>
               View CLI Docs
@@ -141,7 +150,7 @@ export default function VscodePage() {
 
       {/* Feature Bento Grid */}
       <section className="mb-20">
-        <h2 className="text-2xl font-bold text-white mb-6">Extension Core Capabilities</h2>
+        <h2 className="text-2xl font-bold text-white mb-6 font-vorcas">Extension Core Capabilities</h2>
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           {/* Large Feature: Auto Capture */}
           <div className="md:col-span-4 glass-panel p-8 rounded-xl flex flex-col justify-between group hover:border-[#d2bbff]/40 transition-all">
@@ -229,7 +238,7 @@ export default function VscodePage() {
 
       {/* Installation Instructions */}
       <section className="bg-[#0e0e10] border border-[#4a4455]/20 rounded-xl p-12 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-white mb-6">Ready to optimize?</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-white mb-6 font-vorcas">Ready to optimize?</h2>
         <div className="max-w-2xl mx-auto space-y-4">
           <div className="bg-[#1c1b1d] flex items-center px-4 py-3 rounded-lg border border-[#4a4455]/40 font-mono text-[13px] group justify-between">
             <div className="flex gap-2">

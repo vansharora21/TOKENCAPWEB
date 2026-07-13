@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.3.0",
+    title: "Incremental Intelligence Engine",
+    date: "2026-07-10",
+    status: "released",
+    description: "Analyze once. Update only what changed. SHA-256 hash cache, bidirectional dependency walk, per-cluster selective rebuilds, delta files, and versioned history. Sub-100ms for single-file edits.",
+  },
+  {
     version: "1.2.0",
     title: "Repository Constitution",
     date: "2026-06-27",

@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.TOKENCAP.md
+.tokencap-notes.md
+TOKENCAP_GRAPH.md
+TOKENCAP_MEMORY.md
+TOKENCAP.md

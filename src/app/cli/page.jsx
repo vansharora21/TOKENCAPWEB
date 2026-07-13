@@ -47,11 +47,10 @@ export default function CliPage() {
     { flag: "--execution", description: "Generate the Execution Contract lifecycle suite under .tokencap/agent/execution-contract/ (for agent command).", defaultVal: "false" },
     { flag: "--strict", description: "Strict mode: enables scope drift confirmation and gating rules (for agent command).", defaultVal: "false" },
     { flag: "--history", description: "Show snapshot history and score tracking over time (for constitution command).", defaultVal: "false" },
-    { flag: "--impact <file>", description: "Query which constitution laws are affected by a file (for constitution command).", defaultVal: "N/A" },
+    { flag: "--impact <file>", description: "Query which constitution laws are affected by a file (for constitution command) or show affected file/feature count and risk summary (for brain command).", defaultVal: "N/A" },
     { flag: "--architecture", description: "Render dependency chain ASCII view (brain) or architecture mapping (agent).", defaultVal: "false" },
     { flag: "--rules", description: "Focused generation of coding rules (for agent command).", defaultVal: "false" },
     { flag: "--skills", description: "Focused generation of agent skill definitions (for agent command).", defaultVal: "false" },
-    { flag: "--impact", description: "Show affected file/feature count and risk summary (for brain command).", defaultVal: "false" },
     { flag: "--review", description: "Show review group files and grouping reasons (for brain command).", defaultVal: "false" },
     { flag: "--timeline", description: "Show git commit history for cluster files (for brain command).", defaultVal: "false" },
     { flag: "--risk", description: "Show risk areas and affected files (for brain command).", defaultVal: "false" },
@@ -102,7 +101,7 @@ export default function CliPage() {
       {/* Main Content */}
       <main className="flex-grow px-6 py-12 md:px-12 min-w-0">
         <header className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-white mb-3">CLI Reference</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-white mb-3 font-nerdropol">CLI Reference</h1>
           <p className="text-[#ccc3d8] text-base max-w-2xl leading-relaxed">
             Master the TokenCap command-line interface. A powerful, local-first utility designed to package codebase context for AI tools.
           </p>
@@ -114,7 +113,7 @@ export default function CliPage() {
             <div className="w-8 h-8 rounded bg-[#7c3aed]/10 flex items-center justify-center text-[#d2bbff]">
               <span className="material-symbols-outlined text-sm">download</span>
             </div>
-            <h2 className="text-xl font-bold text-white">Install globally</h2>
+            <h2 className="text-xl font-bold text-white font-vorcas">Install globally</h2>
           </div>
           <p className="text-sm leading-relaxed text-[#ccc3d8] mb-4">
             Get started by installing the TokenCap CLI globally via npm. This provides the <code className="text-[#d2bbff]">tokencap</code> executable.
@@ -415,7 +414,7 @@ export default function CliPage() {
         {/* Detailed Section: Config */}
         <section className="mb-16" id="config">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <h2 className="text-xl font-bold text-white">Configuration</h2>
+            <h2 className="text-xl font-bold text-white font-vorcas">Configuration</h2>
             <span className="bg-[#2a2a2c] px-3 py-1 rounded-full font-mono text-[12px] text-[#4edea3] border border-[#4a4455] self-start sm:self-auto">
               .tokencap.json
             </span>
@@ -472,7 +471,7 @@ export default function CliPage() {
 
         {/* Table Section: CLI Options */}
         <section className="mb-16" id="options">
-          <h2 className="text-xl font-bold text-white mb-6">CLI Options</h2>
+          <h2 className="text-xl font-bold text-white mb-6 font-vorcas">CLI Options</h2>
           <div className="overflow-x-auto border border-[#4a4455]/20 rounded-xl bg-[#0e0e10]/30">
             <table className="w-full text-left border-collapse">
               <thead className="bg-[#2a2a2c]/60">

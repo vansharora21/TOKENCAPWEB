@@ -3,19 +3,27 @@
 import { useState } from "react";
 import Link from "next/link";
 
+const navItems = [
+  { label: "Features", href: "/features" },
+  { label: "Downloads", href: "/downloads" },
+  { label: "Docs", href: "/docs" },
+  { label: "Timeline", href: "/changelog" },
+  { label: "Resources", href: "/resources" },
+  { label: "About", href: "/about" },
+];
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { label: "Features", href: "/features" },
-    { label: "Docs", href: "/docs" },
-    { label: "Timeline", href: "/changelog" },
-    { label: "Resources", href: "/resources" },
-    { label: "About", href: "/about" },
-  ];
+  // Close mobile menu on Escape key
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape" && isOpen) {
+      setIsOpen(false);
+    }
+  };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-[#0a0a0c]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/5 bg-[#0a0a0c]/80 backdrop-blur-xl" onKeyDown={handleKeyDown}>
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-10">
         {/* Left: Brand name */}
         <Link href="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-white hover:opacity-90 transition">
@@ -23,12 +31,12 @@ function Navbar() {
         </Link>
 
         {/* Middle: Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-zinc-400 transition hover:text-white"
+              className="text-sm font-medium text-zinc-400 transition hover:text-white focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             >
               {item.label}
             </Link>
@@ -40,7 +48,7 @@ function Navbar() {
           {/* Search Icon */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-search"))}
-            className="text-zinc-400 hover:text-white transition focus:outline-none"
+            className="text-zinc-400 hover:text-white transition focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             aria-label="Search"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -51,8 +59,10 @@ function Navbar() {
           {/* Hamburger Menu Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-zinc-400 hover:text-white transition focus:outline-none md:hidden p-1"
-            aria-label="Toggle Menu"
+            className="text-zinc-400 hover:text-white transition focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2 md:hidden p-1"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? (
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -69,9 +79,9 @@ function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden border-t border-white/5 bg-[#0a0a0c]/95 backdrop-blur-xl">
+        <div id="mobile-menu" className="md:hidden border-t border-white/5 bg-[#0a0a0c]/95 backdrop-blur-xl">
           <div className="px-6 py-6 space-y-4">
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -82,7 +92,6 @@ function Navbar() {
                   {item.label}
                 </Link>
               ))}
-
             </nav>
           </div>
         </div>

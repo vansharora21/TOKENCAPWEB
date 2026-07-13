@@ -21,9 +21,9 @@ function HowItWorks() {
     <section className="grid gap-12 lg:grid-cols-2 lg:items-center py-6">
       {/* Left Column: Workflow steps */}
       <div className="space-y-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight font-vorcas anim-heading-reveal">
           The Workflow of <br />
-          the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Future.</span>
+          the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 anim-heading-gradient">Future.</span>
         </h2>
 
         <div className="space-y-6 max-w-lg">

@@ -64,13 +64,18 @@ export function FAQAccordion() {
     <div className="space-y-4">
       {faqItems.map((item, index) => {
         const isOpen = !!openIndexes[index];
+        const panelId = `faq-panel-${index}`;
+        const buttonId = `faq-button-${index}`;
         return (
           <div
             key={index}
             className="accordion-item glass-panel rounded-xl glow-hover overflow-hidden transition-all duration-300 border border-white/10 bg-white/5"
           >
             <button
-              className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+              id={buttonId}
+              aria-expanded={isOpen}
+              aria-controls={panelId}
+              className="w-full flex items-center justify-between p-5 text-left focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2 rounded-xl"
               onClick={() => toggleAccordion(index)}
             >
               <span className="text-base font-bold text-white">
@@ -80,17 +85,22 @@ export function FAQAccordion() {
                 className={`material-symbols-outlined transition-transform duration-300 text-zinc-400 ${
                   isOpen ? "rotate-180 text-white" : ""
                 }`}
+                aria-hidden="true"
               >
                 expand_more
               </span>
             </button>
             <div
-              className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                isOpen ? "max-h-[300px] border-t border-[#4a4455]/20 p-5" : "max-h-0"
-              }`}
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              className="overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out"
+              style={{ display: "grid", gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >
-              <div className="text-sm leading-relaxed text-[#ccc3d8]">
-                {item.answer}
+              <div className="overflow-hidden">
+                <div className="p-5 border-t border-[#4a4455]/20 text-sm leading-relaxed text-[#ccc3d8]">
+                  {item.answer}
+                </div>
               </div>
             </div>
           </div>

@@ -26,6 +26,11 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 Incremental Intelligence Engine
+Analyze once. Update only what changed. Sub-100ms for single-file edits. TokenCap now uses a hash cache and bidirectional dependency walks to patch dirty nodes rather than rebuilding from scratch.
+
+> ⚙️ *Technical Detail:* Uses SHA-256 caching and BFS on dependency graph. Generates delta files (.tokencap/delta/) for files, clusters, brain, graph, constitution, and agents. New CLI flags for selective rebuilds.
+
 #### 🔹 Project Brain
 Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, git timeline — all from a single command.
 
@@ -234,16 +239,21 @@ tokencap context auth
 
 ### 🛠️ `tokencap make`
 
-Generate the complete TokenCap snapshot: TOKENCAP.md (main snapshot), TOKENCAP_GRAPH.md (project dependency graph), and TOKENCAP_MEMORY.md (developer context memory) in one shot.
+Generate the complete TokenCap snapshot. Incremental by default since v1.3.0. Updates graph, brain, constitution, and agent files by rebuilding only what changed.
 
 **Example:**
 ```bash
-tokencap make --profile balanced
+tokencap make
 ```
 
 | Option / Flag | Description |
 | --- | --- |
 | `--root <path>` | Workspace root. Default: current directory |
+| `--full` | Force full rebuild (v1.2.0 behavior) |
+| `--rebuild-brain` | Rebuild only the Brain knowledge base |
+| `--rebuild-constitution` | Rebuild only the Constitution Engine |
+| `--rebuild-graph` | Rebuild only the Dependency Graph |
+| `--clean-cache` | Clear the incremental cache (next build = full) |
 | `--out <path>` | Snapshot output path. Default: TOKENCAP.md |
 | `--profile <name>` | Context profile: compact | balanced | deep | gpt-4o | claude-3-5-sonnet | gemini-1.5-flash | gemini-1.5-pro | llama-3-8b |
 | `--max-files <n>` | Maximum number of files to include |
@@ -362,4 +372,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 29/6/2026.*
+*Generated automatically from `website-content` JSON source files on 14/7/2026.*

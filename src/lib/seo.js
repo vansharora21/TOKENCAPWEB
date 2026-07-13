@@ -7,19 +7,28 @@ export function buildMetadata({ title, description, path = "/" }) {
     description,
     keywords: siteConfig.keywords,
     alternates: {
-      canonical: new URL(path, siteConfig.canonicalUrl).toString(),
+      canonical: new URL(path, siteConfig.url).toString(),
     },
     openGraph: {
-      title: title ? `${title} | TokenCap` : siteConfig.ogTitle,
-      description: description ?? siteConfig.ogDescription,
-      url: new URL(path, siteConfig.canonicalUrl).toString(),
+      title: title ? `${title} | TokenCap` : siteConfig.name,
+      description: description ?? siteConfig.description,
+      url: new URL(path, siteConfig.url).toString(),
       siteName: siteConfig.name,
       type: "website",
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: "TokenCap — AI-ready codebase snapshots",
+        },
+      ],
     },
     twitter: {
       card: siteConfig.twitterCard,
       title: title ? `${title} | TokenCap` : siteConfig.name,
-      description: description ?? siteConfig.ogDescription,
+      description: description ?? siteConfig.description,
+      images: [siteConfig.ogImage],
     },
   };
 }

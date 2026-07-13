@@ -25,9 +25,6 @@ export const siteConfig = {
     "Next.js",
     "React developer tools",
   ],
-  ogTitle: "TokenCap — Compress your codebase for AI handoffs",
-  ogDescription:
-    "Generate structured, AI-ready snapshots of your project in seconds. Dependency graph, context memory, Git diffs, secret redaction. Local-first. Free. Open source.",
+  ogImage: "/og-image.png",
   twitterCard: "summary_large_image",
-  canonicalUrl: "https://tokencap.dev",
 };

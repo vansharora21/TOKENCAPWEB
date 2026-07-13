@@ -4,9 +4,9 @@ function Hero() {
   return (
     <section className="flex flex-col items-start text-left max-w-xl pt-4 pb-4">
       {/* Title */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] font-vorcas anim-heading-reveal">
         Never Lose Project <br className="hidden sm:inline" />
-        <span className="text-purple-400">Context</span> Again
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400 anim-heading-gradient">Context</span> Again
       </h1>
 
       {/* Description */}
