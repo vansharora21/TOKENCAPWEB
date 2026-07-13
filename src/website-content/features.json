@@ -1,5 +1,13 @@
 [
   {
+    "id": "incremental-intelligence",
+    "title": "Incremental Intelligence Engine",
+    "description": "Analyze once. Update only what changed. Sub-100ms for single-file edits. TokenCap now uses a hash cache and bidirectional dependency walks to patch dirty nodes rather than rebuilding from scratch.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Uses SHA-256 caching and BFS on dependency graph. Generates delta files (.tokencap/delta/) for files, clusters, brain, graph, constitution, and agents. New CLI flags for selective rebuilds."
+  },
+  {
     "id": "project-brain",
     "title": "Project Brain",
     "description": "Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, git timeline — all from a single command.",

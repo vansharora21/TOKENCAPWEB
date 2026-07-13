@@ -55,10 +55,15 @@
   },
   {
     "command": "tokencap make",
-    "description": "Generate the complete TokenCap snapshot: TOKENCAP.md (main snapshot), TOKENCAP_GRAPH.md (project dependency graph), and TOKENCAP_MEMORY.md (developer context memory) in one shot.",
-    "example": "tokencap make --profile balanced",
+    "description": "Generate the complete TokenCap snapshot. Incremental by default since v1.3.0. Updates graph, brain, constitution, and agent files by rebuilding only what changed.",
+    "example": "tokencap make",
     "options": [
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
+      { "flag": "--full", "description": "Force full rebuild (v1.2.0 behavior)" },
+      { "flag": "--rebuild-brain", "description": "Rebuild only the Brain knowledge base" },
+      { "flag": "--rebuild-constitution", "description": "Rebuild only the Constitution Engine" },
+      { "flag": "--rebuild-graph", "description": "Rebuild only the Dependency Graph" },
+      { "flag": "--clean-cache", "description": "Clear the incremental cache (next build = full)" },
       { "flag": "--out <path>", "description": "Snapshot output path. Default: TOKENCAP.md" },
       { "flag": "--profile <name>", "description": "Context profile: compact | balanced | deep | gpt-4o | claude-3-5-sonnet | gemini-1.5-flash | gemini-1.5-pro | llama-3-8b" },
       { "flag": "--max-files <n>", "description": "Maximum number of files to include" },

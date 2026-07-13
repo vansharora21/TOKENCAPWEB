@@ -1,5 +1,19 @@
 [
   {
+    "version": "1.3.0",
+    "title": "Incremental Intelligence Engine",
+    "date": "2026-07-13",
+    "status": "released",
+    "highlights": [
+      "Incremental Intelligence Engine: Analyze once. Update only what changed. Sub-100ms updates for single-file edits.",
+      "Hash Cache: SHA-256 hash comparison against .tokencap/cache/hashes.cache.json.",
+      "Bidirectional Dependency Walk: Forward walk (consumers) and backward walk (providers) of changed files.",
+      "Delta Files: Writes .tokencap/delta/ files (changed-files.json, affected-clusters.json, etc.) and versioned history.",
+      "Zero-Change Scenario: Sub-second. No disk writes. No rebuilding if nothing changed.",
+      "New CLI Flags: tokencap make (incremental by default), --full (force full rebuild), --rebuild-brain, --rebuild-constitution, --rebuild-graph, --clean-cache."
+    ]
+  },
+  {
     "version": "1.2.0",
     "title": "Repository Constitution",
     "date": "2026-06-27",
