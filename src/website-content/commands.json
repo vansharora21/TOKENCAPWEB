@@ -1,5 +1,17 @@
 [
   {
+    "command": "tokencap mcp",
+    "description": "Start the local Model Context Protocol (MCP) server over stdio or automatically wire host IDE configurations (--init). Keeps a live repository watcher active for background intelligence updates.",
+    "example": "tokencap mcp --init",
+    "options": [
+      { "flag": "--init", "description": "Write workspace configuration file for host IDE automatically." },
+      { "flag": "--client <host>", "description": "Specify target host explicitly (vscode, antigravity, codex, cursor, claude, windsurf, cline)." },
+      { "flag": "--tools", "description": "List all 11 MCP endpoints and descriptions." },
+      { "flag": "--test", "description": "Run self-test: call every endpoint and verify JSON RPC output." },
+      { "flag": "--health", "description": "Run one-shot health check without launching the persistent server." }
+    ]
+  },
+  {
     "command": "tokencap brain",
     "description": "Project Brain — unified intelligence query about any part of your codebase (files, risk, architecture, dependencies, review groups, recent changes, and git timeline).",
     "example": "tokencap brain auth",

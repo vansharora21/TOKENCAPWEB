@@ -1,5 +1,56 @@
 export const blogPosts = [
   {
+    id: "tokencap-v15-mcp",
+    title: "TokenCap v1.5 — Making MCP Feel Invisible",
+    author: "Vansh Arora",
+    date: "July 18, 2026",
+    readTime: "5 min read",
+    category: "Model Context Protocol",
+    excerpt: "How TokenCap v1.5 eliminates manual setup and cold start overhead for Local Model Context Protocol (MCP), delivering live repository watching, auto-initialization, and sub-2ms query responses.",
+    url: "https://dev.to/vansharora21/tokencap-v15-making-mcp-feel-invisible-4ha4",
+    content: `Two days after releasing TokenCap v1.4 with Local Model Context Protocol (MCP) support, v1.5 is here to make MCP feel completely invisible.
+
+### Cold Start & Manual Pre-Build Problems
+
+Before v1.5, using MCP with AI hosts required manual preparation:
+1. Running \`tokencap make\` beforehand to compile knowledge files.
+2. Running a separate watch command to keep snapshots fresh during editing.
+3. Manually crafting JSON configurations for different IDEs (VS Code, Cursor, Windsurf, Claude Code, Antigravity, Codex).
+
+### What's New in v1.5.0
+
+- **Automatic Initialization:** When the MCP server boots up, it automatically runs \`tokencap make\` to build project intelligence if it's missing or stale.
+- **Live Watcher Service:** The MCP server process maintains an internal background watcher for source edits and \`.tokencap-notes.md\`, keeping memory current automatically.
+- **Universal Host Config Command:** \`tokencap mcp --init\` auto-detects host IDEs in the workspace and merges TokenCap definitions safely into host configs.
+- **Zero-Latency In-Memory Caching:** Server-side handler durations measure between 0–2 ms on local runs.`
+  },
+  {
+    id: "mcp-launch",
+    title: "Announcing TokenCap MCP: Local Repository Intelligence Service",
+    author: "Vansh Arora",
+    date: "July 15, 2026",
+    readTime: "4 min read",
+    category: "Product Launch",
+    excerpt: "TokenCap v1.4 introduces Local Model Context Protocol support. Don't read repository intelligence—query it on demand with 11 local tool endpoints.",
+    url: "https://www.linkedin.com/posts/vansharora2108_tokencap-mcp-ai-share-7483602223256465409-z1XG/",
+    content: `Stop teaching every AI agent your codebase from scratch.
+
+TokenCap v1.4 turns TokenCap into a local repository intelligence service over stdio MCP. AI agents query only what they need when they need it, saving up to 92% of context token budgets while maintaining total privacy.`
+  },
+  {
+    id: "building-in-public",
+    title: "Building TokenCap in Public: Self-Loading Universal Context Layer",
+    author: "Vansh Arora",
+    date: "July 12, 2026",
+    readTime: "4 min read",
+    category: "Open Source",
+    excerpt: "Reflections and journey on building TokenCap—an open-source, local-first context layer that makes project intelligence self-discoverable for AI agents.",
+    url: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-ai-share-7484319017009184768-Q1oV/",
+    content: `Building open source software in public for the AI coding ecosystem. 
+
+TokenCap was born out of frustration with cold-start AI sessions, context limits, and repetitive codebase discovery. Today it powers self-loading context, repository constitutions, execution contracts, and local MCP intelligence.`
+  },
+  {
     id: "smart-retrieval",
     title: "The Smart Context Retrieval Era: Moving Beyond Code Dumping",
     author: "Vansh Arora",

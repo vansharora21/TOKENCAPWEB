@@ -1,5 +1,19 @@
 export const changelogItems = [
   {
+    version: "1.5.0",
+    title: "Self-Maintaining MCP Intelligence",
+    date: "2026-07-19",
+    status: "released",
+    description: "Automatic build-on-startup for MCP, live repository background watcher for source & notes changes, universal host setup (tokencap mcp --init --client <host>), safe config merging, and zero-latency in-memory caching.",
+  },
+  {
+    version: "1.4.0",
+    title: "Repository Intelligence Service & Security Hardening",
+    date: "2026-07-15",
+    status: "released",
+    description: "Local Model Context Protocol (MCP) support with 11 stdio tool endpoints, auto IDE configuration (tokencap mcp --init), centralized secret redaction engine, and up to 92% token budget savings.",
+  },
+  {
     version: "1.3.0",
     title: "Incremental Intelligence Engine",
     date: "2026-07-10",

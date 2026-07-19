@@ -11,7 +11,7 @@ export const metadata = buildMetadata({
 export default function CliPage() {
   const sidebarItems = [
     { label: "Introduction", icon: "info", href: "/docs" },
-    { label: "Core Concepts", icon: "extension", href: "/docs/getting-started" },
+    { label: "Core Concepts", icon: "extension", href: "/docs#getting-started" },
     { label: "CLI Reference", icon: "terminal", href: "#install", active: true },
     { label: "VS Code Extension", icon: "extension", href: "/vscode" },
     { label: "Changelog", icon: "auto_awesome", href: "/changelog" },

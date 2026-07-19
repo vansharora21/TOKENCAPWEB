@@ -63,10 +63,10 @@ const availablePlatforms = [
 const comingSoonPlatforms = [
   {
     id: "claude",
-    name: "Claude Desktop",
-    label: "MCP Integration",
+    name: "Claude Code & Desktop",
+    label: "v1.5.0 MCP Active",
     description:
-      "Native Model Context Protocol integration for Claude Desktop. TokenCap context will be available as an MCP tool automatically.",
+      "Native Model Context Protocol integration for Claude Code & Desktop. Run 'tokencap mcp --init --client claude' for auto setup.",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
         <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2a8 8 0 110 16 8 8 0 010-16z" opacity="0.4" />
@@ -77,10 +77,10 @@ const comingSoonPlatforms = [
   },
   {
     id: "codex",
-    name: "Codex CLI",
-    label: "Native Support",
+    name: "Codex & Antigravity",
+    label: "v1.5.0 MCP Active",
     description:
-      "First-class support in Codex CLI sessions. TokenCap will auto-discover and load project context without manual setup.",
+      "First-class stdio MCP support for Codex & Antigravity. Auto-discovers workspace intelligence with zero cold-start delay.",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
         <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6zM14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6z" opacity="0.4" />
@@ -90,10 +90,10 @@ const comingSoonPlatforms = [
   },
   {
     id: "skills",
-    name: "Skill Injection",
-    label: "Agent Plugin",
+    name: "Cursor, Windsurf & Cline",
+    label: "v1.5.0 MCP Active",
     description:
-      "One-line installation to inject TokenCap skills into any AI coding agent. Drop-in integration for Cursor, Windsurf, Cline, and Roo Code.",
+      "One-command host configuration for Cursor, Windsurf, Cline, and Roo Code. Run 'tokencap mcp --init' in any workspace.",
     icon: (
       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" opacity="0.4" />
@@ -455,6 +455,87 @@ export default function DownloadsPage() {
           </div>
         </motion.section>
 
+        {/* ── Model Context Protocol (MCP) Configuration ───────── */}
+        <section className="mb-20">
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-[#7c3aed]/10 border border-[#7c3aed]/20 flex items-center justify-center text-[#d2bbff]">
+                <span className="material-symbols-outlined text-sm">hub</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-white font-vorcas">MCP Configuration (v1.5.0)</h2>
+                <p className="text-xs text-[#ccc3d8]/60 mt-0.5">Wire local stdio MCP repository intelligence directly into your AI IDE.</p>
+              </div>
+            </div>
+            <a
+              href="/mcp"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#7c3aed]/20 border border-[#7c3aed]/40 text-[#d2bbff] hover:text-white font-mono text-xs font-bold transition-all"
+            >
+              <span>View Full MCP Guide</span>
+              <span className="material-symbols-outlined text-xs">arrow_forward</span>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 1: Auto Init Command */}
+            <div className="rounded-2xl border border-white/[0.08] bg-[#09090b]/80 backdrop-blur-xl p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-[#00a572]/10 border border-[#00a572]/30 text-[#00a572]">
+                    1-Command Auto Setup
+                  </span>
+                  <span className="material-symbols-outlined text-zinc-500 text-sm">bolt</span>
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Automated Host Config Initialization</h3>
+                <p className="text-xs leading-relaxed text-[#ccc3d8] mb-6">
+                  Auto-detects active workspace client configs (Claude, Cursor, Windsurf, Cline, VS Code, Antigravity, Codex) and safely merges TokenCap definitions.
+                </p>
+              </div>
+              <div className="space-y-2 font-mono text-xs">
+                <div className="bg-[#111115] border border-white/[0.08] rounded-lg p-3 flex items-center justify-between gap-3">
+                  <code className="text-zinc-200">tokencap mcp --init</code>
+                  <CopyButton text="tokencap mcp --init" />
+                </div>
+                <div className="bg-[#111115] border border-white/[0.08] rounded-lg p-3 flex items-center justify-between gap-3">
+                  <code className="text-zinc-200">tokencap mcp --init --client cursor</code>
+                  <CopyButton text="tokencap mcp --init --client cursor" />
+                </div>
+              </div>
+            </div>
+
+            {/* 2: Manual JSON Configuration */}
+            <div className="rounded-2xl border border-white/[0.08] bg-[#09090b]/80 backdrop-blur-xl p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-purple-500/10 border border-purple-500/30 text-[#d2bbff]">
+                    Manual Config JSON
+                  </span>
+                  <span className="material-symbols-outlined text-zinc-500 text-sm">code</span>
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Stdio Server Definition</h3>
+                <p className="text-xs leading-relaxed text-[#ccc3d8] mb-4">
+                  Add this block directly inside your client host's <code>mcpServers</code> configuration file.
+                </p>
+              </div>
+              <div className="bg-[#0c0c0e] rounded-lg border border-white/[0.08] p-3.5 font-mono text-[11px] leading-relaxed relative group">
+                <div className="absolute top-2 right-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <CopyButton text={`{\n  "mcpServers": {\n    "tokencap": {\n      "command": "tokencap",\n      "args": ["mcp"]\n    }\n  }\n}`} />
+                </div>
+                <pre className="text-[#4edea3] overflow-x-auto">
+{`{
+  "mcpServers": {
+    "tokencap": {
+      "command": "tokencap",
+      "args": ["mcp"]
+    }
+  }
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Coming Soon ───────────────────────────────────────── */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
@@ -483,7 +564,7 @@ export default function DownloadsPage() {
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4">
             <a
-              href="/docs/getting-started"
+              href="/docs#getting-started"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#7c3aed] text-white font-bold text-sm hover:brightness-110 transition-all active:scale-[0.97] shadow-[0_0_20px_rgba(124,58,237,0.15)] focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             >
               <span className="material-symbols-outlined text-[16px]">

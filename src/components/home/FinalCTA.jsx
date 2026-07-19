@@ -97,8 +97,8 @@ function FinalCTA() {
           {/* Quickstart Guide Link */}
           <div className="pt-4">
             <Link
-              href="/docs/getting-started"
-              className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-purple-400 transition-colors underline underline-offset-4 decoration-zinc-800 hover:decoration-purple-500/30 font-medium"
+              href="/docs#getting-started"
+              className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#d2bbff] transition-colors underline underline-offset-4 decoration-zinc-700 hover:decoration-[#7c3aed]/50 font-medium"
             >
               <span>Or view the Quickstart Guide</span>
               <span className="material-symbols-outlined text-[12px] no-underline">arrow_forward</span>

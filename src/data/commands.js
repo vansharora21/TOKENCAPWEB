@@ -1,5 +1,10 @@
 export const commands = [
   {
+    command: "tokencap mcp",
+    description: "Start the local Model Context Protocol (MCP) server or configure host IDEs (--init). Features 11 tool endpoints, live repository background watching, and zero-latency caching.",
+    result: "Local stdio MCP server running or host IDE configuration written under workspace settings."
+  },
+  {
     command: "tokencap agent",
     description: "Analyzes the repository and automatically generates a complete Self-Loading Universal Context Layer. Use --execution flag to generate the Execution Contract lifecycle suite.",
     result: "Self-loading context layer, root AGENTS.md, and Execution Contract (with --execution) generated."

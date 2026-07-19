@@ -26,6 +26,11 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 Self-Maintaining MCP Intelligence (v1.5.0)
+Don't read repository intelligence—query it. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.
+
+> ⚙️ *Technical Detail:* Implements stdio Model Context Protocol (MCP) server. Running tokencap mcp --init wires workspace configs for Claude, Cursor, Windsurf, Cline, VS Code, Antigravity, and Codex automatically.
+
 #### 🔹 Incremental Intelligence Engine
 Analyze once. Update only what changed. Sub-100ms for single-file edits. TokenCap now uses a hash cache and bidirectional dependency walks to patch dirty nodes rather than rebuilding from scratch.
 
@@ -162,6 +167,23 @@ The main snapshot works across every language TokenCap can read. Python, Go, Rus
 > ⚙️ *Technical Detail:* Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants.
 
 ## 💻 CLI Commands
+
+### 🛠️ `tokencap mcp`
+
+Start the local Model Context Protocol (MCP) server over stdio or automatically wire host IDE configurations (--init). Keeps a live repository watcher active for background intelligence updates.
+
+**Example:**
+```bash
+tokencap mcp --init
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--init` | Write workspace configuration file for host IDE automatically. |
+| `--client <host>` | Specify target host explicitly (vscode, antigravity, codex, cursor, claude, windsurf, cline). |
+| `--tools` | List all 11 MCP endpoints and descriptions. |
+| `--test` | Run self-test: call every endpoint and verify JSON RPC output. |
+| `--health` | Run one-shot health check without launching the persistent server. |
 
 ### 🛠️ `tokencap brain`
 
@@ -372,4 +394,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 14/7/2026.*
+*Generated automatically from `website-content` JSON source files on 19/7/2026.*

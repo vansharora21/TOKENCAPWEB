@@ -17,7 +17,7 @@ function Hero() {
       {/* Action Buttons */}
       <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
         <Link
-          href="/docs/getting-started"
+          href="/docs#getting-started"
           className="w-full sm:w-auto text-center bg-purple-600 hover:bg-purple-500 text-white font-semibold px-6 py-3 rounded-lg transition duration-200 text-sm shadow-lg shadow-purple-600/10"
         >
           Install TokenCap

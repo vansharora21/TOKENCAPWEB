@@ -1,5 +1,34 @@
 [
   {
+    "version": "1.5.0",
+    "title": "Self-Maintaining MCP Intelligence",
+    "date": "2026-07-19",
+    "status": "released",
+    "highlights": [
+      "Automatic Initialization: MCP startup automatically runs tokencap make before tool execution, eliminating manual builds.",
+      "Live Repository Watcher: MCP server runs a background watcher for source files and .tokencap-notes.md updates.",
+      "Universal Host Setup: tokencap mcp --init supports Claude Code, Cursor, Windsurf, Cline, VS Code, Antigravity, and Codex.",
+      "Explicit Client Selector: Use tokencap mcp --init --client <host> when workspaces contain multiple AI clients.",
+      "Safer Configuration: Merges TokenCap server into existing valid JSON or TOML configs without overwriting unrelated servers.",
+      "Faster Build Sharing: Shares pre-resolved graph context between agent and brain builders.",
+      "Durable Metadata: Stores detected tech stack in knowledge.json for offline MCP overview rendering."
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "title": "Repository Intelligence Service & Security Hardening",
+    "date": "2026-07-15",
+    "status": "released",
+    "highlights": [
+      "Repository Intelligence Service: Query repository intelligence live over local stdio Model Context Protocol (MCP).",
+      "11 Tool Endpoints: Exposes tokencap_overview, tokencap_files, tokencap_search, tokencap_cluster, tokencap_dependencies, tokencap_constitution, tokencap_impact, tokencap_execution, tokencap_verify, tokencap_delta, and tokencap_mcp_status.",
+      "Security Hardening Engine: Centralized secret redaction guarantees no API keys, tokens, or private credentials enter intelligence outputs.",
+      "Auto IDE Configuration: tokencap mcp --init writes workspace host configs for Claude, Cursor, Windsurf, VS Code, and Antigravity.",
+      "Sub-2ms Server Response: In-memory cached tool calls process in 0-2ms handler duration.",
+      "Up to 92% Token Budget Savings: Eliminates massive context re-loads by allowing AI models to query targeted intelligence on demand."
+    ]
+  },
+  {
     "version": "1.3.0",
     "title": "Incremental Intelligence Engine",
     "date": "2026-07-13",

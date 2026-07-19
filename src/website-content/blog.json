@@ -1,0 +1,32 @@
+[
+  {
+    "id": "tokencap-v15-mcp",
+    "title": "TokenCap v1.5 — Making MCP Feel Invisible",
+    "author": "Vansh Arora",
+    "date": "July 18, 2026",
+    "readTime": "5 min read",
+    "category": "Model Context Protocol",
+    "excerpt": "How TokenCap v1.5 eliminates manual setup and cold start overhead for Local Model Context Protocol (MCP), delivering live repository watching, auto-initialization, and sub-2ms query responses.",
+    "url": "https://dev.to/vansharora21/tokencap-v15-making-mcp-feel-invisible-4ha4"
+  },
+  {
+    "id": "mcp-launch",
+    "title": "Announcing TokenCap MCP: Local Repository Intelligence Service",
+    "author": "Vansh Arora",
+    "date": "July 15, 2026",
+    "readTime": "4 min read",
+    "category": "Product Launch",
+    "excerpt": "TokenCap v1.4 introduces Local Model Context Protocol support. Don't read repository intelligence—query it on demand with 11 local tool endpoints.",
+    "url": "https://www.linkedin.com/posts/vansharora2108_tokencap-mcp-ai-share-7483602223256465409-z1XG/"
+  },
+  {
+    "id": "building-in-public",
+    "title": "Building TokenCap in Public: Self-Loading Universal Context Layer",
+    "author": "Vansh Arora",
+    "date": "July 12, 2026",
+    "readTime": "4 min read",
+    "category": "Open Source",
+    "excerpt": "Reflections and journey on building TokenCap—an open-source, local-first context layer that makes project intelligence self-discoverable for AI agents.",
+    "url": "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-ai-share-7484319017009184768-Q1oV/"
+  }
+]

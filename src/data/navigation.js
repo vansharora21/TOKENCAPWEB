@@ -1,6 +1,7 @@
 export const mainNavigation = [
   { label: "Home", href: "/", description: "Overview and hero section" },
   { label: "Features", href: "/features", description: "All features in detail" },
+  { label: "MCP Guide", href: "/mcp", description: "v1.5.0 Model Context Protocol Service" },
   { label: "Docs", href: "/docs", description: "Full documentation" },
   { label: "Roadmap", href: "/roadmap", description: "Planned features and versions" },
   { label: "Changelog", href: "/changelog", description: "Release history" },
@@ -12,6 +13,7 @@ export const footerNavigation = [
     title: "Product",
     links: [
       { label: "Features", href: "/features" },
+      { label: "MCP Guide (v1.5)", href: "/mcp" },
       { label: "VS Code", href: "/vscode" },
       { label: "CLI Reference", href: "/docs#cli" },
       { label: "Roadmap", href: "/roadmap" },
@@ -22,6 +24,7 @@ export const footerNavigation = [
   {
     title: "Documentation",
     links: [
+      { label: "MCP Guide (v1.5)", href: "/mcp" },
       { label: "Getting Started", href: "/docs#getting-started" },
       { label: "Configuration", href: "/docs#configuration" },
       { label: "Context Profiles", href: "/docs#profiles" },
@@ -40,6 +43,7 @@ export const footerNavigation = [
 ];
 
 export const docsNavigation = [
+  { label: "MCP Guide (v1.5.0)", href: "/mcp" },
   { label: "Getting Started", href: "/docs#getting-started" },
   { label: "Configuration", href: "/docs#configuration" },
   { label: "Context Profiles", href: "/docs#profiles" },

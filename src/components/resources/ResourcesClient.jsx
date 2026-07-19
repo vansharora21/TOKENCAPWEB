@@ -47,10 +47,31 @@ export function ResourcesClient() {
 
   const featuredContent = [
     {
+      title: "TokenCap v1.5 — Making MCP Feel Invisible",
+      type: "DEV Community",
+      icon: "hub",
+      description: "How TokenCap v1.5 eliminates manual setup and cold start overhead for Local Model Context Protocol (MCP), delivering live repository watching, auto-initialization, and sub-2ms query responses.",
+      link: "https://dev.to/vansharora21/tokencap-v15-making-mcp-feel-invisible-4ha4"
+    },
+    {
+      title: "TokenCap MCP: Local Repository Intelligence Service",
+      type: "LinkedIn",
+      icon: "campaign",
+      description: "Stop teaching every AI agent your codebase from scratch. Query repository intelligence live over local stdio MCP with 11 tool endpoints, saving up to 92% of context token budgets.",
+      link: "https://www.linkedin.com/posts/vansharora2108_tokencap-mcp-ai-share-7483602223256465409-z1XG/"
+    },
+    {
+      title: "Building TokenCap in Public",
+      type: "LinkedIn",
+      icon: "rocket_launch",
+      description: "Reflections and journey on building TokenCap—an open-source, local-first context layer that makes project intelligence self-discoverable for AI coding agents.",
+      link: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-ai-share-7484319017009184768-Q1oV/"
+    },
+    {
       title: "Building an Obsidian-Style Code Intelligence Graph",
       type: "DEV Community",
       icon: "account_tree",
-      description: "A deep dive into how TokenCap builds a visual knowledge graph for JavaScript projects, helping developers understand architecture, dependencies, and relationships inside large codebases.",
+      description: "A deep dive into how TokenCap builds a visual knowledge graph for JavaScript projects, helping developers understand architecture, dependencies, and relationships.",
       link: "https://dev.to/vansharora21/building-an-obsidian-style-code-intelligence-graph-for-any-javascript-project-1ep6"
     },
     {
@@ -61,7 +82,7 @@ export function ResourcesClient() {
       link: "https://dev.to/vansharora21/stop-dumping-your-entire-repository-into-ai-3f9p"
     },
     {
-      title: "TokenCap Blog",
+      title: "TokenCap Official Blog",
       type: "Hashnode",
       icon: "article",
       description: "Official long-form articles, development updates, roadmap discussions, and future plans for TokenCap.",
@@ -71,9 +92,30 @@ export function ResourcesClient() {
 
   const timelineEvents = [
     {
-      title: "LinkedIn Launch Post",
-      date: "June 2026",
+      title: "TokenCap v1.5 Release Announcement",
+      date: "July 2026",
+      icon: "hub",
+      description: "Making MCP feel completely invisible with automatic startup builds, live repo background watching, and sub-2ms query responses.",
+      link: "https://dev.to/vansharora21/tokencap-v15-making-mcp-feel-invisible-4ha4"
+    },
+    {
+      title: "TokenCap MCP Launch Post",
+      date: "July 2026",
+      icon: "campaign",
+      description: "Announcing Local Model Context Protocol (MCP) support with 11 stdio tool endpoints for AI agents.",
+      link: "https://www.linkedin.com/posts/vansharora2108_tokencap-mcp-ai-share-7483602223256465409-z1XG/"
+    },
+    {
+      title: "Building TokenCap in Public",
+      date: "July 2026",
       icon: "rocket_launch",
+      description: "Sharing the open-source context engineering journey, repository constitutions, and execution contracts.",
+      link: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-ai-share-7484319017009184768-Q1oV/"
+    },
+    {
+      title: "LinkedIn Initial Launch Post",
+      date: "June 2026",
+      icon: "tag",
       description: "Introduction to TokenCap and the vision behind context engineering for modern AI-assisted development.",
       link: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-artificialintelligence-ugcPost-7469654165498052608-rUeF/"
     },
@@ -88,23 +130,44 @@ export function ResourcesClient() {
 
   const whyContentExits = [
     {
+      title: "Local MCP Service",
+      icon: "hub",
+      text: "Query repository intelligence live over local stdio MCP with 11 endpoints and zero cloud exposure."
+    },
+    {
       title: "Context Engineering",
       icon: "settings_input_component",
       text: "Learn how modern AI systems work better when provided focused context instead of entire repositories."
     },
     {
       title: "Code Intelligence",
-      icon: "hub",
+      icon: "account_tree",
       text: "Explore techniques for generating architecture maps, dependency graphs, and project knowledge automatically."
-    },
-    {
-      title: "AI Developer Workflows",
-      icon: "terminal",
-      text: "Discover workflows that improve AI accuracy, reduce token usage, and accelerate development."
     }
   ];
 
   const gridResources = [
+    {
+      title: "TokenCap v1.5 — Making MCP Feel Invisible",
+      platform: "DEV Community",
+      icon: "hub",
+      description: "How TokenCap v1.5 eliminates manual setup and cold start overhead for Local MCP.",
+      link: "https://dev.to/vansharora21/tokencap-v15-making-mcp-feel-invisible-4ha4"
+    },
+    {
+      title: "TokenCap MCP: Local Repository Intelligence Service",
+      platform: "LinkedIn",
+      icon: "campaign",
+      description: "Query repository intelligence live over local stdio MCP with 11 endpoints.",
+      link: "https://www.linkedin.com/posts/vansharora2108_tokencap-mcp-ai-share-7483602223256465409-z1XG/"
+    },
+    {
+      title: "Building TokenCap in Public",
+      platform: "LinkedIn",
+      icon: "rocket_launch",
+      description: "Building an open-source, local-first context layer for AI coding agents.",
+      link: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-ai-share-7484319017009184768-Q1oV/"
+    },
     {
       title: "Building an Obsidian-Style Code Intelligence Graph",
       platform: "DEV Community",
@@ -123,22 +186,8 @@ export function ResourcesClient() {
       title: "TokenCap Blog",
       platform: "Hashnode",
       icon: "rss_feed",
-      description: "Official articles, changelogs, architecture reviews, and long-form long-term roadmap entries.",
+      description: "Official articles, changelogs, architecture reviews, and long-term roadmap entries.",
       link: "https://tokencap.hashnode.dev/"
-    },
-    {
-      title: "LinkedIn Launch Post",
-      platform: "LinkedIn",
-      icon: "campaign",
-      description: "Vision summary and introductory video covering the core features of the TokenCap CLI.",
-      link: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-artificialintelligence-ugcPost-7469654165498052608-rUeF/"
-    },
-    {
-      title: "Obsidian Graph Release",
-      platform: "LinkedIn",
-      icon: "share",
-      description: "Announcement details showing visual exploration and local graph Presets (--open / --full).",
-      link: "https://www.linkedin.com/posts/vansharora2108_buildinpublic-opensource-developertools-share-7471947370956603393-O0le/"
     }
   ];
 
@@ -147,14 +196,14 @@ export function ResourcesClient() {
       {/* Hero Section */}
       <header className="text-center max-w-3xl mx-auto mb-24 space-y-6">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#d2bbff] animate-pulse"></span>
-          TokenCap Hub
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00a572] animate-pulse"></span>
+          TokenCap Articles & Launches
         </div>
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
           Learn How <span className="text-[#d2bbff]">TokenCap</span> Works
         </h1>
         <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-2xl mx-auto">
-          Articles, release notes, technical deep dives, and build-in-public updates documenting the journey of TokenCap.
+          Articles, release notes, technical deep dives, DEV.to posts, and LinkedIn build-in-public updates documenting the TokenCap journey.
         </p>
         <div className="flex justify-center gap-4 pt-4">
           <button
@@ -169,7 +218,7 @@ export function ResourcesClient() {
             className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
           >
             <span className="material-symbols-outlined text-sm">history</span>
-            View Updates
+            View Launch Posts
           </button>
         </div>
       </header>
@@ -178,7 +227,7 @@ export function ResourcesClient() {
       <section className="mb-24">
         <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
           <span className="material-symbols-outlined text-[#d2bbff]">stars</span>
-          Featured Resources
+          Featured Articles & Launches
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredContent.map((item, index) => (
@@ -204,7 +253,7 @@ export function ResourcesClient() {
                 </p>
               </div>
               <div className="flex items-center gap-1 text-xs font-bold text-[#d2bbff] group-hover:underline mt-auto">
-                <span>Go to Article</span>
+                <span>Read Full Post</span>
                 <span className="material-symbols-outlined text-xs">open_in_new</span>
               </div>
             </a>
@@ -269,7 +318,7 @@ export function ResourcesClient() {
       <section ref={gridRef} className="mb-24 scroll-mt-24">
         <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
           <span className="material-symbols-outlined text-[#d2bbff]">grid_view</span>
-          All Resources & Links
+          All Articles & External Links
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {gridResources.map((item, index) => (
@@ -313,13 +362,13 @@ export function ResourcesClient() {
           </div>
           <div className="space-y-2">
             <div className="text-3xl sm:text-4xl font-bold text-[#d2bbff]">
-              v<AnimatedCounter end="0" />.9.0
+              v1.5.0
             </div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">npm Package</p>
           </div>
           <div className="space-y-2">
             <div className="text-3xl sm:text-4xl font-bold text-[#d2bbff]">
-              v<AnimatedCounter end="0" />.9.0
+              v1.5.0
             </div>
             <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">VS Code Extension</p>
           </div>
@@ -340,7 +389,7 @@ export function ResourcesClient() {
             Start Understanding Your Codebase Instead of Explaining It
           </h2>
           <p className="text-xs text-[#ccc3d8] leading-relaxed max-w-xl mx-auto mb-8 relative z-10">
-            Generate project knowledge, visualize architecture, and provide AI with the right context automatically.
+            Generate project knowledge, query MCP local intelligence, and provide AI with the right context automatically.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
             <a
@@ -350,10 +399,10 @@ export function ResourcesClient() {
               Get Started
             </a>
             <a
-              href="/docs#cli"
+              href="/mcp"
               className="border border-[#4a4455] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 block text-center"
             >
-              View Documentation
+              View MCP Guide
             </a>
           </div>
         </div>
