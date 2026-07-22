@@ -46,9 +46,9 @@ function FeaturesPreview() {
             {featureShowcase.title}
           </h2>
         </div>
-        <p className="text-muted text-xs font-mono max-w-xs md:text-right">
+        {/* <p className="text-muted text-xs font-mono max-w-xs md:text-right">
           The site now reflects the actual product: snapshot generation, memory capture, Git context, and privacy-first workflows.
-        </p>
+        </p> */}
       </div>
 
       {/* Grid: Left Column Tabs vs Right Column Live Visualizer */}
