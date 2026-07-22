@@ -2,7 +2,7 @@
 
 > **Your codebase. Compressed. Ready to hand off.**
 >
-> Stop wasting tokens re-explaining your project. TokenCap snapshots your workspace — files, Git context, imports, and developer intent — into a single handoff-ready file.
+> Stop wasting tokens re-explaining your project. TokenCap snapshots your workspace into a single handoff-ready file, including your files, Git context, imports, and developer intent.
 
 ## 🚀 Overview
 
@@ -16,7 +16,7 @@ npm install -g tokencap
 ## 🎨 Key Benefits
 
 - **Local-first:** Runs entirely on your machine. No cloud. No uploads. Your code never leaves your workspace.
-- **AI-ready output:** Generates structured Markdown snapshots sized for any LLM context window — from llama-3-8b to Gemini 1.5 Pro.
+- **AI-ready output:** Generates structured Markdown snapshots sized for any LLM context window, from llama-3-8b to Gemini 1.5 Pro.
 - **Git-aware:** Automatically surfaces changed files, staged and unstaged diffs, recent commits, and branch context.
 - **Privacy-first:** Built-in secret redaction strips API keys, tokens, and passwords before anything is written to disk.
 - **Zero configuration:** Works out of the box. One command generates everything. Customize with a single JSON config file when you're ready.
@@ -27,7 +27,7 @@ npm install -g tokencap
 ### 📁 Intelligence
 
 #### 🔹 Self-Maintaining MCP Intelligence (v1.5.0)
-Don't read repository intelligence—query it. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.
+Query repository intelligence directly. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.
 
 > ⚙️ *Technical Detail:* Implements stdio Model Context Protocol (MCP) server. Running tokencap mcp --init wires workspace configs for Claude, Cursor, Windsurf, Cline, VS Code, Antigravity, and Codex automatically.
 
@@ -37,7 +37,7 @@ Analyze once. Update only what changed. Sub-100ms for single-file edits. TokenCa
 > ⚙️ *Technical Detail:* Uses SHA-256 caching and BFS on dependency graph. Generates delta files (.tokencap/delta/) for files, clusters, brain, graph, constitution, and agents. New CLI flags for selective rebuilds.
 
 #### 🔹 Project Brain
-Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, git timeline — all from a single command.
+Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, and git timeline from a single command.
 
 > ⚙️ *Technical Detail:* Wraps all intelligence engines (Graph, Diff, Agent, Memory). Renders terminal views in 6 modes, builds brain-index.json for fast cluster -> file lookup, and supports fuzzy cluster matching.
 
@@ -67,7 +67,7 @@ TokenCap maps your project topology as a code intelligence graph. Visualizes fil
 > ⚙️ *Technical Detail:* Generates TOKENCAP_GRAPH.md, exports JSON, and updates TOKENCAP.md. Classifies into 13 node types, evaluates 4-tier risk scoring, detects logical clusters, and supports presets (--full, --minimal, --quiet).
 
 #### 🔹 Context Memory Layer
-Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps — TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.
+Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps. TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.
 
 > ⚙️ *Technical Detail:* Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Executed automatically as part of tokencap make.
 
@@ -77,7 +77,7 @@ When a file exceeds your token budget and gets truncated, TokenCap doesn't just 
 > ⚙️ *Technical Detail:* Regex-based outline extraction for JS/TS functions, classes, interfaces, Python defs, Rust fns, and Go funcs. Capped at 30 definitions per file.
 
 #### 🔹 TODO / FIXME / HACK Detection
-Every TODO, FIXME, and HACK comment across your selected files is extracted and surfaced in a dedicated section — so technical debt is always visible in your handoff.
+Every TODO, FIXME, and HACK comment across your selected files is extracted and surfaced in a dedicated section so technical debt is always visible in your handoff.
 
 > ⚙️ *Technical Detail:* Case-insensitive regex scan across all selected files. Each entry includes file path, line number, and the full comment line. Capped at maxTodos (default: 100).
 
@@ -101,14 +101,14 @@ A persistent status bar item shows your auto-capture state and last snapshot tim
 ### 📁 Security
 
 #### 🔹 Automatic Secret Redaction
-TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] — so you can safely share your snapshot with anyone.
+TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.
 
 > ⚙️ *Technical Detail:* Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments.
 
 ### 📁 AI Optimization
 
 #### 🔹 Context Window Profiles
-Different AI models have different context limits. TokenCap ships with profiles tuned for eight model families — from llama-3-8b at 40KB to Gemini 1.5 Pro at 1.2MB. Switch profiles with a single flag.
+Different AI models have different context limits. TokenCap ships with profiles tuned for eight model families from llama-3-8b at 40KB to Gemini 1.5 Pro at 1.2MB. Switch profiles with a single flag.
 
 | Profile | Max Files | Max Bytes | Use Case |
 | --- | --- | --- | --- |
@@ -124,14 +124,14 @@ Different AI models have different context limits. TokenCap ships with profiles 
 ### 📁 Git
 
 #### 🔹 Deep Git Integration
-TokenCap reads your Git state automatically — current branch, recent commits, staged and unstaged diffs, and changed file paths. Changed files are ranked higher in the snapshot so they always appear first.
+TokenCap reads your Git state automatically: current branch, recent commits, staged and unstaged diffs, and changed file paths. Changed files are ranked higher in the snapshot so they always appear first.
 
 > ⚙️ *Technical Detail:* Uses git status --short, git diff --cached, git diff, git log --oneline -8, git rev-parse. Separates staged vs unstaged diffs into distinct sections. Changed files receive +120 ranking score.
 
 ### 📁 Optimization
 
 #### 🔹 Intelligent File Ranking
-Not every file deserves the same attention. TokenCap scores and ranks files by relevance — changed files, source files, project metadata, and documentation surface first within your token budget.
+Not every file deserves the same attention. TokenCap scores and ranks files by relevance so changed files, source files, project metadata, and documentation surface first within your token budget.
 
 > ⚙️ *Technical Detail:* Scoring: changed files +120, important project files (package.json, README, tsconfig) +70, high-signal docs +35, src/ files +30, test files +18. Large files penalized by floor(size/12000).
 
@@ -155,14 +155,14 @@ Execute any command under the debug runner (e.g. tokencap debug --start -- npm t
 ### 📁 Configuration
 
 #### 🔹 Flexible Configuration
-Drop a .tokencap.json into your project root to override any default. Tune file budgets, include/exclude patterns, diff settings, profile, and more — all scoped to the project.
+Drop a .tokencap.json into your project root to override any default. Tune file budgets, include/exclude patterns, diff settings, profile, and more scoped to the project.
 
 > ⚙️ *Technical Detail:* Config resolution order: defaults → profile overrides → .tokencap.json → CLI flags. Supports includePatterns, excludePatterns with glob matching.
 
 ### 📁 Compatibility
 
 #### 🔹 Multi-Language Snapshot
-The main snapshot works across every language TokenCap can read. Python, Go, Rust, Java, C++, Ruby, PHP, Swift, Kotlin, SQL, YAML, and more — if it's a text file, it's in your snapshot.
+The main snapshot works across every text language TokenCap can read, including Python, Go, Rust, Java, C++, Ruby, PHP, Swift, Kotlin, SQL, and YAML.
 
 > ⚙️ *Technical Detail:* Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants.
 
@@ -394,4 +394,4 @@ tokencap watch --debounce 5000
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 22/7/2026.*
+*Generated automatically from `website-content` JSON source files on 23/7/2026.*
