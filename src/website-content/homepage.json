@@ -1,6 +1,6 @@
 {
   "headline": "Your codebase. Compressed. Ready to hand off.",
-  "subheadline": "Stop wasting tokens re-explaining your project. TokenCap snapshots your workspace — files, Git context, imports, and developer intent — into a single handoff-ready file.",
+  "subheadline": "Stop wasting tokens re-explaining your project. TokenCap snapshots your workspace into a single handoff-ready file, including your files, Git context, imports, and developer intent.",
   "description": "TokenCap is a local-first developer tool that generates structured, AI-ready snapshots of your codebase. Works offline. Never uploads your code. Runs from the CLI or VS Code.",
   "primaryCTA": "Install Free via npm",
   "primaryCTACommand": "npm install -g tokencap",
@@ -13,7 +13,7 @@
     },
     {
       "label": "AI-ready output",
-      "description": "Generates structured Markdown snapshots sized for any LLM context window — from llama-3-8b to Gemini 1.5 Pro."
+      "description": "Generates structured Markdown snapshots sized for any LLM context window, from llama-3-8b to Gemini 1.5 Pro."
     },
     {
       "label": "Git-aware",

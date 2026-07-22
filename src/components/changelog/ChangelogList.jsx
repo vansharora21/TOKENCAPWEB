@@ -31,7 +31,7 @@ function ChangelogList() {
         if (!item) return { x: W / 2, y: idx * 300 + 150 };
         const rect = item.getBoundingClientRect();
         const y = rect.top - containerRect.top + rect.height / 2;
-        
+
         // Interpolate horizontal diagonal path from x=85% to x=15%
         const xDiagonal = W * 0.85 - (idx / (N - 1)) * (W * 0.70);
         // Add wavy offset around the diagonal
@@ -55,33 +55,26 @@ function ChangelogList() {
       if (!containerRef.current || !pathRef.current) return;
       const path = pathRef.current;
       const length = path.getTotalLength();
+      if (!length || length === 0) return;
+
       path.style.strokeDasharray = `${length}`;
 
       const rect = containerRef.current.getBoundingClientRect();
       const winHeight = window.innerHeight;
-      
+
       const totalDuration = rect.height;
       const currentScroll = winHeight * 0.8 - rect.top;
       const progress = Math.max(0, Math.min(1, currentScroll / (totalDuration - winHeight * 0.1)));
 
-      // Animate desktop path drawing using Anime.js v4 function easing
-      animate(path, {
-        strokeDashoffset: length * (1 - progress),
-        duration: 500,
-        ease: eases.outQuad
-      });
+      // Direct style updates on scroll to prevent animation queue overflow
+      path.style.strokeDashoffset = `${length * (1 - progress)}`;
 
-      // Animate mobile progress bar height
       if (mobileProgressRef.current) {
-        animate(mobileProgressRef.current, {
-          scaleY: progress,
-          duration: 500,
-          ease: eases.outQuad
-        });
+        mobileProgressRef.current.style.transform = `scaleY(${progress})`;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Run once initially
 
     return () => {
@@ -173,15 +166,15 @@ function ChangelogList() {
   if (coords.length > 0) {
     const startX = containerWidth * 0.85;
     pathD = `M ${startX} 0`;
-    
+
     coords.forEach((coord, idx) => {
       const prevX = idx === 0 ? startX : coords[idx - 1].x;
       const prevY = idx === 0 ? 0 : coords[idx - 1].y;
       const cpY = (prevY + coord.y) / 2;
-      
+
       pathD += ` C ${prevX} ${cpY}, ${coord.x} ${cpY}, ${coord.x} ${coord.y}`;
     });
-    
+
     // Smooth out to the bottom of the container
     const lastCoord = coords[coords.length - 1];
     const endX = containerWidth * 0.15;
@@ -190,81 +183,81 @@ function ChangelogList() {
   }
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-5xl mx-auto py-4 px-4 md:px-0">
+    <div ref={containerRef} className="relative w-full max-w-5xl mx-auto py-4 px-4 md:px-0 font-sans">
       <style>{`
         .glass-card {
-            background: rgba(9, 9, 11, 0.7);
+            background: var(--card);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            box-shadow: inset 0 1px 1px var(--card-shadow, rgba(0, 0, 0, 0.02));
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .glass-card:hover {
-            border-color: rgba(124, 58, 237, 0.4);
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
+            border-color: var(--card-border-hover, rgba(120, 120, 120, 0.3));
         }
 
         .snake-path {
             fill: none;
-            stroke: rgba(255, 255, 255, 0.04);
+            stroke: currentColor;
+            opacity: 0.2;
             stroke-width: 4;
             stroke-linecap: round;
         }
 
         .snake-path-progress {
             fill: none;
-            stroke: #7c3aed;
+            stroke: currentColor;
             stroke-width: 4;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 8px #7c3aed);
+            filter: drop-shadow(0 0 4px rgba(120, 120, 120, 0.3));
         }
 
         .node-marker-svg {
-            fill: #131315;
-            stroke: rgba(124, 58, 237, 0.4);
+            fill: var(--card);
+            stroke: var(--card-border);
             stroke-width: 2px;
             transition: fill 0.3s ease, stroke 0.3s ease, filter 0.3s ease;
         }
 
         .node-marker-svg.active {
-            fill: #d2bbff !important;
-            stroke: #7c3aed !important;
+            fill: var(--foreground) !important;
+            stroke: var(--foreground) !important;
             stroke-width: 3px !important;
-            filter: drop-shadow(0 0 10px #7c3aed);
+            filter: drop-shadow(0 0 6px rgba(120, 120, 120, 0.4));
         }
       `}</style>
-      
+
       {/* Decorative subtitle / tracker block */}
       <div className="text-center mb-16 select-none font-mono">
-        <p className="text-[10px] text-zinc-500 uppercase tracking-widest">
-          ~ INITIAL_BUILD VERSION TRACKER SYSTEMS... v{changelogItems[0]?.version || "0.8.0"}
+        <p className="text-[10px] text-muted uppercase tracking-widest">
+          Version Timeline {changelogItems[0]?.version || "0.8.0"}
         </p>
-        <p className="text-xs text-purple-400 font-semibold tracking-wider mt-1">
+        {/* <p className="text-xs text-muted font-semibold tracking-wider mt-1">
           &gt; MAPPED FILES. RESPONSIVE CONTEXT DEVELOPMENTS... [2026]
-        </p>
+        </p> */}
       </div>
 
       <div className="relative">
         {/* Mobile vertical line */}
-        <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-zinc-800 md:hidden z-0" />
-        
+        <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-card-border md:hidden z-0" />
+
         {/* Mobile glowing overlay progress */}
         <div
           ref={mobileProgressRef}
-          className="absolute left-6 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#c084fc] to-[#6366f1] origin-top md:hidden z-0 shadow-[0_0_8px_rgba(192,132,252,0.4)]"
+          className="absolute left-6 top-0 bottom-0 w-[1px] bg-foreground origin-top md:hidden z-0"
           style={{ transform: "scaleY(0)" }}
         />
 
         {/* Desktop winding SVG line cutting diagonally from top-right to bottom-left */}
         <div className="absolute inset-0 hidden md:block pointer-events-none z-0">
-          <svg className="w-full h-full" id="timeline-svg" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-full h-full text-foreground" id="timeline-svg" xmlns="http://www.w3.org/2000/svg">
             {/* Background path track */}
             <path
               className="snake-path"
               d={pathD}
             />
-            {/* Glowing foreground path animated via Anime.js */}
+            {/* Glowing foreground path animated via scroll */}
             <path
               ref={pathRef}
               className="snake-path-progress"
@@ -313,43 +306,43 @@ function ChangelogList() {
                   <div className="relative group">
                     {/* Card container */}
                     <div className="changelog-card opacity-0 glass-card p-4 rounded-xl relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/2 rounded-full blur-xl pointer-events-none group-hover:bg-purple-500/5 transition-colors"></div>
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-card-hover/2 rounded-full blur-xl pointer-events-none group-hover:bg-card-hover/5 transition-colors"></div>
 
                       {/* Header row */}
-                      <div className="flex items-center justify-between gap-4 mb-2.5 border-b border-white/5 pb-2">
+                      <div className="flex items-center justify-between gap-4 mb-2.5 border-b border-card-border pb-2">
                         <div className="flex items-center gap-2">
-                          <span className="bg-purple-500/10 text-[#d2bbff] border border-purple-500/20 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase">
+                          <span className="bg-pre-bg text-muted border border-card-border px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase">
                             v{item.version}
                           </span>
-                          <span className="text-[10px] text-zinc-500 font-mono">
+                          <span className="text-[10px] text-muted font-mono">
                             {item.date}
                           </span>
                         </div>
                         {isLatest ? (
-                          <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full text-[9px] font-mono font-semibold tracking-wider uppercase animate-pulse">
+                          <span className="bg-pre-bg text-muted border border-card-border px-2.5 py-0.5 rounded-full text-[9px] font-mono font-semibold tracking-wider uppercase animate-pulse">
                             LATEST RELEASE
                           </span>
                         ) : (
-                          <span className="bg-zinc-800/40 text-zinc-400 border border-white/5 px-2.5 py-0.5 rounded-full text-[9px] font-mono font-semibold tracking-wider uppercase">
+                          <span className="bg-pre-bg/40 text-muted border border-card-border px-2.5 py-0.5 rounded-full text-[9px] font-mono font-semibold tracking-wider uppercase">
                             STABLE
                           </span>
                         )}
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-sm sm:text-base font-bold text-white tracking-tight group-hover:text-purple-300 transition-colors">
+                      <h3 className="text-sm sm:text-base font-bold text-foreground tracking-tight group-hover:text-foreground/90 transition-colors">
                         {item.title}
                       </h3>
 
                       {/* Single Description Line */}
-                      <p className="changelog-desc opacity-0 mt-2 text-xs text-[#ccc3d8]/90 leading-relaxed">
+                      <p className="changelog-desc opacity-0 mt-2 text-xs text-muted leading-relaxed">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Mobile Node */}
-                    <div className="mobile-timeline-dot scale-0 absolute left-[-42px] top-6 flex items-center justify-center w-5 h-5 rounded-full bg-black border border-zinc-800 md:hidden z-20">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#c084fc]" />
+                    <div className="mobile-timeline-dot scale-0 absolute left-[-42px] top-6 flex items-center justify-center w-5 h-5 rounded-full bg-card border border-card-border md:hidden z-20">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--timeline-color)]" />
                     </div>
                   </div>
                 </div>

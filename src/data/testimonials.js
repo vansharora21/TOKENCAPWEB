@@ -9,7 +9,7 @@ export const testimonials = [
   },
   {
     audience: "Team lead / senior engineer",
-    theme: "We use it to onboard new engineers — just point them at TOKENCAP.md",
+    theme: "We use it to onboard new engineers: just point them at TOKENCAP.md",
   },
   {
     audience: "Developer using local LLMs",

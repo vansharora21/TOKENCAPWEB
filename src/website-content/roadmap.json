@@ -39,13 +39,13 @@
     "title": "Incremental Snapshots",
     "description": "Only re-process changed files on subsequent runs instead of scanning the full project every time. Dramatically reduces generation time for large codebases.",
     "status": "exploratory",
-    "source": "Architecture analysis — current full-scan approach in collectFiles()"
+    "source": "Architecture analysis: current full-scan approach in collectFiles()"
   },
   {
     "version": "0.11.0",
     "title": "Graph Cycle Detection",
     "description": "Detect circular import dependencies in the project graph and surface them as warnings in TOKENCAP_GRAPH.md.",
     "status": "exploratory",
-    "source": "Architecture analysis — buildGraph.js edge model supports cycle detection"
+    "source": "Architecture analysis: buildGraph.js edge model supports cycle detection"
   }
 ]

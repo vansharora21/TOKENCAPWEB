@@ -4,7 +4,7 @@
   "publisher": "VanshArora21",
   "vsMarketplaceUrl": "https://marketplace.visualstudio.com/items?itemName=VanshArora21.tokencap",
   "minimumVSCodeVersion": "1.88.0",
-  "description": "TokenCap integrates directly into VS Code to generate AI-ready project snapshots on every save — no commands to run, no workflow to change.",
+  "description": "TokenCap integrates directly into VS Code to generate AI-ready project snapshots on every save with zero commands to run and no workflow changes.",
   "activationEvents": [
     "onStartupFinished",
     "onCommand:tokencap.make",
@@ -17,7 +17,7 @@
     {
       "id": "tokencap.make",
       "title": "TokenCap: Make Now",
-      "description": "Force-regenerate all snapshot files immediately — TOKENCAP.md, TOKENCAP_GRAPH.md, and TOKENCAP_MEMORY.md."
+      "description": "Force-regenerate all snapshot files immediately: TOKENCAP.md, TOKENCAP_GRAPH.md, and TOKENCAP_MEMORY.md."
     },
     {
       "id": "tokencap.open",

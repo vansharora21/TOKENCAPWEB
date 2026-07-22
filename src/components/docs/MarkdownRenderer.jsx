@@ -16,7 +16,7 @@ function parseInline(text) {
     }
     if (token.startsWith("**") && token.endsWith("**")) {
       return (
-        <strong key={i} className="text-white font-bold">
+        <strong key={i} className="text-foreground font-bold">
           {token.slice(2, -2)}
         </strong>
       );
@@ -190,19 +190,19 @@ export function MarkdownRenderer({ content }) {
         switch (block.type) {
           case "h1":
             return (
-              <h1 key={i} className="text-3xl font-bold text-white mt-10 mb-5">
+              <h1 key={i} className="text-3xl font-bold text-foreground mt-10 mb-5">
                 {parseInline(block.content)}
               </h1>
             );
           case "h2":
             return (
-              <h2 key={i} className="text-2xl font-bold text-white mt-8 mb-4">
+              <h2 key={i} className="text-2xl font-bold text-foreground mt-8 mb-4">
                 {parseInline(block.content)}
               </h2>
             );
           case "h3":
             return (
-              <h3 key={i} className="text-xl font-bold text-white mt-6 mb-3">
+              <h3 key={i} className="text-xl font-bold text-foreground mt-6 mb-3">
                 {parseInline(block.content)}
               </h3>
             );

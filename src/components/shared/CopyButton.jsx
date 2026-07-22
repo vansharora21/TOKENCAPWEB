@@ -28,8 +28,8 @@ export function CopyButton({ text, className = "" }) {
     <button
       onClick={handleCopy}
       className={cn(
-        "material-symbols-outlined text-sm cursor-pointer hover:text-[#d2bbff] transition-colors focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2",
-        copied ? "text-[#4edea3]" : "text-zinc-500",
+        "material-symbols-outlined text-sm cursor-pointer hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2",
+        copied ? "text-emerald-500" : "text-zinc-500",
         className
       )}
       aria-label={copied ? "Copied" : "Copy to clipboard"}

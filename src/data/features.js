@@ -11,3 +11,4 @@ export const featureShowcase = {
   title: "TokenCap gives you one command for the entire handoff story.",
   description: "The site now reflects the actual product: snapshot generation, memory capture, Git context, and privacy-first workflows.",
 };
+

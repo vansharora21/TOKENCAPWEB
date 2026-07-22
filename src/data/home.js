@@ -6,7 +6,7 @@ export const heroStats = [
 
 export const heroContent = {
   headline: "Your codebase. Compressed. Ready to hand off.",
-  subheadline: "Stop wasting tokens re-explaining your project. TokenCap snapshots your workspace — files, Git context, imports, and developer intent — into a single handoff-ready file.",
+  subheadline: "Stop wasting tokens re-explaining your project. TokenCap snapshots your workspace into a single handoff-ready file, including your files, Git context, imports, and developer intent.",
   description: "TokenCap is a local-first developer tool that generates structured, AI-ready snapshots of your codebase. Works offline. Never uploads your code. Runs from the CLI or VS Code.",
   primaryCTA: "Install Free via npm",
   primaryCTACommand: "npm install -g tokencap",
@@ -14,7 +14,7 @@ export const heroContent = {
   secondaryCTAUrl: "https://github.com/vansharora21/TOKENCAP",
   keyBenefits: [
     { label: "Local-first", description: "Runs entirely on your machine. No cloud. No uploads. Your code never leaves your workspace." },
-    { label: "AI-ready output", description: "Generates structured Markdown snapshots sized for any LLM context window — from llama-3-8b to Gemini 1.5 Pro." },
+    { label: "AI-ready output", description: "Generates structured Markdown snapshots sized for any LLM context window, from llama-3-8b to Gemini 1.5 Pro." },
     { label: "Git-aware", description: "Automatically surfaces changed files, staged and unstaged diffs, recent commits, and branch context." },
     { label: "Privacy-first", description: "Built-in secret redaction strips API keys, tokens, and passwords before anything is written to disk." },
     { label: "Zero configuration", description: "Works out of the box. One command generates everything. Customize with a single JSON config file when you're ready." },

@@ -19,22 +19,15 @@ function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/5 bg-[#0a0a0c] text-zinc-400">
+    <footer className="border-t border-card-border bg-background text-muted">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] pb-12 border-b border-white/5">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] pb-12 border-b border-card-border">
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="relative w-7 h-7 overflow-hidden rounded-lg bg-[#141416] border border-white/10 flex items-center justify-center">
-                <img 
-                  src="/logos/tokencap-logo.png" 
-                  alt="TokenCap emblem" 
-                  className="absolute w-[180%] h-auto max-w-none left-1/2 -translate-x-1/2 top-[-8%]" 
-                />
-              </div>
-              <h3 className="text-lg font-bold text-white tracking-tight">TokenCap</h3>
+              <h3 className="text-lg font-bold text-foreground tracking-tight">TokenCap</h3>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed text-zinc-500">
+            <p className="max-w-sm text-sm leading-relaxed text-muted">
               Coding context at the speed of thought. <br />
               Built for the LLM era.
             </p>
@@ -44,11 +37,11 @@ function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 text-sm">
             {/* Column 1: Product */}
             <div className="space-y-3">
-              <h4 className="font-semibold text-white tracking-wide text-xs uppercase text-zinc-400">Product</h4>
+              <h4 className="font-semibold text-foreground tracking-wide text-xs uppercase">Product</h4>
               <ul className="space-y-2">
                 {productLinks.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-zinc-500 hover:text-white transition">
+                    <Link href={link.href} className="text-muted hover:text-foreground transition">
                       {link.label}
                     </Link>
                   </li>
@@ -58,11 +51,11 @@ function Footer() {
 
             {/* Column 2: Resources */}
             <div className="space-y-3">
-              <h4 className="font-semibold text-white tracking-wide text-xs uppercase text-zinc-400">Resources</h4>
+              <h4 className="font-semibold text-foreground tracking-wide text-xs uppercase">Resources</h4>
               <ul className="space-y-2">
                 {resourceLinks.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-zinc-500 hover:text-white transition">
+                    <Link href={link.href} className="text-muted hover:text-foreground transition">
                       {link.label}
                     </Link>
                   </li>
@@ -72,7 +65,7 @@ function Footer() {
 
             {/* Column 3: Community */}
             <div className="space-y-3">
-              <h4 className="font-semibold text-white tracking-wide text-xs uppercase text-zinc-400">Community</h4>
+              <h4 className="font-semibold text-foreground tracking-wide text-xs uppercase">Community</h4>
               <ul className="space-y-2 font-mono text-xs">
                 {communityLinks.map((link) => (
                   <li key={link.label}>
@@ -80,7 +73,7 @@ function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-zinc-500 hover:text-white transition flex items-center gap-1.5"
+                      className="text-muted hover:text-foreground transition flex items-center gap-1.5"
                     >
                       <span>&bull;</span>
                       <span>{link.label}</span>
@@ -93,7 +86,7 @@ function Footer() {
         </div>
 
         {/* Bottom Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between pt-8 gap-4 text-xs text-zinc-600">
+        <div className="flex flex-col sm:flex-row items-center justify-between pt-8 gap-4 text-xs text-muted/60">
           <div>
             &copy; 2026 TokenCap. Built for developers.
           </div>

@@ -13,7 +13,7 @@
   },
   {
     "question": "Do I need to configure anything to get started?",
-    "answer": "No. Install it with npm install -g tokencap and run tokencap make from your project root. It works with sensible defaults immediately. When you're ready to customize, run tokencap init to create a .tokencap.json config file."
+    "answer": "No. Install it with npm install -g tokencap and run tokencap make from your project root. It works with sensible defaults immediately. When you're ready to customize, drop a .tokencap.json config file in your project root."
   },
   {
     "question": "How do I choose the right profile for my AI model?",
@@ -57,6 +57,6 @@
   },
   {
     "question": "What is AI Debug Handoff Mode and how does it work?",
-    "answer": "AI Debug Handoff Mode is a session-based debugging memory system designed to preserve runtime error states, failed tests, and execution timelines. Run 'tokencap debug:start -- <command>' (like npm test) to run your tests/builds. TokenCap intercepts any output, extracts error stack traces, and ranks workspace files by likelihood of containing the bug. Once you are done investigating, 'tokencap debug:end' packages the findings and archives the session for future reference."
+    "answer": "AI Debug Handoff Mode is a session-based debugging memory system designed to preserve runtime error states, failed tests, and execution timelines. Run 'tokencap debug --start -- <command>' (like npm test) to run your tests/builds. TokenCap intercepts any output, extracts error stack traces, and ranks workspace files by likelihood of containing the bug. Once you are done investigating, 'tokencap debug --end' packages the findings and archives the session for future reference."
   }
 ]

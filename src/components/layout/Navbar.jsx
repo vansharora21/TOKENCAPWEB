@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const navItems = [
   { label: "Features", href: "/features" },
@@ -23,11 +24,11 @@ function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-[#0a0a0c]/80 backdrop-blur-xl" onKeyDown={handleKeyDown}>
+    <header className="sticky top-0 z-40 border-b border-card-border bg-nav-bg/85 backdrop-blur-xl" onKeyDown={handleKeyDown}>
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-10">
         {/* Left: Brand name */}
-        <Link href="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-white hover:opacity-90 transition">
-          <span className="text-xl font-bold tracking-tight text-white">TokenCap</span>
+        <Link href="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-foreground hover:opacity-90 transition">
+          <span className="text-xl font-bold tracking-tight">TokenCap</span>
         </Link>
 
         {/* Middle: Navigation Links */}
@@ -36,7 +37,7 @@ function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-zinc-400 transition hover:text-white focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
+              className="text-sm font-medium text-muted transition hover:text-foreground focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2"
             >
               {item.label}
             </Link>
@@ -48,7 +49,7 @@ function Navbar() {
           {/* Search Icon */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-search"))}
-            className="text-zinc-400 hover:text-white transition focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
+            className="text-muted hover:text-foreground transition focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2"
             aria-label="Search"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -56,10 +57,13 @@ function Navbar() {
             </svg>
           </button>
 
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
           {/* Hamburger Menu Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-zinc-400 hover:text-white transition focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2 md:hidden p-1"
+            className="text-muted hover:text-foreground transition focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2 md:hidden p-1 cursor-pointer"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -79,7 +83,7 @@ function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-white/5 bg-[#0a0a0c]/95 backdrop-blur-xl">
+        <div id="mobile-menu" className="md:hidden border-t border-card-border bg-nav-bg/95 backdrop-blur-xl">
           <div className="px-6 py-6 space-y-4">
             <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
               {navItems.map((item) => (
@@ -87,7 +91,7 @@ function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-zinc-400 transition hover:text-white"
+                  className="text-base font-medium text-muted transition hover:text-foreground"
                 >
                   {item.label}
                 </Link>

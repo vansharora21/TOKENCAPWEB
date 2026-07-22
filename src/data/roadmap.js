@@ -33,6 +33,6 @@ export const roadmapItems = [
     description:
       "Detect circular import dependencies in the project graph and surface them as warnings in TOKENCAP_GRAPH.md.",
     status: "planned",
-    source: "Architecture analysis — buildGraph.js edge model supports cycle detection",
+    source: "Architecture analysis: buildGraph.js edge model supports cycle detection",
   },
 ];

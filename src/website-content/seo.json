@@ -1,6 +1,6 @@
 {
   "title": "TokenCap",
-  "description": "TokenCap is a local-first developer tool that generates AI-ready snapshots of your codebase — including a dependency graph, context memory, and Git-aware file selection. Works offline. Never uploads your code.",
+  "description": "TokenCap is a local-first developer tool that generates AI-ready snapshots of your codebase including dependency graphs, context memory, and Git-aware file selection. Works offline. Never uploads your code.",
   "keywords": [
     "tokencap",
     "AI context",
@@ -28,7 +28,7 @@
     "TypeScript",
     "React developer tools"
   ],
-  "ogTitle": "TokenCap — Compress your codebase for AI handoffs",
+  "ogTitle": "TokenCap: Compress your codebase for AI handoffs",
   "ogDescription": "Generate structured, AI-ready snapshots of your project in seconds. Dependency graph, context memory, Git diffs, secret redaction. Local-first. Free. Open source.",
   "twitterCard": "summary_large_image",
   "canonicalUrl": "https://tokencap.dev",

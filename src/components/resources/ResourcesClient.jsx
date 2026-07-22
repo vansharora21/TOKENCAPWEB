@@ -1,41 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import { PageWrapper } from "@/components/layout/PageWrapper";
-import { motion, useInView } from "framer-motion";
-
-// Helper component for count-up animations
-function AnimatedCounter({ end, duration = 1500, suffix = "" }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  
-  useEffect(() => {
-    if (!isInView) return;
-    
-    const endVal = parseInt(end, 10);
-    if (isNaN(endVal)) {
-      setCount(end); // Fallback for version strings
-      return;
-    }
-    
-    let start = 0;
-    const incrementTime = Math.max(Math.floor(duration / endVal), 25);
-    
-    const timer = setInterval(() => {
-      start += Math.ceil(endVal / 50); // Increment proportionally to speed up
-      if (start >= endVal) {
-        start = endVal;
-        clearInterval(timer);
-      }
-      setCount(start);
-    }, incrementTime);
-    
-    return () => clearInterval(timer);
-  }, [end, duration, isInView]);
-
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
-}
 
 export function ResourcesClient() {
   const timelineRef = useRef(null);
@@ -172,7 +138,7 @@ export function ResourcesClient() {
       title: "Building an Obsidian-Style Code Intelligence Graph",
       platform: "DEV Community",
       icon: "code",
-      description: "A deep dive into how TokenCap builds visual graph models for code dependencies.",
+      description: "A deep dive into how TokenCap builds visual knowledge graph models for dependencies.",
       link: "https://dev.to/vansharora21/building-an-obsidian-style-code-intelligence-graph-for-any-javascript-project-1ep6"
     },
     {
@@ -192,41 +158,41 @@ export function ResourcesClient() {
   ];
 
   return (
-    <PageWrapper className="pt-24 pb-20 max-w-7xl mx-auto px-6">
+    <PageWrapper className="pt-24 pb-20 max-w-7xl mx-auto px-6 font-sans">
       {/* Hero Section */}
-      <header className="text-center max-w-3xl mx-auto mb-24 space-y-6">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00a572] animate-pulse"></span>
-          TokenCap Articles & Launches
+      <header className="text-center max-w-3xl mx-auto mb-20 space-y-6">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pre-bg border border-card-border text-muted font-mono text-[10px] uppercase tracking-wider font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-zinc-555 animate-pulse"></span>
+          TokenCap Articles & Updates
         </div>
-        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
-          Learn How <span className="text-[#d2bbff]">TokenCap</span> Works
+        <h1 className="text-4xl font-bold tracking-tight text-foreground leading-tight font-display">
+          Learn How TokenCap Works
         </h1>
-        <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-2xl mx-auto">
+        <p className="text-sm leading-relaxed text-muted max-w-2xl mx-auto">
           Articles, release notes, technical deep dives, DEV.to posts, and LinkedIn build-in-public updates documenting the TokenCap journey.
         </p>
-        <div className="flex justify-center gap-4 pt-4">
+        <div className="flex justify-center gap-4 pt-4 font-mono text-xs">
           <button
             onClick={() => scrollToSection(gridRef)}
-            className="bg-[#7c3aed] text-white px-6 py-2.5 rounded-lg font-bold hover:brightness-110 transition-all active:scale-95 flex items-center gap-2 shadow-[0_0_20px_rgba(124,58,237,0.15)] cursor-pointer"
+            className="bg-pre-bg border border-card-border hover:bg-card-hover text-foreground px-6 py-2.5 rounded-lg font-bold transition-all cursor-pointer"
+            type="button"
           >
-            <span className="material-symbols-outlined text-sm">article</span>
             Read Articles
           </button>
           <button
             onClick={() => scrollToSection(timelineRef)}
-            className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+            className="border border-card-border text-muted hover:text-foreground hover:bg-pre-bg/40 px-6 py-2.5 rounded-lg font-bold transition-all cursor-pointer"
+            type="button"
           >
-            <span className="material-symbols-outlined text-sm">history</span>
             View Launch Posts
           </button>
         </div>
       </header>
 
       {/* Featured Content Section */}
-      <section className="mb-24">
-        <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-          <span className="material-symbols-outlined text-[#d2bbff]">stars</span>
+      <section className="mb-24 space-y-8">
+        <h2 className="text-lg font-bold text-foreground flex items-center gap-2 border-b border-card-border pb-3 font-mono">
+          <span className="material-symbols-outlined text-muted text-base">stars</span>
           Featured Articles & Launches
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -236,23 +202,23 @@ export function ResourcesClient() {
               href={item.link}
               target="_blank"
               rel="noreferrer"
-              className="flex flex-col justify-between glass-card p-8 rounded-xl border-white/5 bg-white/5 hover:border-[#7c3aed]/40 hover:scale-[1.01] transition-all duration-300 relative group overflow-hidden"
+              className="flex flex-col justify-between p-8 rounded-lg border border-card-border bg-card hover:border-card-hover transition-colors relative group overflow-hidden"
             >
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#d2bbff] px-2.5 py-0.5 rounded-md text-xs font-mono font-bold">
+                <div className="flex items-center justify-between mb-6 border-b border-card-border pb-2">
+                  <span className="bg-pre-bg border border-card-border text-muted px-2.5 py-0.5 rounded text-[9px] font-mono font-bold">
                     {item.type}
                   </span>
-                  <span className="material-symbols-outlined text-zinc-500 group-hover:text-white transition-colors">{item.icon}</span>
+                  <span className="material-symbols-outlined text-muted group-hover:text-foreground transition-colors text-sm">{item.icon}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#d2bbff] transition-colors leading-snug">
+                <h3 className="text-base font-bold text-foreground mb-3 group-hover:text-foreground/90 transition-colors leading-snug font-mono">
                   {item.title}
                 </h3>
-                <p className="text-xs leading-relaxed text-[#ccc3d8] mb-6">
+                <p className="text-xs leading-relaxed text-muted mb-6">
                   {item.description}
                 </p>
               </div>
-              <div className="flex items-center gap-1 text-xs font-bold text-[#d2bbff] group-hover:underline mt-auto">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-muted group-hover:text-foreground transition-colors mt-auto font-mono">
                 <span>Read Full Post</span>
                 <span className="material-symbols-outlined text-xs">open_in_new</span>
               </div>
@@ -264,28 +230,28 @@ export function ResourcesClient() {
       {/* Build In Public Section */}
       <section ref={timelineRef} className="mb-24 scroll-mt-24">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Building TokenCap In Public</h2>
-          <p className="text-xs text-[#ccc3d8]">Follow product launches, feature announcements, and development progress.</p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground font-sans">Building TokenCap In Public</h2>
+          <p className="text-xs text-muted font-sans">Follow product launches, feature announcements, and development progress.</p>
         </div>
-        <div className="relative border-l border-[#4a4455]/40 max-w-3xl mx-auto pl-8 space-y-12">
+        <div className="relative border-l border-card-border max-w-3xl mx-auto pl-8 space-y-12">
           {timelineEvents.map((item, index) => (
             <div key={index} className="relative group">
               {/* Timeline dot */}
-              <div className="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-[#0a0a0c] border-2 border-[#7c3aed] flex items-center justify-center text-[#d2bbff] relative z-10 group-hover:scale-110 transition-transform">
+              <div className="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-card border-2 border-card-border flex items-center justify-center text-foreground relative z-10 group-hover:scale-110 transition-transform duration-300">
                 <span className="material-symbols-outlined text-[10px]">{item.icon}</span>
               </div>
               
-              <div className="glass-panel p-6 rounded-xl border-white/5 bg-white/5 hover:border-[#7c3aed]/40 transition-all duration-300">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#d2bbff] transition-colors">{item.title}</h3>
-                  <span className="text-xs text-zinc-500 font-mono">{item.date}</span>
+              <div className="p-6 rounded-lg border border-card-border bg-card hover:border-card-hover transition-all duration-300">
+                <div className="flex items-center justify-between mb-3 border-b border-card-border pb-2">
+                  <h3 className="text-base font-bold text-foreground group-hover:text-foreground/90 transition-colors font-mono">{item.title}</h3>
+                  <span className="text-xs text-muted font-mono">{item.date}</span>
                 </div>
-                <p className="text-xs leading-relaxed text-[#ccc3d8] mb-4">{item.description}</p>
+                <p className="text-xs leading-relaxed text-muted mb-4">{item.description}</p>
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-bold text-[#d2bbff] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-muted hover:text-foreground transition-colors font-mono hover:underline"
                 >
                   <span>View Post</span>
                   <span className="material-symbols-outlined text-xs">open_in_new</span>
@@ -302,22 +268,22 @@ export function ResourcesClient() {
           {whyContentExits.map((item, index) => (
             <div
               key={index}
-              className="glass-panel p-8 rounded-xl border-[#4a4455]/20 bg-[#0e0e10]/30 flex flex-col items-start"
+              className="p-8 rounded-lg border border-card-border bg-card flex flex-col items-start"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#353437]/50 border border-white/5 flex items-center justify-center mb-6 text-[#d2bbff]">
+              <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
                 <span className="material-symbols-outlined text-base">{item.icon}</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-              <p className="text-xs leading-relaxed text-[#ccc3d8]">{item.text}</p>
+              <h3 className="text-base font-bold text-foreground mb-2 font-mono">{item.title}</h3>
+              <p className="text-xs leading-relaxed text-muted">{item.text}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Resources Grid Section */}
-      <section ref={gridRef} className="mb-24 scroll-mt-24">
-        <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-          <span className="material-symbols-outlined text-[#d2bbff]">grid_view</span>
+      <section ref={gridRef} className="mb-24 scroll-mt-24 space-y-8">
+        <h2 className="text-lg font-bold text-foreground flex items-center gap-2 border-b border-card-border pb-3 font-mono">
+          <span className="material-symbols-outlined text-muted text-base">grid_view</span>
           All Articles & External Links
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -327,23 +293,23 @@ export function ResourcesClient() {
               href={item.link}
               target="_blank"
               rel="noreferrer"
-              className="glass-card p-6 group hover:border-[#d2bbff]/40 transition-all duration-300 flex flex-col justify-between rounded-lg h-full"
+              className="p-6 group hover:border-card-hover border border-card-border bg-card transition-colors flex flex-col justify-between rounded-lg h-full"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">{item.platform}</span>
-                  <span className="material-symbols-outlined text-zinc-500 group-hover:text-[#d2bbff] text-sm transition-colors">{item.icon}</span>
+                <div className="flex items-center justify-between mb-4 border-b border-card-border pb-2">
+                  <span className="text-[9px] font-mono font-medium text-muted uppercase tracking-wider">{item.platform}</span>
+                  <span className="material-symbols-outlined text-muted group-hover:text-foreground text-sm transition-colors">{item.icon}</span>
                 </div>
-                <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[#d2bbff] transition-colors leading-snug">
+                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-foreground/90 transition-colors leading-snug font-mono">
                   {item.title}
                 </h3>
-                <p className="text-xs leading-relaxed text-[#ccc3d8] mb-6">
+                <p className="text-xs leading-relaxed text-muted mb-6">
                   {item.description}
                 </p>
               </div>
-              <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
-                <span className="text-xs text-[#d2bbff] font-bold group-hover:underline">Read Article</span>
-                <span className="material-symbols-outlined text-zinc-500 group-hover:text-white text-sm">open_in_new</span>
+              <div className="flex items-center justify-between mt-auto pt-4 border-t border-card-border">
+                <span className="text-xs text-muted group-hover:text-foreground font-bold font-mono">Read Article</span>
+                <span className="material-symbols-outlined text-muted group-hover:text-foreground text-sm">open_in_new</span>
               </div>
             </a>
           ))}
@@ -351,56 +317,54 @@ export function ResourcesClient() {
       </section>
 
       {/* Community Stats Section */}
-      <section className="mb-24 bg-[#0e0e10]/40 border border-[#4a4455]/20 rounded-2xl p-10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#7c3aed]/5 rounded-full blur-3xl"></div>
+      <section className="mb-24 bg-card border border-card-border rounded-lg p-10 relative overflow-hidden">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div className="space-y-2">
-            <div className="text-3xl sm:text-4xl font-bold text-white">
-              <AnimatedCounter end="100" suffix="%" />
+            <div className="text-3xl font-bold text-foreground font-mono">
+              100%
             </div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Open Source Project</p>
+            <p className="text-[10px] font-mono text-muted uppercase tracking-widest">Open Source Project</p>
           </div>
           <div className="space-y-2">
-            <div className="text-3xl sm:text-4xl font-bold text-[#d2bbff]">
+            <div className="text-3xl font-bold text-foreground/90 font-mono">
               v1.5.0
             </div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">npm Package</p>
+            <p className="text-[10px] font-mono text-muted uppercase tracking-widest">npm Package</p>
           </div>
           <div className="space-y-2">
-            <div className="text-3xl sm:text-4xl font-bold text-[#d2bbff]">
+            <div className="text-3xl font-bold text-foreground/90 font-mono">
               v1.5.0
             </div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">VS Code Extension</p>
+            <p className="text-[10px] font-mono text-muted uppercase tracking-widest">VS Code Extension</p>
           </div>
           <div className="space-y-2">
-            <div className="text-3xl sm:text-4xl font-bold text-white">
-              <AnimatedCounter end="1500" suffix="+" />
+            <div className="text-3xl font-bold text-foreground font-mono">
+              1,500+
             </div>
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Developer Community</p>
+            <p className="text-[10px] font-mono text-muted uppercase tracking-widest">Developer Community</p>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section>
-        <div className="glass-card p-12 relative overflow-hidden rounded-xl border-[#7c3aed]/20 text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-[#7c3aed]/5 blur-[120px] rounded-full"></div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4 relative z-10">
+        <div className="p-12 relative overflow-hidden rounded-lg border border-card-border bg-card/45 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4 relative z-10 font-display">
             Start Understanding Your Codebase Instead of Explaining It
           </h2>
-          <p className="text-xs text-[#ccc3d8] leading-relaxed max-w-xl mx-auto mb-8 relative z-10">
+          <p className="text-xs text-muted leading-relaxed max-w-xl mx-auto mb-8 relative z-10">
             Generate project knowledge, query MCP local intelligence, and provide AI with the right context automatically.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
             <a
               href="/docs"
-              className="bg-[#7c3aed] text-white px-8 py-3 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(124,58,237,0.15)] block text-center"
+              className="bg-pre-bg border border-card-border hover:bg-card-hover text-foreground px-8 py-3 rounded-lg font-bold hover:scale-[1.02] active:scale-95 transition-all text-xs font-mono block text-center"
             >
               Get Started
             </a>
             <a
               href="/mcp"
-              className="border border-[#4a4455] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 block text-center"
+              className="border border-card-border text-muted hover:text-foreground hover:bg-pre-bg/40 px-8 py-3 rounded-lg font-bold hover:scale-[1.02] active:scale-95 transition-all text-xs font-mono block text-center"
             >
               View MCP Guide
             </a>

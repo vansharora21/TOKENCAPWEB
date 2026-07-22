@@ -14,14 +14,14 @@ export default function VscodePage() {
       {/* Hero Section with VS Code Mockup */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
-            <span className="w-2 h-2 rounded-full bg-[#d2bbff] animate-pulse"></span>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#7c3aed] dark:text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
+            <span className="w-2 h-2 rounded-full bg-[#7c3aed] dark:bg-[#d2bbff] animate-pulse"></span>
             V1.3.0 NOW AVAILABLE
           </div>
-          <h1 className="text-5xl font-bold tracking-tight text-white leading-tight font-nerdropol">
-            The ultimate VS Code toolkit for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d2bbff] to-[#7c3aed] anim-heading-gradient">snapshot precision.</span>
+          <h1 className="text-5xl font-bold tracking-tight text-foreground leading-tight font-nerdropol">
+            The ultimate VS Code toolkit for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#d2bbff] dark:from-[#d2bbff] dark:to-[#7c3aed] anim-heading-gradient">snapshot precision.</span>
           </h1>
-          <p className="text-[#ccc3d8] text-base leading-relaxed">
+          <p className="text-muted text-base leading-relaxed">
             TokenCap seamlessly integrates into your editor to automate codebase snapshotting, import graph parsing, and context memory tracking on every file save.
           </p>
           <div className="flex flex-wrap gap-4 pt-2">
@@ -38,14 +38,14 @@ export default function VscodePage() {
               href="https://open-vsx.org/extension/VanshArora21/tokencap"
               target="_blank"
               rel="noreferrer"
-              className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
+              className="border border-card-border bg-card text-foreground px-6 py-2.5 rounded-lg font-bold hover:bg-pre-bg transition-all active:scale-95 flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             >
               <span className="material-symbols-outlined text-sm">open_in_new</span>
               Open VSX
             </a>
             <a
               href="/cli"
-              className="border border-[#4a4455] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#2a2a2c]/50 transition-all active:scale-95 flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
+              className="border border-card-border bg-card text-foreground px-6 py-2.5 rounded-lg font-bold hover:bg-pre-bg transition-all active:scale-95 flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2"
             >
               <span className="material-symbols-outlined text-sm">terminal</span>
               View CLI Docs
@@ -56,7 +56,7 @@ export default function VscodePage() {
         {/* VS Code Mockup Component */}
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-[#7c3aed]/20 to-[#4edea3]/20 blur-xl opacity-50 transition duration-1000 group-hover:opacity-100"></div>
-          <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl code-glow flex flex-col h-[420px] bg-[#0c0c0e]">
+          <div className="relative rounded-xl overflow-hidden border border-card-border shadow-2xl code-glow flex flex-col h-[420px] bg-card">
             {/* Editor Toolbar */}
             <div className="terminal-header h-10 flex items-center px-4 gap-1.5 justify-between">
               <div className="flex gap-1.5">
@@ -64,7 +64,7 @@ export default function VscodePage() {
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
               </div>
-              <div className="bg-[#1c1b1d] px-4 py-0.5 rounded text-[11px] font-mono text-[#ccc3d8] border border-white/5">
+              <div className="bg-pre-bg px-4 py-0.5 rounded text-[11px] font-mono text-muted border border-card-border">
                 .tokencap.json — TokenCap Extension
               </div>
               <div className="w-12"></div>
@@ -73,51 +73,51 @@ export default function VscodePage() {
             {/* Editor Content */}
             <div className="flex-grow flex overflow-hidden">
               {/* Sidebar */}
-              <div className="w-12 bg-[#0e0e10] border-r border-white/5 flex flex-col items-center py-4 gap-4 text-zinc-500 select-none">
-                <span className="material-symbols-outlined text-[#d2bbff]">file_copy</span>
+              <div className="w-12 bg-tab-inactive border-r border-card-border flex flex-col items-center py-4 gap-4 text-muted select-none">
+                <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff]">file_copy</span>
                 <span className="material-symbols-outlined">search</span>
                 <span className="material-symbols-outlined">account_tree</span>
                 <span className="material-symbols-outlined">extension</span>
               </div>
               {/* Code Area */}
-              <div className="flex-grow bg-[#131315] p-4 font-mono text-[13px] leading-relaxed overflow-hidden relative">
+              <div className="flex-grow bg-pre-bg p-4 font-mono text-[13px] leading-relaxed overflow-hidden relative">
                 <div className="flex gap-4">
-                  <div className="text-zinc-600 text-right select-none pr-1">
+                  <div className="text-muted/60 text-right select-none pr-1">
                     01<br />02<br />03<br />04<br />05<br />06<br />07<br />08<br />09<br />10
                   </div>
-                  <div className="text-[#ccc3d8]">
+                  <div className="text-foreground/90">
                     {"{"}<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"profile"</span>: <span className="text-[#d2bbff]">"balanced"</span>,<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"outputPath"</span>: <span className="text-[#4edea3]">"TOKENCAP.md"</span>,<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"maxFiles"</span>: <span className="text-[#d2bbff]">90</span>,<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"maxSourceBytes"</span>: <span className="text-[#d2bbff]">220000</span>,<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"includeGitDiff"</span>: <span className="text-[#d2bbff]">true</span>,<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"redactSecrets"</span>: <span className="text-[#d2bbff]">true</span>,<br />
-                    &nbsp;&nbsp;<span className="text-[#4edea3]">"excludePatterns"</span>: [<span className="text-[#4edea3]">"node_modules/**"</span>, <span className="text-[#4edea3]">"dist/**"</span>]<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"profile"</span>: <span className="text-[#7c3aed] dark:text-[#d2bbff]">"balanced"</span>,<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"outputPath"</span>: <span className="text-emerald-600 dark:text-[#4edea3]">"TOKENCAP.md"</span>,<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"maxFiles"</span>: <span className="text-[#7c3aed] dark:text-[#d2bbff]">90</span>,<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"maxSourceBytes"</span>: <span className="text-[#7c3aed] dark:text-[#d2bbff]">220000</span>,<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"includeGitDiff"</span>: <span className="text-[#7c3aed] dark:text-[#d2bbff]">true</span>,<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"redactSecrets"</span>: <span className="text-[#7c3aed] dark:text-[#d2bbff]">true</span>,<br />
+                    &nbsp;&nbsp;<span className="text-emerald-600 dark:text-[#4edea3]">"excludePatterns"</span>: [<span className="text-emerald-600 dark:text-[#4edea3]">"node_modules/**"</span>, <span className="text-emerald-600 dark:text-[#4edea3]">"dist/**"</span>]<br />
                     {"}"}
                   </div>
                 </div>
 
                 {/* Command Palette Overlay */}
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-xs glass-panel rounded-lg shadow-2xl p-1 flex flex-col gap-1 z-20">
-                  <div className="px-3 py-1.5 border-b border-white/10 flex items-center justify-between">
-                    <span className="text-[9px] font-mono text-zinc-500 tracking-wider">TOKEN CAP COMMANDS</span>
-                    <span className="text-[9px] font-mono text-[#d2bbff] font-semibold">4 FOUND</span>
+                  <div className="px-3 py-1.5 border-b border-card-border flex items-center justify-between">
+                    <span className="text-[9px] font-mono text-muted tracking-wider">TOKEN CAP COMMANDS</span>
+                    <span className="text-[9px] font-mono text-[#7c3aed] dark:text-[#d2bbff] font-semibold">4 FOUND</span>
                   </div>
                   <div className="p-0.5 space-y-0.5">
-                    <div className="flex items-center gap-2.5 px-3 py-1.5 bg-[#7c3aed]/20 rounded text-white border border-[#7c3aed]/20 text-xs">
-                      <span className="material-symbols-outlined text-sm text-[#d2bbff]">camera</span>
+                    <div className="flex items-center gap-2.5 px-3 py-1.5 bg-[#7c3aed]/15 rounded text-foreground border border-[#7c3aed]/20 text-xs">
+                      <span className="material-symbols-outlined text-sm text-[#7c3aed] dark:text-[#d2bbff]">camera</span>
                       <span>TokenCap: Make Snapshot Now</span>
                     </div>
-                    <div className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-[#2a2a2c] rounded text-[#ccc3d8] text-xs">
+                    <div className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-pre-bg rounded text-muted text-xs">
                       <span className="material-symbols-outlined text-sm">open_in_new</span>
                       <span>TokenCap: Open Snapshot</span>
                     </div>
-                    <div className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-[#2a2a2c] rounded text-[#ccc3d8] text-xs">
+                    <div className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-pre-bg rounded text-muted text-xs">
                       <span className="material-symbols-outlined text-sm">toggle_on</span>
                       <span>TokenCap: Toggle Auto Capture</span>
                     </div>
-                    <div className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-[#2a2a2c] rounded text-[#ccc3d8] text-xs">
+                    <div className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-pre-bg rounded text-muted text-xs">
                       <span className="material-symbols-outlined text-sm">settings</span>
                       <span>TokenCap: Create Config File</span>
                     </div>
@@ -150,62 +150,62 @@ export default function VscodePage() {
 
       {/* Feature Bento Grid */}
       <section className="mb-20">
-        <h2 className="text-2xl font-bold text-white mb-6 font-vorcas">Extension Core Capabilities</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-6 font-vorcas">Extension Core Capabilities</h2>
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           {/* Large Feature: Auto Capture */}
-          <div className="md:col-span-4 glass-panel p-8 rounded-xl flex flex-col justify-between group hover:border-[#d2bbff]/40 transition-all">
+          <div className="md:col-span-4 glass-panel p-8 rounded-xl flex flex-col justify-between group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all">
             <div>
-              <span className="material-symbols-outlined text-[#d2bbff] mb-4 text-3xl">save</span>
-              <h3 className="text-xl font-bold text-white mb-2">Auto capture on file save</h3>
-              <p className="text-sm leading-relaxed text-[#ccc3d8]">
+              <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff] mb-4 text-3xl">save</span>
+              <h3 className="text-xl font-bold text-foreground mb-2">Auto capture on file save</h3>
+              <p className="text-sm leading-relaxed text-muted">
                 Every time you save a source file in VS Code, TokenCap debounces and automatically regenerates your snapshots. Never worry about manually syncing your workspace state again.
               </p>
             </div>
-            <div className="mt-6 relative h-28 bg-[#131315] rounded-lg border border-white/5 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e10] to-transparent"></div>
-              <div className="p-4 font-mono text-[11px] text-[#ccc3d8] flex flex-col gap-1.5">
+            <div className="mt-6 relative h-28 bg-pre-bg rounded-lg border border-card-border overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+              <div className="p-4 font-mono text-[11px] text-muted flex flex-col gap-1.5">
                 <div className="flex justify-between items-center bg-[#7c3aed]/5 p-1 rounded">
                   <span>Updated: TOKENCAP.md</span>
-                  <span className="text-[#4edea3]">Just now</span>
+                  <span className="text-emerald-600 dark:text-[#4edea3]">Just now</span>
                 </div>
                 <div className="flex justify-between items-center p-1">
                   <span>Updated: TOKENCAP_GRAPH.md</span>
-                  <span className="text-zinc-500">2m ago</span>
+                  <span className="text-muted/65">2m ago</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Small Feature: Status Bar */}
-          <div className="md:col-span-2 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#d2bbff]/40 transition-all justify-between">
+          <div className="md:col-span-2 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all justify-between">
             <div>
-              <span className="material-symbols-outlined text-[#d2bbff] mb-4 text-3xl">view_kanban</span>
-              <h3 className="text-xl font-bold text-white mb-2">Status bar display</h3>
-              <p className="text-sm leading-relaxed text-[#ccc3d8]">
+              <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff] mb-4 text-3xl">view_kanban</span>
+              <h3 className="text-xl font-bold text-foreground mb-2">Status bar display</h3>
+              <p className="text-sm leading-relaxed text-muted">
                 Displays auto capture status, active profile, file counts, and last update timestamp in the status bar in real-time.
               </p>
             </div>
-            <div className="mt-6 h-12 bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded flex items-center justify-center gap-3 px-4 shrink-0">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#4edea3] animate-pulse"></div>
-              <span className="font-mono text-xs text-white">TokenCap • 12:34 PM</span>
+            <div className="mt-6 h-12 bg-[#7c3aed]/10 border border-[#7c3aed]/25 rounded flex items-center justify-center gap-3 px-4 shrink-0">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+              <span className="font-mono text-xs text-foreground">TokenCap • 12:34 PM</span>
             </div>
           </div>
 
           {/* Middle Feature: Quick Pick */}
-          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#d2bbff]/40 transition-all">
-            <span className="material-symbols-outlined text-[#d2bbff] mb-4 text-3xl">menu_open</span>
-            <h3 className="text-xl font-bold text-white mb-2">Quick-pick command menu</h3>
-            <p className="text-sm leading-relaxed text-[#ccc3d8]">
+          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all">
+            <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff] mb-4 text-3xl">menu_open</span>
+            <h3 className="text-xl font-bold text-foreground mb-2">Quick-pick command menu</h3>
+            <p className="text-sm leading-relaxed text-muted">
               Click the status bar item to open a Quick-Pick menu with commands to force snapshots, toggle auto capture, or open the snapshot files instantly.
             </p>
           </div>
 
           {/* Middle Feature: Open Snapshot */}
-          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#d2bbff]/40 transition-all relative overflow-hidden min-h-[180px]">
+          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all relative overflow-hidden min-h-[180px]">
             <div className="z-10 relative">
-              <span className="material-symbols-outlined text-[#d2bbff] mb-4 text-3xl">open_in_new</span>
-              <h3 className="text-xl font-bold text-white mb-2">Open snapshot command</h3>
-              <p className="text-sm leading-relaxed text-[#ccc3d8] max-w-[80%]">
+              <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff] mb-4 text-3xl">open_in_new</span>
+              <h3 className="text-xl font-bold text-foreground mb-2">Open snapshot command</h3>
+              <p className="text-sm leading-relaxed text-muted max-w-[80%]">
                 Open `TOKENCAP.md` directly in VS Code with a single click. Allows you to review what gets exposed to the LLM context.
               </p>
             </div>
@@ -217,19 +217,19 @@ export default function VscodePage() {
           </div>
 
           {/* Bottom Feature: Toggle Capture */}
-          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#d2bbff]/40 transition-all">
-            <span className="material-symbols-outlined text-[#d2bbff] mb-4 text-3xl">toggle_on</span>
-            <h3 className="text-xl font-bold text-white mb-2">Toggle auto capture</h3>
-            <p className="text-sm leading-relaxed text-[#ccc3d8]">
+          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all">
+            <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff] mb-4 text-3xl">toggle_on</span>
+            <h3 className="text-xl font-bold text-foreground mb-2">Toggle auto capture</h3>
+            <p className="text-sm leading-relaxed text-muted">
               Easily turn auto-saving capture ON or OFF via the command menu to temporarily suspend snapshots during rapid edits.
             </p>
           </div>
 
           {/* Bottom Feature: Config File */}
-          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#d2bbff]/40 transition-all">
-            <span className="material-symbols-outlined text-[#d2bbff] mb-4 text-3xl">settings_input_component</span>
-            <h3 className="text-xl font-bold text-white mb-2">Create config file</h3>
-            <p className="text-sm leading-relaxed text-[#ccc3d8]">
+          <div className="md:col-span-3 glass-panel p-8 rounded-xl flex flex-col group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all">
+            <span className="material-symbols-outlined text-[#7c3aed] dark:text-[#d2bbff] mb-4 text-3xl">settings_input_component</span>
+            <h3 className="text-xl font-bold text-foreground mb-2">Create config file</h3>
+            <p className="text-sm leading-relaxed text-muted">
               Initialize a default local configuration file (`.tokencap.json`) in one click to customize output profiles and file budgets.
             </p>
           </div>
@@ -237,17 +237,16 @@ export default function VscodePage() {
       </section>
 
       {/* Installation Instructions */}
-      <section className="bg-[#0e0e10] border border-[#4a4455]/20 rounded-xl p-12 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-white mb-6 font-vorcas">Ready to optimize?</h2>
+      <section className="bg-card border border-card-border rounded-xl p-12 text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground mb-6 font-vorcas">Ready to optimize?</h2>
         <div className="max-w-2xl mx-auto space-y-4">
-          <div className="bg-[#1c1b1d] flex items-center px-4 py-3 rounded-lg border border-[#4a4455]/40 font-mono text-[13px] group justify-between">
+          <div className="bg-pre-bg flex items-center px-4 py-3 rounded-lg border border-card-border font-mono text-[13px] group justify-between">
             <div className="flex gap-2">
               <span className="text-[#7c3aed] mr-1">&gt;</span>
-              <span className="text-white">code --install-extension VanshArora21.tokencap</span>
+              <span className="text-foreground/90">code --install-extension VanshArora21.tokencap</span>
             </div>
             <CopyButton text="code --install-extension VanshArora21.tokencap" />
           </div>
-          <p className="text-xs text-[#ccc3d8] pt-2">Or search for "TokenCap" by VanshArora21 in the VS Code Extensions Marketplace.</p>
         </div>
       </section>
     </PageWrapper>

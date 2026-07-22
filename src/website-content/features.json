@@ -2,7 +2,7 @@
   {
     "id": "self-maintaining-mcp",
     "title": "Self-Maintaining MCP Intelligence (v1.5.0)",
-    "description": "Don't read repository intelligence—query it. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.",
+    "description": "Query repository intelligence directly. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.",
     "category": "Intelligence",
     "importance": 1,
     "technicalDetail": "Implements stdio Model Context Protocol (MCP) server. Running tokencap mcp --init wires workspace configs for Claude, Cursor, Windsurf, Cline, VS Code, Antigravity, and Codex automatically."
@@ -18,7 +18,7 @@
   {
     "id": "project-brain",
     "title": "Project Brain",
-    "description": "Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, git timeline — all from a single command.",
+    "description": "Query any part of your codebase and get a unified intelligence view: files, risk, architecture, dependencies, review group, recent changes, and git timeline from a single command.",
     "category": "Intelligence",
     "importance": 1,
     "technicalDetail": "Wraps all intelligence engines (Graph, Diff, Agent, Memory). Renders terminal views in 6 modes, builds brain-index.json for fast cluster -> file lookup, and supports fuzzy cluster matching."
@@ -75,7 +75,7 @@
   {
     "id": "context-memory",
     "title": "Context Memory Layer",
-    "description": "Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps — TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.",
+    "description": "Never lose track of what you were doing. Fill in a simple notes file with your current task, intent, constraints, and next steps. TokenCap combines it with live Git context to produce a persistent memory snapshot alongside your code.",
     "category": "Intelligence",
     "importance": 1,
     "technicalDetail": "Generates TOKENCAP_MEMORY.md from .tokencap-notes.md (auto-created if missing) + git branch + git status. Executed automatically as part of tokencap make."
@@ -83,7 +83,7 @@
   {
     "id": "secret-redaction",
     "title": "Automatic Secret Redaction",
-    "description": "TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] — so you can safely share your snapshot with anyone.",
+    "description": "TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.",
     "category": "Security",
     "importance": 1,
     "technicalDetail": "Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments."
@@ -91,7 +91,7 @@
   {
     "id": "context-profiles",
     "title": "Context Window Profiles",
-    "description": "Different AI models have different context limits. TokenCap ships with profiles tuned for eight model families — from llama-3-8b at 40KB to Gemini 1.5 Pro at 1.2MB. Switch profiles with a single flag.",
+    "description": "Different AI models have different context limits. TokenCap ships with profiles tuned for eight model families from llama-3-8b at 40KB to Gemini 1.5 Pro at 1.2MB. Switch profiles with a single flag.",
     "category": "AI Optimization",
     "importance": 2,
     "profiles": [
@@ -108,7 +108,7 @@
   {
     "id": "git-integration",
     "title": "Deep Git Integration",
-    "description": "TokenCap reads your Git state automatically — current branch, recent commits, staged and unstaged diffs, and changed file paths. Changed files are ranked higher in the snapshot so they always appear first.",
+    "description": "TokenCap reads your Git state automatically: current branch, recent commits, staged and unstaged diffs, and changed file paths. Changed files are ranked higher in the snapshot so they always appear first.",
     "category": "Git",
     "importance": 1,
     "technicalDetail": "Uses git status --short, git diff --cached, git diff, git log --oneline -8, git rev-parse. Separates staged vs unstaged diffs into distinct sections. Changed files receive +120 ranking score."
@@ -116,7 +116,7 @@
   {
     "id": "file-ranking",
     "title": "Intelligent File Ranking",
-    "description": "Not every file deserves the same attention. TokenCap scores and ranks files by relevance — changed files, source files, project metadata, and documentation surface first within your token budget.",
+    "description": "Not every file deserves the same attention. TokenCap scores and ranks files by relevance so changed files, source files, project metadata, and documentation surface first within your token budget.",
     "category": "Optimization",
     "importance": 2,
     "technicalDetail": "Scoring: changed files +120, important project files (package.json, README, tsconfig) +70, high-signal docs +35, src/ files +30, test files +18. Large files penalized by floor(size/12000)."
@@ -132,7 +132,7 @@
   {
     "id": "todo-detection",
     "title": "TODO / FIXME / HACK Detection",
-    "description": "Every TODO, FIXME, and HACK comment across your selected files is extracted and surfaced in a dedicated section — so technical debt is always visible in your handoff.",
+    "description": "Every TODO, FIXME, and HACK comment across your selected files is extracted and surfaced in a dedicated section so technical debt is always visible in your handoff.",
     "category": "Intelligence",
     "importance": 3,
     "technicalDetail": "Case-insensitive regex scan across all selected files. Each entry includes file path, line number, and the full comment line. Capped at maxTodos (default: 100)."
@@ -156,7 +156,7 @@
   {
     "id": "config-system",
     "title": "Flexible Configuration",
-    "description": "Drop a .tokencap.json into your project root to override any default. Tune file budgets, include/exclude patterns, diff settings, profile, and more — all scoped to the project.",
+    "description": "Drop a .tokencap.json into your project root to override any default. Tune file budgets, include/exclude patterns, diff settings, profile, and more scoped to the project.",
     "category": "Configuration",
     "importance": 2,
     "technicalDetail": "Config resolution order: defaults → profile overrides → .tokencap.json → CLI flags. Supports includePatterns, excludePatterns with glob matching."
@@ -164,7 +164,7 @@
   {
     "id": "multilanguage-snapshot",
     "title": "Multi-Language Snapshot",
-    "description": "The main snapshot works across every language TokenCap can read. Python, Go, Rust, Java, C++, Ruby, PHP, Swift, Kotlin, SQL, YAML, and more — if it's a text file, it's in your snapshot.",
+    "description": "The main snapshot works across every text language TokenCap can read, including Python, Go, Rust, Java, C++, Ruby, PHP, Swift, Kotlin, SQL, and YAML.",
     "category": "Compatibility",
     "importance": 2,
     "technicalDetail": "Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants."

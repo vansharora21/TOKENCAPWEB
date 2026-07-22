@@ -1,9 +1,7 @@
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { buildMetadata } from "@/lib/seo";
-import { CopyButton } from "@/components/shared/CopyButton";
 import { docsSections } from "@/data/docs";
 import { MarkdownRenderer } from "@/components/docs/MarkdownRenderer";
-import { DocsSearch } from "@/components/docs/DocsSearch";
 
 export const metadata = buildMetadata({
   title: "Documentation",
@@ -46,38 +44,35 @@ export default function DocsPage() {
   }));
 
   return (
-    <PageWrapper className="max-w-7xl mx-auto flex">
+    <PageWrapper className="max-w-7xl mx-auto flex font-sans">
       {/* Left Sidebar */}
-      <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
+      <aside className="w-64 border-r border-card-border bg-card p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-4">
-          <p className="text-xl font-bold text-white tracking-tight">Documentation</p>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.5.0 RELEASE</p>
-        </div>
-        <div className="mb-4">
-          <DocsSearch />
+          <p className="text-xl font-bold text-foreground tracking-tight font-mono">Documentation</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.5.0 RELEASE</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className={`flex items-center gap-3 p-2.5 rounded-lg font-medium text-sm transition-all text-[#ccc3d8] hover:bg-[#2a2a2c]/50`}
+              className="flex items-center gap-3 p-2.5 rounded-lg font-medium text-sm transition-all text-muted hover:bg-pre-bg hover:text-foreground"
             >
-              <span className="material-symbols-outlined text-base">{item.icon}</span>
+              <span className="material-symbols-outlined text-base text-muted/80">{item.icon}</span>
               <span>{item.label}</span>
             </a>
           ))}
         </nav>
-        <div className="mt-auto pt-6 border-t border-[#4a4455]/20 space-y-4">
+        <div className="mt-auto pt-6 border-t border-card-border space-y-4">
           <a
             href="/mcp"
-            className="w-full bg-[#7c3aed] text-white py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity block text-center flex items-center justify-center gap-1.5"
+            className="w-full bg-pre-bg border border-card-border text-foreground py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-card-hover transition-colors block text-center flex items-center justify-center gap-1.5 font-mono"
           >
             <span className="material-symbols-outlined text-sm">hub</span>
             MCP Guide v1.5.0
           </a>
           <div className="flex flex-col gap-2 font-mono text-xs">
-            <a href="https://github.com/vansharora21/TOKENCAP" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+            <a href="https://github.com/vansharora21/TOKENCAP" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-muted hover:text-foreground transition-colors">
               <span className="material-symbols-outlined text-base">code</span>
               GitHub
             </a>
@@ -89,35 +84,35 @@ export default function DocsPage() {
       <main className="flex-grow px-6 py-12 md:px-12 min-w-0">
         <div className="max-w-3xl">
           {/* Header */}
-          <header className="mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/30 text-[#d2bbff] text-xs font-mono mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#00a572]"></span>
+          <header className="mb-8 border-b border-card-border pb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
+              <span className="w-2 h-2 rounded-full bg-zinc-550 animate-pulse"></span>
               Current Release: v1.5.0
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-white mb-3 font-nerdropol">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-3 font-display uppercase">
               TokenCap Documentation
             </h1>
-            <p className="text-base leading-relaxed text-[#ccc3d8]">
+            <p className="text-sm leading-relaxed text-muted">
               Learn how to use TokenCap CLI, VS Code Extension, and Model Context Protocol (MCP) Service.
             </p>
           </header>
 
           {/* MCP Feature Banner Card */}
-          <div className="mb-12 p-6 rounded-2xl bg-gradient-to-r from-[#7c3aed]/20 via-[#4c1d95]/10 to-[#121215] border border-[#7c3aed]/40 relative overflow-hidden group">
+          <div className="mb-12 p-6 rounded-lg border border-card-border bg-card relative overflow-hidden group">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
               <div>
-                <span className="text-[10px] font-mono font-bold tracking-widest text-[#d2bbff] uppercase bg-[#7c3aed]/30 px-2 py-0.5 rounded">NEW IN V1.5.0</span>
-                <h3 className="text-xl font-bold text-white mt-2 mb-1 flex items-center gap-2 font-vorcas">
-                  <span className="material-symbols-outlined text-[#d2bbff]">hub</span>
+                <span className="text-[9px] font-mono font-bold tracking-widest text-muted uppercase bg-pre-bg border border-card-border px-2 py-0.5 rounded">NEW IN V1.5.0</span>
+                <h3 className="text-lg font-bold text-foreground mt-2 mb-1 flex items-center gap-2 font-mono">
+                  <span className="material-symbols-outlined text-muted text-base">hub</span>
                   Self-Maintaining MCP Intelligence
                 </h3>
-                <p className="text-xs text-[#ccc3d8] leading-relaxed max-w-lg">
+                <p className="text-xs text-muted leading-relaxed max-w-lg">
                   TokenCap v1.5.0 brings 11 local MCP tool endpoints, live repository background watching, and zero-latency caching to your favorite AI host.
                 </p>
               </div>
               <a
                 href="/mcp"
-                className="shrink-0 px-4 py-2.5 rounded-xl bg-[#7c3aed] hover:bg-[#6d28d9] text-white text-xs font-bold transition-all shadow-lg shadow-[#7c3aed]/20 flex items-center gap-1.5"
+                className="shrink-0 px-4 py-2.5 rounded border border-card-border bg-pre-bg hover:bg-card-hover text-foreground/80 hover:text-foreground text-xs font-bold transition-colors flex items-center gap-1.5 font-mono cursor-pointer"
               >
                 Read MCP Guide
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
@@ -127,24 +122,24 @@ export default function DocsPage() {
 
           {docsSections.map((section) => (
             <section key={section.slug} className="mb-16 scroll-mt-24" id={section.slug}>
-              <h2 className="text-3xl font-bold tracking-tight text-white mb-6 border-b border-[#4a4455]/20 pb-3 font-vorcas">
+              <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6 border-b border-card-border pb-3 font-mono">
                 {section.title}
               </h2>
-              <article className="prose prose-invert max-w-none">
+              <article className="prose prose-zinc dark:prose-invert max-w-none text-sm text-muted leading-relaxed">
                 <MarkdownRenderer content={section.content} />
               </article>
             </section>
           ))}
 
           {/* Navigation buttons */}
-          <div className="mt-16 flex justify-between items-center pt-8 border-t border-[#4a4455]/20">
-            <a href="/" className="flex items-center gap-1.5 text-xs font-bold text-zinc-400 hover:text-white transition-colors">
-              <span className="material-symbols-outlined">chevron_left</span>
+          <div className="mt-16 flex justify-between items-center pt-8 border-t border-card-border font-mono text-xs">
+            <a href="/" className="flex items-center gap-1.5 text-muted hover:text-foreground transition-colors">
+              <span className="material-symbols-outlined text-sm">chevron_left</span>
               Back Home
             </a>
-            <a href="/mcp" className="flex items-center gap-1.5 text-xs font-bold text-[#d2bbff] hover:text-white transition-colors">
+            <a href="/mcp" className="flex items-center gap-1.5 text-foreground/90 hover:text-foreground transition-colors">
               MCP Guide (v1.5.0)
-              <span className="material-symbols-outlined">chevron_right</span>
+              <span className="material-symbols-outlined text-sm">chevron_right</span>
             </a>
           </div>
         </div>
@@ -152,28 +147,25 @@ export default function DocsPage() {
 
       {/* Right Sidebar */}
       <aside className="hidden xl:block w-64 p-6 sticky top-16 h-fit shrink-0">
-        <h5 className="text-[10px] font-mono font-bold text-zinc-500 mb-4 uppercase tracking-widest">On this page</h5>
-        <nav className="flex flex-col gap-2.5 border-l border-[#4a4455]/20 pl-4 text-xs">
+        <h5 className="text-[10px] font-mono font-bold text-muted mb-4 uppercase tracking-widest">On this page</h5>
+        <nav className="flex flex-col gap-2.5 border-l border-card-border pl-4 text-xs">
           {tocItems.map((item) => (
             <a
               key={item.href}
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-foreground transition-colors font-mono"
               href={item.href}
             >
               {item.label}
             </a>
           ))}
         </nav>
-        <div className="mt-8 p-4 bg-[#7c3aed]/10 border border-[#7c3aed]/20 rounded-xl relative overflow-hidden">
-          <div className="relative z-10">
-            <h6 className="font-bold text-white text-xs mb-1">New Release v1.5.0</h6>
-            <p className="text-[11px] leading-relaxed text-[#ccc3d8] mb-4">v1.5.0 introduces Self-Maintaining MCP Intelligence with live background watcher and host auto-init.</p>
-            <a className="text-[11px] text-[#d2bbff] font-bold underline hover:text-[#7c3aed] transition-colors" href="/mcp">
+        <div className="mt-8 p-4 bg-card border border-card-border rounded-lg relative overflow-hidden">
+          <div className="relative z-10 space-y-2">
+            <h6 className="font-bold text-foreground text-xs font-mono">New Release v1.5.0</h6>
+            <p className="text-[11px] leading-relaxed text-muted">v1.5.0 introduces Self-Maintaining MCP Intelligence with live background watcher and host auto-init.</p>
+            <a className="text-[11px] text-foreground/90 font-bold underline hover:text-foreground transition-colors font-mono block" href="/mcp">
               View MCP Guide
             </a>
-          </div>
-          <div className="absolute -right-4 -bottom-4 opacity-10 text-[#7c3aed] pointer-events-none select-none">
-            <span className="material-symbols-outlined text-6xl">hub</span>
           </div>
         </div>
       </aside>

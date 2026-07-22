@@ -16,7 +16,7 @@ export default function McpPage() {
     { label: "Startup & Memory", icon: "sync", href: "#startup" },
     { label: "11 MCP Tools", icon: "construction", href: "#tools" },
     { label: "Performance", icon: "speed", href: "#latency" },
-    { label: "CLI Reference", icon: "terminal", href: "/cli" },
+    { label: "CLI Reference", icon: "/cli" },
     { label: "Documentation", icon: "description", href: "/docs" },
   ];
 
@@ -42,18 +42,16 @@ export default function McpPage() {
     { host: "VS Code", config: ".vscode/mcp.json", flag: "--client vscode" },
     { host: "Antigravity", config: ".agents/mcp_config.json", flag: "--client antigravity" },
     { host: "Codex", config: ".codex/config.toml", flag: "--client codex" },
-  ];
-
-  return (
-    <PageWrapper className="max-w-7xl mx-auto flex">
+  ];  return (
+    <PageWrapper className="max-w-7xl mx-auto flex font-sans">
       {/* Left Sidebar */}
-      <aside className="w-64 border-r border-[#4a4455]/20 bg-[#0e0e10]/40 p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
+      <aside className="w-64 border-r border-card-border bg-card p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-4">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[#7c3aed]">hub</span>
-            <p className="text-xl font-bold text-white tracking-tight">MCP Guide</p>
+            <span className="material-symbols-outlined text-muted">hub</span>
+            <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">v1.5.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.5.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow">
@@ -61,18 +59,18 @@ export default function McpPage() {
             <a
               key={item.label}
               href={item.href}
-              className="flex items-center gap-3 p-2.5 rounded-lg font-medium text-sm transition-all text-[#ccc3d8] hover:bg-[#2a2a2c]/50"
+              className="flex items-center gap-3 p-2.5 rounded-lg font-medium text-sm transition-all text-muted hover:bg-pre-bg hover:text-foreground"
             >
-              <span className="material-symbols-outlined text-base">{item.icon}</span>
+              <span className="material-symbols-outlined text-base text-muted/80">{item.icon}</span>
               <span>{item.label}</span>
             </a>
           ))}
         </nav>
 
-        <div className="mt-auto pt-6 border-t border-[#4a4455]/20 space-y-3">
+        <div className="mt-auto pt-6 border-t border-card-border space-y-3">
           <a
             href="/docs"
-            className="w-full bg-[#7c3aed] text-white py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity block text-center"
+            className="w-full bg-pre-bg border border-card-border text-foreground py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-card-hover transition-colors block text-center font-mono"
           >
             Full Documentation
           </a>
@@ -83,39 +81,39 @@ export default function McpPage() {
       <main className="flex-grow px-6 py-12 md:px-12 min-w-0">
         <div className="max-w-4xl space-y-16">
           {/* Header */}
-          <header className="border-b border-[#4a4455]/20 pb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/30 text-[#d2bbff] text-xs font-mono mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#00a572] animate-pulse"></span>
+          <header className="border-b border-card-border pb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
+              <span className="w-2 h-2 rounded-full bg-zinc-550 animate-pulse"></span>
               v1.5.0 Self-Maintaining MCP Service
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-white mb-4 font-nerdropol">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
               Model Context Protocol (MCP) Guide
             </h1>
-            <p className="text-base leading-relaxed text-[#ccc3d8]">
+            <p className="text-sm leading-relaxed text-muted">
               TokenCap exposes repository intelligence through the Model Context Protocol (MCP). Your AI host queries focused questions about the repository live, during reasoning, on demand — saving up to 92% of context token budget.
             </p>
           </header>
 
           {/* Quick Start */}
           <section id="quick-start" className="scroll-mt-24">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#7c3aed]">rocket_launch</span>
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2 font-mono">
+              <span className="material-symbols-outlined text-muted">rocket_launch</span>
               Quick Start (2 Steps)
             </h2>
-            <p className="text-sm text-[#ccc3d8] mb-6">
+            <p className="text-xs text-muted mb-6">
               Install TokenCap globally and run the single configuration command. TokenCap auto-detects your host IDE and wires configuration automatically.
             </p>
-            <div className="bg-[#121215] border border-[#4a4455]/30 rounded-xl p-6 space-y-4">
+            <div className="bg-card border border-card-border rounded-lg p-6 space-y-4">
               <div>
-                <p className="text-xs font-mono text-zinc-400 mb-2">1. Install TokenCap globally:</p>
-                <div className="flex items-center justify-between bg-[#0a0a0c] px-4 py-3 rounded-lg border border-[#4a4455]/20 font-mono text-sm text-[#00a572]">
+                <p className="text-xs font-mono text-muted mb-2">1. Install TokenCap globally:</p>
+                <div className="flex items-center justify-between bg-pre-bg px-4 py-3 rounded-lg border border-card-border font-mono text-xs text-foreground/90">
                   <code>npm install -g tokencap</code>
                   <CopyButton text="npm install -g tokencap" />
                 </div>
               </div>
               <div>
-                <p className="text-xs font-mono text-zinc-400 mb-2">2. Wire your IDE / MCP Host:</p>
-                <div className="flex items-center justify-between bg-[#0a0a0c] px-4 py-3 rounded-lg border border-[#4a4455]/20 font-mono text-sm text-[#00a572]">
+                <p className="text-xs font-mono text-muted mb-2">2. Wire your IDE / MCP Host:</p>
+                <div className="flex items-center justify-between bg-pre-bg px-4 py-3 rounded-lg border border-card-border font-mono text-xs text-foreground/90">
                   <code>tokencap mcp --init</code>
                   <CopyButton text="tokencap mcp --init" />
                 </div>
@@ -125,28 +123,28 @@ export default function McpPage() {
 
           {/* Supported Hosts */}
           <section id="supported-hosts" className="scroll-mt-24">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#7c3aed]">laptop_mac</span>
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2 font-mono">
+              <span className="material-symbols-outlined text-muted">laptop_mac</span>
               Supported Hosts & Auto-Init
             </h2>
-            <p className="text-sm text-[#ccc3d8] mb-6">
+            <p className="text-xs text-muted mb-6">
               When a workspace has multiple supported AI hosts, specify your host explicitly:
             </p>
-            <div className="overflow-x-auto border border-[#4a4455]/20 rounded-xl bg-[#0e0e10]/40">
-              <table className="w-full text-left text-sm text-[#ccc3d8]">
-                <thead className="bg-[#18181b] text-white font-mono text-xs uppercase border-b border-[#4a4455]/20">
+            <div className="overflow-x-auto border border-card-border rounded-lg bg-card">
+              <table className="w-full text-left text-xs text-muted">
+                <thead className="bg-tab-inactive text-foreground/95 font-mono text-[10px] uppercase border-b border-card-border">
                   <tr>
                     <th className="p-3">Host IDE / Tool</th>
                     <th className="p-3">Configuration Written</th>
                     <th className="p-3">Init Command</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#4a4455]/10">
+                <tbody className="divide-y divide-card-border">
                   {supportedHosts.map((h) => (
-                    <tr key={h.host} className="hover:bg-[#18181b]/30">
-                      <td className="p-3 font-semibold text-white">{h.host}</td>
-                      <td className="p-3 font-mono text-xs text-zinc-400">{h.config}</td>
-                      <td className="p-3 font-mono text-xs text-[#00a572]">{`tokencap mcp --init ${h.flag}`}</td>
+                    <tr key={h.host} className="hover:bg-pre-bg/40">
+                      <td className="p-3 font-semibold text-foreground font-mono">{h.host}</td>
+                      <td className="p-3 font-mono text-[10px] text-muted">{h.config}</td>
+                      <td className="p-3 font-mono text-[10px] text-foreground/90">{`tokencap mcp --init ${h.flag}`}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -156,43 +154,43 @@ export default function McpPage() {
 
           {/* Startup & Memory */}
           <section id="startup" className="scroll-mt-24">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#7c3aed]">sync</span>
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2 font-mono">
+              <span className="material-symbols-outlined text-muted">sync</span>
               Self-Maintaining Intelligence & Live Watcher
             </h2>
-            <div className="bg-[#121215] border border-[#7c3aed]/20 rounded-xl p-6 text-sm text-[#ccc3d8] space-y-4">
+            <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
               <p>
-                In <strong>v1.5.0</strong>, users no longer need to run a manual <code className="text-[#00a572]">tokencap make</code> or <code className="text-[#00a572]">tokencap watch</code> process before using MCP.
+                In <strong>v1.5.0</strong>, users no longer need to run a manual <code className="text-foreground/90 bg-pre-bg px-1 rounded">tokencap make</code> or <code className="text-foreground/90 bg-pre-bg px-1 rounded">tokencap watch</code> process before using MCP.
               </p>
-              <ul className="list-disc list-inside space-y-2 text-zinc-300">
-                <li><strong className="text-white">Auto Build on Startup:</strong> When the MCP process starts, it automatically builds repository intelligence before serving tools.</li>
-                <li><strong className="text-white">Live File Watcher:</strong> Keeps an active background watcher for source edits and <code className="text-[#d2bbff]">.tokencap-notes.md</code> updates.</li>
-                <li><strong className="text-white">In-Memory Zero-Latency Cache:</strong> Subsequent tool queries resolve from memory cache in 0-2 ms handler time.</li>
+              <ul className="list-disc list-inside space-y-2 text-muted">
+                <li><strong className="text-foreground font-mono">Auto Build on Startup:</strong> When the MCP process starts, it automatically builds repository intelligence before serving tools.</li>
+                <li><strong className="text-foreground font-mono">Live File Watcher:</strong> Keeps an active background watcher for source edits and <code className="text-foreground/90 bg-pre-bg px-1 rounded">.tokencap-notes.md</code> updates.</li>
+                <li><strong className="text-foreground font-mono">In-Memory Zero-Latency Cache:</strong> Subsequent tool queries resolve from memory cache in 0-2 ms handler time.</li>
               </ul>
             </div>
           </section>
 
           {/* 11 MCP Tools */}
           <section id="tools" className="scroll-mt-24">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#7c3aed]">construction</span>
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2 font-mono">
+              <span className="material-symbols-outlined text-muted">construction</span>
               The 11 MCP Tool Endpoints
             </h2>
-            <div className="overflow-x-auto border border-[#4a4455]/20 rounded-xl bg-[#0e0e10]/40">
-              <table className="w-full text-left text-sm text-[#ccc3d8]">
-                <thead className="bg-[#18181b] text-white font-mono text-xs uppercase border-b border-[#4a4455]/20">
+            <div className="overflow-x-auto border border-card-border rounded-lg bg-card">
+              <table className="w-full text-left text-xs text-muted">
+                <thead className="bg-tab-inactive text-foreground/95 font-mono text-[10px] uppercase border-b border-card-border">
                   <tr>
                     <th className="p-3">Tool Name</th>
                     <th className="p-3">Description</th>
                     <th className="p-3">Example Input</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#4a4455]/10 font-mono text-xs">
+                <tbody className="divide-y divide-card-border font-mono text-[11px]">
                   {mcpTools.map((t) => (
-                    <tr key={t.name} className="hover:bg-[#18181b]/30">
-                      <td className="p-3 text-[#d2bbff] font-bold">{t.name}</td>
-                      <td className="p-3 font-sans text-sm text-zinc-300">{t.desc}</td>
-                      <td className="p-3 text-zinc-400">{t.input}</td>
+                    <tr key={t.name} className="hover:bg-pre-bg/40">
+                      <td className="p-3 text-foreground font-bold">{t.name}</td>
+                      <td className="p-3 font-sans text-xs text-muted">{t.desc}</td>
+                      <td className="p-3 text-muted">{t.input}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -202,45 +200,45 @@ export default function McpPage() {
 
           {/* Performance */}
           <section id="latency" className="scroll-mt-24">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#7c3aed]">speed</span>
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2 font-mono">
+              <span className="material-symbols-outlined text-muted">speed</span>
               Performance & Token Savings
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-5 rounded-xl bg-[#121215] border border-[#4a4455]/20">
-                <h3 className="font-bold text-white text-base mb-2">Token Budget Savings</h3>
-                <p className="text-xs text-zinc-400 mb-4">Comparing traditional cold file loading vs v1.5 MCP service:</p>
-                <ul className="space-y-2 text-xs font-mono">
-                  <li className="flex justify-between p-2 rounded bg-[#0a0a0c]">
+              <div className="p-5 rounded-lg bg-card border border-card-border">
+                <h3 className="font-bold text-foreground font-mono text-sm mb-2">Token Budget Savings</h3>
+                <p className="text-[11px] text-muted mb-4">Comparing traditional cold file loading vs v1.5 MCP service:</p>
+                <ul className="space-y-2 text-[10px] font-mono">
+                  <li className="flex justify-between p-2 rounded bg-pre-bg border border-card-border">
                     <span>Simple Bug Fix:</span>
-                    <span className="text-[#00a572] font-bold">1,500 vs 20,000 (92% saved)</span>
+                    <span className="text-foreground/90 font-bold">1,500 vs 20,000 (92% saved)</span>
                   </li>
-                  <li className="flex justify-between p-2 rounded bg-[#0a0a0c]">
+                  <li className="flex justify-between p-2 rounded bg-pre-bg border border-card-border">
                     <span>Feature Addition:</span>
-                    <span className="text-[#00a572] font-bold">4,000 vs 20,000 (80% saved)</span>
+                    <span className="text-foreground/90 font-bold">4,000 vs 20,000 (80% saved)</span>
                   </li>
-                  <li className="flex justify-between p-2 rounded bg-[#0a0a0c]">
+                  <li className="flex justify-between p-2 rounded bg-pre-bg border border-card-border">
                     <span>Architecture Qs:</span>
-                    <span className="text-[#00a572] font-bold">2,500 vs 20,000 (87% saved)</span>
+                    <span className="text-foreground/90 font-bold">2,500 vs 20,000 (87% saved)</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="p-5 rounded-xl bg-[#121215] border border-[#4a4455]/20">
-                <h3 className="font-bold text-white text-base mb-2">Server Handler Latency</h3>
-                <p className="text-xs text-zinc-400 mb-4">Sub-millisecond local handler processing times:</p>
-                <ul className="space-y-2 text-xs font-mono">
-                  <li className="flex justify-between p-2 rounded bg-[#0a0a0c]">
+              <div className="p-5 rounded-lg bg-card border border-card-border">
+                <h3 className="font-bold text-foreground font-mono text-sm mb-2">Server Handler Latency</h3>
+                <p className="text-[11px] text-muted mb-4">Sub-millisecond local handler processing times:</p>
+                <ul className="space-y-2 text-[10px] font-mono">
+                  <li className="flex justify-between p-2 rounded bg-pre-bg border border-card-border">
                     <span>tokencap_mcp_status:</span>
-                    <span className="text-[#d2bbff] font-bold">0 ms</span>
+                    <span className="text-foreground/90 font-bold">0 ms</span>
                   </li>
-                  <li className="flex justify-between p-2 rounded bg-[#0a0a0c]">
+                  <li className="flex justify-between p-2 rounded bg-pre-bg border border-card-border">
                     <span>tokencap_overview:</span>
-                    <span className="text-[#d2bbff] font-bold">1 ms</span>
+                    <span className="text-foreground/90 font-bold">1 ms</span>
                   </li>
-                  <li className="flex justify-between p-2 rounded bg-[#0a0a0c]">
+                  <li className="flex justify-between p-2 rounded bg-pre-bg border border-card-border">
                     <span>tokencap_search:</span>
-                    <span className="text-[#d2bbff] font-bold">2 ms</span>
+                    <span className="text-foreground/90 font-bold">2 ms</span>
                   </li>
                 </ul>
               </div>
@@ -248,14 +246,14 @@ export default function McpPage() {
           </section>
 
           {/* Footer Navigation */}
-          <div className="flex justify-between items-center pt-8 border-t border-[#4a4455]/20">
-            <a href="/docs" className="flex items-center gap-1.5 text-xs font-bold text-zinc-400 hover:text-white transition-colors">
-              <span className="material-symbols-outlined">chevron_left</span>
+          <div className="flex justify-between items-center pt-8 border-t border-card-border font-mono text-xs">
+            <a href="/docs" className="flex items-center gap-1.5 text-muted hover:text-foreground transition-colors">
+              <span className="material-symbols-outlined text-sm">chevron_left</span>
               Back to Full Docs
             </a>
-            <a href="/cli" className="flex items-center gap-1.5 text-xs font-bold text-white hover:text-[#d2bbff] transition-colors">
+            <a href="/cli" className="flex items-center gap-1.5 text-muted hover:text-foreground transition-colors">
               CLI Reference
-              <span className="material-symbols-outlined">chevron_right</span>
+              <span className="material-symbols-outlined text-sm">chevron_right</span>
             </a>
           </div>
         </div>

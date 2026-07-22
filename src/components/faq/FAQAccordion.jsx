@@ -78,12 +78,12 @@ export function FAQAccordion() {
               className="w-full flex items-center justify-between p-5 text-left focus-visible:outline-2 focus-visible:outline-[#7c3aed] focus-visible:outline-offset-2 rounded-xl"
               onClick={() => toggleAccordion(index)}
             >
-              <span className="text-base font-bold text-white">
+              <span className="text-base font-bold text-foreground">
                 {item.question}
               </span>
               <span
-                className={`material-symbols-outlined transition-transform duration-300 text-zinc-400 ${
-                  isOpen ? "rotate-180 text-white" : ""
+                className={`material-symbols-outlined transition-transform duration-300 text-muted ${
+                  isOpen ? "rotate-180 text-foreground" : ""
                 }`}
                 aria-hidden="true"
               >
