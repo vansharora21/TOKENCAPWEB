@@ -362,7 +362,9 @@ export default function CliPage() {
           <section id="diff" className="flex flex-col">
             <h3 className="text-lg font-bold text-foreground mb-2">Change intelligence (diff)</h3>
             <p className="text-sm leading-relaxed text-muted mb-4">
-              Perform semantic change analysis to determine risk rating, break             <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
+              Perform semantic change analysis to determine risk rating, breaking changes, and affected test suites across staged files.
+            </p>
+            <div className="glass-panel rounded-xl overflow-hidden terminal-glow flex-grow flex flex-col">
               <div className="bg-pre-bg px-4 py-2 border-b border-card-border flex justify-between items-center">
                 <span className="font-mono text-xs text-muted">Terminal — tokencap diff</span>
                 <CopyButton text="tokencap diff --staged" />
@@ -441,7 +443,9 @@ export default function CliPage() {
             <div className="glass-panel rounded-xl overflow-hidden terminal-glow">
               <div className="p-4 font-mono text-[13px] leading-relaxed bg-pre-bg relative">
                 <div className="absolute top-4 right-4">
-                  <CopyButton text={`{\n  "profile": "balanced",\n  "outputPath": "TOKENCAP.md",\n  "maxFiles": 90,\n  "maxSourceBytes": 220000,\n  "maxFileBytes": 14000,\n  "includeGitDiff": true,\n  "includeFileContents": true,\n  "excludePatterns": ["node_modules/**", "                 <div className="text-muted">// Resolved Config Output</div>
+                  <CopyButton text={`{\n  "profile": "balanced",\n  "outputPath": "TOKENCAP.md",\n  "maxFiles": 90,\n  "maxSourceBytes": 220000,\n  "maxFileBytes": 14000,\n  "includeGitDiff": true,\n  "includeFileContents": true,\n  "redactSecrets": true\n}`} />
+                </div>
+                <div className="text-muted">// Resolved Config Output</div>
                 <div className="text-foreground mt-3 leading-normal overflow-x-auto scrollbar-none">
                   {"{"}
                   <br />
