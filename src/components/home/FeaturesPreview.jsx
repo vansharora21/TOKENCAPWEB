@@ -117,8 +117,74 @@ function ActiveVisualizer({ index }) {
 }
 
 function VisualizerContent({ index }) {
-  // 0. Local MCP Service View (SVG style)
-  if (index === 0) {
+  const currentFeature = features[index] || {};
+  const title = currentFeature.title || "";
+
+  // 0. Token Savings Engine View (v1.6.0)
+  if (title.includes("Savings") || index === 0) {
+    return (
+      <div className="w-full max-w-sm font-mono text-xs space-y-4">
+        <div className="flex justify-between text-[10px] text-muted">
+          <span>VERIFIED BENCHMARK</span>
+          <span className="text-emerald-400 font-bold">12.2× CHEAPER</span>
+        </div>
+        <div className="space-y-2.5">
+          <div className="space-y-1">
+            <div className="flex justify-between text-[10px] text-muted">
+              <span>Naive Grep-and-Read</span>
+              <span className="text-red-400 font-semibold">820,101 tokens ($2.05)</span>
+            </div>
+            <div className="w-full bg-pre-bg h-2.5 rounded-full overflow-hidden border border-card-border">
+              <div className="bg-red-500/60 h-full w-full rounded-full" />
+            </div>
+          </div>
+          <div className="space-y-1">
+            <div className="flex justify-between text-[10px] text-muted">
+              <span>TokenCap Capsule</span>
+              <span className="text-emerald-400 font-bold">46,337 tokens ($0.11)</span>
+            </div>
+            <div className="w-full bg-pre-bg h-2.5 rounded-full overflow-hidden border border-card-border">
+              <motion.div
+                className="bg-emerald-400 h-full rounded-full"
+                animate={{ width: ["8%", "10%", "8%"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between text-[10px] pt-2 border-t border-card-border/50 text-muted">
+          <span>94.3% COST REDUCTION</span>
+          <span className="text-foreground">SAVINGS.JSON PERSISTED</span>
+        </div>
+      </div>
+    );
+  }
+
+  // 1. Multi-Host Pointers View (v1.6.0)
+  if (title.includes("Pointers") || title.includes("Host") || index === 1) {
+    return (
+      <div className="w-full max-w-sm font-mono text-xs space-y-3">
+        <div className="flex justify-between text-[10px] text-muted">
+          <span>HOST INTEGRATIONS</span>
+          <span className="text-cyan-400 font-bold">AUTO-POINTERS</span>
+        </div>
+        <div className="grid grid-cols-2 gap-1.5 text-[10px]">
+          {["AGENTS.md", "CLAUDE.md", ".cursor/rules", ".windsurf/rules", ".clinerules", "copilot-instructions"].map((host) => (
+            <div key={host} className="flex items-center gap-1.5 p-1.5 bg-pre-bg border border-card-border rounded">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+              <span className="text-foreground truncate">{host}</span>
+            </div>
+          ))}
+        </div>
+        <div className="text-[10px] text-center text-muted pt-1">
+          → Points to <span className="text-emerald-400 font-bold">.tokencap/agent/START_HERE.md</span>
+        </div>
+      </div>
+    );
+  }
+
+  // 2. Local MCP Service View (SVG style)
+  if (title.includes("MCP") || index === 2) {
     return (
       <div className="w-full flex flex-col items-center justify-center font-mono">
         <svg viewBox="0 0 300 160" className="w-full max-w-[340px] h-auto" fill="none">
@@ -174,8 +240,8 @@ function VisualizerContent({ index }) {
     );
   }
 
-  // 1. Local-first Privacy View (SVG style)
-  if (index === 1) {
+  // 3. Local-first Privacy View (SVG style)
+  if (title.includes("Local-first") || index === 3) {
     return (
       <div className="w-full flex flex-col items-center justify-center font-mono">
         <svg viewBox="0 0 300 160" className="w-full max-w-[340px] h-auto" fill="none">
@@ -240,8 +306,8 @@ function VisualizerContent({ index }) {
     );
   }
 
-  // 2. AI-ready Output View
-  if (index === 2) {
+  // 4. AI-ready Output View
+  if (title.includes("AI-ready") || index === 4) {
     return (
       <div className="w-full max-w-sm font-mono text-xs space-y-4">
         <div className="flex justify-between text-[10px] text-muted">
@@ -266,8 +332,8 @@ function VisualizerContent({ index }) {
     );
   }
 
-  // 3. Git-aware View
-  if (index === 3) {
+  // 5. Git-aware View
+  if (title.includes("Git") || index === 5) {
     return (
       <div className="w-full max-w-sm font-mono text-xs space-y-3">
         <motion.div
@@ -299,8 +365,8 @@ function VisualizerContent({ index }) {
     );
   }
 
-  // 4. Secret Redaction View
-  if (index === 4) {
+  // 6. Secret Redaction View
+  if (title.includes("Secret") || index === 6) {
     return (
       <div className="w-full max-w-sm font-mono text-left text-xs bg-pre-bg border border-card-border rounded-lg p-5 relative min-h-[140px] flex flex-col justify-center overflow-hidden shadow-inner">
         {/* Redacting scanner line */}

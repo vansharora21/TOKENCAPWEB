@@ -51,6 +51,8 @@ function ChangelogList() {
 
   // 2. Scroll-linked Path Drawing Animation
   useEffect(() => {
+    let animationFrameId;
+
     const handleScroll = () => {
       if (!containerRef.current || !pathRef.current) return;
       const path = pathRef.current;
@@ -62,11 +64,17 @@ function ChangelogList() {
       const rect = containerRef.current.getBoundingClientRect();
       const winHeight = window.innerHeight;
 
-      const totalDuration = rect.height;
-      const currentScroll = winHeight * 0.8 - rect.top;
-      const progress = Math.max(0, Math.min(1, currentScroll / (totalDuration - winHeight * 0.1)));
+      // Start line drawing when container top enters 65% down the viewport
+      // Complete line drawing when container bottom reaches 35% down the viewport
+      const startThreshold = winHeight * 0.65;
+      const endThreshold = winHeight * 0.35;
 
-      // Direct style updates on scroll to prevent animation queue overflow
+      const totalScrollableDistance = rect.height + (startThreshold - endThreshold);
+      const scrolled = startThreshold - rect.top;
+
+      const progress = Math.max(0, Math.min(1, scrolled / totalScrollableDistance));
+
+      // Direct style updates for smooth tracking
       path.style.strokeDashoffset = `${length * (1 - progress)}`;
 
       if (mobileProgressRef.current) {
@@ -74,11 +82,17 @@ function ChangelogList() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const onScroll = () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     handleScroll(); // Run once initially
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [coords, containerHeight, containerWidth]);
 

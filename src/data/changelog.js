@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.6.0",
+    title: "Token Savings Engine, Multi-Host Pointers & Benchmarks",
+    date: "2026-07-23",
+    status: "released",
+    description: "Real-time Token & Dollar Savings Engine, 12.2× benchmark reduction (94.3% cost savings), multi-host pointer generation (AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, Kiro), and CI-enforced zero-network egress guarantees.",
+  },
+  {
     version: "1.5.0",
     title: "Self-Maintaining MCP Intelligence",
     date: "2026-07-19",

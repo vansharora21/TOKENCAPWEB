@@ -83,13 +83,14 @@
       { "flag": "--max-file-bytes <n>", "description": "Per-file content byte limit" },
       { "flag": "--max-diff-bytes <n>", "description": "Git diff byte budget" },
       { "flag": "--no-diff", "description": "Skip Git diff snippets" },
-      { "flag": "--no-contents", "description": "Skip file contents (structure only)" }
+      { "flag": "--no-contents", "description": "Skip file contents (structure only)" },
+      { "flag": "--no-pointers", "description": "Skip multi-host agent pointer file generation" }
     ]
   },
   {
     "command": "tokencap graph",
-    "description": "Generate a code knowledge graph. Maps imports/exports across JS/TS source files and classifies nodes (route, service, component, controller, database, config, etc.) with risk ratings and automatic cluster detection.",
-    "example": "tokencap graph --full",
+    "description": "Generate a code knowledge graph. Maps imports/exports across JS/TS source files and classifies nodes (route, service, component, controller, database, config, etc.) with risk ratings and automatic cluster detection. Note: 'tokencap graph' is deprecated in v1.5. Use: tokencap make --open-graph",
+    "example": "tokencap make --open-graph",
     "options": [
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
       { "flag": "--open", "description": "Open Obsidian-style interactive graph viewer in default browser" },
@@ -150,12 +151,28 @@
     ]
   },
   {
-    "command": "tokencap watch",
-    "description": "Start a background watcher process that automatically regenerates all snapshot files when files change, with a configurable debounce delay.",
-    "example": "tokencap watch --debounce 5000",
+    "command": "tokencap scan",
+    "description": "Scans workspace source files for leaked secrets, API keys, private tokens, and high-entropy credentials before snapshot generation.",
+    "example": "tokencap scan",
     "options": [
       { "flag": "--root <path>", "description": "Workspace root. Default: current directory" },
-      { "flag": "--debounce <ms>", "description": "Debounce delay in milliseconds before regenerating. Default: 30000" }
+      { "flag": "--quarantine", "description": "Automatically quarantine files containing unredacted secrets" }
+    ]
+  },
+  {
+    "command": "tokencap audit",
+    "description": "Performs security audit of generated TokenCap intelligence outputs to verify redaction compliance and zero-egress guarantees.",
+    "example": "tokencap audit",
+    "options": [
+      { "flag": "--root <path>", "description": "Workspace root. Default: current directory" }
+    ]
+  },
+  {
+    "command": "tokencap upgrade",
+    "description": "Checks NPM registry for TokenCap updates and safely upgrades the global package installation.",
+    "example": "tokencap upgrade",
+    "options": [
+      { "flag": "--check", "description": "Check current vs latest version without performing installation" }
     ]
   }
 ]

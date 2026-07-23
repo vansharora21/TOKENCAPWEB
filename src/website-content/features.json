@@ -1,5 +1,29 @@
 [
   {
+    "id": "token-savings-engine",
+    "title": "Token & Dollar Savings Engine (v1.6.0)",
+    "description": "Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Uses js-tiktoken exact counting (cl100k/o200k base). Benchmarked across 15 real tasks showing 12.2× average reduction (94.3% cost savings)."
+  },
+  {
+    "id": "multi-host-pointers",
+    "title": "Multi-Host Agent Pointers (v1.6.0)",
+    "description": "Automatically generates non-overwriting pointer files across 7 major AI hosts so AI coding assistants auto-load project context seamlessly.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Writes pointer files for AGENTS.md, CLAUDE.md, .cursor/rules/tokencap.md, .windsurf/rules/tokencap.md, .clinerules/tokencap.md, .github/copilot-instructions.md, and .kiro/steering/tokencap.md pointing to .tokencap/agent/START_HERE.md."
+  },
+  {
+    "id": "zero-network-egress",
+    "title": "CI-Enforced Zero Network Egress (v1.6.0)",
+    "description": "100% offline local privacy guarantee. Enforced by CI test suites that scan all source files on every commit to ensure zero analytics or external tracking.",
+    "category": "Security",
+    "importance": 1,
+    "technicalDetail": "Scans all 147 source files for network calls. Only tokencap upgrade touches external endpoints."
+  },
+  {
     "id": "self-maintaining-mcp",
     "title": "Self-Maintaining MCP Intelligence (v1.5.0)",
     "description": "Query repository intelligence directly. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.",

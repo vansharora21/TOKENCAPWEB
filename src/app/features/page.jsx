@@ -3,7 +3,7 @@ import { FeaturesClient } from "@/components/features/FeaturesClient";
 
 export const metadata = buildMetadata({
   title: "Features & Release Highlights",
-  description: "Discover TokenCap features: Self-Maintaining MCP Intelligence, Incremental Engine, Repository Constitution, Git-aware snapshots, and Local-first security.",
+  description: "Discover TokenCap features: Token & Dollar Savings Engine, Multi-Host Pointers, Self-Maintaining MCP Intelligence, Incremental Engine, Repository Constitution, and Zero-Egress Privacy.",
   path: "/features",
 });
 

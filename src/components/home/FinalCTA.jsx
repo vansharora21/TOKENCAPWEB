@@ -40,6 +40,13 @@ function FinalCTA() {
     <section className="py-12 relative">
       <div className="relative w-full max-w-3xl mx-auto rounded-xl border border-card-border bg-card/45 p-8 sm:p-12 overflow-hidden text-center group">
         
+        {/* Abstract Wave CTA Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-30 mix-blend-luminosity pointer-events-none transition-opacity duration-500 group-hover:opacity-35"
+          style={{ backgroundImage: "url('/cta-bg.png')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 pointer-events-none" />
+
         {/* Content */}
         <div className="relative z-10 space-y-6 max-w-lg mx-auto">
           

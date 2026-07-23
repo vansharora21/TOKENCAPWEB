@@ -15,14 +15,14 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v1.5.0 Engine
+              v1.6.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
             Precision engineered features.
           </h1>
           <p className="text-sm leading-relaxed text-muted max-w-xl">
-            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed, self-maintaining MCP intelligence, and developer ergonomics.
+            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed, real-time token savings, multi-host pointers, and self-maintaining MCP intelligence.
           </p>
         </header>
         <div className="relative group overflow-hidden rounded-xl border border-card-border bg-card p-2 shadow-2xl flex items-center justify-center">
@@ -47,6 +47,25 @@ export function FeaturesClient() {
         </div>
 
         <div className="space-y-6">
+          {/* v1.6.0 (OPEN) */}
+          <div className="p-8 rounded-xl border border-card-border bg-card/80 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.6.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Token & Dollar Savings Engine, Multi-Host Pointers & Verified Benchmarks</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">July 23, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Token & Dollar Savings Engine</strong> — Real-time calculation of token and dollar savings against naive codebase dumps, persisted to <code>.tokencap/savings.json</code> on every build.</li>
+              <li><strong>12.2× Token Reduction Benchmark</strong> — Verified 94.3% cost reduction ($2.05 naive vs $0.11 TokenCap per query) across 15 real-world repository tasks using exact <code>js-tiktoken</code> counting.</li>
+              <li><strong>Multi-Host Agent Pointers</strong> — Auto-generates non-overwriting pointer files for 7 AI hosts: <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>.cursor/rules/tokencap.md</code>, <code>.windsurf/rules/tokencap.md</code>, <code>.clinerules/tokencap.md</code>, <code>.github/copilot-instructions.md</code>, and <code>.kiro/steering/tokencap.md</code>.</li>
+              <li><strong>CI-Enforced Zero Network Egress</strong> — Guaranteed 100% offline privacy verified across all source files on every commit with zero telemetry.</li>
+              <li><strong>Security & Audit Tools</strong> — Added <code>tokencap scan</code> (entropy & regex secret scanning), <code>tokencap audit</code> (security verification), and <code>tokencap upgrade</code> CLI utilities.</li>
+              <li><strong><code>--no-pointers</code> Flag</strong> — Skip multi-host pointer creation when custom configuration management is preferred.</li>
+            </ul>
+          </div>
+
           {/* v1.5.0 (OPEN) */}
           <div className="p-8 rounded-xl border border-card-border bg-card/60 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -168,43 +187,35 @@ export function FeaturesClient() {
 
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-        {/* 1: Auto Capture on Save */}
+        {/* 1: Token & Dollar Savings Engine */}
         <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
-          <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
-            <span className="material-symbols-outlined text-sm">save</span>
+          <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-emerald-400">
+            <span className="material-symbols-outlined text-sm">savings</span>
           </div>
-          <h3 className="text-base font-bold text-foreground font-mono mb-2">Auto Capture on Save</h3>
+          <h3 className="text-base font-bold text-foreground font-mono mb-2">Token & Dollar Savings</h3>
           <p className="text-xs leading-relaxed text-muted mb-6 flex-grow">
-            Sync your context instantly. TokenCap monitors file saves and automatically updates snapshot files in the background.
+            Calculate exact token and dollar savings in real-time. Verified 12.2× average reduction (94.3% cost savings) with exact tiktoken counting.
           </p>
           <div className="bg-pre-bg border border-card-border p-3 overflow-hidden font-mono text-[11px] h-[84px] flex flex-col justify-center text-left">
-            <code className="block whitespace-pre text-muted/65 leading-snug">
-              [10:42:01] <span className="text-foreground/80">Saved:</span> page.tsx{"\n"}
-              [10:42:04] <span className="text-foreground/80">Regenerating files...</span>
-            </code>
+            <div className="text-emerald-400 font-bold">12.2× FEWER TOKENS</div>
+            <div className="text-muted/80 mt-0.5">Saved: 97,094 tok ($0.24)</div>
+            <div className="text-muted/65 text-[10px]">.tokencap/savings.json</div>
           </div>
         </div>
 
-        {/* 2: Git-Aware Snapshots */}
+        {/* 2: Multi-Host Agent Pointers */}
         <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
-          <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
-            <span className="material-symbols-outlined text-sm">history</span>
+          <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-cyan-400">
+            <span className="material-symbols-outlined text-sm">alt_route</span>
           </div>
-          <h3 className="text-base font-bold text-foreground font-mono mb-2">Git-Aware Snapshots</h3>
+          <h3 className="text-base font-bold text-foreground font-mono mb-2">Multi-Host Pointers</h3>
           <p className="text-xs leading-relaxed text-muted mb-6 flex-grow">
-            Prioritize active edits. Surfaces unstaged/staged diffs and ranks recently changed files higher in LLM snapshots.
+            Auto-wires non-overwriting pointer files for AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro seamlessly.
           </p>
-          <div className="bg-pre-bg border border-card-border p-4 flex flex-col justify-between h-[84px] text-left">
-            <div className="flex justify-between items-center text-[10px]">
-              <span className="font-mono text-muted/70 uppercase tracking-wider">BRANCH</span>
-              <span className="font-mono text-foreground font-bold">feature/auth</span>
-            </div>
-            <div className="space-y-1">
-              <div className="h-1 w-full bg-card-border rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-400 w-2/3"></div>
-              </div>
-              <span className="text-[9px] text-muted/70 font-mono block">Prioritizing changed files...</span>
-            </div>
+          <div className="bg-pre-bg border border-card-border p-3 flex flex-col justify-center h-[84px] text-left font-mono text-[10px]">
+            <div className="text-foreground font-bold">7 Host Integrations</div>
+            <div className="text-muted/80 mt-0.5">AGENTS.md, CLAUDE.md + 5 more</div>
+            <div className="text-emerald-400">→ .tokencap/agent/START_HERE.md</div>
           </div>
         </div>
 
@@ -281,7 +292,14 @@ export function FeaturesClient() {
 
       {/* CTA Section */}
       <section className="mt-20">
-        <div className="p-12 relative overflow-hidden rounded-xl border border-card-border bg-card/45 text-center">
+        <div className="p-12 relative overflow-hidden rounded-xl border border-card-border bg-card/45 text-center group">
+          {/* Abstract Wave CTA Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-30 mix-blend-luminosity pointer-events-none transition-opacity duration-500 group-hover:opacity-35"
+            style={{ backgroundImage: "url('/cta-bg.png')" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 pointer-events-none" />
+
           <h2 className="text-3xl font-bold tracking-tight text-foreground mb-6 relative z-10 font-display">Start capturing context.</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
             <a

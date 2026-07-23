@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "1.6.0",
+    title: "Token & Dollar Savings Engine, Multi-Host Pointers & Benchmarks",
+    description: "Real-time savings engine (.tokencap/savings.json), 12.2× benchmark reduction (94.3% cost savings), 7 multi-host pointer generators, and CI-enforced zero-network egress security.",
+    status: "shipped",
+    source: "Release v1.6.0",
+  },
+  {
     version: "1.5.0",
     title: "Self-Maintaining MCP Intelligence",
     description: "Background watcher, host auto-init (tokencap mcp --init --client <host>), and zero-latency caching.",
@@ -21,18 +28,25 @@ export const roadmapItems = [
     source: "Release v1.3.0",
   },
   {
-    version: "1.6.0",
+    version: "1.7.0",
     title: "Multi-Language Graph",
     description: "Extend the project knowledge graph beyond JS/TS with parsers for Python, Go, Rust, and Java.",
     status: "planned",
     source: "README.md Roadmap",
   },
   {
-    version: "0.12.0",
-    title: "Graph Cycle Detection",
-    description:
-      "Detect circular import dependencies in the project graph and surface them as warnings in TOKENCAP_GRAPH.md.",
+    version: "1.7.0",
+    title: "Visual Graph Export & Mermaid Maps",
+    description: "Export the project knowledge graph as embedded Mermaid diagrams inside TOKENCAP_GRAPH.md for native rendering on GitHub.",
     status: "planned",
-    source: "Architecture analysis: buildGraph.js edge model supports cycle detection",
+    source: "Architecture Roadmap",
+  },
+  {
+    version: "2.0.0",
+    title: "Peer-to-Peer Team Sync & Local Web Portal",
+    description: "Cloud-free team intelligence synchronization and a local web portal for visual graph navigation and rule management.",
+    status: "exploratory",
+    source: "v2.0 Vision",
   },
 ];
+

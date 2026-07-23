@@ -157,7 +157,7 @@ export default function DownloadsPage() {
       </section>
 
       {/* Planned MCP Integrations */}
-      <section className="space-y-8">
+      <section className="space-y-8 mb-20">
         <div className="flex items-center gap-2.5 border-b border-card-border pb-3">
           <span className="material-symbols-outlined text-muted text-sm">hub</span>
           <h2 className="text-lg font-bold text-foreground font-mono">MCP Integrations</h2>
@@ -186,6 +186,73 @@ export default function DownloadsPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Dedicated Claude Plugin Section */}
+      <section className="p-8 rounded-lg border border-card-border bg-card space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-card-border pb-4">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[10px] font-mono text-muted uppercase tracking-wider bg-pre-bg border border-card-border px-2 py-0.5 rounded">
+                Claude Plugin · v1.6.0
+              </span>
+            </div>
+            <h2 className="text-xl font-bold text-foreground font-mono">
+              Claude Code & Claude Desktop Plugin
+            </h2>
+            <p className="text-xs text-muted mt-1">
+              Official MCP server plugin and non-overwriting <code className="text-foreground font-mono">CLAUDE.md</code> agent pointer integration.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <a
+              href="/mcp"
+              className="px-3 py-1.5 rounded border border-card-border bg-pre-bg hover:bg-card-hover text-foreground font-bold transition-colors block text-center"
+            >
+              MCP Guide →
+            </a>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
+          {/* Option A: One-Command Auto Init */}
+          <div className="p-5 rounded border border-card-border bg-pre-bg/40 space-y-3">
+            <div className="flex justify-between items-center text-[10px] text-muted">
+              <span className="uppercase tracking-wider">Automated Setup</span>
+              <span className="text-foreground">Recommended</span>
+            </div>
+            <h3 className="font-bold text-foreground text-sm">One-Command Host Init</h3>
+            <p className="text-[11px] font-sans text-muted leading-relaxed">
+              Auto-detects Claude in your workspace and safely merges TokenCap definition into <code className="font-mono text-foreground">.claude/mcp.json</code> while generating a non-overwriting <code className="font-mono text-foreground">CLAUDE.md</code> pointer.
+            </p>
+            <div className="bg-pre-bg border border-card-border rounded p-2.5 flex items-center justify-between gap-2 text-[11px]">
+              <code className="text-foreground/90 truncate">tokencap mcp --init --client claude</code>
+              <CopyButton text="tokencap mcp --init --client claude" />
+            </div>
+          </div>
+
+          {/* Option B: Manual Config snippet */}
+          <div className="p-5 rounded border border-card-border bg-pre-bg/40 space-y-3">
+            <div className="flex justify-between items-center text-[10px] text-muted">
+              <span className="uppercase tracking-wider">Manual Configuration</span>
+              <span>.claude/mcp.json</span>
+            </div>
+            <h3 className="font-bold text-foreground text-sm">Claude Desktop MCP JSON</h3>
+            <p className="text-[11px] font-sans text-muted leading-relaxed">
+              Add TokenCap as a stdio server plugin in your global or project-level Claude configuration.
+            </p>
+            <div className="bg-pre-bg border border-card-border rounded p-2.5 font-mono text-[10px] text-muted overflow-x-auto leading-relaxed">
+              {`{
+  "mcpServers": {
+    "tokencap": {
+      "command": "npx",
+      "args": ["-y", "tokencap", "mcp"]
+    }
+  }
+}`}
+            </div>
+          </div>
         </div>
       </section>
     </PageWrapper>

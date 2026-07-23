@@ -1,5 +1,26 @@
 export const blogPosts = [
   {
+    id: "tokencap-v16-savings-pointers",
+    title: "TokenCap v1.6 — Token Savings Engine, Multi-Host Pointers & Verified Benchmarks",
+    author: "Vansh Arora",
+    date: "July 23, 2026",
+    readTime: "5 min read",
+    category: "Release & Benchmarks",
+    excerpt: "Introducing the Token & Dollar Savings Engine, 12.2× average token reduction (94.3% cost savings), non-overwriting multi-host pointers for 7 AI hosts, and CI-enforced zero network egress security.",
+    content: `TokenCap v1.6.0 introduces real-time Token & Dollar Savings reporting, multi-host AI agent pointer generation, and verified open-source benchmarks.
+
+### Verified Benchmarks: 12.2× Token Reduction
+
+Across 15 real-world repository tasks, TokenCap's graph-ranked capsule compression reduced prompt token size from an average of 820,101 tokens down to 46,337 tokens—a **94.3% cost reduction** with exact tiktoken counting.
+
+### What's New in v1.6.0
+
+- **Real-Time Savings Engine:** Calculates exact token and dollar savings against naive codebase dumps during \`tokencap make\` and writes persistent reports to \`.tokencap/savings.json\`.
+- **Multi-Host Agent Pointers:** Auto-wires non-overwriting pointer files for AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro to point seamlessly to \`.tokencap/agent/START_HERE.md\`.
+- **CI-Enforced Zero Egress:** Guaranteed 100% offline local privacy verified by automated test suites scanning source code on every commit.
+- **Security Commands:** Added \`tokencap scan\`, \`tokencap audit\`, and \`tokencap upgrade\` CLI tools.`
+  },
+  {
     id: "tokencap-v15-mcp",
     title: "TokenCap v1.5 — Making MCP Feel Invisible",
     author: "Vansh Arora",

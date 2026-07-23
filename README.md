@@ -26,6 +26,16 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 Token & Dollar Savings Engine (v1.6.0)
+Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.
+
+> ⚙️ *Technical Detail:* Uses js-tiktoken exact counting (cl100k/o200k base). Benchmarked across 15 real tasks showing 12.2× average reduction (94.3% cost savings).
+
+#### 🔹 Multi-Host Agent Pointers (v1.6.0)
+Automatically generates non-overwriting pointer files across 7 major AI hosts so AI coding assistants auto-load project context seamlessly.
+
+> ⚙️ *Technical Detail:* Writes pointer files for AGENTS.md, CLAUDE.md, .cursor/rules/tokencap.md, .windsurf/rules/tokencap.md, .clinerules/tokencap.md, .github/copilot-instructions.md, and .kiro/steering/tokencap.md pointing to .tokencap/agent/START_HERE.md.
+
 #### 🔹 Self-Maintaining MCP Intelligence (v1.5.0)
 Query repository intelligence directly. Exposes 11 local MCP tool endpoints over stdio with automatic startup initialization, background repository watching, and sub-2ms local query performance.
 
@@ -86,6 +96,18 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
+### 📁 Security
+
+#### 🔹 CI-Enforced Zero Network Egress (v1.6.0)
+100% offline local privacy guarantee. Enforced by CI test suites that scan all source files on every commit to ensure zero analytics or external tracking.
+
+> ⚙️ *Technical Detail:* Scans all 147 source files for network calls. Only tokencap upgrade touches external endpoints.
+
+#### 🔹 Automatic Secret Redaction
+TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.
+
+> ⚙️ *Technical Detail:* Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments.
+
 ### 📁 VS Code
 
 #### 🔹 Auto Capture on Save
@@ -97,13 +119,6 @@ Every time you save a file in VS Code, TokenCap debounces and automatically rege
 A persistent status bar item shows your auto-capture state and last snapshot time at all times. Click it to open the full command menu instantly.
 
 > ⚙️ *Technical Detail:* Displays '$(files) TokenCap • HH:MM' format. Tooltip shows status, auto-capture state, last run time, file count, and estimated tokens. Command: tokencap.showMenu.
-
-### 📁 Security
-
-#### 🔹 Automatic Secret Redaction
-TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.
-
-> ⚙️ *Technical Detail:* Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments.
 
 ### 📁 AI Optimization
 
@@ -284,14 +299,15 @@ tokencap make
 | `--max-diff-bytes <n>` | Git diff byte budget |
 | `--no-diff` | Skip Git diff snippets |
 | `--no-contents` | Skip file contents (structure only) |
+| `--no-pointers` | Skip multi-host agent pointer file generation |
 
 ### 🛠️ `tokencap graph`
 
-Generate a code knowledge graph. Maps imports/exports across JS/TS source files and classifies nodes (route, service, component, controller, database, config, etc.) with risk ratings and automatic cluster detection.
+Generate a code knowledge graph. Maps imports/exports across JS/TS source files and classifies nodes (route, service, component, controller, database, config, etc.) with risk ratings and automatic cluster detection. Note: 'tokencap graph' is deprecated in v1.5. Use: tokencap make --open-graph
 
 **Example:**
 ```bash
-tokencap graph --full
+tokencap make --open-graph
 ```
 
 | Option / Flag | Description |
@@ -373,19 +389,45 @@ tokencap constitution --diff
 | `--impact <file>` | Query which constitution laws are affected by a specific file |
 | `search <query>` | Search constitution rules by keyword, ID, severity, or category |
 
-### 🛠️ `tokencap watch`
+### 🛠️ `tokencap scan`
 
-Start a background watcher process that automatically regenerates all snapshot files when files change, with a configurable debounce delay.
+Scans workspace source files for leaked secrets, API keys, private tokens, and high-entropy credentials before snapshot generation.
 
 **Example:**
 ```bash
-tokencap watch --debounce 5000
+tokencap scan
 ```
 
 | Option / Flag | Description |
 | --- | --- |
 | `--root <path>` | Workspace root. Default: current directory |
-| `--debounce <ms>` | Debounce delay in milliseconds before regenerating. Default: 30000 |
+| `--quarantine` | Automatically quarantine files containing unredacted secrets |
+
+### 🛠️ `tokencap audit`
+
+Performs security audit of generated TokenCap intelligence outputs to verify redaction compliance and zero-egress guarantees.
+
+**Example:**
+```bash
+tokencap audit
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--root <path>` | Workspace root. Default: current directory |
+
+### 🛠️ `tokencap upgrade`
+
+Checks NPM registry for TokenCap updates and safely upgrades the global package installation.
+
+**Example:**
+```bash
+tokencap upgrade
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--check` | Check current vs latest version without performing installation |
 
 ## 📦 Metadata & License
 

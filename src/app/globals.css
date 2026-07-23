@@ -164,3 +164,24 @@ html.light .inner-glow {
   direction: ltr;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Timeline Snake Path SVG Styles */
+.snake-path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 2px;
+  stroke-dasharray: 6 6;
+}
+
+html.light .snake-path {
+  stroke: rgba(0, 0, 0, 0.08);
+}
+
+.snake-path-progress {
+  fill: none;
+  stroke: rgb(var(--foreground));
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+

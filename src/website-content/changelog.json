@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.6.0",
+    "title": "Token Savings Engine, Multi-Host Pointers & Verified Benchmarks",
+    "date": "2026-07-23",
+    "status": "released",
+    "highlights": [
+      "Token & Dollar Savings Engine: Real-time savings calculation and persistent before-and-after reporting (.tokencap/savings.json).",
+      "12.2× Token Reduction Benchmark: Verified 94.3% cost reduction across 15 real-world repository tasks with exact tiktoken counting.",
+      "Multi-Host Agent Pointers: Auto-generates non-overwriting pointer files for AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro.",
+      "CI-Enforced Zero Egress: Guaranteed offline security verified across source files on every commit with zero telemetry.",
+      "Centralized Secret Redaction: Entropy and regex secret scanning to redact API keys, tokens, and PEM blocks into [REDACTED:*] markers."
+    ]
+  },
+  {
     "version": "1.5.0",
     "title": "Self-Maintaining MCP Intelligence",
     "date": "2026-07-19",
