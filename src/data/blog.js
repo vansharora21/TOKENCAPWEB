@@ -6,6 +6,8 @@ export const blogPosts = [
     date: "July 23, 2026",
     readTime: "5 min read",
     category: "Release & Benchmarks",
+    url: "https://dev.to/vansharora21/tokencap-v160-is-now-live-3153",
+    secondaryUrl: "https://coderlegion.com/23530/tokencap-v1-6-0-is-now-live",
     excerpt: "Introducing the Token & Dollar Savings Engine, 12.2× average token reduction (94.3% cost savings), non-overwriting multi-host pointers for 7 AI hosts, and CI-enforced zero network egress security.",
     content: `TokenCap v1.6.0 introduces real-time Token & Dollar Savings reporting, multi-host AI agent pointer generation, and verified open-source benchmarks.
 

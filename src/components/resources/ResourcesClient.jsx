@@ -13,6 +13,20 @@ export function ResourcesClient() {
 
   const featuredContent = [
     {
+      title: "TokenCap v1.6.0 Is Now Live",
+      type: "DEV Community",
+      icon: "rocket_launch",
+      description: "Introducing the Token & Dollar Savings Engine, 12.2× average token reduction (94.3% cost savings), non-overwriting multi-host pointers for 7 AI hosts, and CI-enforced zero egress.",
+      link: "https://dev.to/vansharora21/tokencap-v160-is-now-live-3153"
+    },
+    {
+      title: "TokenCap v1.6.0 Featured Coverage",
+      type: "CoderLegion",
+      icon: "newspaper",
+      description: "Read the CoderLegion featured article covering TokenCap v1.6.0 real-time savings reporting, multi-host pointers, and verified benchmarks.",
+      link: "https://coderlegion.com/23530/tokencap-v1-6-0-is-now-live"
+    },
+    {
       title: "TokenCap v1.5 — Making MCP Feel Invisible",
       type: "DEV Community",
       icon: "hub",
@@ -57,6 +71,20 @@ export function ResourcesClient() {
   ];
 
   const timelineEvents = [
+    {
+      title: "TokenCap v1.6.0 Is Now Live (DEV.to)",
+      date: "July 2026",
+      icon: "rocket_launch",
+      description: "Introducing the Token & Dollar Savings Engine, 12.2× average token reduction (94.3% cost savings), and 7 multi-host agent pointers.",
+      link: "https://dev.to/vansharora21/tokencap-v160-is-now-live-3153"
+    },
+    {
+      title: "TokenCap v1.6.0 Coverage (CoderLegion)",
+      date: "July 2026",
+      icon: "newspaper",
+      description: "Featured article on CoderLegion covering TokenCap v1.6.0 savings engine and multi-host pointers.",
+      link: "https://coderlegion.com/23530/tokencap-v1-6-0-is-now-live"
+    },
     {
       title: "TokenCap v1.5 Release Announcement",
       date: "July 2026",
@@ -113,6 +141,20 @@ export function ResourcesClient() {
   ];
 
   const gridResources = [
+    {
+      title: "TokenCap v1.6.0 Is Now Live",
+      platform: "DEV Community",
+      icon: "rocket_launch",
+      description: "Token & Dollar Savings Engine, 12.2× average token reduction, and 7 multi-host pointers.",
+      link: "https://dev.to/vansharora21/tokencap-v160-is-now-live-3153"
+    },
+    {
+      title: "TokenCap v1.6.0 Article",
+      platform: "CoderLegion",
+      icon: "newspaper",
+      description: "Featured article covering TokenCap v1.6.0 savings reporting and multi-host pointers.",
+      link: "https://coderlegion.com/23530/tokencap-v1-6-0-is-now-live"
+    },
     {
       title: "TokenCap v1.5 — Making MCP Feel Invisible",
       platform: "DEV Community",
