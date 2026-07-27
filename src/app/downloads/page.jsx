@@ -195,20 +195,28 @@ export default function DownloadsPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-mono text-muted uppercase tracking-wider bg-pre-bg border border-card-border px-2 py-0.5 rounded">
-                Claude Plugin · v1.6.0
+                Claude & Codex Plugins · v1.7.0
               </span>
             </div>
             <h2 className="text-xl font-bold text-foreground font-mono">
-              Claude Code & Claude Desktop Plugin
+              Claude Code & OpenAI Codex Host Plugins
             </h2>
             <p className="text-xs text-muted mt-1">
-              Official MCP server plugin and non-overwriting <code className="text-foreground font-mono">CLAUDE.md</code> agent pointer integration.
+              Official host plugins managed in the standalone <a href="https://github.com/vansharora21/tokencap-plugin.git" target="_blank" rel="noreferrer" className="text-foreground underline">tokencap-plugin repository</a>.
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs font-mono">
             <a
-              href="/mcp"
+              href="https://github.com/vansharora21/tokencap-plugin.git"
+              target="_blank"
+              rel="noreferrer"
               className="px-3 py-1.5 rounded border border-card-border bg-pre-bg hover:bg-card-hover text-foreground font-bold transition-colors block text-center"
+            >
+              Plugin Repo →
+            </a>
+            <a
+              href="/mcp"
+              className="px-3 py-1.5 rounded border border-card-border bg-pre-bg hover:bg-card-hover text-foreground/80 hover:text-foreground font-bold transition-colors block text-center"
             >
               MCP Guide →
             </a>

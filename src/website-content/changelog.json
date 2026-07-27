@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.7.0",
+    "title": "Host Plugins, Refactored CLI Subcommands & VS Code Intelligence",
+    "date": "2026-07-27",
+    "status": "released",
+    "highlights": [
+      "Official Plugin Ecosystem: Host plugins for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted at https://github.com/vansharora21/tokencap-plugin.git.",
+      "Restructured CLI Hierarchy: Clean subcommand grouping: tokencap make, tokencap ask, tokencap ask brain, tokencap analyze diff, tokencap security scan, tokencap security audit.",
+      "VS Code Extension Auto-Capture: Native VS Code status bar quick-picks, automatic save triggers, and debounced snapshot refreshing.",
+      "Auto-Inferred Notes & Debug: Automatically infers .tokencap-notes.md and .tokencap-debug.md when missing from git commit history and source structure.",
+      "CI-Enforced Local-Only Security: Zero network calls, centralized secret redaction, and local stdio MCP communication."
+    ]
+  },
+  {
     "version": "1.6.0",
     "title": "Token Savings Engine, Multi-Host Pointers & Verified Benchmarks",
     "date": "2026-07-23",

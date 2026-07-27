@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.7.0",
+    title: "Host Plugins, Refactored CLI Subcommands & VS Code Intelligence",
+    date: "2026-07-27",
+    status: "released",
+    description: "Official host plugins for Claude Code & Codex (tokencap-plugin), restructured subcommand hierarchy (tokencap ask brain, tokencap analyze diff, tokencap security scan), VS Code Extension auto-capture, and auto-inferred memory notes.",
+  },
+  {
     version: "1.6.0",
     title: "Token Savings Engine, Multi-Host Pointers & Benchmarks",
     date: "2026-07-23",
