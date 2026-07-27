@@ -1,5 +1,21 @@
 [
   {
+    "id": "tokencap-plugin-ecosystem",
+    "title": "Standalone Host Plugins Ecosystem (v1.7.0)",
+    "description": "Marketplace-ready host integrations for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted in the official tokencap-plugin repository.",
+    "category": "Plugins",
+    "importance": 1,
+    "technicalDetail": "Marketplace catalogs (.claude-plugin/marketplace.json & .agents/plugins/marketplace.json) for host plugin auto-discovery at https://github.com/vansharora21/tokencap-plugin.git."
+  },
+  {
+    "id": "refactored-cli-subcommands",
+    "title": "Restructured Subcommand Dispatcher (v1.7.0)",
+    "description": "Clean, logical 6-group CLI command hierarchy: tokencap make, tokencap ask, tokencap analyze, tokencap security, tokencap mcp, tokencap debug.",
+    "category": "CLI",
+    "importance": 1,
+    "technicalDetail": "Refactored command router in bin/tokencap.js with migration notices for legacy top-level flags."
+  },
+  {
     "id": "token-savings-engine",
     "title": "Token & Dollar Savings Engine (v1.6.0)",
     "description": "Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.",

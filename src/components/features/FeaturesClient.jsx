@@ -15,14 +15,14 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v1.6.0 Engine
+              v1.7.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
             Precision engineered features.
           </h1>
           <p className="text-sm leading-relaxed text-muted max-w-xl">
-            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed, real-time token savings, multi-host pointers, and self-maintaining MCP intelligence.
+            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed, real-time token savings, multi-host pointers, host plugins, and self-maintaining MCP intelligence.
           </p>
         </header>
         <div className="relative group overflow-hidden rounded-xl border border-card-border bg-card p-2 shadow-2xl flex items-center justify-center">
@@ -47,6 +47,24 @@ export function FeaturesClient() {
         </div>
 
         <div className="space-y-6">
+          {/* v1.7.0 (OPEN) */}
+          <div className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.7.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Host Plugins, Refactored Subcommands & VS Code Intelligence</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">July 27, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Official Plugin Ecosystem</strong> — Standalone <a href="https://github.com/vansharora21/tokencap-plugin.git" target="_blank" rel="noreferrer" className="text-foreground underline">tokencap-plugin repository</a> serving marketplace-ready host plugins for Claude Code (<code>tokencap</code>) and OpenAI Codex (<code>tokencap-context</code>).</li>
+              <li><strong>Restructured CLI Subcommands</strong> — Clean 6-group dispatcher hierarchy: <code>tokencap make</code>, <code>tokencap ask</code>, <code>tokencap ask brain</code>, <code>tokencap analyze diff</code>, <code>tokencap analyze constitution</code>, <code>tokencap analyze agent</code>, <code>tokencap security scan</code>, <code>tokencap security audit</code>, <code>tokencap mcp</code>, <code>tokencap debug</code>.</li>
+              <li><strong>VS Code Extension Auto-Capture</strong> — Save-triggered background updates, status bar quick picks, debounced snapshot updates, and multi-file refresh commands.</li>
+              <li><strong>Auto-Inferred Notes & Debug Context</strong> — Automatically infers missing <code>.tokencap-notes.md</code> and <code>.tokencap-debug.md</code> files directly from Git commit history and codebase structure.</li>
+              <li><strong>Zero-Egress Security Hardening</strong> — Centralized credential redaction, local stdio MCP communication, and zero network calls.</li>
+            </ul>
+          </div>
+
           {/* v1.6.0 (OPEN) */}
           <div className="p-8 rounded-xl border border-card-border bg-card/80 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
