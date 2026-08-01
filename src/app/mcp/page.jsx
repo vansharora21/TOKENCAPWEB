@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v1.7.0)",
+  title: "TokenCap MCP Guide (v1.8.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -32,6 +32,7 @@ export default function McpPage() {
     { name: "tokencap_verify", desc: "Test commands, test files, lint rules, and review checklist.", input: '{ "cluster": "Auth" }' },
     { name: "tokencap_delta", desc: "What changed since last build — clusters, files, rules.", input: "None" },
     { name: "tokencap_mcp_status", desc: "Server uptime, cache hit rate, and per-endpoint call counts.", input: "None" },
+    { name: "tokencap_manage_adr", desc: "Read/write Architecture Decision Records that persist across sessions.", input: '{ "action": "add", "title": "Use web-tree-sitter", "decision": "AST parsing" }' },
   ];
 
   const supportedHosts = [
@@ -53,7 +54,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.7.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.8.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -86,7 +87,7 @@ export default function McpPage() {
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              v1.7.0 Self-Maintaining MCP Service
+              v1.8.0 Self-Maintaining MCP Service
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
               Model Context Protocol (MCP) Guide
@@ -99,7 +100,7 @@ export default function McpPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
               <div className="p-4 rounded-lg bg-card border border-card-border">
                 <span className="text-[10px] text-muted uppercase tracking-wider block mb-1">Stdio Endpoints</span>
-                <span className="text-xl font-bold text-foreground">11 MCP Tools</span>
+                <span className="text-xl font-bold text-foreground">12 MCP Tools</span>
               </div>
               <div className="p-4 rounded-lg bg-card border border-card-border">
                 <span className="text-[10px] text-muted uppercase tracking-wider block mb-1">Supported Clients</span>

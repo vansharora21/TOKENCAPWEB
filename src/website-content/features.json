@@ -1,5 +1,45 @@
 [
   {
+    "id": "ast-symbol-graph",
+    "title": "AST-Derived Symbol Graph & Call Resolution (v1.8.0)",
+    "description": "Tree-sitter WASM-powered parsing for deep symbol graph construction. Maps exact function/class/method call edges with 88% call resolution accuracy.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Uses web-tree-sitter with vendored WASM grammars for Tier 1 (JS/TS/JSX/TSX, Python) and Tier 2 (Go, Rust, Java) language parsing."
+  },
+  {
+    "id": "symbol-impact-analysis",
+    "title": "Symbol-Level Blast Radius & Impact (v1.8.0)",
+    "description": "Calculates detailed blast radius for proposed edits at the symbol level. Identifies direct/transitive callers, boundary crossings, and potential breakage.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap impact <file>:<symbol>'. For frontend components, it parses JSX connections to show where components are rendered and what props they consume."
+  },
+  {
+    "id": "frontend-intelligence",
+    "title": "Deep Frontend Intelligence (v1.8.0)",
+    "description": "Extracts React/Next.js/React Router structures, component relationships, prop flows, route mappings, state ownership, accessibility roles, and design tokens.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Parses component imports/exports, props passing, Next.js page structure, inline state ownership, and accessibility ARIA markers."
+  },
+  {
+    "id": "architecture-decision-records",
+    "title": "Durable Architecture Decision Records (v1.8.0)",
+    "description": "Persist architectural decision records (ADRs) locally to align AI coding decisions with established team guidelines.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Managed via the new tokencap_manage_adr MCP tool. Supports listing, reading, adding, and updating status of decisions."
+  },
+  {
+    "id": "dead-code-detection",
+    "title": "Dead-Symbol Detection (v1.8.0)",
+    "description": "Scans codebase to flag uncalled, non-exported functions and symbols to clean up tech debt.",
+    "category": "Intelligence",
+    "importance": 2,
+    "technicalDetail": "Run via 'tokencap impact --dead-code'. Automatically filters out public/exported API entry points."
+  },
+  {
     "id": "tokencap-plugin-ecosystem",
     "title": "Standalone Host Plugins Ecosystem (v1.7.0)",
     "description": "Marketplace-ready host integrations for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted in the official tokencap-plugin repository.",

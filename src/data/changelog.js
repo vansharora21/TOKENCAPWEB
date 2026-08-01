@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.8.0",
+    title: "AST-Derived Symbol Graph, Frontend Intelligence & Impact Analysis",
+    date: "2026-08-01",
+    status: "released",
+    description: "AST-based symbol graph via web-tree-sitter (JS/TS/Python/Go/Rust/Java), 88% accurate call resolution, symbol-level impact analysis and dead-code detection, extensive frontend intelligence (components, props flow, routes, design tokens, a11y), persistent ADRs, and cache version protection.",
+  },
+  {
     version: "1.7.0",
     title: "Host Plugins, Refactored CLI Subcommands & VS Code Intelligence",
     date: "2026-07-27",

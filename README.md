@@ -26,6 +26,31 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 AST-Derived Symbol Graph & Call Resolution (v1.8.0)
+Tree-sitter WASM-powered parsing for deep symbol graph construction. Maps exact function/class/method call edges with 88% call resolution accuracy.
+
+> ⚙️ *Technical Detail:* Uses web-tree-sitter with vendored WASM grammars for Tier 1 (JS/TS/JSX/TSX, Python) and Tier 2 (Go, Rust, Java) language parsing.
+
+#### 🔹 Symbol-Level Blast Radius & Impact (v1.8.0)
+Calculates detailed blast radius for proposed edits at the symbol level. Identifies direct/transitive callers, boundary crossings, and potential breakage.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap impact <file>:<symbol>'. For frontend components, it parses JSX connections to show where components are rendered and what props they consume.
+
+#### 🔹 Deep Frontend Intelligence (v1.8.0)
+Extracts React/Next.js/React Router structures, component relationships, prop flows, route mappings, state ownership, accessibility roles, and design tokens.
+
+> ⚙️ *Technical Detail:* Parses component imports/exports, props passing, Next.js page structure, inline state ownership, and accessibility ARIA markers.
+
+#### 🔹 Durable Architecture Decision Records (v1.8.0)
+Persist architectural decision records (ADRs) locally to align AI coding decisions with established team guidelines.
+
+> ⚙️ *Technical Detail:* Managed via the new tokencap_manage_adr MCP tool. Supports listing, reading, adding, and updating status of decisions.
+
+#### 🔹 Dead-Symbol Detection (v1.8.0)
+Scans codebase to flag uncalled, non-exported functions and symbols to clean up tech debt.
+
+> ⚙️ *Technical Detail:* Run via 'tokencap impact --dead-code'. Automatically filters out public/exported API entry points.
+
 #### 🔹 Token & Dollar Savings Engine (v1.6.0)
 Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.
 
@@ -96,6 +121,30 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
+### 📁 Plugins
+
+#### 🔹 Standalone Host Plugins Ecosystem (v1.7.0)
+Marketplace-ready host integrations for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted in the official tokencap-plugin repository.
+
+> ⚙️ *Technical Detail:* Marketplace catalogs (.claude-plugin/marketplace.json & .agents/plugins/marketplace.json) for host plugin auto-discovery at https://github.com/vansharora21/tokencap-plugin.git.
+
+### 📁 CLI
+
+#### 🔹 Restructured Subcommand Dispatcher (v1.7.0)
+Clean, logical 6-group CLI command hierarchy: tokencap make, tokencap ask, tokencap analyze, tokencap security, tokencap mcp, tokencap debug.
+
+> ⚙️ *Technical Detail:* Refactored command router in bin/tokencap.js with migration notices for legacy top-level flags.
+
+#### 🔹 Watch Mode
+Run TokenCap as a persistent background process. It watches your workspace for file changes and automatically regenerates all snapshot files after a configurable debounce delay.
+
+> ⚙️ *Technical Detail:* Built on chokidar. Ignores generated output files, node_modules, dist, build, coverage. Default debounce: 30,000ms, configurable via --debounce.
+
+#### 🔹 Automated CLI Capture
+Execute any command under the debug runner (e.g. tokencap debug --start -- npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.
+
+> ⚙️ *Technical Detail:* Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces.
+
 ### 📁 Security
 
 #### 🔹 CI-Enforced Zero Network Egress (v1.6.0)
@@ -154,18 +203,6 @@ Not every file deserves the same attention. TokenCap scores and ranks files by r
 Always know how large your snapshot is before you paste it into an AI tool. TokenCap estimates token count in real-time and displays it in the VS Code status bar and CLI output.
 
 > ⚙️ *Technical Detail:* Estimates tokens as bytes / 4. Covers both source file bytes and Git diff bytes.
-
-### 📁 CLI
-
-#### 🔹 Watch Mode
-Run TokenCap as a persistent background process. It watches your workspace for file changes and automatically regenerates all snapshot files after a configurable debounce delay.
-
-> ⚙️ *Technical Detail:* Built on chokidar. Ignores generated output files, node_modules, dist, build, coverage. Default debounce: 30,000ms, configurable via --debounce.
-
-#### 🔹 Automated CLI Capture
-Execute any command under the debug runner (e.g. tokencap debug --start -- npm test) and TokenCap will automatically intercept, format, and save the stdout/stderr stream, failed tests, and stack traces.
-
-> ⚙️ *Technical Detail:* Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces.
 
 ### 📁 Configuration
 
@@ -436,4 +473,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 27/7/2026.*
+*Generated automatically from `website-content` JSON source files on 1/8/2026.*
