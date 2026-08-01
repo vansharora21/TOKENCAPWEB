@@ -2,6 +2,30 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 18,
+    },
+  },
+};
 
 function Hero() {
   const [copied, setCopied] = useState(false);
@@ -14,21 +38,35 @@ function Hero() {
   };
 
   return (
-    <section className="flex flex-col items-start text-left max-w-xl py-6">
+    <motion.section 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col items-start text-left max-w-xl py-6"
+    >
       {/* Title */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] font-display">
+      <motion.h1 
+        variants={itemVariants}
+        className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] font-display"
+      >
         Your codebase. <br />
         Compressed. <br />
         Ready to hand off.
-      </h1>
+      </motion.h1>
 
       {/* Description */}
-      <p className="mt-6 text-sm sm:text-base text-muted leading-relaxed max-w-md">
+      <motion.p 
+        variants={itemVariants}
+        className="mt-6 text-sm sm:text-base text-muted leading-relaxed max-w-md"
+      >
         Stop wasting tokens. TokenCap snapshots your workspace into structured, AI-ready prompts with files, imports, Git context, and invariants.
-      </p>
+      </motion.p>
 
       {/* Action Block */}
-      <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
+      <motion.div 
+        variants={itemVariants}
+        className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full"
+      >
         {/* Copy command input box */}
         <div className="flex items-center bg-pre-bg border border-card-border rounded-lg overflow-hidden flex-grow max-w-xs transition-colors hover:border-card-hover">
           <span className="text-muted font-mono text-xs pl-3.5 select-none">$</span>
@@ -56,8 +94,8 @@ function Hero() {
         >
           View Docs
         </Link>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 

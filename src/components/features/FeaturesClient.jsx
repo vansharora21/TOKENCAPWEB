@@ -3,6 +3,30 @@
 import { useState } from "react";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { CopyButton } from "@/components/shared/CopyButton";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+    },
+  },
+};
 
 export function FeaturesClient() {
   const [showOlderReleases, setShowOlderReleases] = useState(false);
@@ -26,9 +50,12 @@ export function FeaturesClient() {
           </p>
         </header>
         <div className="relative group overflow-hidden rounded-xl border border-card-border bg-card p-2 shadow-2xl flex items-center justify-center">
-          <img 
-            src="/images/home/tokencap-features-graphic.png" 
-            alt="TokenCap Project Brain & Context Layer Diagram" 
+          <video 
+            src="/remove_the_logo_of_gemini_in_t.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className="w-full h-auto rounded-lg object-cover border border-card-border/60 transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </div>
@@ -46,9 +73,15 @@ export function FeaturesClient() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="space-y-6"
+        >
           {/* v1.8.0 (OPEN) */}
-          <div className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.8.0</span>
@@ -66,10 +99,10 @@ export function FeaturesClient() {
               <li><strong>Incremental Cache Protection</strong> — Version-guard protection prevents pre-1.8 cache files from corrupting active intelligence indexes.</li>
               <li><strong>Execution Contract Sovereignty</strong> — Enforces strict budget rules: &le;4 runtime dependencies, offline-only privacy, and &lt;10MB packed workspace footprint.</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* v1.7.0 (OPEN) */}
-          <div className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.7.0</span>
@@ -84,10 +117,10 @@ export function FeaturesClient() {
               <li><strong>Auto-Inferred Notes & Debug Context</strong> — Automatically infers missing <code>.tokencap-notes.md</code> and <code>.tokencap-debug.md</code> files directly from Git commit history and codebase structure.</li>
               <li><strong>Zero-Egress Security Hardening</strong> — Centralized credential redaction, local stdio MCP communication, and zero network calls.</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* v1.6.0 (OPEN) */}
-          <div className="p-8 rounded-xl border border-card-border bg-card/80 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/80 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.6.0</span>
@@ -103,10 +136,10 @@ export function FeaturesClient() {
               <li><strong>Security & Audit Tools</strong> — Added <code>tokencap scan</code> (entropy & regex secret scanning), <code>tokencap audit</code> (security verification), and <code>tokencap upgrade</code> CLI utilities.</li>
               <li><strong><code>--no-pointers</code> Flag</strong> — Skip multi-host pointer creation when custom configuration management is preferred.</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* v1.5.0 (OPEN) */}
-          <div className="p-8 rounded-xl border border-card-border bg-card/60 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/60 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.5.0</span>
@@ -123,10 +156,10 @@ export function FeaturesClient() {
               <li><strong>Durable Metadata</strong> — Stores detected tech stack in <code>knowledge.json</code> for offline MCP overview rendering.</li>
               <li><strong>Zero-Latency Caching</strong> — In-memory cached tool calls process in 0–2 ms handler duration.</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* v1.4.0 (OPEN) */}
-          <div className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.4.0</span>
@@ -140,10 +173,10 @@ export function FeaturesClient() {
               <li><strong>Security Hardening Engine</strong> — Centralized secret redaction guarantees no API keys, tokens, or credentials survive into intelligence outputs.</li>
               <li><strong>Up to 92% Token Savings</strong> — Replaces massive 20,000 token cold-loads with targeted 1,500 token queries on demand.</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* v1.3.0 (OPEN) */}
-          <div className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.3.0</span>
@@ -161,7 +194,8 @@ export function FeaturesClient() {
               <li><strong>New CLI Flags</strong> — <code>--full</code> (force full rebuild), <code>--rebuild-brain</code>, <code>--rebuild-constitution</code>, <code>--rebuild-graph</code>, <code>--clean-cache</code>. Default is now incremental.</li>
               <li><strong>Zero-Change Detection</strong> — If nothing changed, <code>tokencap make</code> exits in sub-100ms with no disk writes. "Intelligence is up to date."</li>
             </ul>
-          </div>
+          </motion.div>
+        </motion.div>
 
           {/* DROPDOWN / ACCORDION FOR OLDER RELEASES (v1.2.0 - v0.1.0) */}
           <div className="pt-4">
@@ -221,13 +255,18 @@ export function FeaturesClient() {
               </div>
             )}
           </div>
-        </div>
       </section>
 
       {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
+      >
         {/* 1: Token & Dollar Savings Engine */}
-        <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
+        <motion.div variants={itemVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }} className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
           <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-emerald-400">
             <span className="material-symbols-outlined text-sm">savings</span>
           </div>
@@ -240,10 +279,10 @@ export function FeaturesClient() {
             <div className="text-muted/80 mt-0.5">Saved: 97,094 tok ($0.24)</div>
             <div className="text-muted/65 text-[10px]">.tokencap/savings.json</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2: Multi-Host Agent Pointers */}
-        <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
+        <motion.div variants={itemVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }} className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
           <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-cyan-400">
             <span className="material-symbols-outlined text-sm">alt_route</span>
           </div>
@@ -256,26 +295,26 @@ export function FeaturesClient() {
             <div className="text-muted/80 mt-0.5">AGENTS.md, CLAUDE.md + 5 more</div>
             <div className="text-emerald-400">→ .tokencap/agent/START_HERE.md</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 3: Local MCP Service */}
-        <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
+        <motion.div variants={itemVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }} className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
           <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
             <span className="material-symbols-outlined text-sm">hub</span>
           </div>
           <h3 className="text-base font-bold text-foreground font-mono mb-2">Local MCP Service</h3>
           <p className="text-xs leading-relaxed text-muted mb-6 flex-grow">
-            Query repository intelligence live over stdio MCP (11 tool endpoints) with automatic startup init and background watching.
+            Query repository intelligence live over stdio MCP (12 tool endpoints) with automatic startup init and background watching.
           </p>
           <div className="bg-pre-bg border border-card-border p-3 font-mono text-[11px] h-[84px] flex flex-col justify-center text-left">
             <div className="text-muted">$ tokencap mcp --init</div>
             <div className="text-muted/80 mt-1">Status: Active (0-2ms latency)</div>
-            <div className="text-foreground font-bold">11 MCP Tool Endpoints</div>
+            <div className="text-foreground font-bold">12 MCP Tool Endpoints</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 4: Incremental Engine */}
-        <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
+        <motion.div variants={itemVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }} className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
           <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
             <span className="material-symbols-outlined text-sm">bolt</span>
           </div>
@@ -288,10 +327,10 @@ export function FeaturesClient() {
             <div className="text-muted/80 mt-1">Duration: 74ms</div>
             <div className="text-muted/70">Selective Rebuild: Clean</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 5: Repository Constitution */}
-        <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
+        <motion.div variants={itemVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }} className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
           <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
             <span className="material-symbols-outlined text-sm">menu_book</span>
           </div>
@@ -304,10 +343,10 @@ export function FeaturesClient() {
             <div className="text-muted/80 mt-1">Constitution Score: 92/100</div>
             <div className="text-muted/70">✔ Inferred 14 API laws</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 6: Local-first Privacy */}
-        <div className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
+        <motion.div variants={itemVariants} whileHover={{ y: -4, transition: { duration: 0.2 } }} className="p-6 bg-card border border-card-border rounded-lg hover:border-card-hover transition-all flex flex-col h-full">
           <div className="w-10 h-10 rounded-lg bg-pre-bg border border-card-border flex items-center justify-center mb-6 text-muted">
             <span className="material-symbols-outlined text-sm">verified_user</span>
           </div>
@@ -326,8 +365,8 @@ export function FeaturesClient() {
             </div>
             <span className="font-mono text-[11px] text-muted">No Cloud Sync</span>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* CTA Section */}
       <section className="mt-20">

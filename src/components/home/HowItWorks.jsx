@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 const STEPS = [
   {
@@ -20,6 +21,29 @@ const STEPS = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 90,
+      damping: 18,
+    },
+  },
+};
+
 function HowItWorks() {
   return (
     <section className="py-8 space-y-12">
@@ -32,10 +56,18 @@ function HowItWorks() {
       </div>
 
       {/* Grid of Steps */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+      >
         {STEPS.map((step) => (
-          <div 
+          <motion.div 
             key={step.num}
+            variants={cardVariants}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
             className="space-y-4 border border-card-border bg-card p-5 rounded-lg hover:border-card-hover transition-colors"
           >
             {/* Header */}
@@ -48,9 +80,9 @@ function HowItWorks() {
             <p className="text-xs text-muted leading-relaxed font-sans">
               {step.desc}
             </p>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
