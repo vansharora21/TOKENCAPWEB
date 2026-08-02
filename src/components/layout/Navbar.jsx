@@ -47,6 +47,14 @@ function Navbar() {
 
         {/* Right: Actions */}
         <div className="flex items-center gap-4 sm:gap-6">
+          {/* Book a Call Button */}
+          <Link
+            href="/book"
+            className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium text-muted hover:text-foreground hover:bg-card-hover/50 transition active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2 cursor-pointer"
+          >
+            Book a call
+          </Link>
+
           {/* Search Icon */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-search"))}
@@ -97,6 +105,13 @@ function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/book"
+                onClick={() => setIsOpen(false)}
+                className="text-base font-medium text-muted transition hover:text-foreground"
+              >
+                Book a Call
+              </Link>
             </nav>
           </div>
         </div>

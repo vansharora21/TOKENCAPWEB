@@ -17,6 +17,7 @@ function Footer() {
   const communityLinks = [
     { label: "GitHub", href: "https://github.com/vansharora21/TOKENCAP", external: true },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aroravansh2108/", external: true },
+    { label: "Book a Call", href: "https://cal.com/vansh-arora-0821/15min", external: true },
   ];
 
   return (
