@@ -89,6 +89,14 @@ function Hero() {
         </div>
 
         <Link
+          href="/book"
+          className="text-center bg-foreground text-background hover:bg-foreground/90 font-medium px-5 py-3 rounded-lg active:scale-[0.98] transition-all text-xs flex items-center justify-center gap-1.5"
+        >
+          <span className="material-symbols-outlined text-xs">calendar_today</span>
+          Book a Call
+        </Link>
+
+        <Link
           href="/docs"
           className="text-center border border-card-border hover:border-card-hover bg-card hover:bg-pre-bg text-foreground/80 hover:text-foreground font-medium px-5 py-3 rounded-lg active:scale-[0.98] transition-all text-xs"
         >

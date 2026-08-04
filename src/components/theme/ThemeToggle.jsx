@@ -9,24 +9,22 @@ export function ThemeToggle({ className = "" }) {
     <button
       onClick={toggleTheme}
       type="button"
-      className={`group relative flex items-center justify-center w-9 h-9 rounded-lg border border-card-border bg-card/80 hover:bg-pre-bg hover:border-zinc-700/60 transition-all duration-300 ease-out cursor-pointer overflow-hidden shadow-sm hover:shadow-[0_0_15px_rgba(255,255,255,0.06)] active:scale-95 ${className}`}
+      className={`text-muted hover:text-foreground transition focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2 cursor-pointer p-1 rounded-md hover:bg-card-hover/40 flex items-center justify-center ${className}`}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {/* Subtle background glow effect on hover */}
-      <span className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-      {/* Animated icon container */}
-      <span className="relative flex items-center justify-center transition-transform duration-500 group-hover:rotate-45">
-        <span
-          className={`material-symbols-outlined text-base transition-all duration-500 transform ${
-            theme === "dark"
-              ? "text-amber-400 rotate-0 scale-100"
-              : "text-indigo-400 rotate-180 scale-100"
-          }`}
-        >
-          {theme === "dark" ? "light_mode" : "dark_mode"}
-        </span>
+      <span className="relative flex items-center justify-center w-5 h-5">
+        {theme === "dark" ? (
+          <svg className="h-5 w-5 text-muted hover:text-amber-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <circle cx="12" cy="12" r="4" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ) : (
+          <svg className="h-5 w-5 text-muted hover:text-indigo-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        )}
       </span>
     </button>
   );
 }
+

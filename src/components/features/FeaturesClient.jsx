@@ -138,66 +138,9 @@ export function FeaturesClient() {
             </ul>
           </motion.div>
 
-          {/* v1.5.0 (OPEN) */}
-          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/60 relative overflow-hidden">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.5.0</span>
-                <h3 className="text-lg font-bold text-foreground font-mono">Self-Maintaining MCP Intelligence</h3>
-              </div>
-              <span className="text-xs text-muted font-mono">July 19, 2026</span>
-            </div>
-            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
-              <li><strong>Automatic Initialization</strong> — MCP startup automatically runs <code>tokencap make</code> before tool execution, eliminating manual pre-build steps.</li>
-              <li><strong>Live Repository Watcher</strong> — MCP server process maintains a live background watcher for source edits and <code>.tokencap-notes.md</code> updates.</li>
-              <li><strong>Universal Host Setup</strong> — <code>tokencap mcp --init</code> supports Claude Code, Cursor, Windsurf, Cline, VS Code, Antigravity, and Codex.</li>
-              <li><strong>Explicit Client Selector</strong> — Use <code>tokencap mcp --init --client &lt;host&gt;</code> when workspaces contain multiple AI clients.</li>
-              <li><strong>Safer Configuration Merging</strong> — Merges TokenCap definitions safely into existing host configs without replacing unrelated servers.</li>
-              <li><strong>Durable Metadata</strong> — Stores detected tech stack in <code>knowledge.json</code> for offline MCP overview rendering.</li>
-              <li><strong>Zero-Latency Caching</strong> — In-memory cached tool calls process in 0–2 ms handler duration.</li>
-            </ul>
-          </motion.div>
-
-          {/* v1.4.0 (OPEN) */}
-          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.4.0</span>
-                <h3 className="text-lg font-bold text-foreground font-mono">Repository Intelligence Service & Security Hardening</h3>
-              </div>
-              <span className="text-xs text-muted font-mono">July 15, 2026</span>
-            </div>
-            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
-              <li><strong>Repository Intelligence Service</strong> — Query repository intelligence live over local stdio Model Context Protocol (MCP).</li>
-              <li><strong>11 Tool Endpoints</strong> — <code>tokencap_overview</code>, <code>tokencap_files</code>, <code>tokencap_search</code>, <code>tokencap_cluster</code>, <code>tokencap_dependencies</code>, <code>tokencap_constitution</code>, <code>tokencap_impact</code>, <code>tokencap_execution</code>, <code>tokencap_verify</code>, <code>tokencap_delta</code>, and <code>tokencap_mcp_status</code>.</li>
-              <li><strong>Security Hardening Engine</strong> — Centralized secret redaction guarantees no API keys, tokens, or credentials survive into intelligence outputs.</li>
-              <li><strong>Up to 92% Token Savings</strong> — Replaces massive 20,000 token cold-loads with targeted 1,500 token queries on demand.</li>
-            </ul>
-          </motion.div>
-
-          {/* v1.3.0 (OPEN) */}
-          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.3.0</span>
-                <h3 className="text-lg font-bold text-foreground font-mono">Incremental Intelligence Engine</h3>
-              </div>
-              <span className="text-xs text-muted font-mono">July 10, 2026</span>
-            </div>
-            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
-              <li><strong>Incremental Intelligence Engine</strong> — <code>tokencap make</code> now rebuilds only what changed. SHA-256 hash comparison, bidirectional dependency BFS, and per-cluster selective rebuilds replace full-scan defaults.</li>
-              <li><strong>SHA-256 Hash Cache</strong> — <code>.tokencap/cache/hashes.cache.json</code> stores file hashes with integrity checksum. Corrupted or missing cache triggers automatic full rebuild fallback.</li>
-              <li><strong>Impact Analysis</strong> — Changed files are mapped to affected clusters via <code>knowledge.json</code>, propagated to dependent clusters one level deep. If &gt;60% clusters are affected, a full rebuild is triggered instead.</li>
-              <li><strong>Selective Rebuild</strong> — Graph patches only dirty nodes and prunes ghost edges. Brain updates only affected clusters. Constitution re-evaluates only impacted rules via <code>getImpactedRules()</code>. Agent files update only sections referencing affected clusters.</li>
-              <li><strong>Delta Files</strong> — After every build, <code>.tokencap/delta/</code> writes <code>changed-files.json</code>, <code>affected-clusters.json</code>, <code>dirty-nodes.json</code>, and per-engine delta JSON files. AI agents consume only what changed.</li>
-              <li><strong>Versioned Delta History</strong> — <code>.tokencap/delta/history/</code> stores timestamped delta snapshots (last 10 by default) for rollback and audit.</li>
-              <li><strong>New CLI Flags</strong> — <code>--full</code> (force full rebuild), <code>--rebuild-brain</code>, <code>--rebuild-constitution</code>, <code>--rebuild-graph</code>, <code>--clean-cache</code>. Default is now incremental.</li>
-              <li><strong>Zero-Change Detection</strong> — If nothing changed, <code>tokencap make</code> exits in sub-100ms with no disk writes. "Intelligence is up to date."</li>
-            </ul>
-          </motion.div>
         </motion.div>
 
-          {/* DROPDOWN / ACCORDION FOR OLDER RELEASES (v1.2.0 - v0.1.0) */}
+          {/* DROPDOWN / ACCORDION FOR OLDER RELEASES (v1.5.0 - v0.1.0) */}
           <div className="pt-4">
             <button
               onClick={() => setShowOlderReleases(!showOlderReleases)}
@@ -206,8 +149,8 @@ export function FeaturesClient() {
             >
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-muted">history_toggle_off</span>
-                <span className="text-sm font-bold font-mono">Older Release Highlights (v1.2.0 – v0.1.0)</span>
-                <span className="text-[10px] font-mono text-muted bg-pre-bg border border-card-border px-2 py-0.5 rounded">12 Previous Versions</span>
+                <span className="text-sm font-bold font-mono">Older Release Highlights (v1.5.0 – v0.1.0)</span>
+                <span className="text-[10px] font-mono text-muted bg-pre-bg border border-card-border px-2 py-0.5 rounded">15 Previous Versions</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-muted group-hover:text-foreground">
                 <span>{showOlderReleases ? "Collapse" : "Expand"}</span>
@@ -219,6 +162,64 @@ export function FeaturesClient() {
 
             {showOlderReleases && (
               <div className="mt-6 space-y-6 pt-2 transition-all">
+                {/* v1.5.0 */}
+                <div className="p-8 rounded-xl border border-card-border bg-card/60 relative overflow-hidden">
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <span className="bg-pre-bg border border-card-border text-foreground/85 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.5.0</span>
+                      <h3 className="text-lg font-bold text-foreground font-mono">Self-Maintaining MCP Intelligence</h3>
+                    </div>
+                    <span className="text-xs text-muted font-mono">July 19, 2026</span>
+                  </div>
+                  <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+                    <li><strong>Automatic Initialization</strong> — MCP startup automatically runs <code>tokencap make</code> before tool execution, eliminating manual pre-build steps.</li>
+                    <li><strong>Live Repository Watcher</strong> — MCP server process maintains a live background watcher for source edits and <code>.tokencap-notes.md</code> updates.</li>
+                    <li><strong>Universal Host Setup</strong> — <code>tokencap mcp --init</code> supports Claude Code, Cursor, Windsurf, Cline, VS Code, Antigravity, and Codex.</li>
+                    <li><strong>Explicit Client Selector</strong> — Use <code>tokencap mcp --init --client &lt;host&gt;</code> when workspaces contain multiple AI clients.</li>
+                    <li><strong>Safer Configuration Merging</strong> — Merges TokenCap definitions safely into existing host configs without replacing unrelated servers.</li>
+                    <li><strong>Durable Metadata</strong> — Stores detected tech stack in <code>knowledge.json</code> for offline MCP overview rendering.</li>
+                    <li><strong>Zero-Latency Caching</strong> — In-memory cached tool calls process in 0–2 ms handler duration.</li>
+                  </ul>
+                </div>
+
+                {/* v1.4.0 */}
+                <div className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.4.0</span>
+                      <h3 className="text-lg font-bold text-foreground font-mono">Repository Intelligence Service & Security Hardening</h3>
+                    </div>
+                    <span className="text-xs text-muted font-mono">July 15, 2026</span>
+                  </div>
+                  <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+                    <li><strong>Repository Intelligence Service</strong> — Query repository intelligence live over local stdio Model Context Protocol (MCP).</li>
+                    <li><strong>11 Tool Endpoints</strong> — <code>tokencap_overview</code>, <code>tokencap_files</code>, <code>tokencap_search</code>, <code>tokencap_cluster</code>, <code>tokencap_dependencies</code>, <code>tokencap_constitution</code>, <code>tokencap_impact</code>, <code>tokencap_execution</code>, <code>tokencap_verify</code>, <code>tokencap_delta</code>, and <code>tokencap_mcp_status</code>.</li>
+                    <li><strong>Security Hardening Engine</strong> — Centralized secret redaction guarantees no API keys, tokens, or credentials survive into intelligence outputs.</li>
+                    <li><strong>Up to 92% Token Savings</strong> — Replaces massive 20,000 token cold-loads with targeted 1,500 token queries on demand.</li>
+                  </ul>
+                </div>
+
+                {/* v1.3.0 */}
+                <div className="p-8 rounded-xl border border-card-border bg-card/40 relative overflow-hidden">
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <span className="bg-pre-bg border border-card-border text-foreground/80 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v1.3.0</span>
+                      <h3 className="text-lg font-bold text-foreground font-mono">Incremental Intelligence Engine</h3>
+                    </div>
+                    <span className="text-xs text-muted font-mono">July 10, 2026</span>
+                  </div>
+                  <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+                    <li><strong>Incremental Intelligence Engine</strong> — <code>tokencap make</code> now rebuilds only what changed. SHA-256 hash comparison, bidirectional dependency BFS, and per-cluster selective rebuilds replace full-scan defaults.</li>
+                    <li><strong>SHA-256 Hash Cache</strong> — <code>.tokencap/cache/hashes.cache.json</code> stores file hashes with integrity checksum. Corrupted or missing cache triggers automatic full rebuild fallback.</li>
+                    <li><strong>Impact Analysis</strong> — Changed files are mapped to affected clusters via <code>knowledge.json</code>, propagated to dependent clusters one level deep. If &gt;60% clusters are affected, a full rebuild is triggered instead.</li>
+                    <li><strong>Selective Rebuild</strong> — Graph patches only dirty nodes and prunes ghost edges. Brain updates only affected clusters. Constitution re-evaluates only impacted rules via <code>getImpactedRules()</code>. Agent files update only sections referencing affected clusters.</li>
+                    <li><strong>Delta Files</strong> — After every build, <code>.tokencap/delta/</code> writes <code>changed-files.json</code>, <code>affected-clusters.json</code>, <code>dirty-nodes.json</code>, and per-engine delta JSON files. AI agents consume only what changed.</li>
+                    <li><strong>Versioned Delta History</strong> — <code>.tokencap/delta/history/</code> stores timestamped delta snapshots (last 10 by default) for rollback and audit.</li>
+                    <li><strong>New CLI Flags</strong> — <code>--full</code> (force full rebuild), <code>--rebuild-brain</code>, <code>--rebuild-constitution</code>, <code>--rebuild-graph</code>, <code>--clean-cache</code>. Default is now incremental.</li>
+                    <li><strong>Zero-Change Detection</strong> — If nothing changed, <code>tokencap make</code> exits in sub-100ms with no disk writes. "Intelligence is up to date."</li>
+                  </ul>
+                </div>
+
                 {/* v1.2.0 */}
                 <div className="p-8 rounded-xl border border-card-border bg-card/60 relative overflow-hidden">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
