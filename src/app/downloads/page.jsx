@@ -195,7 +195,7 @@ export default function DownloadsPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-mono text-muted uppercase tracking-wider bg-pre-bg border border-card-border px-2 py-0.5 rounded">
-                Claude & Codex Plugins · v1.8.0
+                Claude & Codex Plugins · v1.9.0
               </span>
             </div>
             <h2 className="text-xl font-bold text-foreground font-mono">

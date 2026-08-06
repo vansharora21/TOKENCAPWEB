@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v1.8.0)",
+  title: "TokenCap MCP Guide (v1.9.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -14,7 +14,7 @@ export default function McpPage() {
     { label: "Quick Start", icon: "rocket_launch", href: "#quick-start" },
     { label: "Supported Hosts", icon: "laptop_mac", href: "#supported-hosts" },
     { label: "Startup & Memory", icon: "sync", href: "#startup" },
-    { label: "11 MCP Tools", icon: "construction", href: "#tools" },
+    { label: "12 MCP Tools", icon: "construction", href: "#tools" },
     { label: "Performance", icon: "speed", href: "#latency" },
     { label: "CLI Reference", icon: "terminal", href: "/docs#cli" },
     { label: "Documentation", icon: "description", href: "/docs" },
@@ -54,7 +54,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.8.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.9.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -87,7 +87,7 @@ export default function McpPage() {
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              v1.8.0 Self-Maintaining MCP Service
+              v1.9.0 Self-Maintaining MCP Service
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
               Model Context Protocol (MCP) Guide
@@ -173,28 +173,29 @@ export default function McpPage() {
 
           {/* Startup & Memory */}
           <section id="startup" className="scroll-mt-24 space-y-4">
-            <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
-              <span className="material-symbols-outlined text-muted text-base">sync</span>
-              Self-Maintaining Intelligence & Live Watcher
-            </h2>
-            <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
-              <p>
-                In <strong>v1.6.0</strong>, users no longer need to run a manual <code className="text-foreground/90 font-mono bg-pre-bg px-1.5 py-0.5 rounded border border-card-border">tokencap make</code> or <code className="text-foreground/90 font-mono bg-pre-bg px-1.5 py-0.5 rounded border border-card-border">tokencap watch</code> process before using MCP.
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted">
-                <li><strong className="text-foreground font-mono">Auto Build on Startup:</strong> When the MCP process starts, it automatically builds repository intelligence before serving tools.</li>
-                <li><strong className="text-foreground font-mono">Live File Watcher:</strong> Keeps an active background watcher for source edits and <code className="text-foreground/90 font-mono bg-pre-bg px-1 py-0.5 rounded">.tokencap-notes.md</code> updates.</li>
-                <li><strong className="text-foreground font-mono">In-Memory Zero-Latency Cache:</strong> Subsequent tool queries resolve from memory cache in 0-2 ms handler time.</li>
-                <li><strong className="text-foreground font-mono">Multi-Host Agent Pointers:</strong> Auto-generates non-overwriting pointer files for AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro.</li>
-              </ul>
-            </div>
+              <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
+                <span className="material-symbols-outlined text-muted text-base">sync</span>
+                Self-Maintaining Intelligence, Watcher & Federation
+              </h2>
+              <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
+                <p>
+                  In <strong>v1.9.0</strong>, TokenCap introduces workspace federation and cache sharding, built atop the self-maintaining MCP service.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-muted">
+                  <li><strong className="text-foreground font-mono">Monorepos & Workspace Federation:</strong> The MCP server handles multi-package projects and cross-package links dynamically.</li>
+                  <li><strong className="text-foreground font-mono">Package-Scoped Queries:</strong> Supports targeted queries scoped to specific sub-packages within the workspace.</li>
+                  <li><strong className="text-foreground font-mono">Auto Build on Startup:</strong> Automatically builds/restores the sharded cache on startup before serving tools.</li>
+                  <li><strong className="text-foreground font-mono">Live File Watcher:</strong> Debounced background watcher monitors source changes and updates sharded indexes (57ms incremental rebuilds).</li>
+                  <li><strong className="text-foreground font-mono">Multi-Host Pointers:</strong> Auto-wires AGENTS.md, CLAUDE.md, and IDE-specific rules pointers.</li>
+                </ul>
+              </div>
           </section>
 
           {/* 11 MCP Tools */}
           <section id="tools" className="scroll-mt-24 space-y-4">
             <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
               <span className="material-symbols-outlined text-muted text-base">construction</span>
-              The 11 MCP Tool Endpoints
+              The 12 MCP Tool Endpoints
             </h2>
             <div className="overflow-x-auto border border-card-border rounded-lg bg-card">
               <table className="w-full text-left text-xs text-muted font-mono">

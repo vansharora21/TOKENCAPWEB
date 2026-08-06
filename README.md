@@ -24,7 +24,19 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
+### 📁 Performance
+
+#### 🔹 Bounded Parallel Builds & Sharded Caching (v1.9.0)
+High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.
+
+> ⚙️ *Technical Detail:* Uses worker pools with configurable memory ceilings to build graphs concurrently. The sharded incremental cache uses SHA-256 integrity validation.
+
 ### 📁 Intelligence
+
+#### 🔹 Workspace Federation & Package Scoping (v1.9.0)
+First-class support for monorepos and multi-package workspaces. Provides cross-package dependency mapping, package-local agent entrypoints, and package-scoped MCP queries.
+
+> ⚙️ *Technical Detail:* Enables --package CLI filter. Resolves workspace package JSON bounds and builds federated graphs linking package-level projects.
 
 #### 🔹 AST-Derived Symbol Graph & Call Resolution (v1.8.0)
 Tree-sitter WASM-powered parsing for deep symbol graph construction. Maps exact function/class/method call edges with 88% call resolution accuracy.
@@ -121,6 +133,23 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
+### 📁 Optimization
+
+#### 🔹 Safe Layout Compression (v1.9.0)
+Safely shrinks generated codebase snapshots without destroying critical context. Removes duplicate prose lines, comment lines, and extra spaces while leaving fenced code blocks byte-exact.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap compress <file>'. Property-tested preserve rules guarantee zero mutations inside ``` code fences.
+
+#### 🔹 Intelligent File Ranking
+Not every file deserves the same attention. TokenCap scores and ranks files by relevance so changed files, source files, project metadata, and documentation surface first within your token budget.
+
+> ⚙️ *Technical Detail:* Scoring: changed files +120, important project files (package.json, README, tsconfig) +70, high-signal docs +35, src/ files +30, test files +18. Large files penalized by floor(size/12000).
+
+#### 🔹 Real-Time Token Estimation
+Always know how large your snapshot is before you paste it into an AI tool. TokenCap estimates token count in real-time and displays it in the VS Code status bar and CLI output.
+
+> ⚙️ *Technical Detail:* Estimates tokens as bytes / 4. Covers both source file bytes and Git diff bytes.
+
 ### 📁 Plugins
 
 #### 🔹 Standalone Host Plugins Ecosystem (v1.7.0)
@@ -191,18 +220,6 @@ Different AI models have different context limits. TokenCap ships with profiles 
 TokenCap reads your Git state automatically: current branch, recent commits, staged and unstaged diffs, and changed file paths. Changed files are ranked higher in the snapshot so they always appear first.
 
 > ⚙️ *Technical Detail:* Uses git status --short, git diff --cached, git diff, git log --oneline -8, git rev-parse. Separates staged vs unstaged diffs into distinct sections. Changed files receive +120 ranking score.
-
-### 📁 Optimization
-
-#### 🔹 Intelligent File Ranking
-Not every file deserves the same attention. TokenCap scores and ranks files by relevance so changed files, source files, project metadata, and documentation surface first within your token budget.
-
-> ⚙️ *Technical Detail:* Scoring: changed files +120, important project files (package.json, README, tsconfig) +70, high-signal docs +35, src/ files +30, test files +18. Large files penalized by floor(size/12000).
-
-#### 🔹 Real-Time Token Estimation
-Always know how large your snapshot is before you paste it into an AI tool. TokenCap estimates token count in real-time and displays it in the VS Code status bar and CLI output.
-
-> ⚙️ *Technical Detail:* Estimates tokens as bytes / 4. Covers both source file bytes and Git diff bytes.
 
 ### 📁 Configuration
 
@@ -473,4 +490,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 4/8/2026.*
+*Generated automatically from `website-content` JSON source files on 6/8/2026.*

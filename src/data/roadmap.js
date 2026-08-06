@@ -44,16 +44,16 @@ export const roadmapItems = [
   {
     version: "1.9.0",
     title: "Monorepo & Sharded Performance",
-    description: "Monorepo support with per-package intelligence, --package scoping, worker thread execution, sharded cache database, and streaming index scanner to handle 100k+ files.",
-    status: "planned",
-    source: "V1.9.0_PLAN.md",
+    description: "Monorepo support with package federation, --package scoping, bounded parallel worker graph builds, sharded cache database, and streaming index scanner to handle 100k+ files.",
+    status: "shipped",
+    source: "Release v1.9.0",
   },
   {
     version: "1.9.0",
     title: "Artifact Compression & Trust Benchmarks",
-    description: "40-60% compression of generated markdown files (like TOKENCAP.md) reloaded in AI sessions, plus benchmark validation harness and HONEST-NUMBERS.md reporting.",
-    status: "planned",
-    source: "V1.9.0_PLAN.md",
+    description: "Layout compression of generated markdown files (tokencap compress) to shrink prose/whitespace, plus benchmark validation harness and docs/HONEST-NUMBERS.md reporting.",
+    status: "shipped",
+    source: "Release v1.9.0",
   },
   {
     version: "2.0.0",

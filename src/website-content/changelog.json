@@ -1,5 +1,19 @@
 [
   {
+    "version": "1.9.0",
+    "title": "Scale, Cache Sharding & Layout Compression",
+    "date": "2026-08-05",
+    "status": "released",
+    "highlights": [
+      "Bounded Scale Path: Parallel worker-thread graph construction scales deterministic 100,000-file fixtures to 55.0s cold and 44.4s warm builds.",
+      "Atomic Sharded Caching: Checksum-protected sharded incremental caching provides ultra-fast 57ms scoped rebuilds.",
+      "Workspace Federation: Deep workspace understanding, cross-package boundary mapping, package-local Agent entrypoints, and package-scoped MCP queries.",
+      "Safe Layout Compression: 'tokencap compress' safely shrinks snapshot markdown files by redacting whitespace/comments while preserving code blocks byte-exact.",
+      "Infrastructure Dependency Mapping: Adds infrastructure graph nodes for Docker Compose files and local Terraform modules.",
+      "Resource Control: Implements configurable memory ceilings to prevent out-of-memory errors on massive scale repositories."
+    ]
+  },
+  {
     "version": "1.8.0",
     "title": "AST-Derived Symbol Graph, Frontend Intelligence & Impact Analysis",
     "date": "2026-08-01",

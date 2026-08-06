@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "1.9.0",
+    title: "Scale, Cache Sharding & Layout Compression",
+    date: "2026-08-05",
+    status: "released",
+    description: "Configurable memory ceilings, bounded parallel graph builds (100k files benchmark), atomic sharding incremental cache (57ms scoped rebuilds), workspace federation with package scoping, Docker Compose & local Terraform infrastructure dependency nodes, and safe markdown layout compression (tokencap compress) that preserves fenced code byte-exact.",
+  },
+  {
     version: "1.8.0",
     title: "AST-Derived Symbol Graph, Frontend Intelligence & Impact Analysis",
     date: "2026-08-01",

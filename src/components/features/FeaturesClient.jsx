@@ -39,14 +39,14 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v1.8.0 Engine
+              v1.9.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
             Precision engineered features.
           </h1>
           <p className="text-sm leading-relaxed text-muted max-w-xl">
-            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for local-first speed, real-time token savings, multi-host pointers, host plugins, and self-maintaining MCP intelligence.
+            TokenCap transforms how you capture, snapshot, and optimize code for LLMs. Built for scale performance, safe layout compression, workspace intelligence, local-first speed, and self-maintaining MCP.
           </p>
         </header>
         <div className="relative group overflow-hidden rounded-xl border border-card-border bg-card p-2 shadow-2xl flex items-center justify-center">
@@ -80,8 +80,27 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v1.8.0 (OPEN) */}
+          {/* v1.9.0 (OPEN) */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.9.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Scale, Cache Sharding & Layout Compression</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">August 5, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Bounded Scale Path</strong> — Concurrent graph builds using worker pools with configurable memory ceilings processes 100k-file fixtures in 55s cold and 44s warm.</li>
+              <li><strong>Atomic Cache Sharding</strong> — Sharded incremental database with SHA-256 integrity validation achieves 57ms scoped rebuilds.</li>
+              <li><strong>Workspace Federation</strong> — Monorepos and multi-package workspaces support with federated project bounds, cross-package link tracking, package-local entrypoints, and package-scoped MCP queries.</li>
+              <li><strong>Safe Layout Compression</strong> — Command <code>tokencap compress &lt;file&gt;</code> uses property-tested preserve rules to shrink generated Markdown formatting while guaranteeing code blocks stay 100% byte-exact.</li>
+              <li><strong>Infrastructure Dependency Nodes</strong> — Built-in parsers map Docker Compose services and local Terraform modules to visualize infrastructure topologies.</li>
+              <li><strong>Honest Numbers Reporting</strong> — Discloses raw benchmarks and performance limits under <code>docs/HONEST-NUMBERS.md</code> to verify claims.</li>
+            </ul>
+          </motion.div>
+
+          {/* v1.8.0 (OPEN) */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.8.0</span>
@@ -102,7 +121,7 @@ export function FeaturesClient() {
           </motion.div>
 
           {/* v1.7.0 (OPEN) */}
-          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/80 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.7.0</span>

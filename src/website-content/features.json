@@ -1,5 +1,29 @@
 [
   {
+    "id": "bounded-parallel-builds",
+    "title": "Bounded Parallel Builds & Sharded Caching (v1.9.0)",
+    "description": "High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.",
+    "category": "Performance",
+    "importance": 1,
+    "technicalDetail": "Uses worker pools with configurable memory ceilings to build graphs concurrently. The sharded incremental cache uses SHA-256 integrity validation."
+  },
+  {
+    "id": "workspace-federation",
+    "title": "Workspace Federation & Package Scoping (v1.9.0)",
+    "description": "First-class support for monorepos and multi-package workspaces. Provides cross-package dependency mapping, package-local agent entrypoints, and package-scoped MCP queries.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Enables --package CLI filter. Resolves workspace package JSON bounds and builds federated graphs linking package-level projects."
+  },
+  {
+    "id": "safe-layout-compression",
+    "title": "Safe Layout Compression (v1.9.0)",
+    "description": "Safely shrinks generated codebase snapshots without destroying critical context. Removes duplicate prose lines, comment lines, and extra spaces while leaving fenced code blocks byte-exact.",
+    "category": "Optimization",
+    "importance": 2,
+    "technicalDetail": "Invoked via 'tokencap compress <file>'. Property-tested preserve rules guarantee zero mutations inside ``` code fences."
+  },
+  {
     "id": "ast-symbol-graph",
     "title": "AST-Derived Symbol Graph & Call Resolution (v1.8.0)",
     "description": "Tree-sitter WASM-powered parsing for deep symbol graph construction. Maps exact function/class/method call edges with 88% call resolution accuracy.",
