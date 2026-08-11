@@ -1,5 +1,17 @@
 export const blogPosts = [
   {
+    id: "tokencap-v20-release",
+    title: "TokenCap v2.0.0 Is Now Ready",
+    author: "Vansh Arora",
+    date: "August 12, 2026",
+    readTime: "3 min read",
+    category: "Release",
+    url: "https://coderlegion.com/24452/tokencap-v2-0-0-is-now-ready?prompt=cl_badge_remind",
+    secondaryUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7493024395335151616/",
+    excerpt: "TokenCap v2.0.0 combines seven-language tree-sitter analysis, symbol-level impact intelligence, frontend understanding, scalable workspace context, and local-first privacy.",
+    content: `TokenCap v2.0.0 is ready. The release combines repository understanding and scale: seven-language tree-sitter parsing, symbol-level impact analysis, dead-code detection, frontend intelligence, workspace-aware context, bounded graph builds, sharded caching, and byte-exact compression.\n\nThe next research direction is TokenCap Companion: a local-first bridge between browser AI chats and repository intelligence, without requiring a hosted TokenCap service, LLM API credits, or source-code uploads.`
+  },
+  {
     id: "tokencap-v16-savings-pointers",
     title: "TokenCap v1.6 — Token Savings Engine, Multi-Host Pointers & Verified Benchmarks",
     author: "Vansh Arora",

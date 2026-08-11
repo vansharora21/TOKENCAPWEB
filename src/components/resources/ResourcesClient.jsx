@@ -13,6 +13,20 @@ export function ResourcesClient() {
 
   const featuredContent = [
     {
+      title: "TokenCap v2.0.0 Is Now Ready",
+      type: "CoderLegion",
+      icon: "newspaper",
+      description: "TokenCap v2.0.0 combines seven-language parsing, symbol-level impact analysis, frontend intelligence, scalable workspace context, and local-first privacy.",
+      link: "https://coderlegion.com/24452/tokencap-v2-0-0-is-now-ready?prompt=cl_badge_remind"
+    },
+    {
+      title: "TokenCap v2.0.0 Release Update",
+      type: "LinkedIn",
+      icon: "campaign",
+      description: "The v2.0.0 release story, the 2,000-download v1.9.0 milestone, and the early TokenCap Companion research direction.",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7493024395335151616/"
+    },
+    {
       title: "TokenCap v1.6.0 Is Now Live",
       type: "DEV Community",
       icon: "rocket_launch",
@@ -71,6 +85,20 @@ export function ResourcesClient() {
   ];
 
   const timelineEvents = [
+    {
+      title: "TokenCap v2.0.0 Is Now Ready (CoderLegion)",
+      date: "August 2026",
+      icon: "newspaper",
+      description: "Release coverage for seven-language parsing, symbol-level impact analysis, frontend intelligence, scalable workspace context, and local-first privacy.",
+      link: "https://coderlegion.com/24452/tokencap-v2-0-0-is-now-ready?prompt=cl_badge_remind"
+    },
+    {
+      title: "TokenCap v2.0.0 Release Update (LinkedIn)",
+      date: "August 2026",
+      icon: "campaign",
+      description: "The v2.0.0 release milestone and the early research direction for a local-first TokenCap Companion workflow.",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7493024395335151616/"
+    },
     {
       title: "TokenCap v1.6.0 Is Now Live (DEV.to)",
       date: "July 2026",
@@ -141,6 +169,20 @@ export function ResourcesClient() {
   ];
 
   const gridResources = [
+    {
+      title: "TokenCap v2.0.0 Is Now Ready",
+      platform: "CoderLegion",
+      icon: "newspaper",
+      description: "Release coverage for deeper code understanding, scalable repository intelligence, and local-first privacy.",
+      link: "https://coderlegion.com/24452/tokencap-v2-0-0-is-now-ready?prompt=cl_badge_remind"
+    },
+    {
+      title: "TokenCap v2.0.0 Release Update",
+      platform: "LinkedIn",
+      icon: "campaign",
+      description: "The v2.0.0 release story and the TokenCap Companion research direction.",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7493024395335151616/"
+    },
     {
       title: "TokenCap v1.6.0 Is Now Live",
       platform: "DEV Community",

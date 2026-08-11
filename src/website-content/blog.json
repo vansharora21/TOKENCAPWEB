@@ -1,5 +1,16 @@
 [
   {
+    "id": "tokencap-v20-release",
+    "title": "TokenCap v2.0.0 Is Now Ready",
+    "author": "Vansh Arora",
+    "date": "August 12, 2026",
+    "readTime": "3 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v2.0.0 combines seven-language tree-sitter analysis, symbol-level impact intelligence, frontend understanding, scalable workspace context, and local-first privacy.",
+    "url": "https://coderlegion.com/24452/tokencap-v2-0-0-is-now-ready?prompt=cl_badge_remind",
+    "secondaryUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7493024395335151616/"
+  },
+  {
     "id": "tokencap-v15-mcp",
     "title": "TokenCap v1.5 — Making MCP Feel Invisible",
     "author": "Vansh Arora",
