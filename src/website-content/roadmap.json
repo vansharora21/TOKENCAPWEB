@@ -1,65 +1,44 @@
 [
   {
-    "version": "1.8.0",
-    "title": "AST-Derived Symbol Graph & Multi-Language Parsing",
-    "description": "Tree-sitter WASM parsing (JS/TS/JSX/TSX/Python/Go/Rust/Java) replacing regex heuristics to build granular symbol graphs, resolved call edges, dead-symbol detection, and frontend intelligence (props, components, routes).",
+    "version": "2.0.0",
+    "title": "Real Understanding, Scale & Compression",
+    "description": "Tree-sitter parsing across seven languages, symbol-level impact and dead-code analysis, frontend intelligence, bounded parallel graph builds, sharded incremental caching, workspace federation, infrastructure mapping, and byte-exact markdown compression.",
     "status": "shipped",
-    "source": "Release v1.8.0"
+    "source": "Release v2.0.0"
   },
   {
     "version": "1.7.0",
     "title": "Host Plugins, CLI Subcommands & VS Code Capture",
-    "description": "Claude Code & OpenAI Codex host plugins, structured CLI command hierarchy (make, ask, analyze, security, mcp, debug), and VS Code auto-capture on save.",
+    "description": "Claude Code and OpenAI Codex host plugins, a structured CLI command hierarchy, and VS Code auto-capture on save.",
     "status": "shipped",
     "source": "Release v1.7.0"
   },
   {
     "version": "1.6.0",
     "title": "Token & Dollar Savings Engine, Multi-Host Pointers & Benchmarks",
-    "description": "Real-time savings engine (.tokencap/savings.json), 12.2× benchmark reduction (94.3% cost savings), 7 multi-host pointer generators, and CI-enforced zero-network egress security.",
+    "description": "Real-time savings data, 12.2x benchmark reduction, seven multi-host pointer generators, and CI-enforced zero-network egress security.",
     "status": "shipped",
     "source": "Release v1.6.0"
   },
   {
     "version": "1.5.0",
     "title": "Self-Maintaining MCP Intelligence",
-    "description": "Background watcher, host auto-init (tokencap mcp --init --client <host>), and zero-latency caching.",
+    "description": "Background watching, host auto-initialization, and zero-latency local caching.",
     "status": "shipped",
     "source": "Release v1.5.0"
   },
   {
     "version": "1.4.0",
     "title": "Repository Intelligence Service (MCP)",
-    "description": "11 local stdio MCP tool endpoints and Centralized Security Hardening Engine.",
+    "description": "Eleven local stdio MCP tool endpoints and centralized security hardening.",
     "status": "shipped",
     "source": "Release v1.4.0"
   },
   {
     "version": "1.3.0",
     "title": "Incremental Intelligence Engine",
-    "description": "Sub-100ms selective rebuilds, SHA-256 caching, and delta file outputs.",
+    "description": "Selective rebuilds, SHA-256 caching, and delta file outputs.",
     "status": "shipped",
     "source": "Release v1.3.0"
-  },
-  {
-    "version": "1.9.0",
-    "title": "Monorepo & Sharded Performance",
-    "description": "Monorepo support with package federation, --package scoping, bounded parallel worker graph builds, sharded cache database, and streaming index scanner to handle 100k+ files.",
-    "status": "shipped",
-    "source": "Release v1.9.0"
-  },
-  {
-    "version": "1.9.0",
-    "title": "Artifact Compression & Trust Benchmarks",
-    "description": "Layout compression of generated markdown files (tokencap compress) to shrink prose/whitespace, plus benchmark validation harness and docs/HONEST-NUMBERS.md reporting.",
-    "status": "shipped",
-    "source": "Release v1.9.0"
-  },
-  {
-    "version": "2.0.0",
-    "title": "UI Intelligence & Local Web Portal",
-    "description": "Structured screen-capture ingestion (SlimSnap text nodes), automated SVG/Mermaid diagram mapping, non-model semantic retrieval, and a local web portal for visual graph navigation.",
-    "status": "exploratory",
-    "source": "v2.0 Vision"
   }
 ]

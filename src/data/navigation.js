@@ -1,7 +1,7 @@
 export const mainNavigation = [
   { label: "Home", href: "/", description: "Overview and hero section" },
   { label: "Features", href: "/features", description: "All features in detail" },
-  { label: "Benchmarks", href: "/benchmarks", description: "v1.6.0 verified token & cost reduction data" },
+  { label: "Benchmarks", href: "/benchmarks", description: "Verified token and cost reduction data" },
   { label: "MCP Guide", href: "/mcp", description: "Local Model Context Protocol Service" },
   { label: "Docs", href: "/docs", description: "Full documentation" },
   { label: "Roadmap", href: "/roadmap", description: "Planned features and versions" },

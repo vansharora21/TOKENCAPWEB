@@ -39,7 +39,7 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v1.9.0 Engine
+              v2.0.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
@@ -80,43 +80,23 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v1.9.0 (OPEN) */}
+          {/* v2.0.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.9.0</span>
-                <h3 className="text-lg font-bold text-foreground font-mono">Scale, Cache Sharding & Layout Compression</h3>
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.0.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Real Understanding, Scale & Compression</h3>
               </div>
               <span className="text-xs text-muted font-mono">August 5, 2026</span>
             </div>
             <ul className="space-y-3 text-sm text-muted list-disc list-inside">
-              <li><strong>Bounded Scale Path</strong> — Concurrent graph builds using worker pools with configurable memory ceilings processes 100k-file fixtures in 55s cold and 44s warm.</li>
+              <li><strong>Tree-Sitter Understanding</strong> — Seven-language parsing powers symbol graphs, call resolution, impact analysis, dead-code detection, frontend intelligence, and durable architecture decision records.</li>
+              <li><strong>Bounded Scale Path</strong> — Concurrent graph builds using worker pools with configurable memory ceilings process 100k-file fixtures in 55s cold and 44s warm.</li>
               <li><strong>Atomic Cache Sharding</strong> — Sharded incremental database with SHA-256 integrity validation achieves 57ms scoped rebuilds.</li>
               <li><strong>Workspace Federation</strong> — Monorepos and multi-package workspaces support with federated project bounds, cross-package link tracking, package-local entrypoints, and package-scoped MCP queries.</li>
               <li><strong>Safe Layout Compression</strong> — Command <code>tokencap compress &lt;file&gt;</code> uses property-tested preserve rules to shrink generated Markdown formatting while guaranteeing code blocks stay 100% byte-exact.</li>
               <li><strong>Infrastructure Dependency Nodes</strong> — Built-in parsers map Docker Compose services and local Terraform modules to visualize infrastructure topologies.</li>
-              <li><strong>Honest Numbers Reporting</strong> — Discloses raw benchmarks and performance limits under <code>docs/HONEST-NUMBERS.md</code> to verify claims.</li>
-            </ul>
-          </motion.div>
-
-          {/* v1.8.0 (OPEN) */}
-          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v1.8.0</span>
-                <h3 className="text-lg font-bold text-foreground font-mono">AST-Derived Symbol Graph, Frontend Intelligence & Impact Analysis</h3>
-              </div>
-              <span className="text-xs text-muted font-mono">August 1, 2026</span>
-            </div>
-            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
-              <li><strong>AST Parsing via Web-Tree-Sitter</strong> — Replaces regex heuristics with high-performance AST parsing using vendored WASM grammars. Tier 1 (JS, TS, JSX/TSX, Python) and Tier 2 (Go, Rust, Java) support with zero compiler build steps.</li>
-              <li><strong>Symbol Graph & Call Resolution</strong> — Resolution of symbol-level dependencies and caller/callee relationships with 88% accuracy on benchmark tests.</li>
-              <li><strong>Blast Radius & Impact Analysis</strong> — Command <code>tokencap impact &lt;file&gt;:&lt;symbol&gt;</code> traces direct/transitive callers, files touched, boundary crossings, and risk rating.</li>
-              <li><strong>Deep Frontend Intelligence</strong> — Dynamic component graph rendering, prop-flow analysis (declared + passed), route mapping (Next.js & React Router), state ownership mapping, design token extraction, and accessibility audit scanning.</li>
-              <li><strong>Durable Architecture Decision Records</strong> — Persist records across workspaces with the new <code>tokencap_manage_adr</code> MCP tool.</li>
-              <li><strong>Dead-Symbol Cleanup</strong> — Flag uncalled, non-exported code components using <code>tokencap impact --dead-code</code>.</li>
-              <li><strong>Incremental Cache Protection</strong> — Version-guard protection prevents pre-1.8 cache files from corrupting active intelligence indexes.</li>
-              <li><strong>Execution Contract Sovereignty</strong> — Enforces strict budget rules: &le;4 runtime dependencies, offline-only privacy, and &lt;10MB packed workspace footprint.</li>
+              <li><strong>Honest Numbers Reporting</strong> — Publishes measured benchmark results and performance limits without overstating claims.</li>
             </ul>
           </motion.div>
 

@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v1.9.0)",
+  title: "TokenCap MCP Guide (v2.0.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -54,7 +54,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v1.9.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.0.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -87,7 +87,7 @@ export default function McpPage() {
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              v1.9.0 Self-Maintaining MCP Service
+              v2.0.0 Local MCP Service
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
               Model Context Protocol (MCP) Guide
@@ -179,7 +179,7 @@ export default function McpPage() {
               </h2>
               <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
                 <p>
-                  In <strong>v1.9.0</strong>, TokenCap introduces workspace federation and cache sharding, built atop the self-maintaining MCP service.
+                  In <strong>v2.0.0</strong>, TokenCap combines workspace federation and cache sharding with symbol-level repository intelligence.
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted">
                   <li><strong className="text-foreground font-mono">Monorepos & Workspace Federation:</strong> The MCP server handles multi-package projects and cross-package links dynamically.</li>

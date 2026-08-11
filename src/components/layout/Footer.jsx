@@ -33,6 +33,20 @@ function Footer() {
               Coding context at the speed of thought. <br />
               Built for the LLM era.
             </p>
+            <a
+              href="https://www.producthunt.com/products/tokencap-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-tokencap-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-md focus-visible:outline-2 focus-visible:outline-zinc-400 focus-visible:outline-offset-4"
+              aria-label="View TokenCap on Product Hunt"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1218192&theme=dark&t=1786476363151"
+                alt="TokenCap - Give AI coding agents the context they actually need. | Product Hunt"
+                width="250"
+                height="54"
+              />
+            </a>
           </div>
 
           {/* Links Grid */}

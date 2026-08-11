@@ -18,7 +18,7 @@ export function BenchmarksClient() {
       <header className="max-w-3xl mb-12">
         <div className="flex items-center gap-2 mb-4">
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted border border-card-border px-2.5 py-1 rounded bg-pre-bg">
-            v1.6.0 Empirical Benchmarks
+            Verified Empirical Benchmarks
           </span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-3 font-display">

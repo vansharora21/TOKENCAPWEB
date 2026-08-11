@@ -1,17 +1,10 @@
 export const changelogItems = [
   {
-    version: "1.9.0",
-    title: "Scale, Cache Sharding & Layout Compression",
+    version: "2.0.0",
+    title: "Real Understanding, Scale & Compression",
     date: "2026-08-05",
     status: "released",
-    description: "Configurable memory ceilings, bounded parallel graph builds (100k files benchmark), atomic sharding incremental cache (57ms scoped rebuilds), workspace federation with package scoping, Docker Compose & local Terraform infrastructure dependency nodes, and safe markdown layout compression (tokencap compress) that preserves fenced code byte-exact.",
-  },
-  {
-    version: "1.8.0",
-    title: "AST-Derived Symbol Graph, Frontend Intelligence & Impact Analysis",
-    date: "2026-08-01",
-    status: "released",
-    description: "AST-based symbol graph via web-tree-sitter (JS/TS/Python/Go/Rust/Java), 88% accurate call resolution, symbol-level impact analysis and dead-code detection, extensive frontend intelligence (components, props flow, routes, design tokens, a11y), persistent ADRs, and cache version protection.",
+    description: "Tree-sitter symbol analysis across seven languages, symbol-level impact and dead-code detection, frontend intelligence, durable ADRs, bounded parallel graph builds, memory ceilings, atomic sharded caching, workspace federation, package-scoped MCP queries, infrastructure dependency nodes, and byte-exact markdown compression.",
   },
   {
     version: "1.7.0",
@@ -133,4 +126,3 @@ export const changelogItems = [
     description: "Auto-save snapshots, context profiles, secret redaction, and integrated VS Code status bar.",
   },
 ];
-

@@ -26,39 +26,39 @@ npm install -g tokencap
 
 ### 📁 Performance
 
-#### 🔹 Bounded Parallel Builds & Sharded Caching (v1.9.0)
+#### 🔹 Bounded Parallel Builds & Sharded Caching (v2.0.0)
 High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.
 
 > ⚙️ *Technical Detail:* Uses worker pools with configurable memory ceilings to build graphs concurrently. The sharded incremental cache uses SHA-256 integrity validation.
 
 ### 📁 Intelligence
 
-#### 🔹 Workspace Federation & Package Scoping (v1.9.0)
+#### 🔹 Workspace Federation & Package Scoping (v2.0.0)
 First-class support for monorepos and multi-package workspaces. Provides cross-package dependency mapping, package-local agent entrypoints, and package-scoped MCP queries.
 
 > ⚙️ *Technical Detail:* Enables --package CLI filter. Resolves workspace package JSON bounds and builds federated graphs linking package-level projects.
 
-#### 🔹 AST-Derived Symbol Graph & Call Resolution (v1.8.0)
+#### 🔹 AST-Derived Symbol Graph & Call Resolution (v2.0.0)
 Tree-sitter WASM-powered parsing for deep symbol graph construction. Maps exact function/class/method call edges with 88% call resolution accuracy.
 
 > ⚙️ *Technical Detail:* Uses web-tree-sitter with vendored WASM grammars for Tier 1 (JS/TS/JSX/TSX, Python) and Tier 2 (Go, Rust, Java) language parsing.
 
-#### 🔹 Symbol-Level Blast Radius & Impact (v1.8.0)
+#### 🔹 Symbol-Level Blast Radius & Impact (v2.0.0)
 Calculates detailed blast radius for proposed edits at the symbol level. Identifies direct/transitive callers, boundary crossings, and potential breakage.
 
 > ⚙️ *Technical Detail:* Invoked via 'tokencap impact <file>:<symbol>'. For frontend components, it parses JSX connections to show where components are rendered and what props they consume.
 
-#### 🔹 Deep Frontend Intelligence (v1.8.0)
+#### 🔹 Deep Frontend Intelligence (v2.0.0)
 Extracts React/Next.js/React Router structures, component relationships, prop flows, route mappings, state ownership, accessibility roles, and design tokens.
 
 > ⚙️ *Technical Detail:* Parses component imports/exports, props passing, Next.js page structure, inline state ownership, and accessibility ARIA markers.
 
-#### 🔹 Durable Architecture Decision Records (v1.8.0)
+#### 🔹 Durable Architecture Decision Records (v2.0.0)
 Persist architectural decision records (ADRs) locally to align AI coding decisions with established team guidelines.
 
 > ⚙️ *Technical Detail:* Managed via the new tokencap_manage_adr MCP tool. Supports listing, reading, adding, and updating status of decisions.
 
-#### 🔹 Dead-Symbol Detection (v1.8.0)
+#### 🔹 Dead-Symbol Detection (v2.0.0)
 Scans codebase to flag uncalled, non-exported functions and symbols to clean up tech debt.
 
 > ⚙️ *Technical Detail:* Run via 'tokencap impact --dead-code'. Automatically filters out public/exported API entry points.
@@ -135,7 +135,7 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 ### 📁 Optimization
 
-#### 🔹 Safe Layout Compression (v1.9.0)
+#### 🔹 Safe Layout Compression (v2.0.0)
 Safely shrinks generated codebase snapshots without destroying critical context. Removes duplicate prose lines, comment lines, and extra spaces while leaving fenced code blocks byte-exact.
 
 > ⚙️ *Technical Detail:* Invoked via 'tokencap compress <file>'. Property-tested preserve rules guarantee zero mutations inside ``` code fences.
@@ -490,4 +490,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 6/8/2026.*
+*Generated automatically from `website-content` JSON source files on 12/8/2026.*
