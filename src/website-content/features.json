@@ -1,5 +1,29 @@
 [
   {
+    "id": "evidence-backed-simplify",
+    "title": "Evidence-Backed Simplify (v2.1.0)",
+    "description": "Surfaces codebase simplification candidates based on high-confidence unreachable code, duplicate artifacts, and abstraction review candidates, without recommending automatic deletion.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap analyze simplify' or 'tokencap_simplify' tool. Findings report confidence (High/Medium/Low), scope, evidence, and why a candidate may be intentional."
+  },
+  {
+    "id": "debt-ledger",
+    "title": "Debt Ledger & History Tracking (v2.1.0)",
+    "description": "Tracks TODO, FIXME, HACK, and DEBT markers across the repository, mapping stable first-seen dates to monitor codebase health.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Generates '.tokencap/debt/ledger.json' and '.tokencap/debt/TOKENCAP-DEBT.md' during builds, with optional slow historical git backfills via '--backfill-history'."
+  },
+  {
+    "id": "dry-run-compress",
+    "title": "Dry-Run Compress by Default (v2.1.0)",
+    "description": "Enforces safe context compression previews. Displays a bounded file diff and token delta, requiring '--write' before modifying any codebase files.",
+    "category": "Optimization",
+    "importance": 2,
+    "technicalDetail": "Updates 'tokencap compress' behavior to be non-destructive by default. Measures precise token reductions prior to file writes."
+  },
+  {
     "id": "bounded-parallel-builds",
     "title": "Bounded Parallel Builds & Sharded Caching (v2.0.0)",
     "description": "High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.",

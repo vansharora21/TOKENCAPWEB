@@ -1,5 +1,15 @@
 export const blogPosts = [
   {
+    id: "tokencap-v21-release",
+    title: "TokenCap v2.1.0 Is Now Ready",
+    author: "Vansh Arora",
+    date: "August 17, 2026",
+    readTime: "3 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.1.0 introduces evidence-backed simplify recommendations, automated debt ledger tracking, savings profiles, and dry-run compression previews.",
+    content: `TokenCap v2.1.0 is here, focusing on helping developers identify and manage codebase debt while keeping context packing safe and transparent. Key additions include Evidence-Backed Simplify recommendations, an automated Debt Ledger tracking TODO/FIXME markers, Savings History profiles, and dry-run defaults for the compression tool.`
+  },
+  {
     id: "tokencap-v20-release",
     title: "TokenCap v2.0.0 Is Now Ready",
     author: "Vansh Arora",

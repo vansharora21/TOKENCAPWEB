@@ -1,5 +1,12 @@
 [
   {
+    "version": "2.1.0",
+    "title": "Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress",
+    "description": "Evidence-backed codebase simplification recommendations, automated TODO/DEBT tracking with stable dates under a local debt ledger, and non-destructive dry-run context compression previews by default.",
+    "status": "shipped",
+    "source": "Release v2.1.0"
+  },
+  {
     "version": "2.0.0",
     "title": "Real Understanding, Scale & Compression",
     "description": "Tree-sitter parsing across seven languages, symbol-level impact and dead-code analysis, frontend intelligence, bounded parallel graph builds, sharded incremental caching, workspace federation, infrastructure mapping, and byte-exact markdown compression.",

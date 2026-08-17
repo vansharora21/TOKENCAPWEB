@@ -1,5 +1,18 @@
 [
   {
+    "version": "2.1.0",
+    "title": "Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress",
+    "date": "2026-08-17",
+    "status": "released",
+    "highlights": [
+      "Evidence-Backed Simplify: 'tokencap analyze simplify' and 'tokencap_simplify' report high-confidence unreachable code, duplicate artifacts, medium-confidence abstractions, dependencies, and reinvention review candidates, without recommending automatic deletion.",
+      "Debt Ledger: Full builds produce '.tokencap/debt/ledger.json' and '.tokencap/debt/TOKENCAP-DEBT.md', tracking TODO/FIXME/HACK/DEBT markers and their local first-seen dates.",
+      "Savings History: 'tokencap stats' stores run metadata and tokenizer profiles. 'tokencap stats --share' emits non-identifying aggregate numbers, and VS Code shows the latest saved-token total.",
+      "Dry-Run Compress: 'tokencap compress <file>' is dry-run by default, displaying a bounded diff and token delta, requiring '--write' to apply changes.",
+      "CLI Runtime Source: The npm package now bundles CLI runtime source modules, preventing CLI command resolution errors."
+    ]
+  },
+  {
     "version": "2.0.0",
     "title": "Real Understanding, Scale & Compression",
     "date": "2026-08-05",

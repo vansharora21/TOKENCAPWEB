@@ -39,7 +39,7 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v2.0.0 Engine
+              v2.1.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
@@ -80,8 +80,26 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v2.0.0 */}
+          {/* v2.1.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.1.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">August 17, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Evidence-Backed Simplify</strong> — Command <code>tokencap analyze simplify</code> and <code>tokencap_simplify</code> report high-confidence unreachable code, duplicate artifacts, and review candidates without recommending automatic deletion.</li>
+              <li><strong>Debt Ledger &amp; History Tracking</strong> — Full builds automatically generate <code>.tokencap/debt/ledger.json</code> and <code>.tokencap/debt/TOKENCAP-DEBT.md</code>, monitoring TODO/FIXME/HACK/DEBT markers and stable first-seen dates.</li>
+              <li><strong>Savings History &amp; Profile</strong> — Stores run metadata and tokenizer configurations. Supports non-identifying aggregate stats sharing with <code>tokencap stats --share</code>, and VS Code shows saved tokens.</li>
+              <li><strong>Dry-Run Compress by Default</strong> — Command <code>tokencap compress &lt;file&gt;</code> is now a dry-run by default, displaying a bounded diff and token savings before modifying any codebase files.</li>
+              <li><strong>CLI Runtime Source Inclusion</strong> — Prevention of resolution failures by bundling critical CLI runtime module sources in the NPM package.</li>
+            </ul>
+          </motion.div>
+
+          {/* v2.0.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/80 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.0.0</span>

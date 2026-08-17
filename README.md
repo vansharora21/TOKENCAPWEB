@@ -24,14 +24,17 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
-### 📁 Performance
-
-#### 🔹 Bounded Parallel Builds & Sharded Caching (v2.0.0)
-High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.
-
-> ⚙️ *Technical Detail:* Uses worker pools with configurable memory ceilings to build graphs concurrently. The sharded incremental cache uses SHA-256 integrity validation.
-
 ### 📁 Intelligence
+
+#### 🔹 Evidence-Backed Simplify (v2.1.0)
+Surfaces codebase simplification candidates based on high-confidence unreachable code, duplicate artifacts, and abstraction review candidates, without recommending automatic deletion.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap analyze simplify' or 'tokencap_simplify' tool. Findings report confidence (High/Medium/Low), scope, evidence, and why a candidate may be intentional.
+
+#### 🔹 Debt Ledger & History Tracking (v2.1.0)
+Tracks TODO, FIXME, HACK, and DEBT markers across the repository, mapping stable first-seen dates to monitor codebase health.
+
+> ⚙️ *Technical Detail:* Generates '.tokencap/debt/ledger.json' and '.tokencap/debt/TOKENCAP-DEBT.md' during builds, with optional slow historical git backfills via '--backfill-history'.
 
 #### 🔹 Workspace Federation & Package Scoping (v2.0.0)
 First-class support for monorepos and multi-package workspaces. Provides cross-package dependency mapping, package-local agent entrypoints, and package-scoped MCP queries.
@@ -135,6 +138,11 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 ### 📁 Optimization
 
+#### 🔹 Dry-Run Compress by Default (v2.1.0)
+Enforces safe context compression previews. Displays a bounded file diff and token delta, requiring '--write' before modifying any codebase files.
+
+> ⚙️ *Technical Detail:* Updates 'tokencap compress' behavior to be non-destructive by default. Measures precise token reductions prior to file writes.
+
 #### 🔹 Safe Layout Compression (v2.0.0)
 Safely shrinks generated codebase snapshots without destroying critical context. Removes duplicate prose lines, comment lines, and extra spaces while leaving fenced code blocks byte-exact.
 
@@ -149,6 +157,13 @@ Not every file deserves the same attention. TokenCap scores and ranks files by r
 Always know how large your snapshot is before you paste it into an AI tool. TokenCap estimates token count in real-time and displays it in the VS Code status bar and CLI output.
 
 > ⚙️ *Technical Detail:* Estimates tokens as bytes / 4. Covers both source file bytes and Git diff bytes.
+
+### 📁 Performance
+
+#### 🔹 Bounded Parallel Builds & Sharded Caching (v2.0.0)
+High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.
+
+> ⚙️ *Technical Detail:* Uses worker pools with configurable memory ceilings to build graphs concurrently. The sharded incremental cache uses SHA-256 integrity validation.
 
 ### 📁 Plugins
 
@@ -490,4 +505,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 12/8/2026.*
+*Generated automatically from `website-content` JSON source files on 17/8/2026.*

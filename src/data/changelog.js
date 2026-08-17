@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.1.0",
+    title: "Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress",
+    date: "2026-08-17",
+    status: "released",
+    description: "Introduces 'tokencap analyze simplify' for high-confidence unreachable code and duplicates, tracking TODO/DEBT markers with local first-seen dates via '.tokencap/debt/ledger.json', and making 'tokencap compress' dry-run by default.",
+  },
+  {
     version: "2.0.0",
     title: "Real Understanding, Scale & Compression",
     date: "2026-08-05",
