@@ -26,6 +26,21 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 Local Change Review & Evidence Packets (v2.2.0)
+Transforms local changes into bounded, evidence-backed review packets with base-ref symbol evidence, caller candidates, test associations, and Constitution context.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap analyze review' or the 'tokencap_review' MCP tool. Supports '--base <ref>' comparisons without pushing to Git providers.
+
+#### 🔹 Opt-In Ownership & Churn Signals (v2.2.0)
+Surfaces local Git churn, contributor distributions, and bounded co-change signals strictly as advisory context without accessing remote APIs.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap analyze ownership --history' or 'tokencap_ownership' MCP tool. Explicitly opt-in with zero background history scanning.
+
+#### 🔹 Scoped Host Pointers & Config (v2.2.0)
+Records the selected AI coding client and writes only the corresponding pointer file (AGENTS.md, CLAUDE.md, Cursor rules, etc.) without overwriting existing files.
+
+> ⚙️ *Technical Detail:* Configured via 'tokencap mcp --init --client <host>'. Prevents root directory clutter across multi-agent environments.
+
 #### 🔹 Evidence-Backed Simplify (v2.1.0)
 Surfaces codebase simplification candidates based on high-confidence unreachable code, duplicate artifacts, and abstraction review candidates, without recommending automatic deletion.
 
@@ -258,16 +273,33 @@ Start the local Model Context Protocol (MCP) server over stdio or automatically 
 
 **Example:**
 ```bash
-tokencap mcp --init
+tokencap mcp --init --client claude
 ```
 
 | Option / Flag | Description |
 | --- | --- |
 | `--init` | Write workspace configuration file for host IDE automatically. |
 | `--client <host>` | Specify target host explicitly (vscode, antigravity, codex, cursor, claude, windsurf, cline). |
-| `--tools` | List all 11 MCP endpoints and descriptions. |
+| `--tools` | List all MCP endpoints and descriptions. |
 | `--test` | Run self-test: call every endpoint and verify JSON RPC output. |
 | `--health` | Run one-shot health check without launching the persistent server. |
+
+### 🛠️ `tokencap analyze`
+
+Local codebase analysis suite: generate evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.
+
+**Example:**
+```bash
+tokencap analyze review --base main
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `review` | Generate local Markdown & JSON review packets with symbol evidence and caller candidates. |
+| `review --base <ref>` | Compare local changes against a base Git branch or ref (default: HEAD~1 or main). |
+| `ownership --history` | Analyze local Git churn, contributor distributions, and bounded co-change signals (explicitly opt-in). |
+| `simplify` | Surface high-confidence dead code, duplicate artifacts, and abstraction candidates. |
+| `diff` | Perform semantic Change Intelligence analysis on uncommitted or staged changes. |
 
 ### 🛠️ `tokencap brain`
 
@@ -505,4 +537,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 17/8/2026.*
+*Generated automatically from `website-content` JSON source files on 23/8/2026.*

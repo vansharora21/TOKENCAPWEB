@@ -39,7 +39,7 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v2.1.0 Engine
+              v2.2.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
@@ -80,8 +80,26 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v2.1.0 */}
+          {/* v2.2.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.2.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Change Review, Ownership Signals & Host-Scoped Pointers</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">August 20, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Local Change Review</strong> — Command <code>tokencap analyze review</code> and <code>tokencap_review</code> MCP tool compile bounded review packets with base-ref symbol evidence, caller candidates, test associations, and Constitution/ADR context.</li>
+              <li><strong>Opt-In Ownership Signals</strong> — Command <code>tokencap analyze ownership --history</code> and <code>tokencap_ownership</code> surface local Git churn, contributor distributions, and bounded co-change signals strictly as advisory context.</li>
+              <li><strong>Scoped Host Pointers</strong> — Command <code>tokencap mcp --init --client &lt;host&gt;</code> records one selected host, and subsequent builds write only that host's entry point without overwriting existing files.</li>
+              <li><strong>Diff Intelligence Integration</strong> — Native <code>tokencap.diff</code> VS Code command and CLI diff intelligence for faster advisory reviews.</li>
+              <li><strong>Zero Remote Egress</strong> — 100% local operation under <code>.tokencap/</code>; never posts to Git providers, assigns PR reviewers, or creates commits.</li>
+            </ul>
+          </motion.div>
+
+          {/* v2.1.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.1.0</span>

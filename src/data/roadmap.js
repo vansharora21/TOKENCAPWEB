@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "2.2.0",
+    title: "Change Review, Ownership Signals & Host-Scoped Pointers",
+    description: "Evidence-backed local change review packets with base-ref symbol evidence and test associations, opt-in ownership and churn signals, and host-scoped agent pointers.",
+    status: "shipped",
+    source: "Release v2.2.0",
+  },
+  {
     version: "2.1.0",
     title: "Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress",
     description: "Evidence-backed codebase simplification recommendations, automated TODO/DEBT tracking with stable dates under a local debt ledger, and non-destructive dry-run context compression previews by default.",

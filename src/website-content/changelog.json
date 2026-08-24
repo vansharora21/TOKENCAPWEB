@@ -1,5 +1,18 @@
 [
   {
+    "version": "2.2.0",
+    "title": "Change Review, Ownership Signals & Host-Scoped Pointers",
+    "date": "2026-08-20",
+    "status": "released",
+    "highlights": [
+      "Change Review: 'tokencap analyze review' and 'tokencap_review' create local Markdown and JSON review packets with base-ref comparisons, symbol evidence, caller candidates, test-file association hints, and Constitution/ADR context.",
+      "Ownership Signals: 'tokencap analyze ownership --history' and 'tokencap_ownership' provide explicitly opt-in local Git churn, contributor, and bounded co-change data with advisory authorship context.",
+      "Scoped Agent Pointers: 'tokencap mcp --init --client <host>' records one selected host, ensuring subsequent builds generate only that host's pointer without overwriting existing files.",
+      "Diff Intelligence: Added 'tokencap.diff' command for intelligence diffing and review evidence generation.",
+      "Local-First & Zero Egress: Generated review and ownership artifacts stay ignored under '.tokencap/'; TokenCap never posts to Git providers, assigns reviewers, or creates remote commits."
+    ]
+  },
+  {
     "version": "2.1.0",
     "title": "Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress",
     "date": "2026-08-17",

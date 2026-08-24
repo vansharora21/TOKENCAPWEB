@@ -1,5 +1,29 @@
 [
   {
+    "id": "local-change-review",
+    "title": "Local Change Review & Evidence Packets (v2.2.0)",
+    "description": "Transforms local changes into bounded, evidence-backed review packets with base-ref symbol evidence, caller candidates, test associations, and Constitution context.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap analyze review' or the 'tokencap_review' MCP tool. Supports '--base <ref>' comparisons without pushing to Git providers."
+  },
+  {
+    "id": "ownership-signals",
+    "title": "Opt-In Ownership & Churn Signals (v2.2.0)",
+    "description": "Surfaces local Git churn, contributor distributions, and bounded co-change signals strictly as advisory context without accessing remote APIs.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap analyze ownership --history' or 'tokencap_ownership' MCP tool. Explicitly opt-in with zero background history scanning."
+  },
+  {
+    "id": "scoped-host-pointers",
+    "title": "Scoped Host Pointers & Config (v2.2.0)",
+    "description": "Records the selected AI coding client and writes only the corresponding pointer file (AGENTS.md, CLAUDE.md, Cursor rules, etc.) without overwriting existing files.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Configured via 'tokencap mcp --init --client <host>'. Prevents root directory clutter across multi-agent environments."
+  },
+  {
     "id": "evidence-backed-simplify",
     "title": "Evidence-Backed Simplify (v2.1.0)",
     "description": "Surfaces codebase simplification candidates based on high-confidence unreachable code, duplicate artifacts, and abstraction review candidates, without recommending automatic deletion.",

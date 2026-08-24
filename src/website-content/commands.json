@@ -2,13 +2,25 @@
   {
     "command": "tokencap mcp",
     "description": "Start the local Model Context Protocol (MCP) server over stdio or automatically wire host IDE configurations (--init). Keeps a live repository watcher active for background intelligence updates.",
-    "example": "tokencap mcp --init",
+    "example": "tokencap mcp --init --client claude",
     "options": [
       { "flag": "--init", "description": "Write workspace configuration file for host IDE automatically." },
       { "flag": "--client <host>", "description": "Specify target host explicitly (vscode, antigravity, codex, cursor, claude, windsurf, cline)." },
-      { "flag": "--tools", "description": "List all 11 MCP endpoints and descriptions." },
+      { "flag": "--tools", "description": "List all MCP endpoints and descriptions." },
       { "flag": "--test", "description": "Run self-test: call every endpoint and verify JSON RPC output." },
       { "flag": "--health", "description": "Run one-shot health check without launching the persistent server." }
+    ]
+  },
+  {
+    "command": "tokencap analyze",
+    "description": "Local codebase analysis suite: generate evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.",
+    "example": "tokencap analyze review --base main",
+    "options": [
+      { "flag": "review", "description": "Generate local Markdown & JSON review packets with symbol evidence and caller candidates." },
+      { "flag": "review --base <ref>", "description": "Compare local changes against a base Git branch or ref (default: HEAD~1 or main)." },
+      { "flag": "ownership --history", "description": "Analyze local Git churn, contributor distributions, and bounded co-change signals (explicitly opt-in)." },
+      { "flag": "simplify", "description": "Surface high-confidence dead code, duplicate artifacts, and abstraction candidates." },
+      { "flag": "diff", "description": "Perform semantic Change Intelligence analysis on uncommitted or staged changes." }
     ]
   },
   {

@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v2.0.0)",
+  title: "TokenCap MCP Guide (v2.2.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -14,9 +14,9 @@ export default function McpPage() {
     { label: "Quick Start", icon: "rocket_launch", href: "#quick-start" },
     { label: "Supported Hosts", icon: "laptop_mac", href: "#supported-hosts" },
     { label: "Startup & Memory", icon: "sync", href: "#startup" },
-    { label: "12 MCP Tools", icon: "construction", href: "#tools" },
+    { label: "17 MCP Tools", icon: "construction", href: "#tools" },
     { label: "Performance", icon: "speed", href: "#latency" },
-    { label: "CLI Reference", icon: "terminal", href: "/docs#cli" },
+    { label: "CLI Reference", icon: "/docs#cli", href: "/docs#cli" },
     { label: "Documentation", icon: "description", href: "/docs" },
   ];
 
@@ -28,11 +28,16 @@ export default function McpPage() {
     { name: "tokencap_dependencies", desc: "Upstream providers + downstream consumers up to N hops.", input: '{ "target": "src/jwt.js" }' },
     { name: "tokencap_constitution", desc: "Constitution rules scoped to a cluster, file, or rule ID.", input: '{ "file": "src/jwt.js" }' },
     { name: "tokencap_impact", desc: "Blast radius of proposed changes: affected clusters & broken rules.", input: '{ "files": ["src/jwt.js"] }' },
+    { name: "tokencap_review", desc: "Local change review packet with base-ref symbol evidence and caller candidates.", input: '{ "base": "main" }' },
+    { name: "tokencap_ownership", desc: "Opt-in Git churn, contributor distributions, and bounded co-change signals.", input: '{ "history": true }' },
+    { name: "tokencap_simplify", desc: "Surface high-confidence unreachable statements, duplicate artifacts, and abstractions.", input: "None" },
     { name: "tokencap_execution", desc: "Execution-contract guidance for the current engineering phase.", input: "None" },
     { name: "tokencap_verify", desc: "Test commands, test files, lint rules, and review checklist.", input: '{ "cluster": "Auth" }' },
     { name: "tokencap_delta", desc: "What changed since last build — clusters, files, rules.", input: "None" },
-    { name: "tokencap_mcp_status", desc: "Server uptime, cache hit rate, and per-endpoint call counts.", input: "None" },
+    { name: "tokencap_diagram", desc: "Architecture, impact, and diff SVG visualizer diagrams.", input: '{ "type": "architecture" }' },
+    { name: "tokencap_screen", desc: "Frontend visual and layout intelligence for UI components.", input: '{ "component": "Navbar" }' },
     { name: "tokencap_manage_adr", desc: "Read/write Architecture Decision Records that persist across sessions.", input: '{ "action": "add", "title": "Use web-tree-sitter", "decision": "AST parsing" }' },
+    { name: "tokencap_mcp_status", desc: "Server uptime, cache hit rate, and per-endpoint call counts.", input: "None" },
   ];
 
   const supportedHosts = [
@@ -54,7 +59,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.0.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.2.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -87,7 +92,7 @@ export default function McpPage() {
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              v2.0.0 Local MCP Service
+              v2.2.0 Local MCP Service
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
               Model Context Protocol (MCP) Guide
@@ -100,7 +105,7 @@ export default function McpPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
               <div className="p-4 rounded-lg bg-card border border-card-border">
                 <span className="text-[10px] text-muted uppercase tracking-wider block mb-1">Stdio Endpoints</span>
-                <span className="text-xl font-bold text-foreground">12 MCP Tools</span>
+                <span className="text-xl font-bold text-foreground">17 MCP Tools</span>
               </div>
               <div className="p-4 rounded-lg bg-card border border-card-border">
                 <span className="text-[10px] text-muted uppercase tracking-wider block mb-1">Supported Clients</span>
@@ -175,27 +180,26 @@ export default function McpPage() {
           <section id="startup" className="scroll-mt-24 space-y-4">
               <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
                 <span className="material-symbols-outlined text-muted text-base">sync</span>
-                Self-Maintaining Intelligence, Watcher & Federation
+                Self-Maintaining Intelligence, Review & Scoped Pointers
               </h2>
               <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
                 <p>
-                  In <strong>v2.0.0</strong>, TokenCap combines workspace federation and cache sharding with symbol-level repository intelligence.
+                  In <strong>v2.2.0</strong>, TokenCap combines workspace federation, sharded caching, and symbol-level intelligence with local Change Review packets and host-scoped agent pointers.
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted">
-                  <li><strong className="text-foreground font-mono">Monorepos & Workspace Federation:</strong> The MCP server handles multi-package projects and cross-package links dynamically.</li>
-                  <li><strong className="text-foreground font-mono">Package-Scoped Queries:</strong> Supports targeted queries scoped to specific sub-packages within the workspace.</li>
-                  <li><strong className="text-foreground font-mono">Auto Build on Startup:</strong> Automatically builds/restores the sharded cache on startup before serving tools.</li>
+                  <li><strong className="text-foreground font-mono">Local Change Review:</strong> Query <code>tokencap_review</code> over MCP to get bounded base-ref symbol evidence, caller candidates, and test hints.</li>
+                  <li><strong className="text-foreground font-mono">Opt-In Ownership Signals:</strong> Query <code>tokencap_ownership</code> to access local Git churn and collaborator context without pushing to remote APIs.</li>
+                  <li><strong className="text-foreground font-mono">Scoped Agent Pointers:</strong> Builds record your selected host client and generate only the necessary pointer file (e.g. <code>AGENTS.md</code>, <code>CLAUDE.md</code>) without overwriting existing files.</li>
                   <li><strong className="text-foreground font-mono">Live File Watcher:</strong> Debounced background watcher monitors source changes and updates sharded indexes (57ms incremental rebuilds).</li>
-                  <li><strong className="text-foreground font-mono">Multi-Host Pointers:</strong> Auto-wires AGENTS.md, CLAUDE.md, and IDE-specific rules pointers.</li>
                 </ul>
               </div>
           </section>
 
-          {/* 11 MCP Tools */}
+          {/* 17 MCP Tools */}
           <section id="tools" className="scroll-mt-24 space-y-4">
             <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
               <span className="material-symbols-outlined text-muted text-base">construction</span>
-              The 12 MCP Tool Endpoints
+              The 17 MCP Tool Endpoints
             </h2>
             <div className="overflow-x-auto border border-card-border rounded-lg bg-card">
               <table className="w-full text-left text-xs text-muted font-mono">

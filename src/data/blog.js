@@ -1,5 +1,15 @@
 export const blogPosts = [
   {
+    id: "tokencap-v22-release",
+    title: "TokenCap v2.2.0 Is Now Ready: Change Review & Ownership Signals",
+    author: "Vansh Arora",
+    date: "August 20, 2026",
+    readTime: "3 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.2.0 introduces evidence-backed local change review packets, opt-in git ownership and churn signals, and host-scoped agent pointers.",
+    content: `TokenCap v2.2.0 is now live, introducing local-first Change Review packets and Ownership Signals. With 'tokencap analyze review', developers can create comprehensive local review packets including base-ref comparisons, caller candidates, test-file hints, and ADR context. The release also adds opt-in git churn and contributor signals ('tokencap analyze ownership'), and ensures host pointers generated during builds are strictly scoped to your configured AI assistant without overwriting existing files.`
+  },
+  {
     id: "tokencap-v21-release",
     title: "TokenCap v2.1.0 Is Now Ready",
     author: "Vansh Arora",

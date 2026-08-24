@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.2.0",
+    title: "Change Review, Ownership Signals & Host-Scoped Pointers",
+    date: "2026-08-20",
+    status: "released",
+    description: "Introduces 'tokencap analyze review' for evidence-backed local review packets, 'tokencap analyze ownership' for opt-in churn and collaborator context, and selected host pointer scoping via 'tokencap mcp --init --client <host>'.",
+  },
+  {
     version: "2.1.0",
     title: "Evidence-Backed Simplify, Debt Ledger & Dry-Run Compress",
     date: "2026-08-17",
