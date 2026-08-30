@@ -1,5 +1,30 @@
 [
   {
+    "id": "tier1-go-rust-java",
+    "title": "Full Tier-1 Go / Rust / Java Call Graphs (v2.4.0)",
+    "description": "Promotes Go, Rust, and Java to full cross-file call-graph resolution with the same precision as JS/TS/Python — locally-defined, import-bound, single-exported-match, and repo-unique symbols resolved; ambiguous overloads explicitly left unresolved.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap impact <file>:<symbol>' for any Go/Rust/Java symbol. No build-system awareness (no go.mod/Cargo/Maven); resolution is purely by symbol evidence in indexed files."
+  },
+  {
+    "id": "sql-graphql-schema",
+    "title": "SQL & GraphQL Schema Intelligence (v2.4.0)",
+    "description": "Extracts tables and types from CREATE TABLE DDL and GraphQL type blocks, then surfaces heuristic code-to-schema links as labeled candidates — reported as evidence, not verdicts.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap analyze schema'. Text-based regex over standard DDL and GraphQL type blocks; unusual DDL, quoted identifiers, and programmatically-built schemas are not parsed."
+  },
+  {
+    "id": "static-taint-flow",
+    "title": "Static Taint Flow Analysis (v2.4.0)",
+    "description": "Intra-procedural JS/TS taint tracking that follows user-input sources (req.body, req.query, process.env, etc.) to dangerous sinks (SQL queries, exec calls, fs writes) with explicit sanitizer modeling.",
+    "category": "Security",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap analyze taint'. JS/TS only; cross-function flow is not tracked. Custom sanitizers unknown to TokenCap are conservatively treated as non-sanitizing. Static dispatch only — no runtime flow."
+  },
+  {
+
     "id": "guided-safe-refactoring",
     "title": "Guided Safe Refactoring Engine (v2.3.0)",
     "description": "Deterministic, refuse-on-doubt symbol renaming across the AST call graph and safe uncalled dead code removal with byte-exact preservation guarantees outside edit ranges.",

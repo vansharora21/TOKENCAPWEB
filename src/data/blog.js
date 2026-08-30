@@ -1,5 +1,24 @@
 export const blogPosts = [
   {
+    id: "tokencap-v24-release",
+    title: "TokenCap v2.4.0 Is Now Ready: Deeper & Broader Language Intelligence",
+    author: "Vansh Arora",
+    date: "August 30, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.4.0 promotes Go, Rust, and Java to full Tier-1 call-graph resolution, adds Vue/Svelte/Angular SFC component intelligence, SQL & GraphQL schema extraction, and intra-procedural JS/TS static taint flow analysis.",
+    content: `TokenCap v2.4.0 is now live — the Deeper & Broader release.
+
+### What's New in v2.4.0:
+
+- **Full Tier-1 Go / Rust / Java:** Go, Rust, and Java now resolve cross-file call graphs with the same precision as JS/TS/Python — locally-defined, import-bound, single-exported-match, and repo-unique symbols. Ambiguous overloads are explicitly marked unresolved rather than guessed.
+- **Vue / Svelte / Angular Component Intelligence:** SFC-based component parsing reads \`defineProps\` / \`props:\` / \`export let\` for Vue and Svelte, and \`@Component\` decorators for Angular — no additional WASM grammars vendored.
+- **SQL & GraphQL Schema Intelligence:** \`tokencap analyze schema\` extracts tables from \`CREATE TABLE\` DDL and types from GraphQL \`type\` blocks, surfacing heuristic code-to-schema links as evidence candidates, not verdicts.
+- **Static Taint Flow Analysis:** \`tokencap analyze taint\` performs intra-procedural taint tracking in JS/TS from user-input sources (\`req.body\`, \`req.query\`, \`process.env\`) to dangerous sinks (SQL, \`exec\`, \`fs\` writes) with sanitizer modeling.
+- **Evidence-Not-Verdict Reporting:** Every analyzer reports explicit counts of what it cannot resolve — unresolved renders, untracked cross-function flow, overloaded symbols — keeping AI agents honest about analysis limits.
+- **Clean Dist Package:** Grammars and query files now ship inside \`dist/\`; the published npm package no longer requires \`src/\`.`
+  },
+  {
     id: "tokencap-v23-release",
     title: "TokenCap v2.3.0 Is Now Ready: Guided Change & Test Intelligence",
     author: "Vansh Arora",
@@ -17,6 +36,7 @@ export const blogPosts = [
 - **Coverage Report Ingestion:** Ingest existing lcov and Istanbul JSON coverage reports ('tokencap analyze tests --coverage <path>') in a completely read-only manner, annotating symbol-level coverage ranges.
 - **Local Agent Feedback Loop:** Track whether provided context helped, was neutral, or hurt agent task outcomes with 'tokencap feedback record' and 'tokencap feedback report' (100% offline, zero network telemetry).`
   },
+
   {
     id: "tokencap-v22-release",
     title: "TokenCap v2.2.0 Is Now Ready: Change Review & Ownership Signals",

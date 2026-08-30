@@ -1,9 +1,17 @@
 export const changelogItems = [
   {
+    version: "2.4.0",
+    title: "Deeper & Broader — Full Language Depth, Schema Intelligence & Static Taint Flow",
+    date: "2026-08-30",
+    status: "released",
+    description: "Promotes Go, Rust, and Java to full Tier-1 call-graph resolution; adds Vue/Svelte/Angular SFC component intelligence; introduces 'tokencap analyze schema' for SQL & GraphQL schema extraction with code links; adds 'tokencap analyze taint' for intra-procedural JS/TS taint flow analysis from sources to sinks; and ships grammars inside dist/ so the package no longer requires src/.",
+  },
+  {
     version: "2.3.0",
     title: "Guided Change — Safe Refactoring, Test Intelligence & Local Feedback Loop",
     date: "2026-08-29",
     status: "released",
+
     description: "Introduces Guided Safe Refactoring ('tokencap refactor rename' and 'tokencap refactor rm-dead') with byte-exact transform guarantees and refuse-on-doubt protections, Static Test Mapping & Gap Analysis ('tokencap analyze tests'), coverage report ingest, and local-only telemetry-free Agent Feedback tracking ('tokencap feedback').",
   },
   {

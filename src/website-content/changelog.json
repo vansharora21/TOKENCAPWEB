@@ -1,9 +1,24 @@
 [
   {
+    "version": "2.4.0",
+    "title": "Deeper & Broader — Full Language Depth, Schema Intelligence & Static Taint Flow",
+    "date": "2026-08-30",
+    "status": "released",
+    "highlights": [
+      "Full Tier-1 Go / Rust / Java: Promotes Go, Rust, and Java to full call-graph resolution with the same cross-file precision as JS/TS/Python — resolving locally-defined, import-bound, single-exported-match, and repo-unique symbols.",
+      "Vue / Svelte / Angular Component Intelligence: Text-based SFC parsing for Vue and Svelte (defineProps / props: / export let) and Angular component analysis without vendoring additional WASM grammars.",
+      "SQL & GraphQL Schema Intelligence: 'tokencap analyze schema' extracts tables/types from CREATE TABLE DDL and GraphQL type blocks and surfaces heuristic code-to-schema links as candidates.",
+      "Static Taint Flow Analysis: 'tokencap analyze taint' performs intra-procedural JS/TS taint tracking from user-input sources to dangerous sinks (SQL / exec / fs writes) with explicit sanitizer modeling.",
+      "Evidence-Not-Verdict Reporting: Every analyzer reports counts of what it cannot resolve (unresolved renders, unresolved overloads, untracked cross-function flow) rather than inventing an answer.",
+      "Build Without src/: The npm package now ships grammars and query files inside dist/ — src/ is no longer required in the published package."
+    ]
+  },
+  {
     "version": "2.3.0",
     "title": "Guided Change — Safe Refactoring, Test Intelligence & Local Feedback Loop",
     "date": "2026-08-29",
     "status": "released",
+
     "highlights": [
       "Safe Refactoring Engine: Deterministic, refuse-on-doubt symbol renaming across the call graph ('tokencap refactor rename') and safe dead symbol removal ('tokencap refactor rm-dead') with byte-exact transform guarantees outside target edit ranges.",
       "Refuse-on-Doubt Protections: Automatic refusal on aliased imports, variable shadowing, name collisions, computed property accesses, and unresolved dynamic references.",
