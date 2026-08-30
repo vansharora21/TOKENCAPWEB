@@ -24,7 +24,24 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
+### 📁 Refactoring
+
+#### 🔹 Guided Safe Refactoring Engine (v2.3.0)
+Deterministic, refuse-on-doubt symbol renaming across the AST call graph and safe uncalled dead code removal with byte-exact preservation guarantees outside edit ranges.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap refactor rename <target> <new>' and 'tokencap refactor rm-dead <target>'. Dry-run by default; preview via 'tokencap_refactor_plan' MCP tool; requires '--write' to apply.
+
 ### 📁 Intelligence
+
+#### 🔹 Static Test Mapping & Gap Analysis (v2.3.0)
+Maps test suites to exercised symbols via static AST caller paths, isolates untested called symbols, and ingests lcov/Istanbul coverage reports.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap analyze tests [--gaps] [--coverage <path>]' or 'tokencap_test_map' MCP tool. Zero remote test execution.
+
+#### 🔹 Local Agent Feedback Loop (v2.3.0)
+Local, private instrumentation tracking whether supplied repository context helped, was neutral, or hurt agent task outcomes without network telemetry.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap feedback record' and 'tokencap feedback report'. 100% offline, zero remote egress.
 
 #### 🔹 Local Change Review & Evidence Packets (v2.2.0)
 Transforms local changes into bounded, evidence-backed review packets with base-ref symbol evidence, caller candidates, test associations, and Constitution context.
@@ -267,6 +284,36 @@ The main snapshot works across every text language TokenCap can read, including 
 
 ## 💻 CLI Commands
 
+### 🛠️ `tokencap refactor`
+
+Deterministic safe refactoring: rename symbols across the entire AST call graph or safely delete uncalled dead code with byte-exact transform guarantees (dry-run by default).
+
+**Example:**
+```bash
+tokencap refactor rename src/auth/token.js:validateToken checkToken --write
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `rename <target> <new>` | Plan symbol rename across definition, imports, and calls. |
+| `rm-dead <target>` | Plan removal of uncalled, un-exported dead code. |
+| `--write` | Apply the planned code edits atomically to disk. |
+| `--json` | Emit machine-readable transform plan JSON without modifying disk. |
+
+### 🛠️ `tokencap feedback`
+
+Local Agent Feedback Loop: instrument whether supplied context helped, was neutral, or hurt agent task outcomes (100% offline, zero telemetry).
+
+**Example:**
+```bash
+tokencap feedback record --agent claude --outcome helped --task "auth refactor"
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `record --agent <a> --outcome <helped|neutral|hurt>` | Record local context utility datapoint. |
+| `report` | Summarize local feedback metrics per agent. |
+
 ### 🛠️ `tokencap mcp`
 
 Start the local Model Context Protocol (MCP) server over stdio or automatically wire host IDE configurations (--init). Keeps a live repository watcher active for background intelligence updates.
@@ -286,15 +333,18 @@ tokencap mcp --init --client claude
 
 ### 🛠️ `tokencap analyze`
 
-Local codebase analysis suite: generate evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.
+Local codebase analysis suite: generate static test maps, evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.
 
 **Example:**
 ```bash
-tokencap analyze review --base main
+tokencap analyze tests --gaps
 ```
 
 | Option / Flag | Description |
 | --- | --- |
+| `tests [<file>:<symbol>]` | Map test fixtures to symbols they exercise based on static AST call evidence. |
+| `tests --gaps` | Isolate called-but-untested symbol gaps across the codebase. |
+| `tests --coverage <path>` | Ingest existing lcov or Istanbul JSON coverage report (read-only). |
 | `review` | Generate local Markdown & JSON review packets with symbol evidence and caller candidates. |
 | `review --base <ref>` | Compare local changes against a base Git branch or ref (default: HEAD~1 or main). |
 | `ownership --history` | Analyze local Git churn, contributor distributions, and bounded co-change signals (explicitly opt-in). |
@@ -537,4 +587,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 23/8/2026.*
+*Generated automatically from `website-content` JSON source files on 29/8/2026.*

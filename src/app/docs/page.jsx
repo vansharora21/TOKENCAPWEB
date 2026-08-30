@@ -49,7 +49,7 @@ export default function DocsPage() {
       <aside className="w-64 border-r border-card-border bg-card p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-4">
           <p className="text-xl font-bold text-foreground tracking-tight font-mono">Documentation</p>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.2.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.3.0 RELEASE</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -69,7 +69,7 @@ export default function DocsPage() {
             className="w-full bg-pre-bg border border-card-border text-foreground py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-card-hover transition-colors block text-center flex items-center justify-center gap-1.5 font-mono"
           >
             <span className="material-symbols-outlined text-sm">hub</span>
-            MCP Guide v2.2.0
+            MCP Guide v2.3.0
           </a>
           <div className="flex flex-col gap-2 font-mono text-xs">
             <a href="https://github.com/vansharora21/TOKENCAP" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-muted hover:text-foreground transition-colors">
@@ -87,7 +87,7 @@ export default function DocsPage() {
           <header className="mb-8 border-b border-card-border pb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Current Release: v2.2.0
+              Current Release: v2.3.0
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-3 font-display uppercase">
               TokenCap Documentation
@@ -101,13 +101,13 @@ export default function DocsPage() {
           <div className="mb-12 p-6 rounded-lg border border-card-border bg-card relative overflow-hidden group">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
               <div>
-                <span className="text-[9px] font-mono font-bold tracking-widest text-muted uppercase bg-pre-bg border border-card-border px-2 py-0.5 rounded">NEW IN V2.2.0</span>
+                <span className="text-[9px] font-mono font-bold tracking-widest text-muted uppercase bg-pre-bg border border-card-border px-2 py-0.5 rounded">NEW IN V2.3.0</span>
                 <h3 className="text-lg font-bold text-foreground mt-2 mb-1 flex items-center gap-2 font-mono">
                   <span className="material-symbols-outlined text-muted text-base">hub</span>
-                  Change Review & Ownership Signals
+                  Guided Change &amp; Safe Refactoring
                 </h3>
                 <p className="text-xs text-muted leading-relaxed max-w-lg">
-                  TokenCap v2.2.0 introduces local evidence-backed review packets, opt-in git ownership and churn signals, scoped agent pointers, and diff intelligence.
+                  TokenCap v2.3.0 introduces deterministic safe refactoring (rename &amp; rm-dead), static test mapping &amp; gap analysis, coverage report ingestion, and local feedback loops.
                 </p>
               </div>
               <a
@@ -140,7 +140,7 @@ export default function DocsPage() {
               Back Home
             </a>
             <a href="/mcp" className="flex items-center gap-1.5 text-foreground/90 hover:text-foreground transition-colors">
-              MCP Guide (v2.2.0)
+              MCP Guide (v2.3.0)
               <span className="material-symbols-outlined text-sm">chevron_right</span>
             </a>
           </div>
@@ -163,8 +163,8 @@ export default function DocsPage() {
         </nav>
         <div className="mt-8 p-4 bg-card border border-card-border rounded-lg relative overflow-hidden">
           <div className="relative z-10 space-y-2">
-            <h6 className="font-bold text-foreground text-xs font-mono">New Release v2.2.0</h6>
-            <p className="text-[11px] leading-relaxed text-muted">v2.2.0 adds evidence-backed local change review packets, opt-in ownership signals, and host-scoped agent pointers.</p>
+            <h6 className="font-bold text-foreground text-xs font-mono">New Release v2.3.0</h6>
+            <p className="text-[11px] leading-relaxed text-muted">v2.3.0 adds Guided Safe Refactoring, Static Test Mapping, coverage report ingestion, and local feedback loops.</p>
             <a className="text-[11px] text-foreground/90 font-bold underline hover:text-foreground transition-colors font-mono block" href="/mcp">
               Get Started with MCP →
             </a>

@@ -1,5 +1,12 @@
 [
   {
+    "version": "2.3.0",
+    "title": "Guided Change — Safe Refactoring, Test Intelligence & Local Feedback",
+    "description": "Deterministic AST refactor transforms (rename & rm-dead), static test-to-symbol mapping with gap analysis, coverage report ingestion, and private agent feedback loops.",
+    "status": "shipped",
+    "source": "Release v2.3.0"
+  },
+  {
     "version": "2.2.0",
     "title": "Change Review, Ownership Signals & Host-Scoped Pointers",
     "description": "Evidence-backed local change review packets with base-ref symbol evidence and test associations, opt-in ownership and churn signals, and host-scoped agent pointers.",

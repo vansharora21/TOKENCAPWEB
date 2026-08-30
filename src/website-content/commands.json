@@ -1,5 +1,25 @@
 [
   {
+    "command": "tokencap refactor",
+    "description": "Deterministic safe refactoring: rename symbols across the entire AST call graph or safely delete uncalled dead code with byte-exact transform guarantees (dry-run by default).",
+    "example": "tokencap refactor rename src/auth/token.js:validateToken checkToken --write",
+    "options": [
+      { "flag": "rename <target> <new>", "description": "Plan symbol rename across definition, imports, and calls." },
+      { "flag": "rm-dead <target>", "description": "Plan removal of uncalled, un-exported dead code." },
+      { "flag": "--write", "description": "Apply the planned code edits atomically to disk." },
+      { "flag": "--json", "description": "Emit machine-readable transform plan JSON without modifying disk." }
+    ]
+  },
+  {
+    "command": "tokencap feedback",
+    "description": "Local Agent Feedback Loop: instrument whether supplied context helped, was neutral, or hurt agent task outcomes (100% offline, zero telemetry).",
+    "example": "tokencap feedback record --agent claude --outcome helped --task \"auth refactor\"",
+    "options": [
+      { "flag": "record --agent <a> --outcome <helped|neutral|hurt>", "description": "Record local context utility datapoint." },
+      { "flag": "report", "description": "Summarize local feedback metrics per agent." }
+    ]
+  },
+  {
     "command": "tokencap mcp",
     "description": "Start the local Model Context Protocol (MCP) server over stdio or automatically wire host IDE configurations (--init). Keeps a live repository watcher active for background intelligence updates.",
     "example": "tokencap mcp --init --client claude",
@@ -13,9 +33,12 @@
   },
   {
     "command": "tokencap analyze",
-    "description": "Local codebase analysis suite: generate evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.",
-    "example": "tokencap analyze review --base main",
+    "description": "Local codebase analysis suite: generate static test maps, evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.",
+    "example": "tokencap analyze tests --gaps",
     "options": [
+      { "flag": "tests [<file>:<symbol>]", "description": "Map test fixtures to symbols they exercise based on static AST call evidence." },
+      { "flag": "tests --gaps", "description": "Isolate called-but-untested symbol gaps across the codebase." },
+      { "flag": "tests --coverage <path>", "description": "Ingest existing lcov or Istanbul JSON coverage report (read-only)." },
       { "flag": "review", "description": "Generate local Markdown & JSON review packets with symbol evidence and caller candidates." },
       { "flag": "review --base <ref>", "description": "Compare local changes against a base Git branch or ref (default: HEAD~1 or main)." },
       { "flag": "ownership --history", "description": "Analyze local Git churn, contributor distributions, and bounded co-change signals (explicitly opt-in)." },

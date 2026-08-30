@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v2.2.0)",
+  title: "TokenCap MCP Guide (v2.3.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -14,7 +14,7 @@ export default function McpPage() {
     { label: "Quick Start", icon: "rocket_launch", href: "#quick-start" },
     { label: "Supported Hosts", icon: "laptop_mac", href: "#supported-hosts" },
     { label: "Startup & Memory", icon: "sync", href: "#startup" },
-    { label: "17 MCP Tools", icon: "construction", href: "#tools" },
+    { label: "19 MCP Tools", icon: "construction", href: "#tools" },
     { label: "Performance", icon: "speed", href: "#latency" },
     { label: "CLI Reference", icon: "/docs#cli", href: "/docs#cli" },
     { label: "Documentation", icon: "description", href: "/docs" },
@@ -28,6 +28,8 @@ export default function McpPage() {
     { name: "tokencap_dependencies", desc: "Upstream providers + downstream consumers up to N hops.", input: '{ "target": "src/jwt.js" }' },
     { name: "tokencap_constitution", desc: "Constitution rules scoped to a cluster, file, or rule ID.", input: '{ "file": "src/jwt.js" }' },
     { name: "tokencap_impact", desc: "Blast radius of proposed changes: affected clusters & broken rules.", input: '{ "files": ["src/jwt.js"] }' },
+    { name: "tokencap_refactor_plan", desc: "Dry-run preview of safe symbol renames or dead-code removal plans across the AST graph.", input: '{ "action": "rename", "target": "src/token.js:validate", "newName": "check" }' },
+    { name: "tokencap_test_map", desc: "Static test associations, called-but-untested symbol gaps, and coverage report lines.", input: '{ "target": "src/token.js:validate", "gaps": true }' },
     { name: "tokencap_review", desc: "Local change review packet with base-ref symbol evidence and caller candidates.", input: '{ "base": "main" }' },
     { name: "tokencap_ownership", desc: "Opt-in Git churn, contributor distributions, and bounded co-change signals.", input: '{ "history": true }' },
     { name: "tokencap_simplify", desc: "Surface high-confidence unreachable statements, duplicate artifacts, and abstractions.", input: "None" },
@@ -59,7 +61,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.2.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.3.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -92,7 +94,7 @@ export default function McpPage() {
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              v2.2.0 Local MCP Service
+              v2.3.0 Local MCP Service
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
               Model Context Protocol (MCP) Guide
@@ -105,7 +107,7 @@ export default function McpPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
               <div className="p-4 rounded-lg bg-card border border-card-border">
                 <span className="text-[10px] text-muted uppercase tracking-wider block mb-1">Stdio Endpoints</span>
-                <span className="text-xl font-bold text-foreground">17 MCP Tools</span>
+                <span className="text-xl font-bold text-foreground">19 MCP Tools</span>
               </div>
               <div className="p-4 rounded-lg bg-card border border-card-border">
                 <span className="text-[10px] text-muted uppercase tracking-wider block mb-1">Supported Clients</span>
@@ -180,13 +182,15 @@ export default function McpPage() {
           <section id="startup" className="scroll-mt-24 space-y-4">
               <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
                 <span className="material-symbols-outlined text-muted text-base">sync</span>
-                Self-Maintaining Intelligence, Review & Scoped Pointers
+                Self-Maintaining Intelligence, Refactor &amp; Test MCP Tools
               </h2>
               <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
                 <p>
-                  In <strong>v2.2.0</strong>, TokenCap combines workspace federation, sharded caching, and symbol-level intelligence with local Change Review packets and host-scoped agent pointers.
+                  In <strong>v2.3.0</strong>, TokenCap introduces plan-only safe refactoring (<code>tokencap_refactor_plan</code>) and static test-to-symbol intelligence (<code>tokencap_test_map</code>), alongside local Change Review packets and host-scoped agent pointers.
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted">
+                  <li><strong className="text-foreground font-mono">Safe Refactor Plans:</strong> Query <code>tokencap_refactor_plan</code> over MCP to preview AST symbol renames and dead-code removal without risking un-reviewed disk modifications.</li>
+                  <li><strong className="text-foreground font-mono">Static Test Mapping:</strong> Query <code>tokencap_test_map</code> over MCP to determine test coverage associations, untested symbol gaps, and ingested report coverage.</li>
                   <li><strong className="text-foreground font-mono">Local Change Review:</strong> Query <code>tokencap_review</code> over MCP to get bounded base-ref symbol evidence, caller candidates, and test hints.</li>
                   <li><strong className="text-foreground font-mono">Opt-In Ownership Signals:</strong> Query <code>tokencap_ownership</code> to access local Git churn and collaborator context without pushing to remote APIs.</li>
                   <li><strong className="text-foreground font-mono">Scoped Agent Pointers:</strong> Builds record your selected host client and generate only the necessary pointer file (e.g. <code>AGENTS.md</code>, <code>CLAUDE.md</code>) without overwriting existing files.</li>
@@ -195,11 +199,11 @@ export default function McpPage() {
               </div>
           </section>
 
-          {/* 17 MCP Tools */}
+          {/* 19 MCP Tools */}
           <section id="tools" className="scroll-mt-24 space-y-4">
             <h2 className="text-xl font-bold text-foreground flex items-center gap-2 font-mono">
               <span className="material-symbols-outlined text-muted text-base">construction</span>
-              The 17 MCP Tool Endpoints
+              The 19 MCP Tool Endpoints
             </h2>
             <div className="overflow-x-auto border border-card-border rounded-lg bg-card">
               <table className="w-full text-left text-xs text-muted font-mono">

@@ -39,7 +39,7 @@ export function FeaturesClient() {
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono font-medium text-muted uppercase tracking-wider">
-              v2.2.0 Engine
+              v2.3.0 Engine
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.1] font-display">
@@ -80,8 +80,27 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v2.2.0 */}
+          {/* v2.3.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.3.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Guided Change — Safe Refactoring, Test Intelligence & Local Feedback</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">August 29, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Guided Safe Refactoring</strong> — Deterministic symbol renaming across definitions, imports, and calls (<code>tokencap refactor rename</code>) and uncalled dead code removal (<code>tokencap refactor rm-dead</code>) with byte-exact transform guarantees outside target ranges.</li>
+              <li><strong>Refuse-on-Doubt Protections</strong> — Refusal safeguards protect against aliased imports, shadowing, collisions, and computed property accesses, exiting non-zero when unsafe.</li>
+              <li><strong>Static Test Mapping &amp; Gap Analysis</strong> — Command <code>tokencap analyze tests</code> statically associates tests with exercised symbols, while <code>--gaps</code> identifies called-but-untested functions.</li>
+              <li><strong>Coverage Ingestion</strong> — Read-only ingestion of existing <code>lcov</code> or Istanbul JSON reports (<code>tokencap analyze tests --coverage &lt;path&gt;</code>) annotating symbol-level line ranges without executing test suites.</li>
+              <li><strong>Local Agent Feedback Loop</strong> — Private, offline tracking of context effectiveness (<code>tokencap feedback record|report</code>) with explicit <code>telemetry: false</code>.</li>
+              <li><strong>New MCP Plan-Only Tools</strong> — Endpoints <code>tokencap_refactor_plan</code> and <code>tokencap_test_map</code> provide dry-run refactoring previews and static test associations over MCP.</li>
+            </ul>
+          </motion.div>
+
+          {/* v2.2.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/90 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="bg-pre-bg border border-card-border text-foreground/90 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-emerald-400">v2.2.0</span>

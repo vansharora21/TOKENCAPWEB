@@ -1,5 +1,14 @@
 [
   {
+    "id": "tokencap-v23-release",
+    "title": "TokenCap v2.3.0 Is Now Ready: Guided Change & Test Intelligence",
+    "author": "Vansh Arora",
+    "date": "August 29, 2026",
+    "readTime": "3 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v2.3.0 introduces Guided Change — deterministic safe refactoring across the symbol graph, static test mapping and gap analysis, test coverage ingestion, and local-only agent feedback loops."
+  },
+  {
     "id": "tokencap-v22-release",
     "title": "TokenCap v2.2.0 Is Now Ready: Change Review & Ownership Signals",
     "author": "Vansh Arora",

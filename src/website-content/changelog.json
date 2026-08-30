@@ -1,5 +1,19 @@
 [
   {
+    "version": "2.3.0",
+    "title": "Guided Change — Safe Refactoring, Test Intelligence & Local Feedback Loop",
+    "date": "2026-08-29",
+    "status": "released",
+    "highlights": [
+      "Safe Refactoring Engine: Deterministic, refuse-on-doubt symbol renaming across the call graph ('tokencap refactor rename') and safe dead symbol removal ('tokencap refactor rm-dead') with byte-exact transform guarantees outside target edit ranges.",
+      "Refuse-on-Doubt Protections: Automatic refusal on aliased imports, variable shadowing, name collisions, computed property accesses, and unresolved dynamic references.",
+      "Static Test Mapping: 'tokencap analyze tests' maps test fixtures to exercised symbols from static AST evidence and identifies called-but-untested symbol gaps ('--gaps').",
+      "Test Coverage Ingest: Read-only ingestion of existing lcov and Istanbul JSON reports ('tokencap analyze tests --coverage <path>') annotating covered vs uncovered lines per symbol without running test runners.",
+      "Local Agent Feedback Loop: 'tokencap feedback record' and 'tokencap feedback report' locally measure context utility (helped, neutral, hurt) with zero network egress and zero telemetry.",
+      "New Plan-Only MCP Tools: Added 'tokencap_refactor_plan' (dry-run refactor preview) and 'tokencap_test_map' (static test associations and untested gap queries) tool endpoints."
+    ]
+  },
+  {
     "version": "2.2.0",
     "title": "Change Review, Ownership Signals & Host-Scoped Pointers",
     "date": "2026-08-20",

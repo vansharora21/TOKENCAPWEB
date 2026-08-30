@@ -1,5 +1,23 @@
 export const blogPosts = [
   {
+    id: "tokencap-v23-release",
+    title: "TokenCap v2.3.0 Is Now Ready: Guided Change & Test Intelligence",
+    author: "Vansh Arora",
+    date: "August 29, 2026",
+    readTime: "3 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.3.0 introduces Guided Change — deterministic safe refactoring across the symbol graph, static test mapping and gap analysis, test coverage ingestion, and local-only agent feedback loops.",
+    content: `TokenCap v2.3.0 is now live, introducing Guided Change for safe, deterministic codebase transformations and test intelligence.
+
+### What's New in v2.3.0:
+
+- **Guided Safe Refactoring Engine:** With 'tokencap refactor rename' and 'tokencap refactor rm-dead', developers and AI agents can safely rename symbols across definitions, imports, and caller sites, or remove uncalled dead code. Refactoring plans are dry-run by default, verifiable via the new 'tokencap_refactor_plan' MCP tool, and guarantee byte-exact preservation outside target edit ranges.
+- **Refuse-on-Doubt Protections:** Built-in safeguards automatically refuse to execute when encountering aliased imports, shadowing, collisions, or dynamic computed accesses.
+- **Static Test Intelligence & Gap Analysis:** 'tokencap analyze tests' links test fixtures to exercised symbols via static AST call paths and names, while '--gaps' instantly surfaces called-but-untested functions across the codebase.
+- **Coverage Report Ingestion:** Ingest existing lcov and Istanbul JSON coverage reports ('tokencap analyze tests --coverage <path>') in a completely read-only manner, annotating symbol-level coverage ranges.
+- **Local Agent Feedback Loop:** Track whether provided context helped, was neutral, or hurt agent task outcomes with 'tokencap feedback record' and 'tokencap feedback report' (100% offline, zero network telemetry).`
+  },
+  {
     id: "tokencap-v22-release",
     title: "TokenCap v2.2.0 Is Now Ready: Change Review & Ownership Signals",
     author: "Vansh Arora",

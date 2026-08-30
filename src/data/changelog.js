@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.3.0",
+    title: "Guided Change — Safe Refactoring, Test Intelligence & Local Feedback Loop",
+    date: "2026-08-29",
+    status: "released",
+    description: "Introduces Guided Safe Refactoring ('tokencap refactor rename' and 'tokencap refactor rm-dead') with byte-exact transform guarantees and refuse-on-doubt protections, Static Test Mapping & Gap Analysis ('tokencap analyze tests'), coverage report ingest, and local-only telemetry-free Agent Feedback tracking ('tokencap feedback').",
+  },
+  {
     version: "2.2.0",
     title: "Change Review, Ownership Signals & Host-Scoped Pointers",
     date: "2026-08-20",

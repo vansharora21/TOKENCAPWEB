@@ -1,5 +1,29 @@
 [
   {
+    "id": "guided-safe-refactoring",
+    "title": "Guided Safe Refactoring Engine (v2.3.0)",
+    "description": "Deterministic, refuse-on-doubt symbol renaming across the AST call graph and safe uncalled dead code removal with byte-exact preservation guarantees outside edit ranges.",
+    "category": "Refactoring",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap refactor rename <target> <new>' and 'tokencap refactor rm-dead <target>'. Dry-run by default; preview via 'tokencap_refactor_plan' MCP tool; requires '--write' to apply."
+  },
+  {
+    "id": "static-test-mapping",
+    "title": "Static Test Mapping & Gap Analysis (v2.3.0)",
+    "description": "Maps test suites to exercised symbols via static AST caller paths, isolates untested called symbols, and ingests lcov/Istanbul coverage reports.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap analyze tests [--gaps] [--coverage <path>]' or 'tokencap_test_map' MCP tool. Zero remote test execution."
+  },
+  {
+    "id": "local-feedback-loop",
+    "title": "Local Agent Feedback Loop (v2.3.0)",
+    "description": "Local, private instrumentation tracking whether supplied repository context helped, was neutral, or hurt agent task outcomes without network telemetry.",
+    "category": "Intelligence",
+    "importance": 2,
+    "technicalDetail": "Invoked via 'tokencap feedback record' and 'tokencap feedback report'. 100% offline, zero remote egress."
+  },
+  {
     "id": "local-change-review",
     "title": "Local Change Review & Evidence Packets (v2.2.0)",
     "description": "Transforms local changes into bounded, evidence-backed review packets with base-ref symbol evidence, caller candidates, test associations, and Constitution context.",
