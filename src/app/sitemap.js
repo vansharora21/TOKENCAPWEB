@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://tokencap.dev";
+  const baseUrl = "https://tokencap.vansharora.app";
   const routes = [
     "/",
     "/about",
@@ -10,6 +10,7 @@ export default function sitemap() {
     "/faq",
     "/features",
     "/resources",
+    "/reviews",
     "/roadmap",
     "/vscode",
   ];

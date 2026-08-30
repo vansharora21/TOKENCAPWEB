@@ -2,6 +2,7 @@ import React from "react";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { CopyButton } from "@/components/shared/CopyButton";
 import { buildMetadata } from "@/lib/seo";
+import { ReviewsMarquee } from "@/components/reviews/ReviewsMarquee";
 
 export const metadata = buildMetadata({
   title: "Download TokenCap · CLI, VS Code Extension & MCP",
@@ -188,6 +189,11 @@ export default function DownloadsPage() {
           ))}
         </div>
       </section>
+
+      {/* Community Reviews Strip */}
+      <div className="mb-8 -mx-6">
+        <ReviewsMarquee />
+      </div>
 
       {/* Dedicated Claude Plugin Section */}
       <section className="p-8 rounded-lg border border-card-border bg-card space-y-6">

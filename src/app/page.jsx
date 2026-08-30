@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { buildMetadata } from "@/lib/seo";
+import { ReviewsMarquee } from "@/components/reviews/ReviewsMarquee";
 
 export const metadata = buildMetadata({
   title: "TokenCap · Codebase Snapshot Tool",
@@ -42,6 +43,9 @@ export default function HomePage() {
           <HowItWorks />
         </div>
       </div>
+
+      {/* Reviews Marquee Strip */}
+      <ReviewsMarquee />
 
       {/* Final CTA Section */}
       <div className="py-12 sm:py-16 bg-background">

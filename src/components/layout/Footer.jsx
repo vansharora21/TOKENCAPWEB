@@ -18,6 +18,7 @@ function Footer() {
     { label: "GitHub", href: "https://github.com/vansharora21/TOKENCAP", external: true },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aroravansh2108/", external: true },
     { label: "Book a Call", href: "https://cal.com/vansh-arora-0821/15min", external: true },
+    { label: "Leave a Review", href: "/reviews", external: false },
   ];
 
   return (
@@ -85,15 +86,25 @@ function Footer() {
               <ul className="space-y-2 font-mono text-xs">
                 {communityLinks.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-muted hover:text-foreground transition flex items-center gap-1.5"
-                    >
-                      <span>&bull;</span>
-                      <span>{link.label}</span>
-                    </a>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-muted hover:text-foreground transition flex items-center gap-1.5"
+                      >
+                        <span>&bull;</span>
+                        <span>{link.label}</span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-muted hover:text-foreground transition flex items-center gap-1.5"
+                      >
+                        <span>&bull;</span>
+                        <span>{link.label}</span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

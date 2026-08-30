@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "TokenCap",
   description:
     "TokenCap is a local-first developer tool that generates AI-ready snapshots of your codebase, including a dependency graph, context memory, and Git-aware file selection.",
-  url: "https://tokencap.dev",
+  url: "https://tokencap.vansharora.app",
   keywords: [
     "tokencap",
     "AI context",

@@ -47,12 +47,12 @@ function Navbar() {
 
         {/* Right: Actions */}
         <div className="flex items-center gap-4 sm:gap-6">
-          {/* Book a Call Button */}
+          {/* Leave a Review Button */}
           <Link
-            href="/book"
-            className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium text-muted hover:text-foreground hover:bg-card-hover/50 transition active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2 cursor-pointer"
+            href="/reviews"
+            className="hidden sm:inline-flex items-center px-3 py-1.5 border border-card-border text-xs font-mono font-medium text-foreground hover:bg-card-hover transition active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-zinc-700 focus-visible:outline-offset-2 cursor-pointer"
           >
-            Book a call
+            Leave a Review
           </Link>
 
           {/* Search Icon */}
@@ -106,11 +106,11 @@ function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/book"
+                href="/reviews"
                 onClick={() => setIsOpen(false)}
                 className="text-base font-medium text-muted transition hover:text-foreground"
               >
-                Book a Call
+                Leave a Review
               </Link>
             </nav>
           </div>
