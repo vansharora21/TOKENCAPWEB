@@ -1,16 +1,55 @@
-export const features = [
-  { title: "Token Savings Engine", description: "12.2× average token reduction and 94.3% cost savings verified across real repositories.", accent: "v1.6.0 Savings" },
-  { title: "Multi-Host Pointers", description: "Auto-wires AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro without overwriting.", accent: "7 Host Integrations" },
-  { title: "Local MCP Service", description: "Query repository intelligence live over stdio MCP with 11 local tool endpoints and auto background watching.", accent: "v1.5.0 MCP" },
-  { title: "Local-first", description: "Runs entirely on your machine. No cloud. No uploads. Your code never leaves your workspace.", accent: "Privacy-first" },
-  { title: "AI-ready output", description: "Generates structured Markdown snapshots sized for any LLM context window.", accent: "Context-ready" },
-  { title: "Git-aware", description: "Surfaces changed files, staged and unstaged diffs, recent commits, and branch context.", accent: "Git-aware" },
-  { title: "Secret redaction", description: "Built-in scanning replaces secrets before any snapshot content is written to disk.", accent: "Security" },
+export const featurePipeline = [
+  {
+    id: "make",
+    cmd: "tokencap make",
+    badge: "AST Snapshot",
+    title: "One command. Complete context handoff.",
+    tagline: "Parses your repository AST, extracts Git diffs, scrubs secrets, and formats compressed LLM-ready markdown in 82ms.",
+    stats: [
+      { label: "Token Savings", val: "12.2× average" },
+      { label: "Execution Time", val: "82ms" },
+      { label: "Output Files", val: "3 artifacts" },
+    ],
+  },
+  {
+    id: "impact",
+    cmd: "tokencap impact src/api/auth.rs:validate_token",
+    badge: "Call Graph",
+    title: "Deep cross-file symbol resolution.",
+    tagline: "Traces upstream callers and downstream dependents across Rust, Go, Java, Python, and TypeScript with zero hallucinated edges.",
+    stats: [
+      { label: "Languages", val: "Tier-1 Multi-Lang" },
+      { label: "Ambiguity Policy", val: "Refuse on doubt" },
+      { label: "Resolution", val: "Byte-exact AST" },
+    ],
+  },
+  {
+    id: "analyze",
+    cmd: "tokencap analyze taint --file src/routes/users.js",
+    badge: "Security & Schema",
+    title: "Static taint flow & schema intelligence.",
+    tagline: "Follows user inputs to dangerous sinks, verifies sanitizers, and extracts database DDL tables without running untrusted code.",
+    stats: [
+      { label: "Taint Analysis", val: "Source-to-sink" },
+      { label: "Schema Engine", val: "SQL & GraphQL" },
+      { label: "Network Access", val: "Zero egress" },
+    ],
+  },
+  {
+    id: "mcp",
+    cmd: "tokencap mcp --watch",
+    badge: "MCP Protocol",
+    title: "Auto-wired local AI memory over stdio.",
+    tagline: "Exposes 11 local tool endpoints and auto-wires AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro seamlessly.",
+    stats: [
+      { label: "MCP Endpoints", val: "11 tools active" },
+      { label: "Latency", val: "<2ms local IPC" },
+      { label: "Host Support", val: "7 agent hosts" },
+    ],
+  },
 ];
 
 export const featureShowcase = {
-  eyebrow: "Capabilities",
   title: "TokenCap gives you one command for the entire handoff story.",
-  description: "The site now reflects the actual product: snapshot generation, memory capture, Git context, and privacy-first workflows.",
+  description: "Deterministic AST compression, verified call graphs, static taint tracking, and auto-wired agent pointers all local, zero cloud required.",
 };
-

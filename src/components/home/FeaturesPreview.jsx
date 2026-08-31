@@ -1,408 +1,292 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { features, featureShowcase } from "@/data/features";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { featurePipeline, featureShowcase } from "@/data/features";
 
 function FeaturesPreview() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const pauseTimerRef = useRef(null);
+  const [activeTab, setActiveTab] = useState(0);
+  const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    if (isPaused) return;
+  const current = featurePipeline[activeTab] || featurePipeline[0];
 
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % features.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const handleSelectTab = (idx) => {
-    setActiveIndex(idx);
-    setIsPaused(true);
-    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
-    pauseTimerRef.current = setTimeout(() => {
-      setIsPaused(false);
-    }, 8000);
+  const handleCopyCommand = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(current.cmd);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
-  useEffect(() => {
-    return () => {
-      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
-    };
-  }, []);
-
   return (
-    <section className="py-8 space-y-12">
-      {/* Title */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-card-border">
-        <div>
-          <span className="text-[10px] font-mono text-muted uppercase tracking-widest">
+    <section className="py-12 sm:py-16">
+      {/* Header section */}
+      <div className="max-w-3xl mb-10 space-y-3">
+        {featureShowcase.eyebrow && (
+          <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
             {featureShowcase.eyebrow}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">
-            {featureShowcase.title}
-          </h2>
-        </div>
-        {/* <p className="text-muted text-xs font-mono max-w-xs md:text-right">
-          The site now reflects the actual product: snapshot generation, memory capture, Git context, and privacy-first workflows.
-        </p> */}
+          </div>
+        )}
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-sans">
+          {featureShowcase.title}
+        </h2>
+        <p className="text-sm text-muted leading-relaxed max-w-2xl font-sans">
+          {featureShowcase.description}
+        </p>
       </div>
 
-      {/* Grid: Left Column Tabs vs Right Column Live Visualizer */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        
-        {/* Left: Tab Selectors */}
-        <div className="lg:col-span-5 flex flex-col justify-start divide-y divide-card-border border-t border-b border-card-border">
-          {features.map((cap, idx) => {
-            const isActive = activeIndex === idx;
+      {/* Main Terminal & Pipeline Showcase */}
+      <div className="border border-card-border bg-card overflow-hidden shadow-2xl">
+        {/* Top Command Selector Tabs */}
+        <div className="border-b border-card-border bg-pre-bg/80 flex flex-wrap items-stretch overflow-x-auto scrollbar-none">
+          {featurePipeline.map((item, idx) => {
+            const isActive = activeTab === idx;
             return (
               <button
-                key={cap.title}
-                onClick={() => handleSelectTab(idx)}
-                className={`w-full text-left py-5 transition-all flex items-start gap-4 focus:outline-none cursor-pointer group relative ${isActive ? "text-foreground font-bold" : "text-muted hover:text-foreground"}`}
+                key={item.id}
+                onClick={() => setActiveTab(idx)}
                 type="button"
+                className={`
+                  group relative flex items-center gap-3 px-5 py-3.5 text-xs font-mono transition-all cursor-pointer border-r border-card-border
+                  ${isActive ? "bg-card text-foreground font-semibold" : "text-muted hover:text-foreground hover:bg-card/50"}
+                `}
               >
+                {/* Active indicator bar on top */}
                 {isActive && (
-                  <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-foreground rounded-full" />
+                  <motion.div
+                    layoutId="activeTabIndicator"
+                    className="absolute top-0 left-0 right-0 h-[2px] bg-foreground"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
                 )}
-                <span className={`font-mono text-[10px] pl-2 ${isActive ? "text-foreground font-bold" : "text-muted/60"}`}>
-                  0{idx + 1}
+                <span className="text-[10px] text-muted/60">0{idx + 1}</span>
+                <span className="truncate">{item.badge}</span>
+                <span className="text-[9px] px-1.5 py-0.5 rounded border border-card-border bg-pre-bg text-muted/80 hidden sm:inline-block">
+                  {item.cmd.split(" ")[1]}
                 </span>
-                <div className="space-y-1.5 pr-2">
-                  <h3 className="text-sm font-bold font-mono tracking-tight flex items-center gap-2">
-                    {cap.title}
-                    <span className="text-[9px] font-normal text-muted font-mono px-1.5 py-0.5 rounded bg-pre-bg border border-card-border">
-                      {cap.accent}
-                    </span>
-                  </h3>
-                  {isActive && (
-                    <p className="text-xs text-muted leading-relaxed font-sans mt-1.5 transition-all">
-                      {cap.description}
-                    </p>
-                  )}
-                </div>
               </button>
             );
           })}
         </div>
 
-        {/* Right: Live Visualizer Shell */}
-        <div className="lg:col-span-7 flex flex-col justify-between rounded-lg border border-card-border bg-card p-6 min-h-[340px] relative overflow-hidden">
-          {/* Visualizer header */}
-          <div className="flex items-center justify-between border-b border-card-border pb-3 mb-4 select-none">
-            <span className="text-[10px] font-mono text-muted tracking-wider">
-              interactive_console_output
-            </span>
-            <span className="text-[10px] font-mono text-muted/60">
-              features[{activeIndex}]
-            </span>
+        {/* Console / Terminal Body */}
+        <div className="p-6 sm:p-8 space-y-6">
+          {/* Active Command Bar with Copy Button */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-card-border">
+            <div className="flex items-center gap-3 font-mono text-xs overflow-x-auto scrollbar-none">
+              <span className="text-muted/60 select-none">$</span>
+              <span className="text-foreground font-bold whitespace-nowrap">{current.cmd}</span>
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <button
+                onClick={handleCopyCommand}
+                type="button"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-mono border border-card-border bg-pre-bg hover:bg-card-hover text-foreground transition-all active:scale-[0.97] cursor-pointer"
+                title="Copy CLI command"
+              >
+                <span className="material-symbols-outlined text-[13px]">
+                  {copied ? "check" : "content_copy"}
+                </span>
+                <span>{copied ? "Copied" : "Copy"}</span>
+              </button>
+            </div>
           </div>
 
-          {/* Render the specific visualizer depending on activeIndex */}
-          <div className="flex-grow flex items-center justify-center p-2">
-            <ActiveVisualizer index={activeIndex} />
-          </div>
+          {/* Animate output buffer changes */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+            >
+              {/* Left description column */}
+              <div className="lg:col-span-4 space-y-4">
+                <div className="space-y-1.5">
+                  <h3 className="text-lg font-bold tracking-tight text-foreground font-sans">
+                    {current.title}
+                  </h3>
+                  <p className="text-xs text-muted leading-relaxed font-sans">
+                    {current.tagline}
+                  </p>
+                </div>
+
+                {/* Stat pills */}
+                <div className="space-y-2 pt-2">
+                  {current.stats.map((st) => (
+                    <div
+                      key={st.label}
+                      className="flex items-center justify-between p-2.5 bg-pre-bg border border-card-border font-mono text-[11px]"
+                    >
+                      <span className="text-muted">{st.label}</span>
+                      <span className="text-foreground font-semibold">{st.val}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Output Log Window */}
+              <div className="lg:col-span-8 rounded border border-card-border bg-pre-bg p-5 font-mono text-xs overflow-x-auto leading-relaxed space-y-2 select-text shadow-inner">
+                {current.id === "make" && <MakeOutput />}
+                {current.id === "impact" && <ImpactOutput />}
+                {current.id === "analyze" && <AnalyzeOutput />}
+                {current.id === "mcp" && <McpOutput />}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-
       </div>
     </section>
   );
 }
 
-function ActiveVisualizer({ index }) {
-  return <VisualizerContent key={index} index={index} />;
+/* ─── Command Outputs ─────────────────────────────────────────── */
+
+function MakeOutput() {
+  return (
+    <>
+      <div className="text-muted/60">
+        [tokencap] Indexing workspace tree (148 files)...
+      </div>
+      <div className="text-foreground">
+        <span className="text-emerald-400">✓</span> Parsed AST graph in <span className="font-bold">82ms</span>
+      </div>
+      <div className="text-foreground">
+        <span className="text-emerald-400">✓</span> Ranked 24 relevant context files (Git staged & diff priority)
+      </div>
+      <div className="text-foreground">
+        <span className="text-emerald-400">✓</span> Scrubbed 4 secrets (OpenAI API key, AWS secret, GitHub PAT)
+      </div>
+      <div className="pt-2 text-muted border-t border-card-border space-y-1">
+        <div className="flex items-center justify-between text-foreground">
+          <span>→ Created <span className="font-bold text-foreground">TOKENCAP.md</span></span>
+          <span className="text-muted text-[11px]">38.2 KB · 9,450 tokens</span>
+        </div>
+        <div className="flex items-center justify-between text-foreground">
+          <span>→ Created <span className="font-bold text-foreground">TOKENCAP_GRAPH.md</span></span>
+          <span className="text-muted text-[11px]">14.1 KB · 3,520 tokens</span>
+        </div>
+        <div className="flex items-center justify-between text-foreground">
+          <span>→ Created <span className="font-bold text-foreground">TOKENCAP_MEMORY.md</span></span>
+          <span className="text-muted text-[11px]">6.8 KB · 1,700 tokens</span>
+        </div>
+      </div>
+      <div className="pt-2 text-[11px] text-foreground font-semibold border-t border-card-border flex items-center justify-between">
+        <span className="text-muted">Total context packaged:</span>
+        <span className="text-emerald-400">14,670 tokens (12.2× reduction from 820K)</span>
+      </div>
+    </>
+  );
 }
 
-function VisualizerContent({ index }) {
-  const currentFeature = features[index] || {};
-  const title = currentFeature.title || "";
-
-  // 0. Token Savings Engine View (v1.6.0)
-  if (title.includes("Savings") || index === 0) {
-    return (
-      <div className="w-full max-w-sm font-mono text-xs space-y-4">
-        <div className="flex justify-between text-[10px] text-muted">
-          <span>VERIFIED BENCHMARK</span>
-          <span className="text-emerald-400 font-bold">12.2× CHEAPER</span>
+function ImpactOutput() {
+  return (
+    <>
+      <div className="text-muted/60">
+        [tokencap] Resolving symbol AST across workspace...
+      </div>
+      <div className="text-foreground">
+        Target: <span className="font-bold text-foreground">src/api/auth.rs:validate_token</span> [Function, Exported]
+      </div>
+      <div className="text-muted pt-1 space-y-1">
+        <div>Upstream Callers (Direct AST References):</div>
+        <div className="pl-3 text-foreground">
+          ↳ [direct] <span className="text-muted">src/routes/session.rs:login_handler</span> (L42:15)
         </div>
-        <div className="space-y-2.5">
-          <div className="space-y-1">
-            <div className="flex justify-between text-[10px] text-muted">
-              <span>Naive Grep-and-Read</span>
-              <span className="text-red-400 font-semibold">820,101 tokens ($2.05)</span>
-            </div>
-            <div className="w-full bg-pre-bg h-2.5 rounded-full overflow-hidden border border-card-border">
-              <div className="bg-red-500/60 h-full w-full rounded-full" />
-            </div>
+        <div className="pl-3 text-foreground">
+          ↳ [direct] <span className="text-muted">src/middleware/jwt.rs:verify_request</span> (L88:9)
+        </div>
+        <div className="pl-3 text-foreground">
+          ↳ [import] <span className="text-muted">src/server.rs:Router::dispatch</span> (L120:5)
+        </div>
+      </div>
+      <div className="pt-2 text-[11px] border-t border-card-border flex items-center justify-between text-foreground">
+        <span className="text-muted">Impact resolution:</span>
+        <span>3 files impacted · 18 callers · <span className="text-emerald-400">0 false positives</span></span>
+      </div>
+    </>
+  );
+}
+
+function AnalyzeOutput() {
+  return (
+    <>
+      <div className="text-muted/60">
+        [tokencap] Intra-procedural taint flow analysis on src/routes/users.js...
+      </div>
+      <div className="space-y-1.5 pt-1">
+        <div className="text-foreground flex items-center gap-2">
+          <span className="px-1 py-0.5 rounded bg-amber-500/20 text-amber-400 text-[10px] font-bold">SOURCE</span>
+          <span>req.query.id (L18:12)</span>
+          <span className="text-muted">→</span>
+          <span className="text-emerald-400 font-bold">escapeSql()</span>
+          <span className="text-muted">→</span>
+          <span className="text-emerald-400">[CLEARED]</span>
+        </div>
+        <div className="text-foreground flex items-center gap-2">
+          <span className="px-1 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">SANITY</span>
+          <span>req.body.payload (L34:10)</span>
+          <span className="text-muted">→</span>
+          <span className="text-muted">db.execute() (L48:4)</span>
+          <span className="text-muted">→</span>
+          <span className="text-emerald-400">[VERIFIED SAFE]</span>
+        </div>
+      </div>
+      <div className="pt-2 text-muted border-t border-card-border space-y-1">
+        <div>[SCHEMA] Extracted 6 DDL tables from schema.sql:</div>
+        <div className="pl-3 text-foreground">
+          users, subscriptions, api_keys, team_members, invoices, sessions
+        </div>
+      </div>
+      <div className="pt-2 text-[11px] border-t border-card-border flex items-center justify-between text-foreground">
+        <span className="text-muted">Static security audit:</span>
+        <span className="text-emerald-400">0 vulnerabilities · 100% offline static scan</span>
+      </div>
+    </>
+  );
+}
+
+function McpOutput() {
+  return (
+    <>
+      <div className="text-muted/60">
+        [tokencap] Starting local MCP protocol server in stdio mode...
+      </div>
+      <div className="text-foreground">
+        <span className="text-emerald-400">✓</span> Daemon active on stdio (PID 38492) · <span className="font-bold">11 tools registered</span>
+      </div>
+      <div className="text-muted pt-1 space-y-1">
+        <div>Auto-wired agent configurations:</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-2 pt-1 text-foreground">
+          <div className="flex items-center gap-1.5">
+            <span className="text-emerald-400">✓</span> .cursor/rules/tokencap.mdc
           </div>
-          <div className="space-y-1">
-            <div className="flex justify-between text-[10px] text-muted">
-              <span>TokenCap Capsule</span>
-              <span className="text-emerald-400 font-bold">46,337 tokens ($0.11)</span>
-            </div>
-            <div className="w-full bg-pre-bg h-2.5 rounded-full overflow-hidden border border-card-border">
-              <motion.div
-                className="bg-emerald-400 h-full rounded-full"
-                animate={{ width: ["8%", "10%", "8%"] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-emerald-400">✓</span> CLAUDE.md
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-emerald-400">✓</span> .windsurf/rules/tokencap.md
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-emerald-400">✓</span> AGENTS.md
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-emerald-400">✓</span> .clinerules
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-emerald-400">✓</span> copilot-instructions.md
           </div>
         </div>
-        <div className="flex justify-between text-[10px] pt-2 border-t border-card-border/50 text-muted">
-          <span>94.3% COST REDUCTION</span>
-          <span className="text-foreground">SAVINGS.JSON PERSISTED</span>
-        </div>
       </div>
-    );
-  }
-
-  // 1. Multi-Host Pointers View (v1.6.0)
-  if (title.includes("Pointers") || title.includes("Host") || index === 1) {
-    return (
-      <div className="w-full max-w-sm font-mono text-xs space-y-3">
-        <div className="flex justify-between text-[10px] text-muted">
-          <span>HOST INTEGRATIONS</span>
-          <span className="text-cyan-400 font-bold">AUTO-POINTERS</span>
-        </div>
-        <div className="grid grid-cols-2 gap-1.5 text-[10px]">
-          {["AGENTS.md", "CLAUDE.md", ".cursor/rules", ".windsurf/rules", ".clinerules", "copilot-instructions"].map((host) => (
-            <div key={host} className="flex items-center gap-1.5 p-1.5 bg-pre-bg border border-card-border rounded">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              <span className="text-foreground truncate">{host}</span>
-            </div>
-          ))}
-        </div>
-        <div className="text-[10px] text-center text-muted pt-1">
-          → Points to <span className="text-emerald-400 font-bold">.tokencap/agent/START_HERE.md</span>
-        </div>
+      <div className="pt-2 text-[11px] border-t border-card-border flex items-center justify-between text-foreground">
+        <span className="text-muted">Watching filesystem:</span>
+        <span className="text-foreground">Active watcher on 148 files (debounce 30s)</span>
       </div>
-    );
-  }
-
-  // 2. Local MCP Service View (SVG style)
-  if (title.includes("MCP") || index === 2) {
-    return (
-      <div className="w-full flex flex-col items-center justify-center font-mono">
-        <svg viewBox="0 0 300 160" className="w-full max-w-[340px] h-auto" fill="none">
-          {/* AI Host Node */}
-          <g transform="translate(20, 50)">
-            <rect width="65" height="45" rx="5" className="fill-pre-bg stroke-card-border" strokeWidth="1.5" />
-            <text x="32.5" y="27" className="fill-foreground font-bold" fontSize="8.5" textAnchor="middle">AI Host</text>
-          </g>
-
-          {/* Stdio Connection Channels */}
-          <line x1="85" y1="65" x2="215" y2="65" stroke="currentColor" className="text-card-border" strokeWidth="1.5" strokeDasharray="3,3" />
-          <line x1="85" y1="80" x2="215" y2="80" stroke="currentColor" className="text-card-border" strokeWidth="1.5" strokeDasharray="3,3" />
-
-          {/* Request packet (Host -> Server) */}
-          <motion.circle
-            cy="65"
-            r="3.5"
-            className="fill-emerald-400"
-            animate={{ cx: [85, 215], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          {/* Response packet (Server -> Host) */}
-          <motion.circle
-            cy="80"
-            r="3.5"
-            className="fill-cyan-400"
-            animate={{ cx: [215, 85], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.6, delay: 0.8, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          {/* MCP Server Node */}
-          <motion.g
-            transform="translate(215, 50)"
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 1.6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-            style={{ transformOrigin: "247px 72px" }}
-          >
-            <rect width="65" height="45" rx="5" className="fill-pre-bg stroke-card-border" strokeWidth="1.5" />
-            <text x="32.5" y="27" className="fill-foreground font-bold" fontSize="8.5" textAnchor="middle">MCP Server</text>
-          </motion.g>
-
-          {/* Labels */}
-          <text x="150" y="58" className="fill-muted font-mono" fontSize="7" textAnchor="middle">stdio.stdin</text>
-          <text x="150" y="93" className="fill-muted font-mono" fontSize="7" textAnchor="middle">stdio.stdout</text>
-
-          {/* Status text */}
-          <text x="150" y="135" className="fill-muted font-bold font-mono" fontSize="8" textAnchor="middle">
-            11 tools active · 0-2ms latency
-          </text>
-        </svg>
-      </div>
-    );
-  }
-
-  // 3. Local-first Privacy View (SVG style)
-  if (title.includes("Local-first") || index === 3) {
-    return (
-      <div className="w-full flex flex-col items-center justify-center font-mono">
-        <svg viewBox="0 0 300 160" className="w-full max-w-[340px] h-auto" fill="none">
-          {/* My Machine Node */}
-          <g transform="translate(20, 50)">
-            <rect width="70" height="48" rx="6" className="fill-pre-bg stroke-emerald-500/50" strokeWidth="1.5" />
-            <text x="35" y="28" className="fill-foreground font-bold" fontSize="8.5" textAnchor="middle">My Machine</text>
-            <text x="35" y="39" className="fill-emerald-400 font-mono font-bold" fontSize="6.5" textAnchor="middle">● LOCAL DATA</text>
-
-            {/* Local Ring Pulse */}
-            <motion.rect
-              x="0"
-              y="0"
-              width="70"
-              height="48"
-              rx="6"
-              stroke="#10b981"
-              strokeWidth="1.5"
-              fill="none"
-              animate={{ scale: [1, 1.12, 1.2], opacity: [0.6, 0.2, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-              style={{ transformOrigin: "35px 24px" }}
-            />
-          </g>
-
-          {/* Connection line to Cloud */}
-          <line x1="90" y1="74" x2="210" y2="74" stroke="currentColor" className="text-card-border" strokeWidth="1.5" strokeDasharray="4,4" />
-
-          {/* Firewall Shield Gate */}
-          <g transform="translate(150, 74)">
-            <circle r="10" className="fill-card stroke-red-500/80" strokeWidth="1.5" />
-            <path d="M -4 -4 L 4 4 M 4 -4 L -4 4" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round" />
-          </g>
-
-          {/* BLOCKED Label cleanly below Firewall Gate */}
-          <text x="150" y="100" className="fill-red-500 font-bold font-mono" fontSize="7.5" textAnchor="middle">
-            BLOCKED
-          </text>
-
-          {/* Leak particle traveling right, blocked at x=150 */}
-          <motion.circle
-            cy="74"
-            r="3"
-            className="fill-red-400"
-            animate={{ cx: [90, 145, 145], opacity: [0, 1, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          {/* Cloud Node */}
-          <g transform="translate(210, 50)">
-            <rect width="70" height="48" rx="6" className="fill-pre-bg/40 stroke-card-border" strokeWidth="1.2" />
-            <text x="35" y="28" className="fill-muted font-bold" fontSize="8.5" textAnchor="middle">Cloud</text>
-            <text x="35" y="39" className="fill-muted/70 font-mono" fontSize="7" textAnchor="middle">0 Uploads</text>
-          </g>
-
-          {/* Status text */}
-          <text x="150" y="135" className="fill-muted font-bold font-mono" fontSize="8" textAnchor="middle">
-            Data never leaves your machine.
-          </text>
-        </svg>
-      </div>
-    );
-  }
-
-  // 4. AI-ready Output View
-  if (title.includes("AI-ready") || index === 4) {
-    return (
-      <div className="w-full max-w-sm font-mono text-xs space-y-4">
-        <div className="flex justify-between text-[10px] text-muted">
-          <span>CLAUDE-3.5-SONNET PROFILE</span>
-          <span>BUDGET: 250,000 TOKENS</span>
-        </div>
-
-        {/* Filling gauge bar */}
-        <div className="w-full bg-pre-bg h-3.5 rounded-full overflow-hidden border border-card-border p-0.5">
-          <motion.div
-            className="bg-gradient-to-r from-emerald-500 via-cyan-400 to-indigo-400 h-full rounded-full"
-            animate={{ width: ["15%", "85%"] }}
-            transition={{ duration: 2.2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-          />
-        </div>
-
-        <div className="flex justify-between text-xs pt-1">
-          <span className="text-muted">SNAPSHOT PACKSIZE:</span>
-          <span className="text-foreground font-bold font-mono">94,250 tokens</span>
-        </div>
-      </div>
-    );
-  }
-
-  // 5. Git-aware View
-  if (title.includes("Git") || index === 5) {
-    return (
-      <div className="w-full max-w-sm font-mono text-xs space-y-3">
-        <motion.div
-          animate={{ y: [0, 3, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex items-center justify-between border border-emerald-500/40 bg-pre-bg p-3 rounded-lg shadow-sm"
-        >
-          <span className="text-foreground font-bold flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            jwtService.ts
-          </span>
-          <span className="text-[9px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
-            STAGED (Rank 1)
-          </span>
-        </motion.div>
-
-        <div className="flex items-center justify-between border border-card-border bg-pre-bg p-3 rounded-lg shadow-sm">
-          <span className="text-foreground/90">stripe.go</span>
-          <span className="text-[9px] px-2 py-0.5 rounded bg-card text-muted border border-card-border">
-            CHANGED (Rank 2)
-          </span>
-        </div>
-
-        <div className="flex items-center justify-between border border-card-border bg-pre-bg/40 p-3 rounded-lg opacity-60">
-          <span className="text-muted">package.json</span>
-          <span className="text-[9px] text-muted">UNCHANGED</span>
-        </div>
-      </div>
-    );
-  }
-
-  // 6. Secret Redaction View
-  if (title.includes("Secret") || index === 6) {
-    return (
-      <div className="w-full max-w-sm font-mono text-left text-xs bg-pre-bg border border-card-border rounded-lg p-5 relative min-h-[140px] flex flex-col justify-center overflow-hidden shadow-inner">
-        {/* Redacting scanner line */}
-        <motion.div
-          className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent pointer-events-none z-20"
-          animate={{ top: ["15%", "85%"] }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        />
-        
-        <div className="space-y-2 text-muted select-none">
-          <div>const dbConfig = &#123;</div>
-          <div className="pl-4">host: &quot;localhost&quot;,</div>
-          <div className="pl-4 relative flex items-center gap-1">
-            <span>apiKey: &quot;</span>
-            <span className="relative inline-block overflow-hidden rounded px-0.5 py-0.5">
-              {/* Raw sensitive key text */}
-              <span className="text-foreground/80 font-bold font-mono tracking-tight">AKIAIOSFODNN7EXAMPLE</span>
-              
-              {/* 100% Opaque solid blackout redaction strip */}
-              <motion.span
-                className="absolute inset-y-0.5 inset-x-0 bg-zinc-950 dark:bg-black border border-red-500/60 rounded z-10 shadow-sm"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: [0, 1, 1, 0] }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-                style={{ transformOrigin: "left" }}
-              />
-            </span>
-            <span>&quot;</span>
-          </div>
-          <div>&#125;;</div>
-        </div>
-      </div>
-    );
-  }
-
-  return null;
+    </>
+  );
 }
 
 export { FeaturesPreview };

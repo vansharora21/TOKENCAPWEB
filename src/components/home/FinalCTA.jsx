@@ -38,91 +38,75 @@ function FinalCTA() {
 
   return (
     <section className="py-12 relative">
-      <div className="relative w-full max-w-3xl mx-auto rounded-xl border border-card-border bg-card/45 p-8 sm:p-12 overflow-hidden text-center group">
+      {/* Wide Landscape Rectangular Container */}
+      <div className="relative w-full max-w-4xl mx-auto rounded-2xl border border-zinc-800 bg-black p-8 sm:p-14 overflow-hidden text-center group shadow-2xl">
         
-        {/* Abstract Wave CTA Background Image */}
+        {/* Abstract Wave Background */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-30 mix-blend-luminosity pointer-events-none transition-opacity duration-500 group-hover:opacity-35"
+          className="absolute inset-0 bg-cover bg-center opacity-35 pointer-events-none transition-opacity duration-500 group-hover:opacity-45"
           style={{ backgroundImage: "url('/cta-bg.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 pointer-events-none" />
 
-        {/* Content */}
-        <div className="relative z-10 space-y-6 max-w-lg mx-auto">
+        {/* Content - 100% High Visibility Crisp Typography */}
+        <div className="relative z-10 space-y-6 max-w-lg mx-auto flex flex-col items-center justify-center">
           
-          {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-card-border bg-pre-bg text-muted font-mono text-[9px] uppercase tracking-wider mx-auto">
-            <span className="w-1 h-1 rounded-full bg-zinc-550 animate-pulse"></span>
-            FAST INTEGRATION
-          </div>
-
           {/* Title */}
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-tight font-sans">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight font-sans">
             Ready to sync?
           </h2>
 
           {/* Description */}
-          <p className="text-muted text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+          <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed max-w-md mx-auto font-sans">
             Stop copy-pasting directories. Automate your LLM context packaging in one command and build 10x faster.
           </p>
 
-          {/* Copyable Terminal Input Box */}
-          <div className="w-full max-w-md mx-auto rounded-lg border border-card-border bg-pre-bg overflow-hidden shadow-xl mt-6 hover:border-card-hover transition-all duration-300 group/terminal">
-            {/* Terminal Window Header */}
-            <div className="bg-tab-inactive px-4 py-2 border-b border-card-border flex items-center justify-between text-[10px] text-muted select-none">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 rounded-full bg-card-border"></div>
-                <div className="w-2 h-2 rounded-full bg-card-border"></div>
-                <div className="w-2 h-2 rounded-full bg-card-border"></div>
-              </div>
-              <span className="font-mono text-muted/60">bash</span>
+          {/* Copyable Command Input Box - Clean single-line bar without bash header */}
+          <div className="w-full max-w-md mx-auto rounded-xl border border-zinc-700 bg-zinc-900/90 p-3.5 sm:p-4 font-mono text-xs flex items-center justify-between gap-4 shadow-xl hover:border-zinc-500 transition-all duration-300">
+            <div className="flex items-center gap-2.5 overflow-x-auto scrollbar-none text-left min-w-0">
+              <span className="text-zinc-400 select-none font-bold">$</span>
+              <span className="text-white font-semibold whitespace-nowrap select-all">{command}</span>
             </div>
             
-            {/* Terminal Input Block */}
-            <div className="p-4 font-mono text-xs flex items-center justify-between gap-4">
-              <div className="flex gap-2 overflow-x-auto scrollbar-none text-left">
-                <span className="text-muted select-none font-bold">$</span>
-                <span className="text-foreground whitespace-nowrap select-all">{command}</span>
-              </div>
-              
-              <button
-                onClick={handleCopy}
-                className="flex items-center gap-1.5 rounded bg-card hover:bg-card-hover text-foreground border border-card-border px-3.5 py-1.5 text-[10px] font-semibold transition-all duration-200 active:scale-[0.98] cursor-pointer focus-visible:outline-2 focus-visible:outline-zinc-500 shrink-0"
-                aria-label={copied ? "Copied to clipboard" : "Copy install command"}
-              >
-                <span className="material-symbols-outlined text-[12px]">
-                  {copied ? "check" : "content_copy"}
-                </span>
-                <span>{copied ? "Copied" : "Copy"}</span>
-              </button>
-            </div>
+            <button
+              onClick={handleCopy}
+              className="flex items-center justify-center w-8 h-8 rounded-lg bg-white text-black hover:bg-zinc-200 transition-all duration-200 active:scale-[0.95] cursor-pointer shrink-0 shadow-md"
+              aria-label={copied ? "Copied to clipboard" : "Copy install command"}
+              title={copied ? "Copied!" : "Copy command"}
+            >
+              <span className="material-symbols-outlined text-[16px]">
+                {copied ? "check" : "content_copy"}
+              </span>
+            </button>
           </div>
 
           {/* Quickstart Guide Link */}
-          <div className="pt-4">
+          <div className="pt-2">
             <Link
               href="/docs#getting-started"
-              className="inline-flex items-center gap-1.5 text-[11px] text-muted hover:text-foreground transition-colors underline underline-offset-4 decoration-card-border font-medium"
+              className="inline-flex items-center gap-1.5 text-xs text-white font-medium hover:text-zinc-300 transition-colors underline underline-offset-4 decoration-zinc-600"
             >
               <span>View the Quickstart Guide</span>
-              <span className="material-symbols-outlined text-[11px] no-underline">arrow_forward</span>
+              <span className="material-symbols-outlined text-[13px] no-underline">arrow_forward</span>
             </Link>
           </div>
 
-          <a
-            href="https://www.producthunt.com/products/tokencap-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-tokencap-2"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex rounded-md focus-visible:outline-2 focus-visible:outline-zinc-400 focus-visible:outline-offset-4"
-            aria-label="View TokenCap on Product Hunt"
-          >
-            <img
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1218192&theme=dark&t=1786476363151"
-              alt="TokenCap - Give AI coding agents the context they actually need. | Product Hunt"
-              width="250"
-              height="54"
-            />
-          </a>
+          {/* Product Hunt Badge */}
+          <div className="pt-1">
+            <a
+              href="https://www.producthunt.com/products/tokencap-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-tokencap-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-md focus-visible:outline-2 focus-visible:outline-zinc-400 focus-visible:outline-offset-4"
+              aria-label="View TokenCap on Product Hunt"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1218192&theme=dark&t=1786476363151"
+                alt="TokenCap - Give AI coding agents the context they actually need. | Product Hunt"
+                width="240"
+                height="50"
+              />
+            </a>
+          </div>
 
         </div>
 

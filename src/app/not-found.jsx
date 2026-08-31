@@ -5,14 +5,13 @@ export default function NotFound() {
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 py-24 text-center">
       <div className="space-y-6 max-w-md">
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-mono text-[10px] uppercase tracking-wider font-semibold">
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
-          404
+        <div className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-muted">
+          404 · NOT FOUND
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white font-vorcas">
-          Page not found
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white font-sans">
+          404 - Page Not Found
         </h1>
 
         {/* Description */}

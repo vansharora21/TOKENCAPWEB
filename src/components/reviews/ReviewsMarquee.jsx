@@ -17,13 +17,16 @@ async function ReviewsMarquee() {
     const res = await fetch(`${base}/api/reviews`, {
       next: { revalidate: 3600 },
     });
-    if (res.ok) reviews = await res.json();
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) reviews = data;
+    }
   } catch {
     reviews = [];
   }
 
   // Filter to reviews that have a suggestion to show
-  const withSuggestions = reviews.filter((r) => r.suggestion);
+  const withSuggestions = Array.isArray(reviews) ? reviews.filter((r) => r && r.suggestion) : [];
 
   if (withSuggestions.length === 0) {
     return (

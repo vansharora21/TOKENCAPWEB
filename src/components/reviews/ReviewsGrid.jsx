@@ -11,7 +11,10 @@ async function ReviewsGrid() {
     const res = await fetch(`${base}/api/reviews`, {
       next: { revalidate: 3600 },
     });
-    if (res.ok) reviews = await res.json();
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) reviews = data;
+    }
   } catch {
     reviews = [];
   }
@@ -23,7 +26,7 @@ async function ReviewsGrid() {
           <p className="text-xs font-mono uppercase tracking-[0.2em] text-muted">
             From the community
           </p>
-          <h2 className="text-2xl font-bold tracking-tight text-foreground font-vorcas">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground font-sans">
             What developers say
           </h2>
         </div>

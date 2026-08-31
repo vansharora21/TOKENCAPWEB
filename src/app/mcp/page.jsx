@@ -92,11 +92,10 @@ export default function McpPage() {
         <div className="max-w-4xl space-y-16">
           {/* Header */}
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              v2.3.0 Local MCP Service
+            <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
+              V2.3.0 LOCAL MCP SERVICE
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-display">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-sans">
               Model Context Protocol (MCP) Guide
             </h1>
             <p className="text-sm leading-relaxed text-muted mb-8">

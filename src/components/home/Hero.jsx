@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { InstallCliButton } from "@/components/shared/InstallCliButton";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,15 +29,6 @@ const itemVariants = {
 };
 
 function Hero() {
-  const [copied, setCopied] = useState(false);
-  const commandText = "npm install -g tokencap";
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(commandText);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <motion.section 
       variants={containerVariants}
@@ -47,7 +39,7 @@ function Hero() {
       {/* Title */}
       <motion.h1 
         variants={itemVariants}
-        className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] font-display"
+        className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] font-sans"
       >
         Your codebase. <br />
         Compressed. <br />
@@ -57,7 +49,7 @@ function Hero() {
       {/* Description */}
       <motion.p 
         variants={itemVariants}
-        className="mt-6 text-sm sm:text-base text-muted leading-relaxed max-w-md"
+        className="mt-6 text-sm sm:text-base text-muted leading-relaxed max-w-md font-sans"
       >
         Stop wasting tokens. TokenCap snapshots your workspace into structured, AI-ready prompts with files, imports, Git context, and invariants.
       </motion.p>
@@ -65,28 +57,15 @@ function Hero() {
       {/* Action Block */}
       <motion.div 
         variants={itemVariants}
-        className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full"
+        className="mt-8 flex flex-wrap items-center gap-3 w-full"
       >
-        {/* Copy command input box */}
-        <div className="flex items-center bg-pre-bg border border-card-border rounded-lg overflow-hidden flex-grow max-w-xs transition-colors hover:border-card-hover">
-          <span className="text-muted font-mono text-xs pl-3.5 select-none">$</span>
-          <input 
-            type="text" 
-            readOnly 
-            value={commandText}
-            className="bg-transparent border-none text-foreground/90 font-mono text-[11px] px-2 py-3 focus:outline-none flex-grow w-full select-all"
-          />
-          <button
-            onClick={handleCopy}
-            className="text-muted hover:text-foreground px-3.5 flex items-center justify-center border-l border-card-border transition-colors cursor-pointer"
-            title="Copy command"
-            type="button"
-          >
-            <span className="material-symbols-outlined text-sm">
-              {copied ? "check" : "content_copy"}
-            </span>
-          </button>
-        </div>
+        {/* Install Button with Toast Notification */}
+        <InstallCliButton
+          command="npm install -g tokencap"
+          label="Install"
+          showCommandOnIdle={false}
+          className="inline-flex items-center justify-center gap-1.5 px-5 py-3 border border-card-border bg-pre-bg hover:bg-card-hover text-foreground rounded-lg text-xs font-semibold font-sans transition-all active:scale-[0.98] cursor-pointer shadow-sm"
+        />
 
         <Link
           href="/reviews"

@@ -1,5 +1,6 @@
 import React from "react";
 import { PageWrapper } from "@/components/layout/PageWrapper";
+import { InstallCliButton } from "@/components/shared/InstallCliButton";
 import { CopyButton } from "@/components/shared/CopyButton";
 import { buildMetadata } from "@/lib/seo";
 import { ReviewsMarquee } from "@/components/reviews/ReviewsMarquee";
@@ -93,13 +94,10 @@ export default function DownloadsPage() {
     <PageWrapper className="pt-24 pb-20 max-w-7xl mx-auto px-6 font-sans">
       {/* Header */}
       <header className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-pre-bg border border-card-border rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span className="text-[10px] font-mono font-medium text-muted uppercase tracking-wider">
-            Downloads & Extensions
-          </span>
+        <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
+          DOWNLOADS & EXTENSIONS
         </div>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground font-display uppercase">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground font-sans">
           Install TokenCap
         </h1>
         <p className="text-sm leading-relaxed text-muted">
@@ -110,7 +108,6 @@ export default function DownloadsPage() {
       {/* Available Platforms Section */}
       <section className="mb-20 space-y-8">
         <div className="flex items-center gap-2.5 border-b border-card-border pb-3">
-          <span className="material-symbols-outlined text-muted text-sm">check_circle</span>
           <h2 className="text-lg font-bold text-foreground font-mono">Available Platforms</h2>
         </div>
 
@@ -135,10 +132,7 @@ export default function DownloadsPage() {
 
               <div className="mt-8 space-y-3">
                 {p.command && (
-                  <div className="bg-pre-bg border border-card-border rounded px-3 py-2 flex items-center justify-between gap-3 font-mono text-[11px] text-foreground/90">
-                    <span className="truncate select-all">{p.command}</span>
-                    <CopyButton text={p.command} />
-                  </div>
+                  <InstallCliButton command={p.command} label="Install via npm" />
                 )}
                 {p.link && (
                   <a
@@ -160,7 +154,6 @@ export default function DownloadsPage() {
       {/* Planned MCP Integrations */}
       <section className="space-y-8 mb-20">
         <div className="flex items-center gap-2.5 border-b border-card-border pb-3">
-          <span className="material-symbols-outlined text-muted text-sm">hub</span>
           <h2 className="text-lg font-bold text-foreground font-mono">MCP Integrations</h2>
         </div>
 
@@ -168,22 +161,22 @@ export default function DownloadsPage() {
           {integrationPlatforms.map((p) => (
             <div
               key={p.id}
-              className="p-6 bg-card border border-card-border rounded-lg flex flex-col justify-between h-full"
+              className="p-6 bg-card border border-card-border rounded-lg flex flex-col justify-between h-full hover:border-card-hover transition-colors"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-card-border">
-                  <div className="text-muted/80">{p.icon}</div>
-                  <span className="text-[9px] font-mono text-emerald-400 px-1.5 py-0.5 rounded bg-pre-bg border border-emerald-500/30">
-                    {p.label}
+                  <div className="text-muted">{p.icon}</div>
+                  <span className="text-[9px] font-mono text-muted px-1.5 py-0.5 rounded bg-pre-bg border border-card-border">
+                    stdio MCP
                   </span>
                 </div>
                 <h3 className="text-base font-bold text-foreground font-mono">{p.name}</h3>
                 <p className="text-xs text-muted leading-relaxed">{p.description}</p>
               </div>
 
-              <div className="mt-8 flex items-center gap-2 text-[10px] text-emerald-400 font-mono">
-                <span className="material-symbols-outlined text-[12px]">check_circle</span>
-                <span>Active Endpoint</span>
+              <div className="mt-8 pt-3 border-t border-card-border/60 flex items-center justify-between font-mono text-[10px] text-muted">
+                <span>Auto-discovery</span>
+                <span className="text-foreground/80 font-bold">11 tools</span>
               </div>
             </div>
           ))}

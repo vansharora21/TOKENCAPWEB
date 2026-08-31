@@ -85,11 +85,10 @@ export default function DocsPage() {
         <div className="max-w-3xl">
           {/* Header */}
           <header className="mb-8 border-b border-card-border pb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pre-bg border border-card-border text-muted text-xs font-mono mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Current Release: v2.3.0
+            <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
+              CURRENT RELEASE: V2.3.0
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-3 font-display uppercase">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-3 font-sans">
               TokenCap Documentation
             </h1>
             <p className="text-sm leading-relaxed text-muted">

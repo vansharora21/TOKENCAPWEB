@@ -113,7 +113,7 @@ export default function CliPage() {
             <div className="w-8 h-8 rounded bg-[#7c3aed]/10 flex items-center justify-center text-[#7c3aed] dark:text-[#d2bbff]">
               <span className="material-symbols-outlined text-sm">download</span>
             </div>
-            <h2 className="text-xl font-bold text-foreground font-vorcas">Install globally</h2>
+            <h2 className="text-xl font-bold text-foreground font-sans">Install globally</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted mb-4">
             Get started by installing the TokenCap CLI globally via npm. This provides the <code className="text-[#7c3aed] dark:text-[#d2bbff]">tokencap</code> executable.
@@ -413,7 +413,7 @@ export default function CliPage() {
         {/* Detailed Section: Config */}
         <section className="mb-16" id="config">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <h2 className="text-xl font-bold text-foreground font-vorcas">Configuration</h2>
+            <h2 className="text-xl font-bold text-foreground font-sans">Configuration</h2>
             <span className="bg-pre-bg px-3 py-1 rounded-full font-mono text-[12px] text-emerald-600 dark:text-[#4edea3] border border-card-border self-start sm:self-auto">
               .tokencap.json
             </span>
@@ -470,7 +470,7 @@ export default function CliPage() {
 
         {/* Table Section: CLI Options */}
         <section className="mb-16" id="options">
-          <h2 className="text-xl font-bold text-foreground mb-6 font-vorcas">CLI Options</h2>
+          <h2 className="text-xl font-bold text-foreground mb-6 font-sans">CLI Options</h2>
           <div className="overflow-x-auto border border-card-border rounded-xl bg-card/30">
             <table className="w-full text-left border-collapse">
               <thead className="bg-pre-bg">

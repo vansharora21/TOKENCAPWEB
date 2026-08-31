@@ -14,11 +14,10 @@ export default function VscodePage() {
       {/* Hero Section with VS Code Mockup */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#7c3aed] dark:text-[#d2bbff] font-mono text-[10px] uppercase tracking-wider font-semibold">
-            <span className="w-2 h-2 rounded-full bg-[#7c3aed] dark:bg-[#d2bbff] animate-pulse"></span>
-            V1.3.0 NOW AVAILABLE
+          <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#7c3aed] dark:text-[#d2bbff]">
+            V1.3.0 EXTENSION RELEASE
           </div>
-          <h1 className="text-5xl font-bold tracking-tight text-foreground leading-tight font-nerdropol">
+          <h1 className="text-5xl font-bold tracking-tight text-foreground leading-tight font-sans">
             The ultimate VS Code toolkit for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#d2bbff] dark:from-[#d2bbff] dark:to-[#7c3aed] anim-heading-gradient">snapshot precision.</span>
           </h1>
           <p className="text-muted text-base leading-relaxed">
@@ -150,7 +149,7 @@ export default function VscodePage() {
 
       {/* Feature Bento Grid */}
       <section className="mb-20">
-        <h2 className="text-2xl font-bold text-foreground mb-6 font-vorcas">Extension Core Capabilities</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-6 font-sans">Extension Core Capabilities</h2>
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           {/* Large Feature: Auto Capture */}
           <div className="md:col-span-4 glass-panel p-8 rounded-xl flex flex-col justify-between group hover:border-[#7c3aed]/40 dark:hover:border-[#d2bbff]/40 transition-all">
@@ -185,8 +184,8 @@ export default function VscodePage() {
                 Displays auto capture status, active profile, file counts, and last update timestamp in the status bar in real-time.
               </p>
             </div>
-            <div className="mt-6 h-12 bg-[#7c3aed]/10 border border-[#7c3aed]/25 rounded flex items-center justify-center gap-3 px-4 shrink-0">
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <div className="mt-6 h-12 bg-pre-bg border border-card-border rounded flex items-center justify-center gap-3 px-4 shrink-0">
+              <div className="w-2 h-2 rounded-full bg-foreground"></div>
               <span className="font-mono text-xs text-foreground">TokenCap • 12:34 PM</span>
             </div>
           </div>
@@ -238,7 +237,7 @@ export default function VscodePage() {
 
       {/* Installation Instructions */}
       <section className="bg-card border border-card-border rounded-xl p-12 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-foreground mb-6 font-vorcas">Ready to optimize?</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-foreground mb-6 font-sans">Ready to optimize?</h2>
         <div className="max-w-2xl mx-auto space-y-4">
           <div className="bg-pre-bg flex items-center px-4 py-3 rounded-lg border border-card-border font-mono text-[13px] group justify-between">
             <div className="flex gap-2">

@@ -36,7 +36,7 @@ function ProblemSection() {
           style={{ y: textY }}
           className="text-center mb-16 lg:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.15] font-vorcas anim-heading-reveal">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.15] font-sans anim-heading-reveal">
             Stop Fighting{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffb4ab] to-red-400 anim-heading-gradient">
               Context Drift.

@@ -1,6 +1,8 @@
 @import "../styles/animations.css";
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: 'Vorcas';
   src: url('/fonts/vorcas-regular.otf') format('opentype');
@@ -148,7 +150,7 @@ html.light .inner-glow {
 }
 
 .font-vorcas {
-  font-family: var(--font-vorcas), sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 .material-symbols-outlined {

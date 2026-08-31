@@ -16,10 +16,9 @@ export default function ReviewsPage() {
     >
       <div className="w-full max-w-lg">
         {/* Eyebrow */}
-        <div className="flex items-center gap-2 mb-10">
-          <div className="w-1.5 h-1.5 rounded-full bg-foreground" />
-          <span className="text-[10px] font-mono text-muted uppercase tracking-[0.25em]">
-            TokenCap · Review
+        <div className="mb-10">
+          <span className="text-[10px] font-mono font-bold text-muted uppercase tracking-[0.25em]">
+            TOKENCAP · REVIEW
           </span>
         </div>
 
