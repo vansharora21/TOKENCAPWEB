@@ -1,10 +1,18 @@
 [
   {
+    "version": "2.4.0",
+    "title": "Deeper & Broader — Full Language Depth, Schema Intelligence & Static Taint Flow",
+    "description": "Full Tier-1 call-graph resolution for Go, Rust, and Java; Vue/Svelte/Angular SFC component intelligence; SQL & GraphQL schema extraction with code links; intra-procedural JS/TS static taint flow analysis from sources to sinks; and a clean dist-only package build.",
+    "status": "shipped",
+    "source": "Release v2.4.0"
+  },
+  {
     "version": "2.3.0",
     "title": "Guided Change — Safe Refactoring, Test Intelligence & Local Feedback",
     "description": "Deterministic AST refactor transforms (rename & rm-dead), static test-to-symbol mapping with gap analysis, coverage report ingestion, and private agent feedback loops.",
     "status": "shipped",
     "source": "Release v2.3.0"
+
   },
   {
     "version": "2.2.0",

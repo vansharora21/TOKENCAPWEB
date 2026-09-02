@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.3.0 ENGINE
+            V2.4.0 ENGINE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,6 +127,25 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          {/* v2.4.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.4.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Deeper &amp; Broader — Full Language Depth, Schema Intelligence &amp; Static Taint Flow</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">August 30, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Full Tier-1 Go / Rust / Java</strong> — Promotes Go, Rust, and Java to full cross-file call-graph resolution with the same precision as JS/TS/Python. Ambiguous overloads are explicitly left unresolved rather than guessed.</li>
+              <li><strong>Vue / Svelte / Angular Intelligence</strong> — SFC component parsing for Vue and Svelte (<code>defineProps</code> / <code>props:</code> / <code>export let</code>) and Angular component analysis without additional WASM grammars.</li>
+              <li><strong>SQL &amp; GraphQL Schema Intelligence</strong> — <code>tokencap analyze schema</code> extracts tables and types from <code>CREATE TABLE</code> DDL and GraphQL type blocks, surfacing heuristic code links as evidence candidates.</li>
+              <li><strong>Static Taint Flow Analysis</strong> — <code>tokencap analyze taint</code> tracks intra-procedural JS/TS data flow from user-input sources to dangerous sinks (SQL / exec / fs) with sanitizer modeling.</li>
+              <li><strong>Evidence-Not-Verdict Reporting</strong> — Every analyzer explicitly counts what it cannot resolve rather than inventing an answer — unresolved renders, untracked cross-function flow, and overloaded symbols are labeled, not hidden.</li>
+              <li><strong>Clean Dist Package</strong> — Grammars and query files now ship inside <code>dist/</code>; the published npm package no longer requires <code>src/</code>.</li>
+            </ul>
+          </motion.div>
+
           {/* v2.3.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">

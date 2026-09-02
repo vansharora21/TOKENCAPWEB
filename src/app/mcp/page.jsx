@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v2.3.0)",
+  title: "TokenCap MCP Guide (v2.4.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -61,7 +61,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.3.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.4.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -93,7 +93,7 @@ export default function McpPage() {
           {/* Header */}
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
-              V2.3.0 LOCAL MCP SERVICE
+              V2.4.0 LOCAL MCP SERVICE
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-sans">
               Model Context Protocol (MCP) Guide
@@ -185,7 +185,7 @@ export default function McpPage() {
               </h2>
               <div className="bg-card border border-card-border rounded-lg p-6 text-xs text-muted space-y-4">
                 <p>
-                  In <strong>v2.3.0</strong>, TokenCap introduces plan-only safe refactoring (<code>tokencap_refactor_plan</code>) and static test-to-symbol intelligence (<code>tokencap_test_map</code>), alongside local Change Review packets and host-scoped agent pointers.
+                  In <strong>v2.4.0</strong>, TokenCap introduces plan-only safe refactoring (<code>tokencap_refactor_plan</code>) and static test-to-symbol intelligence (<code>tokencap_test_map</code>), alongside local Change Review packets and host-scoped agent pointers.
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted">
                   <li><strong className="text-foreground font-mono">Safe Refactor Plans:</strong> Query <code>tokencap_refactor_plan</code> over MCP to preview AST symbol renames and dead-code removal without risking un-reviewed disk modifications.</li>

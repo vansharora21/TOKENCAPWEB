@@ -1,5 +1,14 @@
 [
   {
+    "id": "tokencap-v24-release",
+    "title": "TokenCap v2.4.0 Is Now Ready: Deeper & Broader Language Intelligence",
+    "author": "Vansh Arora",
+    "date": "August 30, 2026",
+    "readTime": "4 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v2.4.0 promotes Go, Rust, and Java to full Tier-1 call-graph resolution, adds Vue/Svelte/Angular SFC component intelligence, SQL & GraphQL schema extraction, and intra-procedural JS/TS static taint flow analysis."
+  },
+  {
     "id": "tokencap-v23-release",
     "title": "TokenCap v2.3.0 Is Now Ready: Guided Change & Test Intelligence",
     "author": "Vansh Arora",
@@ -8,6 +17,7 @@
     "category": "Release",
     "excerpt": "TokenCap v2.3.0 introduces Guided Change — deterministic safe refactoring across the symbol graph, static test mapping and gap analysis, test coverage ingestion, and local-only agent feedback loops."
   },
+
   {
     "id": "tokencap-v22-release",
     "title": "TokenCap v2.2.0 Is Now Ready: Change Review & Ownership Signals",
