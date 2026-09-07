@@ -24,14 +24,24 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
-### 📁 Refactoring
+### 📁 Bridge
 
-#### 🔹 Guided Safe Refactoring Engine (v2.3.0)
-Deterministic, refuse-on-doubt symbol renaming across the AST call graph and safe uncalled dead code removal with byte-exact preservation guarantees outside edit ranges.
+#### 🔹 Local Loopback HTTP Bridge (v2.5.0)
+Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.
 
-> ⚙️ *Technical Detail:* Invoked via 'tokencap refactor rename <target> <new>' and 'tokencap refactor rm-dead <target>'. Dry-run by default; preview via 'tokencap_refactor_plan' MCP tool; requires '--write' to apply.
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--port <p>] [--token <t>]'. Implements Bridge Contract v1 (/health, /projects, /generate, /refresh). Binds 127.0.0.1 only; zero remote egress.
 
 ### 📁 Intelligence
+
+#### 🔹 Full Tier-1 Go / Rust / Java Call Graphs (v2.4.0)
+Promotes Go, Rust, and Java to full cross-file call-graph resolution with the same precision as JS/TS/Python — locally-defined, import-bound, single-exported-match, and repo-unique symbols resolved; ambiguous overloads explicitly left unresolved.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap impact <file>:<symbol>' for any Go/Rust/Java symbol. No build-system awareness (no go.mod/Cargo/Maven); resolution is purely by symbol evidence in indexed files.
+
+#### 🔹 SQL & GraphQL Schema Intelligence (v2.4.0)
+Extracts tables and types from CREATE TABLE DDL and GraphQL type blocks, then surfaces heuristic code-to-schema links as labeled candidates — reported as evidence, not verdicts.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap analyze schema'. Text-based regex over standard DDL and GraphQL type blocks; unusual DDL, quoted identifiers, and programmatically-built schemas are not parsed.
 
 #### 🔹 Static Test Mapping & Gap Analysis (v2.3.0)
 Maps test suites to exercised symbols via static AST caller paths, isolates untested called symbols, and ingests lcov/Istanbul coverage reports.
@@ -168,6 +178,30 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
+### 📁 Security
+
+#### 🔹 Static Taint Flow Analysis (v2.4.0)
+Intra-procedural JS/TS taint tracking that follows user-input sources (req.body, req.query, process.env, etc.) to dangerous sinks (SQL queries, exec calls, fs writes) with explicit sanitizer modeling.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap analyze taint'. JS/TS only; cross-function flow is not tracked. Custom sanitizers unknown to TokenCap are conservatively treated as non-sanitizing. Static dispatch only — no runtime flow.
+
+#### 🔹 CI-Enforced Zero Network Egress (v1.6.0)
+100% offline local privacy guarantee. Enforced by CI test suites that scan all source files on every commit to ensure zero analytics or external tracking.
+
+> ⚙️ *Technical Detail:* Scans all 147 source files for network calls. Only tokencap upgrade touches external endpoints.
+
+#### 🔹 Automatic Secret Redaction
+TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.
+
+> ⚙️ *Technical Detail:* Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments.
+
+### 📁 Refactoring
+
+#### 🔹 Guided Safe Refactoring Engine (v2.3.0)
+Deterministic, refuse-on-doubt symbol renaming across the AST call graph and safe uncalled dead code removal with byte-exact preservation guarantees outside edit ranges.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap refactor rename <target> <new>' and 'tokencap refactor rm-dead <target>'. Dry-run by default; preview via 'tokencap_refactor_plan' MCP tool; requires '--write' to apply.
+
 ### 📁 Optimization
 
 #### 🔹 Dry-Run Compress by Default (v2.1.0)
@@ -221,18 +255,6 @@ Execute any command under the debug runner (e.g. tokencap debug --start -- npm t
 
 > ⚙️ *Technical Detail:* Parses error tracebacks and test runner fail patterns (Jest, Vitest, Mocha, Node, pytest, Go test). Auto-detects and prioritizes suspected workspace files using stack traces.
 
-### 📁 Security
-
-#### 🔹 CI-Enforced Zero Network Egress (v1.6.0)
-100% offline local privacy guarantee. Enforced by CI test suites that scan all source files on every commit to ensure zero analytics or external tracking.
-
-> ⚙️ *Technical Detail:* Scans all 147 source files for network calls. Only tokencap upgrade touches external endpoints.
-
-#### 🔹 Automatic Secret Redaction
-TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.
-
-> ⚙️ *Technical Detail:* Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments.
-
 ### 📁 VS Code
 
 #### 🔹 Auto Capture on Save
@@ -283,6 +305,21 @@ The main snapshot works across every text language TokenCap can read, including 
 > ⚙️ *Technical Detail:* Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants.
 
 ## 💻 CLI Commands
+
+### 🛠️ `tokencap serve`
+
+Start the local loopback HTTP bridge (127.0.0.1) implementing Bridge Contract v1 for the Chrome companion browser extension.
+
+**Example:**
+```bash
+tokencap serve --port 4545
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--port <number>` | Port to bind on 127.0.0.1 (default: 4545). |
+| `--token <string>` | Specify a custom pairing token (auto-generated by default). |
+| `--quiet` | Suppress startup logs and pairing URL display. |
 
 ### 🛠️ `tokencap refactor`
 
@@ -587,4 +624,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 31/8/2026.*
+*Generated automatically from `website-content` JSON source files on 7/9/2026.*

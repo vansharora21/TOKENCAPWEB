@@ -1,5 +1,17 @@
 [
   {
+    "version": "2.5.0",
+    "title": "Bridge — Local Loopback HTTP Server & Companion IPC",
+    "date": "2026-09-07",
+    "status": "released",
+    "highlights": [
+      "Local HTTP Bridge (tokencap serve): Inbound loopback server bound to 127.0.0.1 enabling the sandboxed Chrome Companion extension to access local repository intelligence via loopback IPC with zero network egress.",
+      "Bridge Contract v1: Complete implementation of GET /health, GET /projects, POST /generate (quick overview ~300 tok vs task query-scoped budgeted pack), POST /refresh, and POST /capture (reserved for v2.7 -> 501).",
+      "Strict Security & Origin Allowlist: Enforces pairing token (X-TokenCap-Token), strict Origin verification, loopback-only bind (127.0.0.1, bans 0.0.0.0), and zero outbound network calls.",
+      "Law Reconciliation: local-only.test.js closes require prefix loopholes (node:http) and verifies loopback-only constraints while keeping dependencies strictly at 4."
+    ]
+  },
+  {
     "version": "2.4.0",
     "title": "Deeper & Broader — Full Language Depth, Schema Intelligence & Static Taint Flow",
     "date": "2026-08-30",

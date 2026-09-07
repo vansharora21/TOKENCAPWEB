@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.5.0",
+    title: "Bridge — Local Loopback HTTP Server & Companion IPC",
+    date: "2026-09-07",
+    status: "released",
+    description: "Introduces 'tokencap serve', a loopback-only HTTP bridge on 127.0.0.1 implementing Bridge Contract v1 (health, projects registry, query-scoped and budget-managed /generate, /refresh, and /capture 501 stub) with pairing token auth and Origin allowlisting — enabling the sandboxed Chrome Companion extension to access local repository intelligence with zero remote network egress.",
+  },
+  {
     version: "2.4.0",
     title: "Deeper & Broader — Full Language Depth, Schema Intelligence & Static Taint Flow",
     date: "2026-08-30",

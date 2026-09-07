@@ -1,5 +1,13 @@
 [
   {
+    "id": "loopback-http-bridge",
+    "title": "Local Loopback HTTP Bridge (v2.5.0)",
+    "description": "Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.",
+    "category": "Bridge",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap serve [--port <p>] [--token <t>]'. Implements Bridge Contract v1 (/health, /projects, /generate, /refresh). Binds 127.0.0.1 only; zero remote egress."
+  },
+  {
     "id": "tier1-go-rust-java",
     "title": "Full Tier-1 Go / Rust / Java Call Graphs (v2.4.0)",
     "description": "Promotes Go, Rust, and Java to full cross-file call-graph resolution with the same precision as JS/TS/Python — locally-defined, import-bound, single-exported-match, and repo-unique symbols resolved; ambiguous overloads explicitly left unresolved.",

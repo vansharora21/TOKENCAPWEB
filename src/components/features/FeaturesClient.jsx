@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.4.0 ENGINE
+            V2.5.0 ENGINE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,11 +127,28 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v2.4.0 */}
+          {/* v2.5.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.4.0</span>
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.5.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Bridge — Local Loopback HTTP Server &amp; Companion IPC</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">September 7, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Local HTTP Bridge (<code>tokencap serve</code>)</strong> — Inbound loopback HTTP server bound to <code>127.0.0.1:4545</code> enabling sandboxed browser extensions (TokenCap Chrome Companion) to access local intelligence via loopback IPC with zero network egress.</li>
+              <li><strong>Bridge Contract v1</strong> — Full support for <code>GET /health</code>, <code>GET /projects</code> (indexed projects registry), <code>POST /generate</code> (quick overview ~300 tok vs task query-scoped budgeted pack), <code>POST /refresh</code>, and <code>POST /capture</code> (501 reserved for v2.7).</li>
+              <li><strong>Pairing Tokens &amp; Origin Security</strong> — Automatically generates pairing token on startup (<code>X-TokenCap-Token</code>), enforces strict Origin allowlisting, and prevents external interface binding (bans <code>0.0.0.0</code>).</li>
+              <li><strong>Law Reconciliation</strong> — Hardened test suites (<code>local-only.test.js</code>) close require prefix bypasses while maintaining the strict 4 runtime dependencies rule.</li>
+            </ul>
+          </motion.div>
+
+          {/* v2.4.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.4.0</span>
                 <h3 className="text-lg font-bold text-foreground font-mono">Deeper &amp; Broader — Full Language Depth, Schema Intelligence &amp; Static Taint Flow</h3>
               </div>
               <span className="text-xs text-muted font-mono">August 30, 2026</span>

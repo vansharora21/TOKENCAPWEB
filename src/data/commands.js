@@ -1,5 +1,10 @@
 export const commands = [
   {
+    command: "tokencap serve",
+    description: "Start the local loopback HTTP bridge (127.0.0.1) implementing Bridge Contract v1 for the Chrome companion browser extension.",
+    result: "Local loopback bridge listening on 127.0.0.1:4545 with pairing token authentication."
+  },
+  {
     command: "tokencap make",
     description: "Generate the complete TokenCap snapshot. Calculates real-time token/dollar savings (.tokencap/savings.json) and auto-wires 7 multi-host agent pointers (AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, Kiro).",
     result: "Main snapshot, graph, memory, savings report, and host pointers generated."

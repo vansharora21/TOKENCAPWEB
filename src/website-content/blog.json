@@ -1,5 +1,14 @@
 [
   {
+    "id": "tokencap-v25-release",
+    "title": "TokenCap v2.5.0 Is Now Ready: Local HTTP Bridge & Companion IPC",
+    "author": "Vansh Arora",
+    "date": "September 7, 2026",
+    "readTime": "4 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v2.5.0 introduces 'tokencap serve', a loopback-only HTTP bridge that enables the Chrome Companion browser extension to access local repository intelligence with pairing tokens and zero network egress."
+  },
+  {
     "id": "tokencap-v24-release",
     "title": "TokenCap v2.4.0 Is Now Ready: Deeper & Broader Language Intelligence",
     "author": "Vansh Arora",

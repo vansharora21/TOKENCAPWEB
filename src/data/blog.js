@@ -1,5 +1,22 @@
 export const blogPosts = [
   {
+    id: "tokencap-v25-release",
+    title: "TokenCap v2.5.0 Is Now Ready: Local HTTP Bridge & Companion IPC",
+    author: "Vansh Arora",
+    date: "September 7, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.5.0 introduces 'tokencap serve', a loopback-only HTTP bridge that enables the Chrome Companion browser extension to access local repository intelligence with pairing tokens and zero network egress.",
+    content: `TokenCap v2.5.0 is now live — the Bridge release.
+
+### What's New in v2.5.0:
+
+- **Local HTTP Bridge ('tokencap serve'):** An inbound loopback HTTP server bound exclusively to \`127.0.0.1:4545\`. It gives sandboxed browser extensions like the TokenCap Chrome Companion local access to repository intelligence via IPC without any remote network egress.
+- **Bridge Contract v1:** Fully implements the bridge contract endpoints: \`GET /health\`, \`GET /projects\` (registry of indexed workspaces), \`POST /generate\` (quick overview ~300 tok vs query-scoped budgeted task packs with secret redaction and exact token counting), and \`POST /refresh\`.
+- **Hardened Security & Pairing:** Mints cryptographic pairing tokens (\`X-TokenCap-Token\`), verifies allowed origins, binds strictly to \`127.0.0.1\` (prohibiting \`0.0.0.0\`), and makes zero outbound network requests.
+- **Strict Four Laws Reconciliation:** Hardens test suite security guards in \`test/local-only.test.js\` while keeping runtime dependencies strictly capped at 4.`
+  },
+  {
     id: "tokencap-v24-release",
     title: "TokenCap v2.4.0 Is Now Ready: Deeper & Broader Language Intelligence",
     author: "Vansh Arora",

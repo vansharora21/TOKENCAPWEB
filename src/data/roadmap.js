@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "2.5.0",
+    title: "Bridge — Local Loopback HTTP Server & Companion IPC",
+    description: "Local loopback bridge ('tokencap serve') on 127.0.0.1 implementing Bridge Contract v1, pairing tokens, Origin allowlists, and task-scoped budgeted context generation for browser companions.",
+    status: "shipped",
+    source: "Release v2.5.0",
+  },
+  {
     version: "2.4.0",
     title: "Deeper & Broader — Full Language Depth, Schema Intelligence & Static Taint Flow",
     description: "Full Tier-1 call-graph resolution for Go, Rust, and Java; Vue/Svelte/Angular SFC component intelligence; SQL & GraphQL schema extraction with code links; intra-procedural JS/TS static taint flow analysis from sources to sinks; and a clean dist-only package build.",
