@@ -1,5 +1,14 @@
 [
   {
+    "id": "tokencap-v26-release",
+    "title": "TokenCap v2.6.0 Is Now Ready: Fast Warm Reuse, Model-Aware Budgeting & Bridge Daemon",
+    "author": "Vansh Arora",
+    "date": "September 13, 2026",
+    "readTime": "4 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v2.6.0 makes the local bridge fast, model-aware, and always-on: 3x faster repeat IPC via warm reuse, dynamic token budgets scaled to target model context windows, and detached daemon background management."
+  },
+  {
     "id": "tokencap-v25-release",
     "title": "TokenCap v2.5.0 Is Now Ready: Local HTTP Bridge & Companion IPC",
     "author": "Vansh Arora",

@@ -1,5 +1,29 @@
 [
   {
+    "id": "fast-warm-reuse",
+    "title": "Warm In-Memory Graph Reuse (v2.6.0)",
+    "description": "In-memory TTL caching of parsed AST graph representations across HTTP bridge and CLI sessions, yielding 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.",
+    "category": "Bridge",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap serve'. In-memory graph representation cached with TTL and mtime invalidation; avoids re-parsing on repeated companion queries."
+  },
+  {
+    "id": "model-aware-budgeting",
+    "title": "Model-Aware Dynamic Token Budgeting (v2.6.0)",
+    "description": "Dynamic token budget calculations calibrated for modern LLM context windows (Claude 3.5 Sonnet, GPT-4o, o1, Gemini 1.5 Pro) with --model flag on POST /generate and CLI context sizing.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap generate --model <name>' or 'POST /generate' with JSON payload { model: '...' }. Automatically tunes context density to context ceilings."
+  },
+  {
+    "id": "bridge-daemon-lifecycle",
+    "title": "Bridge Daemon & Detached Lifecycle (v2.6.0)",
+    "description": "Background daemon orchestration via 'tokencap serve --daemon' with detached process management, PID tracking, and graceful teardown via 'tokencap serve --stop'.",
+    "category": "Bridge",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap serve --daemon' and 'tokencap serve --stop'. Writes PID to .tokencap/serve.pid; handles graceful SIGTERM teardown."
+  },
+  {
     "id": "loopback-http-bridge",
     "title": "Local Loopback HTTP Bridge (v2.5.0)",
     "description": "Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.",

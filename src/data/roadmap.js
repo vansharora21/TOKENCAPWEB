@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "2.6.0",
+    title: "Fast Warm Reuse, Model-Aware Budgeting & Bridge Daemon",
+    description: "In-memory graph caching for 3x faster repeat bridge IPC queries, model-aware token budgeting for POST /generate and CLI, and detached daemon lifecycle controls (serve --daemon / --stop).",
+    status: "shipped",
+    source: "Release v2.6.0",
+  },
+  {
     version: "2.5.0",
     title: "Bridge — Local Loopback HTTP Server & Companion IPC",
     description: "Local loopback bridge ('tokencap serve') on 127.0.0.1 implementing Bridge Contract v1, pairing tokens, Origin allowlists, and task-scoped budgeted context generation for browser companions.",

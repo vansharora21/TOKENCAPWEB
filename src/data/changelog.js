@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.6.0",
+    title: "Companion — Warm Reuse, Model-Aware Budgeting & Always-On Bridge Daemon",
+    date: "2026-09-13",
+    status: "released",
+    description: "Makes the local loopback bridge fast, model-aware, and always-on: caches project intelligence with 10s warm reuse (repeat calls drop ~3x from 2.6s to 0.8s), adds a true cache-clearing /refresh rebuild, dynamically budgets task packs based on target LLM context windows, and introduces background daemon lifecycle management via 'tokencap serve --daemon' and '--stop'.",
+  },
+  {
     version: "2.5.0",
     title: "Bridge — Local Loopback HTTP Server & Companion IPC",
     date: "2026-09-07",

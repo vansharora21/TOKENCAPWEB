@@ -1,5 +1,19 @@
 [
   {
+    "version": "2.6.0",
+    "title": "Companion — Warm Reuse, Model-Aware Budgeting & Always-On Bridge Daemon",
+    "date": "2026-09-13",
+    "status": "released",
+    "highlights": [
+      "Warm Reuse (~3x Faster IPC): A running 'tokencap serve' caches each project's graph, memory, and diff state across queries with a 10s TTL, dropping repeat /generate calls from ~2.6s to ~0.8s.",
+      "True /refresh Rebuild: POST /refresh now forces a fresh incremental rebuild and clears warm state, capturing any on-disk changes a warm query would miss.",
+      "Model-Aware Context Budgeting: Task pack token budgets automatically scale with the target model's context window (~10% of window, clamped between 4k and 24k tokens), while preserving manual budget overrides.",
+      "Bridge Daemon Lifecycle: 'tokencap serve --daemon' runs the loopback bridge in the background with a detached process and pidfile (~/.tokencap/bridge.pid); 'tokencap serve --stop' terminates it cleanly.",
+      "Registry Hygiene: GET /projects automatically detects and prunes workspaces whose paths no longer exist on disk.",
+      "Zero Network Egress & 4 Dependencies: Preserves all Four Laws with zero remote telemetry and strictly capped 4 runtime dependencies."
+    ]
+  },
+  {
     "version": "2.5.0",
     "title": "Bridge — Local Loopback HTTP Server & Companion IPC",
     "date": "2026-09-07",

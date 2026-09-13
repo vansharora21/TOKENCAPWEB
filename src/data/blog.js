@@ -1,5 +1,22 @@
 export const blogPosts = [
   {
+    id: "tokencap-v26-release",
+    title: "TokenCap v2.6.0 Is Now Ready: Fast Warm Reuse, Model-Aware Budgeting & Bridge Daemon",
+    author: "Vansh Arora",
+    date: "September 13, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.6.0 makes the local bridge fast, model-aware, and always-on: 3x faster repeat IPC via warm reuse, dynamic token budgets scaled to target model context windows, and detached daemon background management.",
+    content: `TokenCap v2.6.0 is now live — the Fast Warm Reuse, Model-Aware Budgeting, and Daemon release.
+
+### What's New in v2.6.0:
+
+- **Fast Warm In-Memory Reuse:** 'tokencap serve' now retains loaded graph representations across calls with an in-memory TTL cache, delivering up to 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.
+- **Model-Aware Dynamic Token Budgeting:** Bridge endpoints (\`POST /generate\`) and CLI generation now support \`--model\` and context sizing. Budgets automatically tune pack densities for target models (Claude 3.5 Sonnet, GPT-4o, o1, Gemini 1.5 Pro) to guarantee maximum relevance density without overflowing context ceilings.
+- **Detached Daemon & Lifecycle Controls:** Run 'tokencap serve --daemon' to spawn detached background processes with robust PID file management, graceful teardown via 'tokencap serve --stop', and automated status reporting.
+- **Companion IPC Optimization:** Upgraded bridge protocol handles high-frequency query bursts with low-latency JSON chunking, rock-solid connection keep-alives, and zero external network egress.`
+  },
+  {
     id: "tokencap-v25-release",
     title: "TokenCap v2.5.0 Is Now Ready: Local HTTP Bridge & Companion IPC",
     author: "Vansh Arora",

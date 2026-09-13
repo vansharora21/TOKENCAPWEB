@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.5.0 ENGINE
+            V2.6.0 ENGINE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,11 +127,28 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v2.5.0 */}
+          {/* v2.6.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.5.0</span>
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.6.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Fast Warm Reuse, Model-Aware Budgeting &amp; Bridge Daemon</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">September 13, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Fast Warm In-Memory Reuse</strong> — <code>tokencap serve</code> retains loaded graph representations in an in-memory TTL cache, delivering up to 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.</li>
+              <li><strong>Model-Aware Dynamic Token Budgeting</strong> — Bridge endpoints (<code>POST /generate</code>) and CLI context pack generation support <code>--model</code> and context sizing, tuning token budgets dynamically to match model context ceilings (Claude 3.5 Sonnet, GPT-4o, o1, Gemini 1.5 Pro).</li>
+              <li><strong>Detached Daemon &amp; Lifecycle Controls</strong> — Run <code>tokencap serve --daemon</code> to launch detached background processes with robust PID file management, graceful teardown via <code>tokencap serve --stop</code>, and automated status checks.</li>
+              <li><strong>Companion IPC Optimization</strong> — Streamlined bridge protocol handles high-frequency query bursts with low-latency JSON chunking, rock-solid connection keep-alives, and zero external network egress.</li>
+            </ul>
+          </motion.div>
+
+          {/* v2.5.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.5.0</span>
                 <h3 className="text-lg font-bold text-foreground font-mono">Bridge — Local Loopback HTTP Server &amp; Companion IPC</h3>
               </div>
               <span className="text-xs text-muted font-mono">September 7, 2026</span>
