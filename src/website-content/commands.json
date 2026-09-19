@@ -1,5 +1,64 @@
 [
   {
+    "command": "tokencap remember",
+    "description": "Capture a completed AI coding session summary into inbound staged memory, validate, secret-redact, score against the repo graph, and review.",
+    "example": "tokencap remember --summary \"added jwt auth\" --files src/auth.ts --decision \"use RS256\"",
+    "options": [
+      { "flag": "--summary <text>", "description": "Structured summary of what was changed in the session." },
+      { "flag": "--files <paths...>", "description": "Files touched or referenced in the session." },
+      { "flag": "--decision <text>", "description": "Architecture or technical decisions taken." },
+      { "flag": "--next <text>", "description": "Follow-up steps or items left for next session." },
+      { "flag": "--list", "description": "List all staged captures awaiting human review." },
+      { "flag": "--approve <id>", "description": "Promote staged capture to durable memory/sessions/." },
+      { "flag": "--reject <id>", "description": "Mark capture rejected for audit without modifying memory." },
+      { "flag": "--note <id> <text>", "description": "Attach a reviewer note to an inbound capture." },
+      { "flag": "--hosts", "description": "Inspect registered host support levels for auto-capture." }
+    ]
+  },
+  {
+    "command": "tokencap handoff",
+    "description": "Render the latest approved session handoff as Markdown for quick context transfer into new AI chat windows.",
+    "example": "tokencap handoff",
+    "options": [
+      { "flag": "--session <id>", "description": "Render a specific historical session instead of latest." }
+    ]
+  },
+  {
+    "command": "tokencap health",
+    "description": "Calculate an explainable 0–100 repository build health score with itemized factor deductions and actionable remediation commands.",
+    "example": "tokencap health",
+    "options": [
+      { "flag": "--json", "description": "Output machine-readable health score JSON." }
+    ]
+  },
+  {
+    "command": "tokencap rebuild",
+    "description": "Force a full intelligence refresh and immediately print an updated build-health report.",
+    "example": "tokencap rebuild",
+    "options": []
+  },
+  {
+    "command": "tokencap risk",
+    "description": "Normalized, evidence-rich risk findings with confidence ratings, structural evidence, and persistent review acknowledgment.",
+    "example": "tokencap risk --ack find-todo-82",
+    "options": [
+      { "flag": "--all", "description": "Show all findings including acknowledged and dismissed items." },
+      { "flag": "--ack <id>", "description": "Acknowledge a finding without hiding evidence from audits." },
+      { "flag": "--dismiss <id>", "description": "Dismiss a false positive while recording persistent audit state." }
+    ]
+  },
+  {
+    "command": "tokencap watch-config",
+    "description": "Configure persistent file watching parameters, debounce intervals, and glob ignore rules.",
+    "example": "tokencap watch-config --debounce 15000 --ignore \"dist/*\"",
+    "options": [
+      { "flag": "--enable", "description": "Enable automatic background file watching." },
+      { "flag": "--disable", "description": "Disable file watching." },
+      { "flag": "--debounce <ms>", "description": "Debounce delay in milliseconds before rebuilding." },
+      { "flag": "--ignore <glob>", "description": "Add glob patterns to ignore list." }
+    ]
+  },
+  {
     "command": "tokencap serve",
     "description": "Start the local loopback HTTP bridge (127.0.0.1) implementing Bridge Contract v1 for the Chrome companion browser extension.",
     "example": "tokencap serve --daemon",

@@ -1,5 +1,45 @@
 [
   {
+    "id": "session-capture-loop",
+    "title": "Conversation Loop & Session Capture (v2.7.0)",
+    "description": "Turns finished AI coding sessions into structured, reviewable handoffs. Staged to inbound memory, validated, secret-redacted, and scored against repository graphs before human approval.",
+    "category": "Memory",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap remember' and 'POST /capture'. Scores captures across path validity, groundedness, specificity, and novelty. Approved sessions archive to .tokencap/memory/sessions/."
+  },
+  {
+    "id": "build-health-diagnostics",
+    "title": "Repository Build Health & Diagnostics (v2.7.0)",
+    "description": "Comprehensive 0–100 repository intelligence build-health scoring evaluating intelligence freshness, git source drift, detection completeness, and layer coverage with automated remediation steps.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap health' and 'tokencap rebuild'. Details factor deductions and surfaces directly into MCP overview and status."
+  },
+  {
+    "id": "evidence-rich-risk",
+    "title": "Evidence-Rich Risk Findings & Python Dependencies (v2.7.0)",
+    "description": "Normalized finding types (oversized-file, todo-density, possible-secret) with confidence ratings, structural evidence, and persistent acknowledge/dismiss audit tracking. Adds PEP 621 and Poetry pyproject.toml dependencies parsing.",
+    "category": "Security",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap risk [--all] [--ack <id>] [--dismiss <id>]'. Findings persist review state without hiding evidence from security audits."
+  },
+  {
+    "id": "watcher-controls-roi",
+    "title": "Persistent Watcher Controls & Session ROI (v2.7.0)",
+    "description": "Configurable file watching parameters (debounce, directory ignore globs) with observed per-session token savings and financial ROI aggregated across hosts.",
+    "category": "Workflow",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap watch-config [--debounce <ms>] [--ignore <glob>]' and 'tokencap memory'. Computes token and dollar ROI."
+  },
+  {
+    "id": "bridge-primer",
+    "title": "Cold-Start Project Primer & Bridge Live Freshness (v2.7.0)",
+    "description": "Provides a compact ~1.5k token architectural orientation via GET /primer for cold AI chats, plus live freshness watching with --watch and loopback capture review endpoints.",
+    "category": "Bridge",
+    "importance": 1,
+    "technicalDetail": "Invoked via 'tokencap serve [--watch] [--no-open]'. Exposes GET /primer, POST /capture/approve, and POST /capture/reject over loopback."
+  },
+  {
     "id": "fast-warm-reuse",
     "title": "Warm In-Memory Graph Reuse (v2.6.0)",
     "description": "In-memory TTL caching of parsed AST graph representations across HTTP bridge and CLI sessions, yielding 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.",

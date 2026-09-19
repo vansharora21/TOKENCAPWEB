@@ -1,5 +1,12 @@
 [
   {
+    "version": "2.7.0",
+    "title": "Loop — Conversation-to-Repository Memory, Build Health & Risk Engine",
+    "description": "Session Capture v1 with graph-grounded quality scoring, staged inbound memory and handoff surfaces, honest host support registry, 0-100 build health diagnostics, evidence-rich risk findings with PEP 621/Poetry python parsing, persistent watcher controls, and cold-start project primer.",
+    "status": "shipped",
+    "source": "Release v2.7.0"
+  },
+  {
     "version": "2.6.0",
     "title": "Fast Warm Reuse, Model-Aware Budgeting & Bridge Daemon",
     "description": "In-memory graph caching for 3x faster repeat bridge IPC queries, model-aware token budgeting for POST /generate and CLI, and detached daemon lifecycle controls (serve --daemon / --stop).",

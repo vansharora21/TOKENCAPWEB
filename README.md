@@ -24,24 +24,19 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
-### 📁 Bridge
+### 📁 Memory
 
-#### 🔹 Warm In-Memory Graph Reuse (v2.6.0)
-In-memory TTL caching of parsed AST graph representations across HTTP bridge and CLI sessions, yielding 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.
+#### 🔹 Conversation Loop & Session Capture (v2.7.0)
+Turns finished AI coding sessions into structured, reviewable handoffs. Staged to inbound memory, validated, secret-redacted, and scored against repository graphs before human approval.
 
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve'. In-memory graph representation cached with TTL and mtime invalidation; avoids re-parsing on repeated companion queries.
-
-#### 🔹 Bridge Daemon & Detached Lifecycle (v2.6.0)
-Background daemon orchestration via 'tokencap serve --daemon' with detached process management, PID tracking, and graceful teardown via 'tokencap serve --stop'.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve --daemon' and 'tokencap serve --stop'. Writes PID to .tokencap/serve.pid; handles graceful SIGTERM teardown.
-
-#### 🔹 Local Loopback HTTP Bridge (v2.5.0)
-Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--port <p>] [--token <t>]'. Implements Bridge Contract v1 (/health, /projects, /generate, /refresh). Binds 127.0.0.1 only; zero remote egress.
+> ⚙️ *Technical Detail:* Invoked via 'tokencap remember' and 'POST /capture'. Scores captures across path validity, groundedness, specificity, and novelty. Approved sessions archive to .tokencap/memory/sessions/.
 
 ### 📁 Intelligence
+
+#### 🔹 Repository Build Health & Diagnostics (v2.7.0)
+Comprehensive 0–100 repository intelligence build-health scoring evaluating intelligence freshness, git source drift, detection completeness, and layer coverage with automated remediation steps.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap health' and 'tokencap rebuild'. Details factor deductions and surfaces directly into MCP overview and status.
 
 #### 🔹 Model-Aware Dynamic Token Budgeting (v2.6.0)
 Dynamic token budget calculations calibrated for modern LLM context windows (Claude 3.5 Sonnet, GPT-4o, o1, Gemini 1.5 Pro) with --model flag on POST /generate and CLI context sizing.
@@ -195,6 +190,11 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 ### 📁 Security
 
+#### 🔹 Evidence-Rich Risk Findings & Python Dependencies (v2.7.0)
+Normalized finding types (oversized-file, todo-density, possible-secret) with confidence ratings, structural evidence, and persistent acknowledge/dismiss audit tracking. Adds PEP 621 and Poetry pyproject.toml dependencies parsing.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap risk [--all] [--ack <id>] [--dismiss <id>]'. Findings persist review state without hiding evidence from security audits.
+
 #### 🔹 Static Taint Flow Analysis (v2.4.0)
 Intra-procedural JS/TS taint tracking that follows user-input sources (req.body, req.query, process.env, etc.) to dangerous sinks (SQL queries, exec calls, fs writes) with explicit sanitizer modeling.
 
@@ -209,6 +209,35 @@ Intra-procedural JS/TS taint tracking that follows user-input sources (req.body,
 TokenCap scrubs sensitive values before writing anything to disk. API keys, tokens, passwords, and cloud credentials are replaced with [REDACTED] so you can safely share your snapshot with anyone.
 
 > ⚙️ *Technical Detail:* Redacts: OpenAI keys (sk-...), GitHub PATs (ghp_..., github_pat_...), Slack tokens (xox...), AWS access keys (AKIA...), Google API keys (AIza...), and generic api_key/token/secret/password variable assignments.
+
+### 📁 Workflow
+
+#### 🔹 Persistent Watcher Controls & Session ROI (v2.7.0)
+Configurable file watching parameters (debounce, directory ignore globs) with observed per-session token savings and financial ROI aggregated across hosts.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap watch-config [--debounce <ms>] [--ignore <glob>]' and 'tokencap memory'. Computes token and dollar ROI.
+
+### 📁 Bridge
+
+#### 🔹 Cold-Start Project Primer & Bridge Live Freshness (v2.7.0)
+Provides a compact ~1.5k token architectural orientation via GET /primer for cold AI chats, plus live freshness watching with --watch and loopback capture review endpoints.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--watch] [--no-open]'. Exposes GET /primer, POST /capture/approve, and POST /capture/reject over loopback.
+
+#### 🔹 Warm In-Memory Graph Reuse (v2.6.0)
+In-memory TTL caching of parsed AST graph representations across HTTP bridge and CLI sessions, yielding 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve'. In-memory graph representation cached with TTL and mtime invalidation; avoids re-parsing on repeated companion queries.
+
+#### 🔹 Bridge Daemon & Detached Lifecycle (v2.6.0)
+Background daemon orchestration via 'tokencap serve --daemon' with detached process management, PID tracking, and graceful teardown via 'tokencap serve --stop'.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve --daemon' and 'tokencap serve --stop'. Writes PID to .tokencap/serve.pid; handles graceful SIGTERM teardown.
+
+#### 🔹 Local Loopback HTTP Bridge (v2.5.0)
+Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--port <p>] [--token <t>]'. Implements Bridge Contract v1 (/health, /projects, /generate, /refresh). Binds 127.0.0.1 only; zero remote egress.
 
 ### 📁 Refactoring
 
@@ -320,6 +349,93 @@ The main snapshot works across every text language TokenCap can read, including 
 > ⚙️ *Technical Detail:* Supports 40+ file extensions including .py, .go, .rs, .java, .cs, .cpp, .rb, .php, .swift, .kt, .sql, .yaml, .toml, .vue, .svelte, and all JS/TS variants.
 
 ## 💻 CLI Commands
+
+### 🛠️ `tokencap remember`
+
+Capture a completed AI coding session summary into inbound staged memory, validate, secret-redact, score against the repo graph, and review.
+
+**Example:**
+```bash
+tokencap remember --summary "added jwt auth" --files src/auth.ts --decision "use RS256"
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--summary <text>` | Structured summary of what was changed in the session. |
+| `--files <paths...>` | Files touched or referenced in the session. |
+| `--decision <text>` | Architecture or technical decisions taken. |
+| `--next <text>` | Follow-up steps or items left for next session. |
+| `--list` | List all staged captures awaiting human review. |
+| `--approve <id>` | Promote staged capture to durable memory/sessions/. |
+| `--reject <id>` | Mark capture rejected for audit without modifying memory. |
+| `--note <id> <text>` | Attach a reviewer note to an inbound capture. |
+| `--hosts` | Inspect registered host support levels for auto-capture. |
+
+### 🛠️ `tokencap handoff`
+
+Render the latest approved session handoff as Markdown for quick context transfer into new AI chat windows.
+
+**Example:**
+```bash
+tokencap handoff
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--session <id>` | Render a specific historical session instead of latest. |
+
+### 🛠️ `tokencap health`
+
+Calculate an explainable 0–100 repository build health score with itemized factor deductions and actionable remediation commands.
+
+**Example:**
+```bash
+tokencap health
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--json` | Output machine-readable health score JSON. |
+
+### 🛠️ `tokencap rebuild`
+
+Force a full intelligence refresh and immediately print an updated build-health report.
+
+**Example:**
+```bash
+tokencap rebuild
+```
+
+### 🛠️ `tokencap risk`
+
+Normalized, evidence-rich risk findings with confidence ratings, structural evidence, and persistent review acknowledgment.
+
+**Example:**
+```bash
+tokencap risk --ack find-todo-82
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--all` | Show all findings including acknowledged and dismissed items. |
+| `--ack <id>` | Acknowledge a finding without hiding evidence from audits. |
+| `--dismiss <id>` | Dismiss a false positive while recording persistent audit state. |
+
+### 🛠️ `tokencap watch-config`
+
+Configure persistent file watching parameters, debounce intervals, and glob ignore rules.
+
+**Example:**
+```bash
+tokencap watch-config --debounce 15000 --ignore "dist/*"
+```
+
+| Option / Flag | Description |
+| --- | --- |
+| `--enable` | Enable automatic background file watching. |
+| `--disable` | Disable file watching. |
+| `--debounce <ms>` | Debounce delay in milliseconds before rebuilding. |
+| `--ignore <glob>` | Add glob patterns to ignore list. |
 
 ### 🛠️ `tokencap serve`
 
@@ -641,4 +757,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 14/9/2026.*
+*Generated automatically from `website-content` JSON source files on 19/9/2026.*

@@ -1,5 +1,26 @@
 export const blogPosts = [
   {
+    id: "tokencap-v27-release",
+    title: "TokenCap v2.7.0 Is Now Ready: Conversation Loop, Session Capture & Build Health",
+    author: "Vansh Arora",
+    date: "September 19, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.7.0 closes the AI conversation → repository loop with graph-grounded Session Capture v1, staged inbound memory, 0-100 build health diagnostics, evidence-rich risk findings, and persistent watcher controls.",
+    content: `TokenCap v2.7.0 is now live — the "Loop" release closing the conversation → repository boundary.
+
+### What's New in v2.7.0:
+
+- **Session Capture v1 & Conversation Loop:** Finished AI sessions become structured, redacted, and reviewable handoffs. Submissions via \`POST /capture\` and \`tokencap remember\` are validated, bounded, and scored against the repository graph (path validity, groundedness, specificity, novelty) into a confidence tier.
+- **Staged Inbound Memory:** Captures land in \`.tokencap/memory/inbound/\` with full provenance; review them with \`tokencap remember --list/--approve/--reject/--note\`. Approved sessions archive to \`.tokencap/memory/sessions/\` — nothing touches durable memory without explicit human approval.
+- **Session Handoff Surfaces:** Export the latest approved session as Markdown with \`tokencap handoff\` or \`tokencap export-session\`, surfaced in \`agent-pack.md\` and via MCP \`latestSession\`.
+- **Honest Host Support:** Dedicated registry for 7 AI coding hosts (\`tokencap remember --hosts\`). No host is marked "auto" without a verified session-end hook.
+- **Build Health Diagnostics:** \`tokencap health\` and \`tokencap rebuild\` emit an explainable 0–100 score evaluating freshness, drift, detection, and coverage with actionable remediation hints.
+- **Evidence-Rich Risk Findings:** \`tokencap risk\` normalizes findings (oversized-file, todo-density, possible-secret) with confidence, evidence, and persistent \`--ack\`/\`--dismiss\` controls. Adds PEP 621 and Poetry \`pyproject.toml\` parsing.
+- **Watcher Controls & Session ROI:** \`tokencap watch-config\` manages persistent file watching; \`tokencap memory\` tracks observed per-session token savings and dollar ROI across hosts.
+- **Cold-Start Primer:** \`GET /primer\` on the loopback bridge returns a human-written ~1.5k token orientation so cold AI chats understand the project instantly without exploration loops.`
+  },
+  {
     id: "tokencap-v26-release",
     title: "TokenCap v2.6.0 Is Now Ready: Fast Warm Reuse, Model-Aware Budgeting & Bridge Daemon",
     author: "Vansh Arora",

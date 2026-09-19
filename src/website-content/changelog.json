@@ -1,5 +1,21 @@
 [
   {
+    "version": "2.7.0",
+    "title": "Loop — Conversation-to-Repository Memory, Build Health & Risk Engine",
+    "date": "2026-09-19",
+    "status": "released",
+    "highlights": [
+      "Session Capture v1: Closes the conversation → repository loop with structured summaries via POST /capture and 'tokencap remember'. Validates, bounds, redacts secrets, and scores against the repository graph (path validity, groundedness, specificity, novelty).",
+      "Staged Inbound Memory: Captures land in .tokencap/memory/inbound/ with full provenance; reviewed via 'tokencap remember --list/--approve/--reject/--note'. Approved sessions archive to .tokencap/memory/sessions/ without silent modifications.",
+      "Handoff Surfaces: 'tokencap handoff' outputs the latest approved session as Markdown, surfaced in memory current.md, agent-pack.md, and MCP overview.",
+      "Honest Host Adapters: Dedicated registry of 7 AI coding hosts ('tokencap remember --hosts'). No host is marked 'auto' without a verified session-end hook.",
+      "Build Health Diagnostics: 'tokencap health' & 'tokencap rebuild' provide an explainable 0–100 score covering freshness, drift, detection, and coverage with actionable remediation.",
+      "Evidence-Rich Risk Findings: 'tokencap risk' normalizes findings (oversized-file, todo-density, possible-secret) with confidence, evidence, and persistent acknowledge/dismiss controls. Adds Python pyproject.toml dependencies parsing.",
+      "Watcher Controls & Session ROI: 'tokencap watch-config' allows persistent file watching configuration; 'tokencap memory' tracks observed per-session token savings and dollar ROI across hosts.",
+      "Cold-Start Project Primer: 'GET /primer' returns a rich ~1.5k token overview so cold AI chats understand the codebase instantly without expensive discovery queries."
+    ]
+  },
+  {
     "version": "2.6.0",
     "title": "Companion — Warm Reuse, Model-Aware Budgeting & Always-On Bridge Daemon",
     "date": "2026-09-13",

@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.7.0",
+    title: "Loop — Conversation-to-Repository Memory, Build Health & Risk Engine",
+    date: "2026-09-19",
+    status: "released",
+    description: "Closes the conversation-to-repository loop with Session Capture v1 and staged inbound memory; introduces 0–100 repository build health diagnostics and explainable scoring, normalized evidence-rich risk findings with PEP 621/Poetry python parsing, persistent watcher controls with session ROI tracking, and a cold-start project primer for browser companions.",
+  },
+  {
     version: "2.6.0",
     title: "Companion — Warm Reuse, Model-Aware Budgeting & Always-On Bridge Daemon",
     date: "2026-09-13",

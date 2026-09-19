@@ -1,5 +1,14 @@
 [
   {
+    "id": "tokencap-v27-release",
+    "title": "TokenCap v2.7.0 Is Now Ready: Conversation Loop, Session Capture & Build Health",
+    "author": "Vansh Arora",
+    "date": "September 19, 2026",
+    "readTime": "4 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v2.7.0 closes the AI conversation → repository loop with graph-grounded Session Capture v1, staged inbound memory, 0-100 build health diagnostics, evidence-rich risk findings, and persistent watcher controls."
+  },
+  {
     "id": "tokencap-v26-release",
     "title": "TokenCap v2.6.0 Is Now Ready: Fast Warm Reuse, Model-Aware Budgeting & Bridge Daemon",
     "author": "Vansh Arora",

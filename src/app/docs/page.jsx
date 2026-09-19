@@ -49,7 +49,7 @@ export default function DocsPage() {
       <aside className="w-64 border-r border-card-border bg-card p-6 hidden md:flex flex-col gap-4 self-stretch min-h-[calc(100vh-64px)]">
         <div className="mb-4">
           <p className="text-xl font-bold text-foreground tracking-tight font-mono">Documentation</p>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.6.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.7.0 RELEASE</p>
         </div>
         <nav className="space-y-1 flex-grow">
           {sidebarItems.map((item) => (
@@ -69,7 +69,7 @@ export default function DocsPage() {
             className="w-full bg-pre-bg border border-card-border text-foreground py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-card-hover transition-colors block text-center flex items-center justify-center gap-1.5 font-mono"
           >
             <span className="material-symbols-outlined text-sm">hub</span>
-            MCP Guide v2.6.0
+            MCP Guide v2.7.0
           </a>
           <div className="flex flex-col gap-2 font-mono text-xs">
             <a href="https://github.com/vansharora21/TOKENCAP" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-muted hover:text-foreground transition-colors">
@@ -86,7 +86,7 @@ export default function DocsPage() {
           {/* Header */}
           <header className="mb-8 border-b border-card-border pb-8">
             <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
-              CURRENT RELEASE: V2.6.0
+              CURRENT RELEASE: V2.7.0
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-3 font-sans">
               TokenCap Documentation
@@ -100,13 +100,13 @@ export default function DocsPage() {
           <div className="mb-12 p-6 rounded-lg border border-card-border bg-card relative overflow-hidden group">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
               <div>
-                <span className="text-[9px] font-mono font-bold tracking-widest text-muted uppercase bg-pre-bg border border-card-border px-2 py-0.5 rounded">NEW IN v2.6.0</span>
+                <span className="text-[9px] font-mono font-bold tracking-widest text-muted uppercase bg-pre-bg border border-card-border px-2 py-0.5 rounded">NEW IN v2.7.0</span>
                 <h3 className="text-lg font-bold text-foreground mt-2 mb-1 flex items-center gap-2 font-mono">
-                  <span className="material-symbols-outlined text-muted text-base">bolt</span>
-                  Fast Warm Reuse, Model-Aware Budgeting &amp; Bridge Daemon
+                  <span className="material-symbols-outlined text-muted text-base">loop</span>
+                  Conversation Loop, Session Capture &amp; Build Health
                 </h3>
                 <p className="text-xs text-muted leading-relaxed max-w-lg">
-                  TokenCap v2.6.0 upgrades the local bridge with in-memory graph caching for 3x faster repeat IPC queries, dynamic token budgets scaled to model context windows, and detached daemon lifecycle controls (<code>tokencap serve --daemon / --stop</code>).
+                  TokenCap v2.7.0 closes the conversation loop with graph-grounded Session Capture v1 (<code>tokencap remember</code> / <code>handoff</code>), 0–100 build health diagnostics (<code>tokencap health</code>), normalized risk findings (<code>tokencap risk</code>), and persistent watcher controls.
                 </p>
               </div>
               <a
@@ -139,7 +139,7 @@ export default function DocsPage() {
               Back Home
             </a>
             <a href="/mcp" className="flex items-center gap-1.5 text-foreground/90 hover:text-foreground transition-colors">
-              MCP Guide (v2.6.0)
+              MCP Guide (v2.7.0)
               <span className="material-symbols-outlined text-sm">chevron_right</span>
             </a>
           </div>
@@ -162,8 +162,8 @@ export default function DocsPage() {
         </nav>
         <div className="mt-8 p-4 bg-card border border-card-border rounded-lg relative overflow-hidden">
           <div className="relative z-10 space-y-2">
-            <h6 className="font-bold text-foreground text-xs font-mono">New Release v2.6.0</h6>
-            <p className="text-[11px] leading-relaxed text-muted">v2.6.0 adds warm in-memory reuse, model-aware token budgeting, and detached background daemon lifecycle controls.</p>
+            <h6 className="font-bold text-foreground text-xs font-mono">New Release v2.7.0</h6>
+            <p className="text-[11px] leading-relaxed text-muted">v2.7.0 adds the Conversation Loop, Session Capture v1, staged inbound memory, 0-100 build health diagnostics, and evidence-rich risk findings.</p>
             <a className="text-[11px] text-foreground/90 font-bold underline hover:text-foreground transition-colors font-mono block" href="/mcp">
               Get Started with MCP →
             </a>

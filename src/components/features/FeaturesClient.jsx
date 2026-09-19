@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.6.0 ENGINE
+            V2.7.0 ENGINE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,11 +127,30 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
-          {/* v2.6.0 */}
+          {/* v2.7.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.6.0</span>
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.7.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Loop — Conversation Memory, Build Health &amp; Risk Engine</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">September 19, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Conversation-to-Repository Loop &amp; Session Capture</strong> — Closes the loop from finished AI chats to repository memory: submissions via <code>POST /capture</code> and <code>tokencap remember</code> are validated, secret-redacted, and scored against repository graphs (path validity, groundedness, specificity, novelty).</li>
+              <li><strong>Staged Inbound Memory &amp; Handoff</strong> — Captures land in <code>.tokencap/memory/inbound/</code> with full provenance; review via <code>tokencap remember --list/--approve/--reject/--note</code>. Approved sessions archive to <code>.tokencap/memory/sessions/</code> and feed <code>tokencap handoff</code>.</li>
+              <li><strong>0–100 Repository Build Health Diagnostics</strong> — <code>tokencap health</code> and <code>tokencap rebuild</code> generate explainable health ratings evaluating freshness, source drift, detection completeness, and coverage with remediation actions.</li>
+              <li><strong>Evidence-Rich Risk &amp; Python Dependencies</strong> — <code>tokencap risk</code> normalizes findings (oversized-file, todo-density, possible-secret) with confidence, evidence, and persistent <code>--ack</code>/<code>--dismiss</code> tracking; adds PEP 621 and Poetry <code>pyproject.toml</code> dependencies parsing.</li>
+              <li><strong>Watcher Controls &amp; Session ROI</strong> — <code>tokencap watch-config</code> configures persistent file watching intervals and ignore globs; <code>tokencap memory</code> aggregates observed token savings and dollar ROI across hosts.</li>
+              <li><strong>Cold-Start Project Primer</strong> — <code>GET /primer</code> on the loopback bridge returns a human-written ~1.5k token orientation so cold AI chats understand the project without expensive exploratory queries.</li>
+            </ul>
+          </motion.div>
+
+          {/* v2.6.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-card-border bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-pre-bg border border-card-border text-foreground px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.6.0</span>
                 <h3 className="text-lg font-bold text-foreground font-mono">Fast Warm Reuse, Model-Aware Budgeting &amp; Bridge Daemon</h3>
               </div>
               <span className="text-xs text-muted font-mono">September 13, 2026</span>
