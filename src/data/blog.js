@@ -18,7 +18,11 @@ export const blogPosts = [
 - **Build Health Diagnostics:** \`tokencap health\` and \`tokencap rebuild\` emit an explainable 0–100 score evaluating freshness, drift, detection, and coverage with actionable remediation hints.
 - **Evidence-Rich Risk Findings:** \`tokencap risk\` normalizes findings (oversized-file, todo-density, possible-secret) with confidence, evidence, and persistent \`--ack\`/\`--dismiss\` controls. Adds PEP 621 and Poetry \`pyproject.toml\` parsing.
 - **Watcher Controls & Session ROI:** \`tokencap watch-config\` manages persistent file watching; \`tokencap memory\` tracks observed per-session token savings and dollar ROI across hosts.
-- **Cold-Start Primer:** \`GET /primer\` on the loopback bridge returns a human-written ~1.5k token orientation so cold AI chats understand the project instantly without exploration loops.`
+- **Cold-Start Primer:** \`GET /primer\` on the loopback bridge returns a human-written ~1.5k token orientation so cold AI chats understand the project instantly without exploration loops.
+
+### Community Coverage & Discussions:
+- **CoderLegion Feature:** [Read on CoderLegion](https://coderlegion.com/27760/tokencap-v-2-7-0)
+- **LinkedIn Launch Discussion:** [View on LinkedIn](https://www.linkedin.com/posts/vansharora2108_tokencap-270-is-now-live-closing-share-7507119072229167105-I59T/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEMuDswBETIpgY6wlzwGlpYf6DuOTilEP5Y)`
   },
   {
     id: "tokencap-v26-release",

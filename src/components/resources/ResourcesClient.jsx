@@ -5,6 +5,15 @@ import { PageWrapper } from "@/components/layout/PageWrapper";
 
 const linkedinResources = [
   {
+    version: "v2.7.0",
+    date: "September 2026",
+    title: "TokenCap 2.7.0 Release: Closing the Conversation-to-Repository Loop",
+    platform: "LinkedIn",
+    description: "TokenCap 2.7.0 is now live, closing the loop between AI coding sessions and your permanent codebase with graph-grounded Session Capture, staged inbound memory, 0-100 build health diagnostics, and zero network egress.",
+    link: "https://www.linkedin.com/posts/vansharora2108_tokencap-270-is-now-live-closing-share-7507119072229167105-I59T/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEMuDswBETIpgY6wlzwGlpYf6DuOTilEP5Y",
+    type: "Release Announcement",
+  },
+  {
     version: "v2.0.0",
     date: "August 2026",
     title: "TokenCap v2.0.0 Release Update",
@@ -52,6 +61,15 @@ const linkedinResources = [
 ];
 
 const coderLegionResources = [
+  {
+    version: "v2.7.0",
+    date: "September 2026",
+    title: "TokenCap v2.7.0 Is Now Ready",
+    platform: "CoderLegion",
+    description: "TokenCap v2.7.0 closes the conversation loop with graph-grounded Session Capture v1, staged review memory, and explainable 0–100 repository build health scoring.",
+    link: "https://coderlegion.com/27760/tokencap-v-2-7-0",
+    type: "Featured Article",
+  },
   {
     version: "v2.0.0",
     date: "August 2026",
@@ -188,7 +206,7 @@ export function ResourcesClient() {
                 </div>
               </div>
               <span className="text-[11px] font-mono text-muted self-start sm:self-auto">
-                {linkedinResources.length} posts · Sorted v2.0.0 → v1.0.0
+                {linkedinResources.length} posts · Sorted v2.7.0 → v1.0.0
               </span>
             </div>
 
@@ -216,7 +234,7 @@ export function ResourcesClient() {
                 </div>
               </div>
               <span className="text-[11px] font-mono text-muted self-start sm:self-auto">
-                {coderLegionResources.length} articles · Sorted v2.0.0 → v1.6.0
+                {coderLegionResources.length} articles · Sorted v2.7.0 → v1.6.0
               </span>
             </div>
 
