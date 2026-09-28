@@ -1,5 +1,13 @@
 [
   {
+    "id": "companion-context-transfer",
+    "title": "Browser Companion Context Transfer (v2.8.0)",
+    "description": "Pairs the local tokencap serve bridge with TokenCap Companion to inject bounded, redacted repository context into ChatGPT, Claude, and Gemini without replacing the current chat draft.",
+    "category": "Bridge",
+    "importance": 1,
+    "technicalDetail": "Companion task packs stay in memory, include the project primer inside the total token budget, prevent duplicate injection, and support staged browser capture with explicit approval."
+  },
+  {
     "id": "session-capture-loop",
     "title": "Conversation Loop & Session Capture (v2.7.0)",
     "description": "Turns finished AI coding sessions into structured, reviewable handoffs. Staged to inbound memory, validated, secret-redacted, and scored against repository graphs before human approval.",

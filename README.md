@@ -24,6 +24,33 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
+### 📁 Bridge
+
+#### 🔹 Browser Companion Context Transfer (v2.8.0)
+Pairs the local tokencap serve bridge with TokenCap Companion to inject bounded, redacted repository context into ChatGPT, Claude, and Gemini without replacing the current chat draft.
+
+> ⚙️ *Technical Detail:* Companion task packs stay in memory, include the project primer inside the total token budget, prevent duplicate injection, and support staged browser capture with explicit approval.
+
+#### 🔹 Cold-Start Project Primer & Bridge Live Freshness (v2.7.0)
+Provides a compact ~1.5k token architectural orientation via GET /primer for cold AI chats, plus live freshness watching with --watch and loopback capture review endpoints.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--watch] [--no-open]'. Exposes GET /primer, POST /capture/approve, and POST /capture/reject over loopback.
+
+#### 🔹 Warm In-Memory Graph Reuse (v2.6.0)
+In-memory TTL caching of parsed AST graph representations across HTTP bridge and CLI sessions, yielding 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve'. In-memory graph representation cached with TTL and mtime invalidation; avoids re-parsing on repeated companion queries.
+
+#### 🔹 Bridge Daemon & Detached Lifecycle (v2.6.0)
+Background daemon orchestration via 'tokencap serve --daemon' with detached process management, PID tracking, and graceful teardown via 'tokencap serve --stop'.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve --daemon' and 'tokencap serve --stop'. Writes PID to .tokencap/serve.pid; handles graceful SIGTERM teardown.
+
+#### 🔹 Local Loopback HTTP Bridge (v2.5.0)
+Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--port <p>] [--token <t>]'. Implements Bridge Contract v1 (/health, /projects, /generate, /refresh). Binds 127.0.0.1 only; zero remote egress.
+
 ### 📁 Memory
 
 #### 🔹 Conversation Loop & Session Capture (v2.7.0)
@@ -216,28 +243,6 @@ TokenCap scrubs sensitive values before writing anything to disk. API keys, toke
 Configurable file watching parameters (debounce, directory ignore globs) with observed per-session token savings and financial ROI aggregated across hosts.
 
 > ⚙️ *Technical Detail:* Invoked via 'tokencap watch-config [--debounce <ms>] [--ignore <glob>]' and 'tokencap memory'. Computes token and dollar ROI.
-
-### 📁 Bridge
-
-#### 🔹 Cold-Start Project Primer & Bridge Live Freshness (v2.7.0)
-Provides a compact ~1.5k token architectural orientation via GET /primer for cold AI chats, plus live freshness watching with --watch and loopback capture review endpoints.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--watch] [--no-open]'. Exposes GET /primer, POST /capture/approve, and POST /capture/reject over loopback.
-
-#### 🔹 Warm In-Memory Graph Reuse (v2.6.0)
-In-memory TTL caching of parsed AST graph representations across HTTP bridge and CLI sessions, yielding 3x faster repeat IPC responses for companion extensions and agent tools while maintaining safe boundary invalidation on file modifications.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve'. In-memory graph representation cached with TTL and mtime invalidation; avoids re-parsing on repeated companion queries.
-
-#### 🔹 Bridge Daemon & Detached Lifecycle (v2.6.0)
-Background daemon orchestration via 'tokencap serve --daemon' with detached process management, PID tracking, and graceful teardown via 'tokencap serve --stop'.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve --daemon' and 'tokencap serve --stop'. Writes PID to .tokencap/serve.pid; handles graceful SIGTERM teardown.
-
-#### 🔹 Local Loopback HTTP Bridge (v2.5.0)
-Inbound HTTP bridge server ('tokencap serve') bound strictly to 127.0.0.1 with cryptographic pairing tokens and Origin allowlists, enabling browser extensions like TokenCap Companion to access local intelligence via loopback IPC.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap serve [--port <p>] [--token <t>]'. Implements Bridge Contract v1 (/health, /projects, /generate, /refresh). Binds 127.0.0.1 only; zero remote egress.
 
 ### 📁 Refactoring
 
@@ -757,4 +762,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 19/9/2026.*
+*Generated automatically from `website-content` JSON source files on 28/9/2026.*

@@ -36,15 +36,15 @@ export const featurePipeline = [
     ],
   },
   {
-    id: "mcp",
-    cmd: "tokencap mcp --watch",
-    badge: "MCP Protocol",
-    title: "Auto-wired local AI memory over stdio.",
-    tagline: "Exposes 11 local tool endpoints and auto-wires AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, and Kiro seamlessly.",
+    id: "companion",
+    cmd: "tokencap serve",
+    badge: "Browser Companion",
+    title: "Bring local project context into any AI chat.",
+    tagline: "Pair a local, loopback-only bridge with the TokenCap Companion to inject bounded, redacted context into ChatGPT, Claude, or Gemini without replacing your draft.",
     stats: [
-      { label: "MCP Endpoints", val: "11 tools active" },
-      { label: "Latency", val: "<2ms local IPC" },
-      { label: "Host Support", val: "7 agent hosts" },
+      { label: "Chat Hosts", val: "ChatGPT · Claude · Gemini" },
+      { label: "Transfer", val: "Draft-safe" },
+      { label: "Network", val: "Loopback only" },
     ],
   },
 ];

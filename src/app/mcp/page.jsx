@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v2.7.0)",
+  title: "TokenCap MCP Guide (v2.8.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -61,7 +61,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.7.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.8.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -93,7 +93,7 @@ export default function McpPage() {
           {/* Header */}
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
-              V2.7.0 LOCAL MCP SERVICE
+              V2.8.0 LOCAL MCP SERVICE
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-sans">
               Model Context Protocol (MCP) Guide
@@ -139,8 +139,8 @@ export default function McpPage() {
               <div>
                 <p className="text-[11px] text-muted mb-2">2. Wire your IDE / MCP Host:</p>
                 <div className="flex items-center justify-between bg-pre-bg px-4 py-3 rounded border border-card-border text-foreground/90">
-                  <code>tokencap mcp --init</code>
-                  <CopyButton text="tokencap mcp --init" />
+                  <code>tokencap serve --mcp --init</code>
+                  <CopyButton text="tokencap serve --mcp --init" />
                 </div>
               </div>
             </div>

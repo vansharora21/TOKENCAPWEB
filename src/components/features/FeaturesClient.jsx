@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.7.0 ENGINE
+            V2.8.0 COMPANION RELEASE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,6 +127,23 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          {/* v2.8.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.8.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Companion Release — Local Context in Browser AI Chats</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">September 28, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Browser-Verified Companion Workflow</strong> — Pair <code>tokencap serve</code> with the TokenCap Companion to inject repository context into ChatGPT, Claude, and Gemini through a local loopback bridge.</li>
+              <li><strong>Draft-Safe, Bounded Transfers</strong> — Injected blocks are marked, existing composer text is preserved, duplicate insertion is refused, and the generated pack can be previewed, copied, or downloaded.</li>
+              <li><strong>In-Memory Context &amp; Reviewable Capture</strong> — Task packs respect their complete token budget after the project primer is added and avoid creating context files per request. Browser captures remain redacted, staged, and explicitly approved.</li>
+              <li><strong>Seven Core Commands</strong> — The CLI is consolidated around <code>make</code>, <code>ask</code>, <code>analyze</code>, <code>serve</code>, <code>update</code>, <code>help</code>, and <code>version</code>; legacy commands remain compatible.</li>
+            </ul>
+          </motion.div>
+
           {/* v2.7.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">

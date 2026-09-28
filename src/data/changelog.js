@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.8.0",
+    title: "Companion Release — Browser Context Transfer, Capture & a Leaner CLI",
+    date: "2026-09-28",
+    status: "released",
+    description: "Ships the TokenCap Companion workflow for ChatGPT, Claude, and Gemini: a local, paired bridge that injects bounded redacted project context without replacing drafts, supports preview/copy/download recovery, and stages browser captures for explicit approval. It also consolidates the CLI into seven core commands while keeping legacy aliases compatible.",
+  },
+  {
     version: "2.7.0",
     title: "Loop — Conversation-to-Repository Memory, Build Health & Risk Engine",
     date: "2026-09-19",

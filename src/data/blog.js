@@ -1,5 +1,25 @@
 export const blogPosts = [
   {
+    id: "tokencap-v28-release",
+    title: "TokenCap v2.8.0 Is Ready: Local Repository Context for Browser AI Chats",
+    author: "Vansh Arora",
+    date: "September 28, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.8.0 ships the Companion workflow: a local, paired bridge that moves bounded repository context into ChatGPT, Claude, and Gemini while preserving drafts and keeping captures reviewable.",
+    content: `TokenCap v2.8.0 is now ready — the Companion release connects local repository intelligence with browser-based AI chats without uploading your code to a hosted TokenCap service.
+
+### What's New in v2.8.0:
+
+- **Browser Companion Context Transfer:** Start \`tokencap serve\`, pair the Companion, choose an indexed project, and inject a focused project pack into ChatGPT, Claude, or Gemini.
+- **Draft-Safe Injection:** Existing composer text remains intact. TokenCap marks the inserted block, refuses duplicate injection, and provides preview, copy, and download recovery paths.
+- **Bounded, In-Memory Packs:** The bridge enforces the requested total context budget after adding the project primer and no longer writes a context artifact for every browser request.
+- **Reviewable Browser Capture:** Captured session context is validated, redacted, staged, and only becomes durable project memory after explicit approval.
+- **Seven Core Commands:** The CLI now centers on \`make\`, \`ask\`, \`analyze\`, \`serve\`, \`update\`, \`help\`, and \`version\`, while legacy commands remain compatible.
+
+The Companion workflow has been verified with ChatGPT, Claude, and Gemini. TokenCap remains local-first: loopback-only transfer, no source upload, and no telemetry.`
+  },
+  {
     id: "tokencap-v27-release",
     title: "TokenCap v2.7.0 Is Now Ready: Conversation Loop, Session Capture & Build Health",
     author: "Vansh Arora",

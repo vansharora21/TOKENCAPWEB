@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "2.8.0",
+    title: "Companion Release — Local Context Transfer & Reviewable Capture",
+    description: "Browser-verified Companion support for ChatGPT, Claude, and Gemini. A paired loopback bridge pre-warms repository intelligence, transfers bounded redacted context without overwriting chat drafts, and stages captured session context for explicit approval.",
+    status: "shipped",
+    source: "Release v2.8.0",
+  },
+  {
     version: "2.7.0",
     title: "Loop — Conversation-to-Repository Memory, Build Health & Risk Engine",
     description: "Session Capture v1 with graph-grounded quality scoring, staged inbound memory and handoff surfaces, honest host support registry, 0-100 build health diagnostics, evidence-rich risk findings with PEP 621/Poetry python parsing, persistent watcher controls, and cold-start project primer.",
