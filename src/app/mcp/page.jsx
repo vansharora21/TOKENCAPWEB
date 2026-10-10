@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v2.8.0)",
+  title: "TokenCap MCP Guide (v2.9.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -36,8 +36,8 @@ export default function McpPage() {
     { name: "tokencap_execution", desc: "Execution-contract guidance for the current engineering phase.", input: "None" },
     { name: "tokencap_verify", desc: "Test commands, test files, lint rules, and review checklist.", input: '{ "cluster": "Auth" }' },
     { name: "tokencap_delta", desc: "What changed since last build — clusters, files, rules.", input: "None" },
-    { name: "tokencap_diagram", desc: "Architecture, impact, and diff SVG visualizer diagrams.", input: '{ "type": "architecture" }' },
-    { name: "tokencap_screen", desc: "Frontend visual and layout intelligence for UI components.", input: '{ "component": "Navbar" }' },
+    { name: "tokencap_get_diagram", desc: "Architecture, impact, and diff SVG visualizer diagrams.", input: '{ "type": "architecture" }' },
+    { name: "tokencap_get_screen", desc: "Frontend visual and layout intelligence for UI components.", input: '{ "screen": "Navbar" }' },
     { name: "tokencap_manage_adr", desc: "Read/write Architecture Decision Records that persist across sessions.", input: '{ "action": "add", "title": "Use web-tree-sitter", "decision": "AST parsing" }' },
     { name: "tokencap_mcp_status", desc: "Server uptime, cache hit rate, and per-endpoint call counts.", input: "None" },
   ];
@@ -61,7 +61,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.8.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.9.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -93,7 +93,7 @@ export default function McpPage() {
           {/* Header */}
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
-              V2.8.0 LOCAL MCP SERVICE
+              V2.9.0 LOCAL MCP SERVICE · CONTRACT V2
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-sans">
               Model Context Protocol (MCP) Guide

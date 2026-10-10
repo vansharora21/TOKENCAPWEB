@@ -1,5 +1,17 @@
 [
   {
+    "version": "2.9.0",
+    "title": "Agent Skill — Open Skill System, Workflow Playbooks & MCP Contract v2",
+    "date": "2026-10-08",
+    "status": "released",
+    "highlights": [
+      "Agent Skill System: a standard skill definition (SKILL.md, commands.md, workflows.md) for OpenCode, Claude Code, Cursor, Codex, and Antigravity, shipped in the npm tarball.",
+      "Host-controlled installation through each host's skill-discovery mechanism; TokenCap never overwrites host configuration automatically.",
+      "Workflow playbooks for codebase onboarding, deep refactoring, blast-radius impact audits, and change reviews.",
+      "MCP Contract v2: stable tool contract, generated artifact schemas, and runtime artifact validation."
+    ]
+  },
+  {
     "version": "2.8.0",
     "title": "Companion Release — Browser Context Transfer & Reviewable Capture",
     "date": "2026-09-28",

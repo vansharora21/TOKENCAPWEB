@@ -1,5 +1,33 @@
 export const blogPosts = [
   {
+    id: "tokencap-v29-release",
+    title: "TokenCap v2.9.0 Is Ready: An Agent Skill for Every AI Coding Host",
+    author: "Vansh Arora",
+    date: "October 8, 2026",
+    readTime: "3 min read",
+    category: "Release",
+    excerpt: "TokenCap v2.9.0 ships the Agent Skill release: a standard skill definition that makes TokenCap discoverable and executable by any AI agent, workflow playbooks for common engineering tasks, and a stable MCP Contract v2.",
+    content: `TokenCap v2.9.0 is now ready — the "Agent Skill" release makes TokenCap discoverable and executable by any AI agent through the open skill system.
+
+### What's New in v2.9.0:
+
+- **Agent Skill System:** \`skills/tokencap/\` provides a standard skill definition (\`SKILL.md\`, \`commands.md\`, \`workflows.md\`) for OpenCode, Claude Code, Cursor, Codex, and Antigravity. The directory ships in the npm tarball and installs through each host's configured skill-discovery mechanism.
+- **No Silent Host Changes:** TokenCap never overwrites host configuration automatically. You choose where the Skill lives.
+- **Workflow Playbooks:** Structured guidance for codebase onboarding, deep refactoring, blast-radius impact audits, and change reviews, so agents follow a known path instead of exploring blind.
+- **MCP Contract v2:** A stable tool contract, generated artifact schemas, and runtime artifact validation. A v2 minor release may add optional fields, but it will not rename a tool, remove an accepted field, or change a documented field's meaning.
+
+### Getting Started:
+
+\`\`\`bash
+npm install -g tokencap
+tokencap make
+\`\`\`
+
+Then copy or clone the Skill into your host's skills directory. The standalone Skill is also available at [Tokencap-skill](https://github.com/vansharora21/Tokencap-skill).
+
+TokenCap remains local-first: no source upload, no API key, and no telemetry.`
+  },
+  {
     id: "tokencap-v28-release",
     title: "TokenCap v2.8.0 Is Ready: Local Repository Context for Browser AI Chats",
     author: "Vansh Arora",

@@ -1,5 +1,21 @@
 [
   {
+    "id": "agent-skill-system",
+    "title": "Agent Skill System (v2.9.0)",
+    "description": "A standard TokenCap skill definition that makes repository intelligence discoverable and executable by OpenCode, Claude Code, Cursor, Codex, and Antigravity, with workflow playbooks for onboarding, refactoring, impact audits, and change reviews.",
+    "category": "Workflow",
+    "importance": 1,
+    "technicalDetail": "skills/tokencap/ (SKILL.md, commands.md, workflows.md) ships in the npm tarball and installs through each host's skill-discovery mechanism. TokenCap never overwrites host configuration automatically."
+  },
+  {
+    "id": "mcp-contract-v2",
+    "title": "MCP Contract v2 (v2.9.0)",
+    "description": "A stable, documented MCP tool contract with generated artifact schemas and runtime artifact validation, so hosts and SDK consumers can rely on tool names, inputs, and response behaviour.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "tokencap_mcp_status returns contractVersion 2. Minor releases may add optional fields but never rename a tool, remove an accepted field, or change a documented field's meaning."
+  },
+  {
     "id": "companion-context-transfer",
     "title": "Browser Companion Context Transfer (v2.8.0)",
     "description": "Pairs the local tokencap serve bridge with TokenCap Companion to inject bounded, redacted repository context into ChatGPT, Claude, and Gemini without replacing the current chat draft.",

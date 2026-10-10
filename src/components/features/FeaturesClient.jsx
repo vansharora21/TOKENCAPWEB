@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.8.0 COMPANION RELEASE
+            V2.9.0 AGENT SKILL RELEASE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,6 +127,23 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          {/* v2.9.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v2.9.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Agent Skill — Open Skill System &amp; MCP Contract v2</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">October 8, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Agent Skill System</strong> — <code>skills/tokencap/</code> provides a standard skill definition (<code>SKILL.md</code>, <code>commands.md</code>, <code>workflows.md</code>) for OpenCode, Claude Code, Cursor, Codex, and Antigravity, shipped inside the npm tarball.</li>
+              <li><strong>Host-Controlled Installation</strong> — The Skill installs through each host&apos;s configured skill-discovery mechanism; TokenCap never overwrites host configuration automatically.</li>
+              <li><strong>Workflow Playbooks</strong> — Structured guidance for codebase onboarding, deep refactoring, blast-radius impact audits, and change reviews.</li>
+              <li><strong>MCP Contract v2</strong> — A stable tool contract, generated artifact schemas, and runtime artifact validation, with the contract version reported by <code>tokencap_mcp_status</code>.</li>
+            </ul>
+          </motion.div>
+
           {/* v2.8.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">

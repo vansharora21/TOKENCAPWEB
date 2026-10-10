@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "2.9.0",
+    title: "Agent Skill — Open Skill System, Workflow Playbooks & MCP Contract v2",
+    date: "2026-10-08",
+    status: "released",
+    description: "Makes TokenCap discoverable and executable by any AI agent through the open skill system: a standard skill definition (SKILL.md, commands, workflows) for OpenCode, Claude Code, Cursor, Codex, and Antigravity ships inside the npm tarball and installs through each host's own skill-discovery mechanism without overwriting host configuration. Adds workflow playbooks for onboarding, refactoring, impact audits, and change reviews, and stabilizes MCP Contract v2 with a fixed tool contract, generated artifact schemas, and runtime artifact validation.",
+  },
+  {
     version: "2.8.0",
     title: "Companion Release — Browser Context Transfer, Capture & a Leaner CLI",
     date: "2026-09-28",
