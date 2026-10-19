@@ -140,7 +140,7 @@ export function FeaturesClient() {
               <li><strong>Read-Only SDK</strong> — <code>@tokencap/sdk</code> is a dependency-free, dual-module interface (<code>loadIntelligence</code>, <code>search</code>, <code>queryGraph</code>, <code>getImpact</code>, <code>buildContext</code>) for intelligence that <code>tokencap make</code> has already generated. It never builds, watches, writes files, or makes network calls.</li>
               <li><strong>Team Intelligence</strong> — <code>tokencap analyze team</code> records shared rules, decisions, approvals, profiles, and ADRs as append-only files under <code>.tokencap/team/</code>, committed with Git like any other file. No server, no cloud account.</li>
               <li><strong>Plugin Runtime</strong> — Opt-in local plugins listed under <code>tokencapPlugins</code> in <code>package.json</code> add <code>afterBuild</code> and <code>beforeRedact</code> hooks and named tools, with no <code>require</code>, <code>process</code>, or network access.</li>
-              <li><strong>v3 Migration</strong> — <code>tokencap make --migrate</code> upgrades a v2 workspace to the v3 artifact contract. The v2 standalone aliases are removed and now print their canonical replacement, for example <code>tokencap serve --mcp</code> for <code>tokencap mcp</code>.</li>
+              <li><strong>v3 Migration</strong> — <code>tokencap make --migrate</code> upgrades a v2 workspace to the v3 artifact contract. The v2 standalone aliases are removed and now print their canonical replacement, for example <code>tokencap analyze health</code> for <code>tokencap health</code>.</li>
             </ul>
           </motion.div>
 

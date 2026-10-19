@@ -22,7 +22,6 @@ The seven canonical commands stay the same: \`make\`, \`ask\`, \`analyze\`, \`se
 
 | Old command | v3 command |
 | --- | --- |
-| \`tokencap mcp --init\` | \`tokencap serve --mcp --init\` |
 | \`tokencap impact <file>:<sym>\` | \`tokencap ask impact <file>:<sym>\` |
 | \`tokencap health\` / \`risk\` / \`stats\` / \`debt\` | \`tokencap analyze health\` / \`risk\` / \`stats\` / \`debt\` |
 | \`tokencap debug\` / \`refactor\` / \`feedback\` / \`verify\` | \`tokencap analyze debug\` / \`refactor\` / \`feedback\` / \`verify\` |
@@ -37,7 +36,7 @@ tokencap make --migrate
 tokencap make
 \`\`\`
 
-If you configured an MCP host with \`tokencap mcp --init\`, run \`tokencap serve --mcp --init\` again so the host starts the server with the v3 command.
+MCP hosts configured before v3 keep working: \`tokencap mcp\` remains a hidden alias for \`tokencap serve --mcp\`, which new host configs use.
 
 TokenCap remains local-first: no source upload, no API key, and no telemetry.`
   },
