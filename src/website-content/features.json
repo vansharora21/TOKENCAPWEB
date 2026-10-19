@@ -1,5 +1,29 @@
 [
   {
+    "id": "read-only-sdk",
+    "title": "Read-Only SDK (v3.0.0)",
+    "description": "A dependency-free, dual-module SDK that lets local tools load, search, and query intelligence TokenCap has already generated, without embedding the build pipeline.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "@tokencap/sdk exposes loadIntelligence, search, queryGraph, getImpact, and buildContext over .tokencap/brain and .tokencap/graph artifacts. It never builds, watches, writes files, or makes network calls."
+  },
+  {
+    "id": "team-intelligence",
+    "title": "Team Intelligence (v3.0.0)",
+    "description": "Shared rules, decisions, approvals, ownership profiles, and ADRs stored as append-only records in Git, so a team builds one source of project knowledge without a server.",
+    "category": "Workflow",
+    "importance": 1,
+    "technicalDetail": "tokencap analyze team writes immutable records under .tokencap/team/. Approvals move a rule or decision from proposed to accepted. TokenCap never commits on your behalf."
+  },
+  {
+    "id": "plugin-runtime",
+    "title": "Plugin Runtime (v3.0.0)",
+    "description": "Opt-in local plugins that add build and redaction hooks and named tools, with explicit, artifact-only capabilities.",
+    "category": "Plugins",
+    "importance": 2,
+    "technicalDetail": "Workspace-relative entries under tokencapPlugins in package.json. Plugins get afterBuild and beforeRedact hooks, no require, process, or network access, and read/write only .tokencap/plugins/<plugin-name>/."
+  },
+  {
     "id": "agent-skill-system",
     "title": "Agent Skill System (v2.9.0)",
     "description": "A standard TokenCap skill definition that makes repository intelligence discoverable and executable by OpenCode, Claude Code, Cursor, Codex, and Antigravity, with workflow playbooks for onboarding, refactoring, impact audits, and change reviews.",

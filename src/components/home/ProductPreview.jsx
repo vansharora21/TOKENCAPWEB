@@ -36,7 +36,7 @@ const SESSIONS = [
   },
   {
     tab: "mcp",
-    cmd: "tokencap mcp --init",
+    cmd: "tokencap serve --mcp --init",
     logs: [
       "[MCP] Detecting active workspace IDE hosts...",
       "[MCP] Found VS Code settings under .vscode/",
@@ -49,7 +49,7 @@ const SESSIONS = [
   },
   {
     tab: "brain",
-    cmd: "tokencap brain auth --impact",
+    cmd: "tokencap ask brain auth",
     logs: [
       "[BRAIN] Querying local repository index...",
       "[BRAIN] Fuzzy-matched topic 'auth' to cluster 'Authentication'",
@@ -62,7 +62,7 @@ const SESSIONS = [
   },
   {
     tab: "graph",
-    cmd: "tokencap graph --open",
+    cmd: "tokencap make --open-graph",
     logs: [
       "[GRAPH] Parsing relative imports for 142 JS/TS modules...",
       "[GRAPH] Classified 12 component nodes, 6 utility nodes, 4 route nodes",
@@ -74,7 +74,7 @@ const SESSIONS = [
   },
   {
     tab: "diff",
-    cmd: "tokencap diff --staged",
+    cmd: "tokencap analyze diff --staged",
     logs: [
       "[DIFF] Reading git staged file index...",
       "[DIFF] Found edits: src/services/authService.ts, prisma/schema.prisma",
@@ -87,7 +87,7 @@ const SESSIONS = [
   },
   {
     tab: "constitution",
-    cmd: "tokencap constitution --diff",
+    cmd: "tokencap analyze constitution --diff",
     logs: [
       "[CONSTITUTION] Loading rule invariants...",
       "[CONSTITUTION] Checked 14 API stability rules",
@@ -100,7 +100,7 @@ const SESSIONS = [
   },
   {
     tab: "agent",
-    cmd: "tokencap agent --execution",
+    cmd: "tokencap analyze agent --execution",
     logs: [
       "[CONTRACT] Compiling 8-phase execution contract...",
       "[CONTRACT] Wrote state tracker (execution-state.md)",
@@ -113,14 +113,14 @@ const SESSIONS = [
   },
   {
     tab: "debug",
-    cmd: "tokencap debug --start -- npm test",
+    cmd: "tokencap analyze debug --start -- npm test",
     logs: [
       "[DEBUG] Initializing debug memory session...",
       "[EXEC] Running command: 'npm test'...",
       "[EXEC] Intercepted 1 failed test case (Auth Validation)",
       "[PARSE] Extracted stack trace: src/services/authService.ts line 42",
       "[TIMELINE] Logged failure to debug timeline (active.md)",
-      "[SUCCESS] Debug session active. Edit files and run 'tokencap debug --end'"
+      "[SUCCESS] Debug session active. Edit files and run 'tokencap analyze debug --end'"
     ]
   }
 ];

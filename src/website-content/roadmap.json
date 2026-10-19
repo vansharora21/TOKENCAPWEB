@@ -1,5 +1,12 @@
 [
   {
+    "version": "3.0.0",
+    "title": "Platform — Read-Only SDK, Team Intelligence, Plugin Runtime & v3 Migration",
+    "description": "A dependency-free, read-only SDK for generated TokenCap intelligence, Git-backed team rules, decisions, approvals, and ADRs, local opt-in plugins with artifact-only capabilities, and a one-command migration from v2 workspaces to the v3 artifact contract.",
+    "status": "shipped",
+    "source": "Release v3.0.0"
+  },
+  {
     "version": "2.9.0",
     "title": "Agent Skill — Open Skill System, Workflow Playbooks & MCP Contract v2",
     "description": "A standard TokenCap skill definition for OpenCode, Claude Code, Cursor, Codex, and Antigravity that ships in the npm tarball, workflow playbooks for onboarding, refactoring, impact audits, and change reviews, and a stable MCP Contract v2 with generated artifact schemas and runtime artifact validation.",

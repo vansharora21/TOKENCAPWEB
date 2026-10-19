@@ -1,5 +1,47 @@
 export const blogPosts = [
   {
+    id: "tokencap-v30-release",
+    title: "TokenCap v3.0.0 Is Ready: TokenCap Becomes a Platform",
+    author: "Vansh Arora",
+    date: "October 19, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v3.0.0 ships the Platform release: a read-only SDK for generated intelligence, Git-backed team intelligence, a local opt-in plugin runtime, and a one-command migration from v2.",
+    content: `TokenCap v3.0.0 is now ready. The "Platform" release lets other tools, teammates, and plugins build on the intelligence TokenCap generates, while everything still runs on your machine.
+
+### What's New in v3.0.0:
+
+- **Read-Only SDK:** \`@tokencap/sdk\` is a dependency-free, dual-module (CommonJS and ES module) interface for intelligence that \`tokencap make\` has already generated. \`loadIntelligence\`, \`search\`, \`queryGraph\`, \`getImpact\`, and \`buildContext\` answer questions about a repository without triggering a build, a watcher, a network request, or a file write. The SDK source lives in \`packages/sdk\` of the TokenCap repository.
+- **Team Intelligence:** \`tokencap analyze team\` records shared rules, decisions, approvals, ownership profiles, and ADRs as append-only files under \`.tokencap/team/\`. You commit them with Git like any other file. There is no server or cloud account, and TokenCap never commits on your behalf.
+- **Plugin Runtime:** Projects can list local plugins under \`tokencapPlugins\` in their own \`package.json\`. Plugins provide \`afterBuild\` and \`beforeRedact\` hooks and named tools, have no \`require\`, \`process\`, or network access, and can only read and write \`.tokencap/plugins/<plugin-name>/\`.
+- **v3 Migration:** \`tokencap make --migrate\` upgrades a v2 workspace's integration config and schemas. The next \`tokencap make\` writes a v3 artifact manifest.
+
+### Breaking Change: v2 Aliases Removed
+
+The seven canonical commands stay the same: \`make\`, \`ask\`, \`analyze\`, \`serve\`, \`update\`, \`help\`, and \`version\`. The v2 standalone aliases are gone, and each one now prints its replacement instead of running:
+
+| Old command | v3 command |
+| --- | --- |
+| \`tokencap mcp --init\` | \`tokencap serve --mcp --init\` |
+| \`tokencap impact <file>:<sym>\` | \`tokencap ask impact <file>:<sym>\` |
+| \`tokencap health\` / \`risk\` / \`stats\` / \`debt\` | \`tokencap analyze health\` / \`risk\` / \`stats\` / \`debt\` |
+| \`tokencap debug\` / \`refactor\` / \`feedback\` / \`verify\` | \`tokencap analyze debug\` / \`refactor\` / \`feedback\` / \`verify\` |
+| \`tokencap rebuild\` | \`tokencap make --rebuild\` |
+| \`tokencap remember\` / \`memory\` / \`handoff\` | \`tokencap serve session save\` / \`list\` / \`handoff\` |
+
+### Upgrading:
+
+\`\`\`bash
+npm install -g tokencap@3.0.0
+tokencap make --migrate
+tokencap make
+\`\`\`
+
+If you configured an MCP host with \`tokencap mcp --init\`, run \`tokencap serve --mcp --init\` again so the host starts the server with the v3 command.
+
+TokenCap remains local-first: no source upload, no API key, and no telemetry.`
+  },
+  {
     id: "tokencap-v29-release",
     title: "TokenCap v2.9.0 Is Ready: An Agent Skill for Every AI Coding Host",
     author: "Vansh Arora",

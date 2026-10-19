@@ -1,5 +1,14 @@
 [
   {
+    "id": "tokencap-v30-release",
+    "title": "TokenCap v3.0.0 Is Ready: TokenCap Becomes a Platform",
+    "author": "Vansh Arora",
+    "date": "October 19, 2026",
+    "readTime": "4 min read",
+    "category": "Release",
+    "excerpt": "TokenCap v3.0.0 ships the Platform release: a read-only SDK for generated intelligence, Git-backed team intelligence, a local opt-in plugin runtime, and a one-command migration from v2."
+  },
+  {
     "id": "tokencap-v29-release",
     "title": "TokenCap v2.9.0 Is Ready: An Agent Skill for Every AI Coding Host",
     "author": "Vansh Arora",

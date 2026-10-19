@@ -1,5 +1,17 @@
 [
   {
+    "version": "3.0.0",
+    "title": "Platform — Read-Only SDK, Team Intelligence, Plugin Runtime & v3 Migration",
+    "date": "2026-10-19",
+    "status": "released",
+    "highlights": [
+      "Read-only SDK: @tokencap/sdk is a dependency-free, dual-module interface for intelligence that tokencap make has already generated, with no build, watcher, network request, or file write.",
+      "Team intelligence: shared rules, decisions, approvals, profiles, and ADRs as append-only Git records under .tokencap/team/ via tokencap analyze team.",
+      "Plugin runtime: opt-in local plugins from package.json with afterBuild and beforeRedact hooks, confined to .tokencap/plugins/<plugin-name>/.",
+      "v3 migration: tokencap make --migrate upgrades v2 workspaces; v2 standalone aliases are removed and print their canonical replacement."
+    ]
+  },
+  {
     "version": "2.9.0",
     "title": "Agent Skill — Open Skill System, Workflow Playbooks & MCP Contract v2",
     "date": "2026-10-08",

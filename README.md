@@ -24,19 +24,12 @@ npm install -g tokencap
 
 ## ⚡ Core Capabilities
 
-### 📁 Workflow
-
-#### 🔹 Agent Skill System (v2.9.0)
-A standard TokenCap skill definition that makes repository intelligence discoverable and executable by OpenCode, Claude Code, Cursor, Codex, and Antigravity, with workflow playbooks for onboarding, refactoring, impact audits, and change reviews.
-
-> ⚙️ *Technical Detail:* skills/tokencap/ (SKILL.md, commands.md, workflows.md) ships in the npm tarball and installs through each host's skill-discovery mechanism. TokenCap never overwrites host configuration automatically.
-
-#### 🔹 Persistent Watcher Controls & Session ROI (v2.7.0)
-Configurable file watching parameters (debounce, directory ignore globs) with observed per-session token savings and financial ROI aggregated across hosts.
-
-> ⚙️ *Technical Detail:* Invoked via 'tokencap watch-config [--debounce <ms>] [--ignore <glob>]' and 'tokencap memory'. Computes token and dollar ROI.
-
 ### 📁 Intelligence
+
+#### 🔹 Read-Only SDK (v3.0.0)
+A dependency-free, dual-module SDK that lets local tools load, search, and query intelligence TokenCap has already generated, without embedding the build pipeline.
+
+> ⚙️ *Technical Detail:* @tokencap/sdk exposes loadIntelligence, search, queryGraph, getImpact, and buildContext over .tokencap/brain and .tokencap/graph artifacts. It never builds, watches, writes files, or makes network calls.
 
 #### 🔹 MCP Contract v2 (v2.9.0)
 A stable, documented MCP tool contract with generated artifact schemas and runtime artifact validation, so hosts and SDK consumers can rely on tool names, inputs, and response behaviour.
@@ -198,6 +191,35 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
+### 📁 Workflow
+
+#### 🔹 Team Intelligence (v3.0.0)
+Shared rules, decisions, approvals, ownership profiles, and ADRs stored as append-only records in Git, so a team builds one source of project knowledge without a server.
+
+> ⚙️ *Technical Detail:* tokencap analyze team writes immutable records under .tokencap/team/. Approvals move a rule or decision from proposed to accepted. TokenCap never commits on your behalf.
+
+#### 🔹 Agent Skill System (v2.9.0)
+A standard TokenCap skill definition that makes repository intelligence discoverable and executable by OpenCode, Claude Code, Cursor, Codex, and Antigravity, with workflow playbooks for onboarding, refactoring, impact audits, and change reviews.
+
+> ⚙️ *Technical Detail:* skills/tokencap/ (SKILL.md, commands.md, workflows.md) ships in the npm tarball and installs through each host's skill-discovery mechanism. TokenCap never overwrites host configuration automatically.
+
+#### 🔹 Persistent Watcher Controls & Session ROI (v2.7.0)
+Configurable file watching parameters (debounce, directory ignore globs) with observed per-session token savings and financial ROI aggregated across hosts.
+
+> ⚙️ *Technical Detail:* Invoked via 'tokencap watch-config [--debounce <ms>] [--ignore <glob>]' and 'tokencap memory'. Computes token and dollar ROI.
+
+### 📁 Plugins
+
+#### 🔹 Plugin Runtime (v3.0.0)
+Opt-in local plugins that add build and redaction hooks and named tools, with explicit, artifact-only capabilities.
+
+> ⚙️ *Technical Detail:* Workspace-relative entries under tokencapPlugins in package.json. Plugins get afterBuild and beforeRedact hooks, no require, process, or network access, and read/write only .tokencap/plugins/<plugin-name>/.
+
+#### 🔹 Standalone Host Plugins Ecosystem (v1.7.0)
+Marketplace-ready host integrations for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted in the official tokencap-plugin repository.
+
+> ⚙️ *Technical Detail:* Marketplace catalogs (.claude-plugin/marketplace.json & .agents/plugins/marketplace.json) for host plugin auto-discovery at https://github.com/vansharora21/tokencap-plugin.git.
+
 ### 📁 Bridge
 
 #### 🔹 Browser Companion Context Transfer (v2.8.0)
@@ -289,13 +311,6 @@ Always know how large your snapshot is before you paste it into an AI tool. Toke
 High-performance worker-thread graph building and sharded incremental caching. Maps a 100k-file workspace in under a minute cold, with 57ms scoped incremental updates.
 
 > ⚙️ *Technical Detail:* Uses worker pools with configurable memory ceilings to build graphs concurrently. The sharded incremental cache uses SHA-256 integrity validation.
-
-### 📁 Plugins
-
-#### 🔹 Standalone Host Plugins Ecosystem (v1.7.0)
-Marketplace-ready host integrations for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted in the official tokencap-plugin repository.
-
-> ⚙️ *Technical Detail:* Marketplace catalogs (.claude-plugin/marketplace.json & .agents/plugins/marketplace.json) for host plugin auto-discovery at https://github.com/vansharora21/tokencap-plugin.git.
 
 ### 📁 CLI
 
@@ -772,4 +787,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 10/10/2026.*
+*Generated automatically from `website-content` JSON source files on 19/10/2026.*

@@ -13,7 +13,7 @@ export const featurePipeline = [
   },
   {
     id: "impact",
-    cmd: "tokencap impact src/api/auth.rs:validate_token",
+    cmd: "tokencap ask impact src/api/auth.rs:validate_token",
     badge: "Call Graph",
     title: "Deep cross-file symbol resolution.",
     tagline: "Traces upstream callers and downstream dependents across Rust, Go, Java, Python, and TypeScript with zero hallucinated edges.",

@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { CopyButton } from "@/components/shared/CopyButton";
 
 export const metadata = buildMetadata({
-  title: "TokenCap MCP Guide (v2.9.0)",
+  title: "TokenCap MCP Guide (v3.0.0)",
   description: "Model Context Protocol (MCP) Guide for TokenCap. Self-Maintaining Repository Intelligence Service for AI Coding Agents.",
   path: "/mcp",
 });
@@ -43,7 +43,7 @@ export default function McpPage() {
   ];
 
   const supportedHosts = [
-    { host: "Claude Code", config: ".claude/mcp.json", flag: "--client claude" },
+    { host: "Claude Code", config: ".claude/mcp.json", flag: "--client claude-code" },
     { host: "Cursor", config: ".cursor/mcp.json", flag: "--client cursor" },
     { host: "Windsurf", config: ".windsurf/mcp.json", flag: "--client windsurf" },
     { host: "Cline / Roo Code", config: ".cline/mcp.json", flag: "--client cline" },
@@ -61,7 +61,7 @@ export default function McpPage() {
             <span className="material-symbols-outlined text-muted text-base">hub</span>
             <p className="text-xl font-bold text-foreground tracking-tight font-mono">MCP Guide</p>
           </div>
-          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v2.9.0 RELEASE</p>
+          <p className="font-mono text-[10px] text-muted mt-1 uppercase tracking-wider">v3.0.0 RELEASE</p>
         </div>
 
         <nav className="space-y-1 flex-grow font-mono text-xs">
@@ -93,7 +93,7 @@ export default function McpPage() {
           {/* Header */}
           <header id="overview" className="border-b border-card-border pb-8 scroll-mt-24">
             <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted mb-4">
-              V2.9.0 LOCAL MCP SERVICE · CONTRACT V2
+              V3.0.0 LOCAL MCP SERVICE · CONTRACT V2
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-4 font-sans">
               Model Context Protocol (MCP) Guide
@@ -169,7 +169,7 @@ export default function McpPage() {
                     <tr key={h.host} className="hover:bg-pre-bg/40 transition-colors">
                       <td className="p-3 font-bold text-foreground">{h.host}</td>
                       <td className="p-3 text-[10px] text-muted">{h.config}</td>
-                      <td className="p-3 text-[10px] text-foreground/90">{`tokencap mcp --init ${h.flag}`}</td>
+                      <td className="p-3 text-[10px] text-foreground/90">{`tokencap serve --mcp --init ${h.flag}`}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -37,7 +37,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V2.9.0 AGENT SKILL RELEASE
+            V3.0.0 PLATFORM RELEASE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -127,6 +127,23 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          {/* v3.0.0 */}
+          <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">v3.0.0</span>
+                <h3 className="text-lg font-bold text-foreground font-mono">Platform — SDK, Team Intelligence &amp; Plugin Runtime</h3>
+              </div>
+              <span className="text-xs text-muted font-mono">October 19, 2026</span>
+            </div>
+            <ul className="space-y-3 text-sm text-muted list-disc list-inside">
+              <li><strong>Read-Only SDK</strong> — <code>@tokencap/sdk</code> is a dependency-free, dual-module interface (<code>loadIntelligence</code>, <code>search</code>, <code>queryGraph</code>, <code>getImpact</code>, <code>buildContext</code>) for intelligence that <code>tokencap make</code> has already generated. It never builds, watches, writes files, or makes network calls.</li>
+              <li><strong>Team Intelligence</strong> — <code>tokencap analyze team</code> records shared rules, decisions, approvals, profiles, and ADRs as append-only files under <code>.tokencap/team/</code>, committed with Git like any other file. No server, no cloud account.</li>
+              <li><strong>Plugin Runtime</strong> — Opt-in local plugins listed under <code>tokencapPlugins</code> in <code>package.json</code> add <code>afterBuild</code> and <code>beforeRedact</code> hooks and named tools, with no <code>require</code>, <code>process</code>, or network access.</li>
+              <li><strong>v3 Migration</strong> — <code>tokencap make --migrate</code> upgrades a v2 workspace to the v3 artifact contract. The v2 standalone aliases are removed and now print their canonical replacement, for example <code>tokencap serve --mcp</code> for <code>tokencap mcp</code>.</li>
+            </ul>
+          </motion.div>
+
           {/* v2.9.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -515,7 +532,7 @@ export function FeaturesClient() {
             Query repository intelligence live over stdio MCP (12 tool endpoints) with automatic startup init and background watching.
           </p>
           <div className="bg-pre-bg border border-card-border p-3 font-mono text-[11px] h-[84px] flex flex-col justify-center text-left">
-            <div className="text-muted">$ tokencap mcp --init</div>
+            <div className="text-muted">$ tokencap serve --mcp --init</div>
             <div className="text-muted/80 mt-1">Status: Active (0-2ms latency)</div>
             <div className="text-foreground font-bold">12 MCP Tool Endpoints</div>
           </div>

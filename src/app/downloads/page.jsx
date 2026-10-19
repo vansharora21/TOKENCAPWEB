@@ -58,7 +58,7 @@ const integrationPlatforms = [
     id: "claude",
     name: "Claude Code & Desktop",
     label: "Supported via MCP",
-    description: "Native Model Context Protocol integration for Claude Code & Desktop. Run 'tokencap mcp --init --client claude' for auto setup.",
+    description: "Native Model Context Protocol integration for Claude Code & Desktop. Run 'tokencap serve --mcp --init --client claude-code' for auto setup.",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
         <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2a8 8 0 110 16 8 8 0 010-16z" opacity="0.4" />
@@ -80,7 +80,7 @@ const integrationPlatforms = [
     id: "skills",
     name: "Cursor, Windsurf & Cline",
     label: "Supported via MCP",
-    description: "One-command host configuration for Cursor, Windsurf, Cline, and Roo Code. Run 'tokencap mcp --init' in any workspace.",
+    description: "One-command host configuration for Cursor, Windsurf, Cline, and Roo Code. Run 'tokencap serve --mcp --init' in any workspace.",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" opacity="0.4" />
@@ -194,7 +194,7 @@ export default function DownloadsPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-mono text-muted uppercase tracking-wider bg-pre-bg border border-card-border px-2 py-0.5 rounded">
-                Claude & Codex Plugins · v2.9.0
+                Claude & Codex Plugins · v3.0.0
               </span>
             </div>
             <h2 className="text-xl font-bold text-foreground font-mono">
@@ -234,8 +234,8 @@ export default function DownloadsPage() {
               Auto-detects Claude in your workspace and safely merges TokenCap definition into <code className="font-mono text-foreground">.claude/mcp.json</code> while generating a non-overwriting <code className="font-mono text-foreground">CLAUDE.md</code> pointer.
             </p>
             <div className="bg-pre-bg border border-card-border rounded p-2.5 flex items-center justify-between gap-2 text-[11px]">
-              <code className="text-foreground/90 truncate">tokencap mcp --init --client claude</code>
-              <CopyButton text="tokencap mcp --init --client claude" />
+              <code className="text-foreground/90 truncate">tokencap serve --mcp --init --client claude-code</code>
+              <CopyButton text="tokencap serve --mcp --init --client claude-code" />
             </div>
           </div>
 

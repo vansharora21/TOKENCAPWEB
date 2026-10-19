@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "3.0.0",
+    title: "Platform — Read-Only SDK, Team Intelligence, Plugin Runtime & v3 Migration",
+    date: "2026-10-19",
+    status: "released",
+    description: "Opens TokenCap up as a platform. A dependency-free, read-only SDK (@tokencap/sdk) lets local tools load, search, and query intelligence that tokencap make has already generated. Team intelligence keeps shared rules, decisions, approvals, profiles, and ADRs as append-only records in Git under .tokencap/team/. Projects can opt into local plugins with after-build and before-redact hooks confined to their own artifact directory. tokencap make --migrate upgrades a v2 workspace to the v3 artifact contract, and the v2 standalone command aliases are removed: each now prints its canonical replacement.",
+  },
+  {
     version: "2.9.0",
     title: "Agent Skill — Open Skill System, Workflow Playbooks & MCP Contract v2",
     date: "2026-10-08",
