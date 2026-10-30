@@ -10,6 +10,13 @@ export const primaryNav = [
 
 export const githubUrl = "https://github.com/vansharora21/TOKENCAP";
 
+// Navbar actions, right of the links.
+export const chromeCompanion = {
+  label: "Chrome companion",
+  href: "https://chromewebstore.google.com/detail/tokencap-companion/opabefaobopdfpndkcbdhikihfccnkdi",
+};
+export const writeReview = { label: "Write a review", href: "/reviews" };
+
 export const mainNavigation = [
   { label: "Home", href: "/", description: "Overview and hero section" },
   { label: "Features", href: "/features", description: "All features in detail" },

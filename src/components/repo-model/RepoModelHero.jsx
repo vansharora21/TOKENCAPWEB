@@ -16,6 +16,7 @@ const TOUR_IDS = homeHero.tour
   .filter((id) => id >= 0);
 const TOUR_DELAY_MS = 10000;
 const TOUR_STEP_MS = 5000;
+const HOVER_CLEAR_MS = 600;
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -78,7 +79,7 @@ function Readout({ selectedId, touring, touch }) {
   const { file, direct, total, folders } = summary;
   return (
     <div aria-live="polite">
-      <p className="font-mono text-[13px] text-repo-ink">{file.path}</p>
+      <p className="truncate font-mono text-[13px] text-repo-ink" title={file.path}>{file.path}</p>
       <p className="mt-1 text-sm text-repo-muted">
         {file.lines.toLocaleString("en-US")} lines{touring ? ` (example, ${verb} any block)` : ""}
       </p>
@@ -110,11 +111,32 @@ export function RepoModelHero() {
     setSelectedId(id);
   }, []);
 
+  // Pointer moves fire many times a second and the pointer crosses the gaps
+  // between blocks; only react to a new block, and clear the selection only
+  // after the pointer has stayed off the model for a moment.
+  const currentId = useRef(null);
+  const clearTimer = useRef(null);
   const handleHover = useCallback((id) => {
     lastHover.current = Date.now();
+    const next = id ?? null;
+    if (next === null) {
+      if (clearTimer.current === null) {
+        clearTimer.current = setTimeout(() => {
+          clearTimer.current = null;
+          currentId.current = null;
+          select(null);
+        }, HOVER_CLEAR_MS);
+      }
+      return;
+    }
+    clearTimeout(clearTimer.current);
+    clearTimer.current = null;
+    if (next === currentId.current) return;
+    currentId.current = next;
     setTouring(false);
-    select(id ?? null);
+    select(next);
   }, [select]);
+  useEffect(() => () => clearTimeout(clearTimer.current), []);
 
   // With no pointer activity, step through the most-imported files so the
   // feature is visible on touch screens and to visitors who never hover.
@@ -124,7 +146,8 @@ export function RepoModelHero() {
     const timer = setInterval(() => {
       if (Date.now() - lastHover.current < TOUR_DELAY_MS) return;
       setTouring(true);
-      select(TOUR_IDS[step % TOUR_IDS.length]);
+      currentId.current = TOUR_IDS[step % TOUR_IDS.length];
+      select(currentId.current);
       step += 1;
     }, TOUR_STEP_MS);
     return () => clearInterval(timer);
@@ -179,7 +202,8 @@ export function RepoModelHero() {
         )}
 
         <div className={cn("pointer-events-auto flex-col gap-5 lg:col-span-12 lg:flex-row lg:items-end lg:justify-between", showModel ? "flex" : "hidden")}>
-          <div className="rounded-lg bg-repo-panel p-4 shadow-[0_1px_0_rgb(0_0_0/0.04),0_8px_24px_-12px_rgb(20_24_30/0.25)] lg:max-w-sm">
+          {/* Fixed size, so swapping files never resizes the panel or shifts the page. */}
+          <div className="min-h-[8.5rem] rounded-lg bg-repo-panel p-4 shadow-[0_1px_0_rgb(0_0_0/0.04),0_8px_24px_-12px_rgb(20_24_30/0.25)] lg:w-[24rem]">
             <Readout selectedId={selectedId} touring={touring} touch={device.touch} />
           </div>
           <div className="hidden flex-wrap gap-1 self-start rounded-lg bg-repo-panel p-1 sm:flex lg:self-auto" role="group" aria-label="Move the camera to a folder">

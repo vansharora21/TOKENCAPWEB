@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ThemePicker, ThemeRow } from "@/components/theme/ThemePicker";
-import { primaryNav, githubUrl } from "@/data/navigation";
+import { primaryNav, chromeCompanion, writeReview } from "@/data/navigation";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-repo-ink";
 
@@ -92,15 +92,22 @@ function MobileMenu({ pathname, onClose, toggleRef }) {
         <ThemeRow />
       </div>
 
-      <div className="menu-slab mt-3 flex items-center gap-2" style={{ "--i": primaryNav.length + 1 }}>
+      <div className="menu-slab mt-3 grid grid-cols-[1fr_1fr_auto] gap-2" style={{ "--i": primaryNav.length + 1 }}>
         <a
-          href={githubUrl}
+          href={chromeCompanion.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn("flex min-h-12 flex-1 items-center justify-center rounded-lg bg-repo-ink text-sm font-medium text-repo-ground", focusRing)}
+          className={cn("flex min-h-12 items-center justify-center rounded-lg bg-repo-ink px-2 text-center text-sm font-medium text-repo-ground", focusRing)}
         >
-          GitHub
+          {chromeCompanion.label}
         </a>
+        <Link
+          href={writeReview.href}
+          onClick={onClose}
+          className={cn("flex min-h-12 items-center justify-center rounded-lg bg-repo-panel px-2 text-center text-sm font-medium text-repo-ink", focusRing)}
+        >
+          {writeReview.label}
+        </Link>
         <button
           type="button"
           onClick={() => { onClose(); openSearch(); }}
@@ -165,13 +172,20 @@ function Navbar() {
             </button>
             <ThemePicker />
           </div>
+          {/* Shown from lg up so the bar stays on one line; the phone menu carries both. */}
+          <Link
+            href={writeReview.href}
+            className={cn("ml-1 hidden whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-repo-ink hover:bg-repo-ink/5 lg:inline-block", focusRing)}
+          >
+            {writeReview.label}
+          </Link>
           <a
-            href={githubUrl}
+            href={chromeCompanion.href}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn("ml-2 hidden rounded-md bg-repo-ink px-3.5 py-2 text-sm font-medium text-repo-ground sm:inline-block", focusRing)}
+            className={cn("ml-1 hidden whitespace-nowrap rounded-md bg-repo-ink px-3.5 py-2 text-sm font-medium text-repo-ground lg:inline-block", focusRing)}
           >
-            GitHub
+            {chromeCompanion.label}
           </a>
           <button
             ref={toggleRef}
