@@ -13,7 +13,7 @@ export const blogPosts = [
 
 - **Read-Only SDK:** \`@tokencap/sdk\` is a dependency-free, dual-module (CommonJS and ES module) interface for intelligence that \`tokencap make\` has already generated. \`loadIntelligence\`, \`search\`, \`queryGraph\`, \`getImpact\`, and \`buildContext\` answer questions about a repository without triggering a build, a watcher, a network request, or a file write. The SDK source lives in \`packages/sdk\` of the TokenCap repository.
 - **Team Intelligence:** \`tokencap analyze team\` records shared rules, decisions, approvals, ownership profiles, and ADRs as append-only files under \`.tokencap/team/\`. You commit them with Git like any other file. There is no server or cloud account, and TokenCap never commits on your behalf.
-- **Plugin Runtime:** Projects can list local plugins under \`tokencapPlugins\` in their own \`package.json\`. Plugins provide \`afterBuild\` and \`beforeRedact\` hooks and named tools, have no \`require\`, \`process\`, or network access, and can only read and write \`.tokencap/plugins/<plugin-name>/\`.
+- **Plugin Runtime:** Projects can list local plugins under \`tokencapPlugins\` in their own \`package.json\`. Plugins provide \`afterBuild\` and \`beforeRedact\` hooks and named tools, have no \`require\`, \`process\`, or network access, and can only read and write \`.tokencap/plugins/<plugin-name>/\`. Plugins are code you opt into, so install ones you trust.
 - **v3 Migration:** \`tokencap make --migrate\` upgrades a v2 workspace's integration config and schemas. The next \`tokencap make\` writes a v3 artifact manifest.
 
 ### Breaking Change: v2 Aliases Removed
