@@ -45,6 +45,16 @@ export const commands = [
     result: "Task-scoped, token-budgeted context pack generated."
   },
   {
+    command: "tokencap ask \"<task>\" --adaptive",
+    description: "Builds the same task pack, re-ranked with feedback you recorded for tasks with the same subject. Boosts are capped and every baseline candidate is kept.",
+    result: "Task pack plus a line saying how many matching feedback events were used."
+  },
+  {
+    command: "tokencap analyze --learning",
+    description: "Records explicit feedback on a task pack (--outcome helped|neutral|hurt --task <task> --files <paths> --missing <path>) or, with no flags, shows the local learning evidence. --patterns lists recurring file pairs.",
+    result: "Feedback recorded in .tokencap/learning/, or the learning report printed."
+  },
+  {
     command: "tokencap analyze security scan",
     description: "Scans workspace source files for leaked secrets, API keys, tokens, and high-entropy credentials before snapshot generation.",
     result: "Secret scan report with file locations and quarantine flags rendered."

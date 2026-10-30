@@ -6,7 +6,7 @@ export const featurePipeline = [
     title: "One command. Complete context handoff.",
     tagline: "Parses your repository AST, extracts Git diffs, scrubs secrets, and formats compressed LLM-ready markdown in 82ms.",
     stats: [
-      { label: "Token Savings", val: "12.2× average" },
+      { label: "Savings Report", val: "Every build" },
       { label: "Execution Time", val: "82ms" },
       { label: "Output Files", val: "3 artifacts" },
     ],

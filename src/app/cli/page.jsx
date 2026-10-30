@@ -38,6 +38,8 @@ export default function CliPage() {
     { flag: "--pr", description: "Generate PR summary description (for diff command).", defaultVal: "false" },
     { flag: "--prompt", description: "Generate AI prompt/review prompt (for ask/context/diff commands).", defaultVal: "true (ask)" },
     { flag: "--no-prompt", description: "Skip prompt.md generation (for ask command).", defaultVal: "false" },
+    { flag: "--adaptive", description: "Re-rank with explicit local feedback from tasks with the same subject; boosts are capped and baseline files are kept (for ask command).", defaultVal: "false" },
+    { flag: "--learning", description: "Record explicit task-pack feedback (--outcome, --task, --files, --missing) or show the local learning report (for analyze command).", defaultVal: "N/A" },
     { flag: "--json", description: "Output machine-readable JSON (for ask/context/diff/graph/agent/constitution commands).", defaultVal: "false" },
     { flag: "--open", description: "Open interactive HTML graph viewer in browser (for graph command).", defaultVal: "false" },
     { flag: "--ai", description: "Generate detailed narrative AI summary (for graph command).", defaultVal: "false" },

@@ -96,7 +96,7 @@ const otherArticles = [
     date: "July 2026",
     title: "TokenCap v1.6.0 Is Now Live",
     platform: "DEV Community",
-    description: "Introducing the Token & Dollar Savings Engine, 12.2× average token reduction (94.3% cost savings), non-overwriting multi-host pointers for 7 AI hosts, and CI-enforced zero egress.",
+    description: "Introducing the Token & Dollar Savings Engine, non-overwriting multi-host pointers for 7 AI hosts, and CI-enforced zero egress. (Its 12.2× benchmark claim was retracted in v3.1.0.)",
     link: "https://dev.to/vansharora21/tokencap-v160-is-now-live-3153",
     type: "Technical Guide",
   },

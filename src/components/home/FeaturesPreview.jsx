@@ -176,7 +176,7 @@ function MakeOutput() {
       </div>
       <div className="pt-2 text-[11px] text-foreground font-semibold border-t border-card-border flex items-center justify-between">
         <span className="text-muted">Total context packaged:</span>
-        <span className="text-emerald-400">14,670 tokens (12.2× reduction from 820K)</span>
+        <span className="text-emerald-400">14,670 tokens</span>
       </div>
     </>
   );

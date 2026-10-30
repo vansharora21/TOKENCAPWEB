@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "3.1.0",
+    title: "Learning — Explicit Feedback, Adaptive Task Packs & Measured Retrieval",
+    date: "2026-10-30",
+    status: "released",
+    description: "Task packs now learn from feedback you choose to record, and their quality is measured instead of claimed. Mark a pack helpful or report a missed file from the CLI or the Companion's Useful and Missed file buttons; tokencap ask --adaptive then re-ranks files for tasks with the same subject, with a capped boost that never drops a baseline candidate. Feedback stays in a local ledger with redacted task labels and workspace-relative paths only. Task retrieval was rewritten around rarity-weighted matches on file names, symbols, directories and full text, verbatim identifiers, Python, Go, Rust and Java imports, and whole-function spans. On 100 real commits from nine repositories, packs hold the needed files 88% of the time at a median 18.7× fewer tokens than a keyword grep; the earlier 12.2× figure is retracted. MCP's tokencap_files now ranks like tokencap ask, and every language parses on Node 18 and 20.",
+  },
+  {
     version: "3.0.0",
     title: "Platform — Read-Only SDK, Team Intelligence, Plugin Runtime & v3 Migration",
     date: "2026-10-19",
@@ -89,7 +96,7 @@ export const changelogItems = [
     title: "Token Savings Engine, Multi-Host Pointers & Benchmarks",
     date: "2026-07-23",
     status: "released",
-    description: "Real-time Token & Dollar Savings Engine, 12.2× benchmark reduction (94.3% cost savings), multi-host pointer generation (AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, Kiro), and CI-enforced zero-network egress guarantees.",
+    description: "Real-time Token & Dollar Savings Engine, 12.2× benchmark reduction (94.3% cost savings; retracted in v3.1.0), multi-host pointer generation (AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, Kiro), and CI-enforced zero-network egress guarantees.",
   },
   {
     version: "1.5.0",

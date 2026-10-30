@@ -1,8 +1,24 @@
 [
   {
+    "id": "explicit-learning",
+    "title": "Explicit Feedback & Adaptive Ask (v3.1.0)",
+    "description": "Task packs improve from feedback you choose to record: mark a pack helpful or report a missed file, then opt into re-ranking with tokencap ask --adaptive.",
+    "category": "Intelligence",
+    "importance": 1,
+    "technicalDetail": "Feedback from tokencap analyze --learning or the Companion's Useful and Missed file buttons is stored in .tokencap/learning/ with redacted task labels and workspace-relative paths only. --adaptive boosts files from same-subject tasks (capped), keeps every baseline candidate, and never adds a file on feedback alone."
+  },
+  {
+    "id": "task-retrieval-benchmark",
+    "title": "Measured Task Retrieval (v3.1.0)",
+    "description": "Rewritten task-pack retrieval, measured on 100 real commits from nine repositories: needed files present 88% of the time at a median 18.7× fewer tokens than a keyword grep.",
+    "category": "Context",
+    "importance": 1,
+    "technicalDetail": "Rarity-weighted matching on file name, symbols, directory and full text, verbatim identifiers, Python/Go/Rust/Java import edges, and Tree-sitter whole-function spans. Half the benchmark tasks are held out, and CI fails when recall, edit-line coverage or the median saving drops."
+  },
+  {
     "id": "read-only-sdk",
     "title": "Read-Only SDK (v3.0.0)",
-    "description": "A dependency-free, dual-module SDK that lets local tools load, search, and query intelligence TokenCap has already generated, without embedding the build pipeline.",
+    "description": "A dependency-free, dual-module SDK that lets local tools load, search, and query intelligence TokenCap has already generated, without embedding the build pipeline. Experimental and not yet published to npm.",
     "category": "Intelligence",
     "importance": 1,
     "technicalDetail": "@tokencap/sdk exposes loadIntelligence, search, queryGraph, getImpact, and buildContext over .tokencap/brain and .tokencap/graph artifacts. It never builds, watches, writes files, or makes network calls."
@@ -302,7 +318,7 @@
     "description": "Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.",
     "category": "Intelligence",
     "importance": 1,
-    "technicalDetail": "Uses js-tiktoken exact counting (cl100k/o200k base). Benchmarked across 15 real tasks showing 12.2× average reduction (94.3% cost savings)."
+    "technicalDetail": "Uses js-tiktoken exact counting (cl100k/o200k base). The earlier 15-task 12.2× benchmark is retracted; task packs are now measured on 100 real commits (88% of needed files at a median 18.7× fewer tokens)."
   },
   {
     "id": "multi-host-pointers",

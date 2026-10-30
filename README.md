@@ -26,8 +26,13 @@ npm install -g tokencap
 
 ### 📁 Intelligence
 
+#### 🔹 Explicit Feedback & Adaptive Ask (v3.1.0)
+Task packs improve from feedback you choose to record: mark a pack helpful or report a missed file, then opt into re-ranking with tokencap ask --adaptive.
+
+> ⚙️ *Technical Detail:* Feedback from tokencap analyze --learning or the Companion's Useful and Missed file buttons is stored in .tokencap/learning/ with redacted task labels and workspace-relative paths only. --adaptive boosts files from same-subject tasks (capped), keeps every baseline candidate, and never adds a file on feedback alone.
+
 #### 🔹 Read-Only SDK (v3.0.0)
-A dependency-free, dual-module SDK that lets local tools load, search, and query intelligence TokenCap has already generated, without embedding the build pipeline.
+A dependency-free, dual-module SDK that lets local tools load, search, and query intelligence TokenCap has already generated, without embedding the build pipeline. Experimental and not yet published to npm.
 
 > ⚙️ *Technical Detail:* @tokencap/sdk exposes loadIntelligence, search, queryGraph, getImpact, and buildContext over .tokencap/brain and .tokencap/graph artifacts. It never builds, watches, writes files, or makes network calls.
 
@@ -124,7 +129,7 @@ Scans codebase to flag uncalled, non-exported functions and symbols to clean up 
 #### 🔹 Token & Dollar Savings Engine (v1.6.0)
 Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.
 
-> ⚙️ *Technical Detail:* Uses js-tiktoken exact counting (cl100k/o200k base). Benchmarked across 15 real tasks showing 12.2× average reduction (94.3% cost savings).
+> ⚙️ *Technical Detail:* Uses js-tiktoken exact counting (cl100k/o200k base). The earlier 15-task 12.2× benchmark is retracted; task packs are now measured on 100 real commits (88% of needed files at a median 18.7× fewer tokens).
 
 #### 🔹 Multi-Host Agent Pointers (v1.6.0)
 Automatically generates non-overwriting pointer files across 7 major AI hosts so AI coding assistants auto-load project context seamlessly.
@@ -191,6 +196,13 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 
 > ⚙️ *Technical Detail:* Auto-creates .tokencap-debug.md templates. Captures environment data and command failures. Managed via unified tokencap debug CLI with start, end, and log flags.
 
+### 📁 Context
+
+#### 🔹 Measured Task Retrieval (v3.1.0)
+Rewritten task-pack retrieval, measured on 100 real commits from nine repositories: needed files present 88% of the time at a median 18.7× fewer tokens than a keyword grep.
+
+> ⚙️ *Technical Detail:* Rarity-weighted matching on file name, symbols, directory and full text, verbatim identifiers, Python/Go/Rust/Java import edges, and Tree-sitter whole-function spans. Half the benchmark tasks are held out, and CI fails when recall, edit-line coverage or the median saving drops.
+
 ### 📁 Workflow
 
 #### 🔹 Team Intelligence (v3.0.0)
@@ -213,7 +225,7 @@ Configurable file watching parameters (debounce, directory ignore globs) with ob
 #### 🔹 Plugin Runtime (v3.0.0)
 Opt-in local plugins that add build and redaction hooks and named tools, with explicit, artifact-only capabilities.
 
-> ⚙️ *Technical Detail:* Workspace-relative entries under tokencapPlugins in package.json. Plugins get afterBuild and beforeRedact hooks, no require, process, or network access, and read/write only .tokencap/plugins/<plugin-name>/.
+> ⚙️ *Technical Detail:* Workspace-relative entries under tokencapPlugins in package.json. Plugins get afterBuild and beforeRedact hooks, no require, process, or network access, and read/write only .tokencap/plugins/<plugin-name>/. Install plugins you trust.
 
 #### 🔹 Standalone Host Plugins Ecosystem (v1.7.0)
 Marketplace-ready host integrations for Claude Code (tokencap) and OpenAI Codex (tokencap-context) hosted in the official tokencap-plugin repository.
@@ -542,6 +554,8 @@ tokencap analyze tests --gaps
 
 | Option / Flag | Description |
 | --- | --- |
+| `--learning` | Record explicit task-pack feedback (--outcome helped, neutral or hurt, with --task, --files and --missing) or show the local learning report. |
+| `--patterns` | List file pairs that recur across packs judged helpful or harmful (advisory only). |
 | `tests [<file>:<symbol>]` | Map test fixtures to symbols they exercise based on static AST call evidence. |
 | `tests --gaps` | Isolate called-but-untested symbol gaps across the codebase. |
 | `tests --coverage <path>` | Ingest existing lcov or Istanbul JSON coverage report (read-only). |
@@ -607,6 +621,7 @@ tokencap ask "How does authentication work?"
 | `--budget <n>` | Custom token budget for the context pack. Default: 12000 |
 | `--json` | Also export a machine-readable context.json file |
 | `--no-prompt` | Skip generating the prompt.md file |
+| `--adaptive` | Re-rank with explicit local feedback from tasks with the same subject (capped boosts; baseline candidates kept) |
 
 ### 🛠️ `tokencap context`
 
@@ -787,4 +802,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 19/10/2026.*
+*Generated automatically from `website-content` JSON source files on 30/10/2026.*

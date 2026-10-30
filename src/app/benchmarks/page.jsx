@@ -2,8 +2,8 @@ import { buildMetadata } from "@/lib/seo";
 import { BenchmarksClient } from "@/components/benchmarks/BenchmarksClient";
 
 export const metadata = buildMetadata({
-  title: "Verified Benchmarks & Cost Reduction",
-  description: "Token & Dollar Savings Engine benchmarks demonstrating 12.2× average token reduction (94.3% cost savings) across 15 real-world repository tasks.",
+  title: "Task Pack Benchmark: 100 Real Commits",
+  description: "TokenCap task packs measured on 100 real commits from nine open-source repositories: the needed files are present 88% of the time at a median 18.7× fewer tokens than a keyword grep.",
   path: "/benchmarks",
 });
 

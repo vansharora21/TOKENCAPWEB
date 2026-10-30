@@ -1,5 +1,50 @@
 export const blogPosts = [
   {
+    id: "tokencap-v31-release",
+    title: "TokenCap v3.1.0 Is Ready: Task Packs That Learn, and Numbers We Can Prove",
+    author: "Vansh Arora",
+    date: "October 30, 2026",
+    readTime: "5 min read",
+    category: "Release",
+    excerpt: "TokenCap v3.1.0 ships the Learning release: explicit local feedback, an opt-in adaptive ask, a rewritten task retrieval engine, and a 100-commit ground-truth benchmark that replaces the old 12.2× claim.",
+    content: `TokenCap v3.1.0 is now ready. The "Learning" release makes task packs better at finding the code a task touches, lets them improve from feedback you choose to record, and measures all of it on real commits instead of quoting a single headline number.
+
+### What's New in v3.1.0:
+
+- **Explicit Feedback:** After a task pack, record whether it helped and which file it missed, with \`tokencap analyze --learning --outcome helped --task "<task>" --files <path,...>\` (add \`--missing <path>\` for an omitted file) or the Companion's **Useful** and **Missed file** buttons. Feedback is stored in \`.tokencap/learning/\` on your machine. Task labels are redacted before they are written, and file lists accept workspace-relative paths only. Nothing reads your chats, and nothing changes automatically.
+- **Adaptive Ask:** \`tokencap ask "<task>" --adaptive\` re-ranks files using feedback from earlier tasks about the same subject. Files from a helpful pack and files you reported missing get a capped boost, every baseline candidate is kept, and generic words such as "fix" or "bug" never make two tasks look related.
+- **Learning Reports:** \`tokencap analyze --learning\` shows the recorded evidence, and \`tokencap analyze --patterns\` lists file pairs that recur across packs you judged helpful or harmful. Patterns are advisory and act on nothing.
+- **Task Retrieval Rewrite:** Files are ranked by rarity-weighted matches on file name, declared symbols, directory and full text, with stemming and exact matching of identifiers you name (\`allShortcodes\`, \`DATABASE_URL\`). Python, Go, Rust and Java imports join the graph, and a large file is shown as whole functions around the matching lines rather than an arbitrary window.
+- **One Pipeline:** \`tokencap ask\`, the Companion bridge, and MCP's \`tokencap_files\` now use the same retrieval, so they agree on which files matter.
+
+### Measured, Not Claimed
+
+The old "12.2×" figure is retracted. v3.1.0 ships a benchmark built from 100 real commits in nine open-source repositories (JavaScript, TypeScript, Vue, Python, Go, Rust, Java). Each task is a commit subject, and the answer is the set of source files that commit changed:
+
+| Measure | TokenCap task pack | Every matching file | 10 best-matching files |
+| --- | --- | --- | --- |
+| Needed files present | 88% | 96% | 76% |
+| Median token saving | — | 18.7× | 7.5× |
+
+Reading every matching file finds slightly more, at many times the tokens. On average 73% of the exact lines a commit edited are in the pack, and the benchmark does not grade a model's answer. Half the tasks were held out while the retrieval code changed, and CI fails if the numbers drop. The method and the limits are in [Honest Numbers](https://github.com/vansharora21/TOKENCAP/blob/main/docs/HONEST-NUMBERS.md).
+
+### Fixes Worth Knowing
+
+- Every language now parses on Node 18 and 20. Grammars used to load all at once, which on Node 20 left only Rust parseable, so other languages fell back to text heuristics.
+- The Companion bridge reports a failed build as an error instead of "project not indexed".
+
+### Upgrading:
+
+\`\`\`bash
+npm install -g tokencap@3.1.0
+tokencap make
+\`\`\`
+
+The VS Code extension updates to 3.1.0 from the Marketplace, and TokenCap Companion 3.1.0 adds the feedback buttons; they need the 3.1.0 CLI bridge.
+
+TokenCap remains local-first: no source upload, no API key, and no telemetry.`
+  },
+  {
     id: "tokencap-v30-release",
     title: "TokenCap v3.0.0 Is Ready: TokenCap Becomes a Platform",
     author: "Vansh Arora",
@@ -227,7 +272,9 @@ The Companion workflow has been verified with ChatGPT, Claude, and Gemini. Token
     url: "https://dev.to/vansharora21/tokencap-v160-is-now-live-3153",
     secondaryUrl: "https://coderlegion.com/23530/tokencap-v1-6-0-is-now-live",
     excerpt: "Introducing the Token & Dollar Savings Engine, 12.2× average token reduction (94.3% cost savings), non-overwriting multi-host pointers for 7 AI hosts, and CI-enforced zero network egress security.",
-    content: `TokenCap v1.6.0 introduces real-time Token & Dollar Savings reporting, multi-host AI agent pointer generation, and verified open-source benchmarks.
+    content: `> **Correction (v3.1.0):** The 12.2× benchmark below is retracted. TokenCap's task packs are now measured on 100 real commits; see the Benchmarks page.
+
+TokenCap v1.6.0 introduces real-time Token & Dollar Savings reporting, multi-host AI agent pointer generation, and verified open-source benchmarks.
 
 ### Verified Benchmarks: 12.2× Token Reduction
 

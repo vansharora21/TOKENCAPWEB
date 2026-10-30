@@ -107,6 +107,8 @@
     "description": "Local codebase analysis suite: generate static test maps, evidence-backed change review packets, opt-in ownership and churn signals, simplification candidates, and semantic diff reports.",
     "example": "tokencap analyze tests --gaps",
     "options": [
+      { "flag": "--learning", "description": "Record explicit task-pack feedback (--outcome helped, neutral or hurt, with --task, --files and --missing) or show the local learning report." },
+      { "flag": "--patterns", "description": "List file pairs that recur across packs judged helpful or harmful (advisory only)." },
       { "flag": "tests [<file>:<symbol>]", "description": "Map test fixtures to symbols they exercise based on static AST call evidence." },
       { "flag": "tests --gaps", "description": "Isolate called-but-untested symbol gaps across the codebase." },
       { "flag": "tests --coverage <path>", "description": "Ingest existing lcov or Istanbul JSON coverage report (read-only)." },
@@ -156,7 +158,8 @@
       { "flag": "--mode <name>", "description": "Override auto-detected mode: review | debug | architecture" },
       { "flag": "--budget <n>", "description": "Custom token budget for the context pack. Default: 12000" },
       { "flag": "--json", "description": "Also export a machine-readable context.json file" },
-      { "flag": "--no-prompt", "description": "Skip generating the prompt.md file" }
+      { "flag": "--no-prompt", "description": "Skip generating the prompt.md file" },
+      { "flag": "--adaptive", "description": "Re-rank with explicit local feedback from tasks with the same subject (capped boosts; baseline candidates kept)" }
     ]
   },
   {

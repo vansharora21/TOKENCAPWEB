@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "3.1.0",
+    title: "Learning — Explicit Feedback, Adaptive Task Packs & Measured Retrieval",
+    description: "Explicit local feedback (CLI and Companion) feeding an opt-in adaptive ask, a rewritten task retrieval engine with multi-language imports and whole-function spans, and a 100-commit ground-truth benchmark gated in CI.",
+    status: "shipped",
+    source: "Release v3.1.0",
+  },
+  {
     version: "3.0.0",
     title: "Platform — Read-Only SDK, Team Intelligence, Plugin Runtime & v3 Migration",
     description: "A dependency-free, read-only SDK for generated TokenCap intelligence, Git-backed team rules, decisions, approvals, and ADRs, local opt-in plugins with artifact-only capabilities, and a one-command migration from v2 workspaces to the v3 artifact contract.",
@@ -87,7 +94,7 @@ export const roadmapItems = [
   {
     version: "1.6.0",
     title: "Token & Dollar Savings Engine, Multi-Host Pointers & Benchmarks",
-    description: "Real-time savings data, 12.2x benchmark reduction, seven multi-host pointer generators, and CI-enforced zero-network egress security.",
+    description: "Real-time savings data, 12.2x benchmark reduction (retracted in v3.1.0), seven multi-host pointer generators, and CI-enforced zero-network egress security.",
     status: "shipped",
     source: "Release v1.6.0",
   },

@@ -24,8 +24,8 @@ const principles = [
   {
     num: "03",
     tag: "EFFICIENCY",
-    title: "12.2× Token Compression",
-    desc: "Fits deep repository knowledge into constrained LLM context windows, reducing token consumption by 94.3% while preserving architectural invariants.",
+    title: "Measured Token Savings",
+    desc: "On 100 real commits, task packs hold the files a change needs 88% of the time at a median 18.7× fewer tokens than reading every matching file.",
   },
   {
     num: "04",

@@ -28,6 +28,22 @@ const itemVariants = {
   },
 };
 
+/** One release in the version history: badge, title, date, and its feature list. */
+function VersionCard({ version, title, date, children }) {
+  return (
+    <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div className="flex items-center gap-3">
+          <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 px-2.5 py-1 rounded-md text-xs font-mono font-bold">{version}</span>
+          <h3 className="text-lg font-bold text-foreground font-mono">{title}</h3>
+        </div>
+        <span className="text-xs text-muted font-mono">{date}</span>
+      </div>
+      <ul className="space-y-3 text-sm text-muted list-disc list-inside">{children}</ul>
+    </motion.div>
+  );
+}
+
 export function FeaturesClient() {
   const [showOlderReleases, setShowOlderReleases] = useState(false);
 
@@ -37,7 +53,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V3.0.0 PLATFORM RELEASE
+            V3.1.0 LEARNING RELEASE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -63,13 +79,13 @@ export function FeaturesClient() {
             {/* Spec 1: Token Engine */}
             <div className="p-3.5 rounded-xl border border-card-border bg-pre-bg space-y-1">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-foreground">AST Context Compression</span>
+                <span className="text-[11px] font-bold text-foreground">Task Pack Benchmark</span>
                 <span className="text-[10px] font-bold text-foreground bg-card border border-card-border px-2 py-0.5 rounded">
-                  12.2× Reduction
+                  18.7× Median
                 </span>
               </div>
               <p className="text-[11px] text-muted leading-relaxed font-sans">
-                820K raw AST tokens compressed into 14.6K packaged tokens in 82ms.
+                100 real commits across nine repositories: needed files in 88% of packs at a median 18.7× fewer tokens than a keyword grep.
               </p>
             </div>
 
@@ -127,6 +143,14 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          <VersionCard version="v3.1.0" title="Learning — Explicit Feedback &amp; Adaptive Task Packs" date="October 30, 2026">
+            <li><strong>Explicit Feedback</strong> — Mark a task pack helpful or report a missed file with <code>tokencap analyze --learning</code> or the Companion&apos;s <strong>Useful</strong> and <strong>Missed file</strong> buttons. Feedback stays in <code>.tokencap/learning/</code> with redacted task labels and workspace-relative paths only.</li>
+            <li><strong>Adaptive Ask</strong> — <code>tokencap ask &quot;&lt;task&gt;&quot; --adaptive</code> re-ranks files using feedback from tasks with the same subject. Boosts are capped, baseline candidates are kept, and generic words such as &quot;fix&quot; or &quot;bug&quot; never link two tasks.</li>
+            <li><strong>Task Retrieval Rewrite</strong> — Rarity-weighted matching on file names, symbols, directories and full text, verbatim identifiers, Python, Go, Rust and Java import edges, and whole-function spans from Tree-sitter.</li>
+            <li><strong>Measured Benchmark</strong> — On 100 real commits from nine repositories, packs hold the needed files 88% of the time at a median 18.7× fewer tokens than a keyword grep. The earlier 12.2× figure is retracted.</li>
+            <li><strong>Consistent Everywhere</strong> — MCP&apos;s <code>tokencap_files</code> ranks like <code>tokencap ask</code>, every language parses on Node 18 and 20, and bridge build failures report the real error.</li>
+          </VersionCard>
+
           {/* v3.0.0 */}
           <motion.div variants={itemVariants} className="p-8 rounded-xl border border-emerald-500/30 bg-card/95 relative overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -354,7 +378,7 @@ export function FeaturesClient() {
             </div>
             <ul className="space-y-3 text-sm text-muted list-disc list-inside">
               <li><strong>Token & Dollar Savings Engine</strong> — Real-time calculation of token and dollar savings against naive codebase dumps, persisted to <code>.tokencap/savings.json</code> on every build.</li>
-              <li><strong>12.2× Token Reduction Benchmark</strong> — Verified 94.3% cost reduction ($2.05 naive vs $0.11 TokenCap per query) across 15 real-world repository tasks using exact <code>js-tiktoken</code> counting.</li>
+              <li><strong>12.2× Token Reduction Benchmark</strong> — Reported a 94.3% cost reduction across 15 repository tasks. Retracted in v3.1.0 and replaced by the 100-commit ground-truth benchmark.</li>
               <li><strong>Multi-Host Agent Pointers</strong> — Auto-generates non-overwriting pointer files for 7 AI hosts: <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>.cursor/rules/tokencap.md</code>, <code>.windsurf/rules/tokencap.md</code>, <code>.clinerules/tokencap.md</code>, <code>.github/copilot-instructions.md</code>, and <code>.kiro/steering/tokencap.md</code>.</li>
               <li><strong>CI-Enforced Zero Network Egress</strong> — Guaranteed 100% offline privacy verified across all source files on every commit with zero telemetry.</li>
               <li><strong>Security & Audit Tools</strong> — Added <code>tokencap scan</code> (entropy & regex secret scanning), <code>tokencap audit</code> (security verification), and <code>tokencap upgrade</code> CLI utilities.</li>
@@ -497,10 +521,10 @@ export function FeaturesClient() {
           </div>
           <h3 className="text-base font-bold text-foreground font-mono mb-2">Token & Dollar Savings</h3>
           <p className="text-xs leading-relaxed text-muted mb-6 flex-grow">
-            Calculate exact token and dollar savings in real-time. Verified 12.2× average reduction (94.3% cost savings) with exact tiktoken counting.
+            Calculate exact token and dollar savings for every build in <code>.tokencap/savings.json</code>. Task packs are measured on 100 real commits: a median 18.7× fewer tokens than a keyword grep, with the needed files present 88% of the time.
           </p>
           <div className="bg-pre-bg border border-card-border p-3 overflow-hidden font-mono text-[11px] h-[84px] flex flex-col justify-center text-left">
-            <div className="text-emerald-400 font-bold">12.2× FEWER TOKENS</div>
+            <div className="text-emerald-400 font-bold">18.7× MEDIAN · 100 COMMITS</div>
             <div className="text-muted/80 mt-0.5">Saved: 97,094 tok ($0.24)</div>
             <div className="text-muted/65 text-[10px]">.tokencap/savings.json</div>
           </div>
