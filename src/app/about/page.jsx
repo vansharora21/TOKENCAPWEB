@@ -25,7 +25,7 @@ const principles = [
     num: "03",
     tag: "EFFICIENCY",
     title: "Measured Token Savings",
-    desc: "On 100 real commits, task packs hold the files a change needs 88% of the time at a median 18.7× fewer tokens than reading every matching file.",
+    desc: "On 100 real commits, task packs hold the files a change needs 87% of the time at a median 18.9× fewer tokens than reading every matching file.",
   },
   {
     num: "04",

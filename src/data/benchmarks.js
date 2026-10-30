@@ -13,8 +13,8 @@ export const benchmarkOverview = {
     tokencapAvgTokens: 9997,
     naiveCostPerTask: "$0.9556",
     tokencapCostPerTask: "$0.0250",
-    medianSaving: "18.7×",
-    neededFiles: "88%",
+    medianSaving: "18.9×",
+    neededFiles: "87%",
     naiveNeededFiles: "96%",
     topTenSaving: "7.5×",
     topTenNeededFiles: "76%",
@@ -38,7 +38,7 @@ export const benchmarkRepos = [
 
 export const benchmarkLimits = [
   { title: "Savings grow with repository size", text: "On the small repository a pack saves little: in 3 of its 9 tasks the pack was larger than the naive read." },
-  { title: "Reading everything finds more", text: "Every matching file, read in full, holds the needed files 96% of the time against 88% for the pack, at many times the tokens. The 10 best-matching files hold them 76% of the time, at a median 7.5× more tokens than the pack." },
+  { title: "Reading everything finds more", text: "Every matching file, read in full, holds the needed files 96% of the time against 87% for the pack, at many times the tokens. The 10 best-matching files hold them 76% of the time, at a median 7.5× more tokens than the pack." },
   { title: "Spans can miss the edit", text: "On average 73% of the exact lines a commit edited are in the pack; it is lowest on repositories with very large files." },
   { title: "No model is called", text: "This measures whether the context contains what the task needs, not the quality of a model's answer." },
   { title: "Half the tasks were held out", text: "50 tasks were used while changing the code and 50 were not. The held-out half scored 88% needed files and an 18.4× median saving." },

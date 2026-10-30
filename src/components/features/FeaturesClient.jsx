@@ -81,11 +81,11 @@ export function FeaturesClient() {
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-foreground">Task Pack Benchmark</span>
                 <span className="text-[10px] font-bold text-foreground bg-card border border-card-border px-2 py-0.5 rounded">
-                  18.7× Median
+                  18.9× Median
                 </span>
               </div>
               <p className="text-[11px] text-muted leading-relaxed font-sans">
-                100 real commits across nine repositories: needed files in 88% of packs at a median 18.7× fewer tokens than a keyword grep.
+                100 real commits across nine repositories: needed files in 87% of packs at a median 18.9× fewer tokens than a keyword grep.
               </p>
             </div>
 
@@ -147,7 +147,7 @@ export function FeaturesClient() {
             <li><strong>Explicit Feedback</strong> — Mark a task pack helpful or report a missed file with <code>tokencap analyze --learning</code> or the Companion&apos;s <strong>Useful</strong> and <strong>Missed file</strong> buttons. Feedback stays in <code>.tokencap/learning/</code> with redacted task labels and workspace-relative paths only.</li>
             <li><strong>Adaptive Ask</strong> — <code>tokencap ask &quot;&lt;task&gt;&quot; --adaptive</code> re-ranks files using feedback from tasks with the same subject. Boosts are capped, baseline candidates are kept, and generic words such as &quot;fix&quot; or &quot;bug&quot; never link two tasks.</li>
             <li><strong>Task Retrieval Rewrite</strong> — Rarity-weighted matching on file names, symbols, directories and full text, verbatim identifiers, Python, Go, Rust and Java import edges, and whole-function spans from Tree-sitter.</li>
-            <li><strong>Measured Benchmark</strong> — On 100 real commits from nine repositories, packs hold the needed files 88% of the time at a median 18.7× fewer tokens than a keyword grep. The earlier 12.2× figure is retracted.</li>
+            <li><strong>Measured Benchmark</strong> — On 100 real commits from nine repositories, packs hold the needed files 87% of the time at a median 18.9× fewer tokens than a keyword grep. The earlier 12.2× figure is retracted.</li>
             <li><strong>Consistent Everywhere</strong> — MCP&apos;s <code>tokencap_files</code> ranks like <code>tokencap ask</code>, every language parses on Node 18 and 20, and bridge build failures report the real error.</li>
           </VersionCard>
 
@@ -521,10 +521,10 @@ export function FeaturesClient() {
           </div>
           <h3 className="text-base font-bold text-foreground font-mono mb-2">Token & Dollar Savings</h3>
           <p className="text-xs leading-relaxed text-muted mb-6 flex-grow">
-            Calculate exact token and dollar savings for every build in <code>.tokencap/savings.json</code>. Task packs are measured on 100 real commits: a median 18.7× fewer tokens than a keyword grep, with the needed files present 88% of the time.
+            Calculate exact token and dollar savings for every build in <code>.tokencap/savings.json</code>. Task packs are measured on 100 real commits: a median 18.9× fewer tokens than a keyword grep, with the needed files present 87% of the time.
           </p>
           <div className="bg-pre-bg border border-card-border p-3 overflow-hidden font-mono text-[11px] h-[84px] flex flex-col justify-center text-left">
-            <div className="text-emerald-400 font-bold">18.7× MEDIAN · 100 COMMITS</div>
+            <div className="text-emerald-400 font-bold">18.9× MEDIAN · 100 COMMITS</div>
             <div className="text-muted/80 mt-0.5">Saved: 97,094 tok ($0.24)</div>
             <div className="text-muted/65 text-[10px]">.tokencap/savings.json</div>
           </div>

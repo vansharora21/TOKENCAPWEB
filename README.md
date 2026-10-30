@@ -129,7 +129,7 @@ Scans codebase to flag uncalled, non-exported functions and symbols to clean up 
 #### 🔹 Token & Dollar Savings Engine (v1.6.0)
 Calculates exact token and dollar savings in real-time against a naive repository dump. Persists before-and-after baseline stats to .tokencap/savings.json on every build.
 
-> ⚙️ *Technical Detail:* Uses js-tiktoken exact counting (cl100k/o200k base). The earlier 15-task 12.2× benchmark is retracted; task packs are now measured on 100 real commits (88% of needed files at a median 18.7× fewer tokens).
+> ⚙️ *Technical Detail:* Uses js-tiktoken exact counting (cl100k/o200k base). The earlier 15-task 12.2× benchmark is retracted; task packs are now measured on 100 real commits (87% of needed files at a median 18.9× fewer tokens).
 
 #### 🔹 Multi-Host Agent Pointers (v1.6.0)
 Automatically generates non-overwriting pointer files across 7 major AI hosts so AI coding assistants auto-load project context seamlessly.
@@ -199,7 +199,7 @@ Preserves debugging state (logs, stack traces, uncommitted diffs, custom notes) 
 ### 📁 Context
 
 #### 🔹 Measured Task Retrieval (v3.1.0)
-Rewritten task-pack retrieval, measured on 100 real commits from nine repositories: needed files present 88% of the time at a median 18.7× fewer tokens than a keyword grep.
+Rewritten task-pack retrieval, measured on 100 real commits from nine repositories: needed files present 87% of the time at a median 18.9× fewer tokens than a keyword grep.
 
 > ⚙️ *Technical Detail:* Rarity-weighted matching on file name, symbols, directory and full text, verbatim identifiers, Python/Go/Rust/Java import edges, and Tree-sitter whole-function spans. Half the benchmark tasks are held out, and CI fails when recall, edit-line coverage or the median saving drops.
 
@@ -802,4 +802,4 @@ tokencap upgrade
 - **Publisher:** `VanshArora21`
 
 ---  
-*Generated automatically from `website-content` JSON source files on 30/10/2026.*
+*Generated automatically from `website-content` JSON source files on 31/10/2026.*

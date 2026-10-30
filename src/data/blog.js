@@ -23,8 +23,8 @@ The old "12.2×" figure is retracted. v3.1.0 ships a benchmark built from 100 re
 
 | Measure | TokenCap task pack | Every matching file | 10 best-matching files |
 | --- | --- | --- | --- |
-| Needed files present | 88% | 96% | 76% |
-| Median token saving | — | 18.7× | 7.5× |
+| Needed files present | 87% | 96% | 76% |
+| Median token saving | — | 18.9× | 7.5× |
 
 Reading every matching file finds slightly more, at many times the tokens. On average 73% of the exact lines a commit edited are in the pack, and the benchmark does not grade a model's answer. Half the tasks were held out while the retrieval code changed, and CI fails if the numbers drop. The method and the limits are in [Honest Numbers](https://github.com/vansharora21/TOKENCAP/blob/main/docs/HONEST-NUMBERS.md).
 
