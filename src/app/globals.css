@@ -71,10 +71,122 @@ html.light {
   --color-tab-inactive: rgb(var(--tab-inactive));
   --color-tab-active: rgb(var(--tab-active));
   --color-code-text: rgb(var(--code-text));
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-inter);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-vorcas: var(--font-vorcas);
+
+  /* Repo-model hero: matte studio neutrals plus one accent (the blast radius). */
+  --color-repo-ground: var(--repo-ground);
+  --color-repo-ink: var(--repo-ink);
+  --color-repo-muted: var(--repo-muted);
+  --color-repo-panel: var(--repo-panel);
+  --color-repo-accent: var(--repo-accent);
+}
+
+/* Must match PALETTE in components/repo-model/RepoModelScene.jsx, so the page
+   behind the canvas is the same colour as the model's ground. */
+:root, html.dark {
+  --repo-ground: #141619;
+  --repo-ink: #eef0f3;
+  --repo-muted: #a3aab5;
+  --repo-panel: #1e2125;
+  --repo-accent: #f0662e;
+}
+
+html.light {
+  --repo-ground: #e6e8eb;
+  --repo-ink: #121417;
+  --repo-muted: #4d535c;
+  --repo-panel: #fafbfc;
+  --repo-accent: #c4441a;
+}
+
+/* Extra themes (see data/themes.js). They sit on the dark base and also tint the
+   older pages' tokens, so inner pages follow the chosen theme. Muted text keeps
+   at least 7:1 contrast on its ground. */
+html[data-theme="blueprint"] {
+  --repo-ground: #0f1e33;
+  --repo-ink: #e8f0fb;
+  --repo-muted: #a6b9d4;
+  --repo-panel: #17294a;
+  --repo-accent: #8fd0ff;
+  --background: 15 30 51;
+  --nav-bg: 15 30 51;
+  --card-bg: 23 41 74;
+  --card-border: 43 74 114;
+  --pre-bg: 11 23 40;
+  --border: 43 74 114;
+  --muted: 166 185 212;
+}
+
+html[data-theme="terminal"] {
+  --repo-ground: #0b0f0c;
+  --repo-ink: #d9f2df;
+  --repo-muted: #93ad9b;
+  --repo-panel: #141b16;
+  --repo-accent: #4be37a;
+  --background: 11 15 12;
+  --nav-bg: 11 15 12;
+  --card-bg: 20 27 22;
+  --card-border: 38 51 42;
+  --pre-bg: 8 11 9;
+  --border: 38 51 42;
+  --muted: 147 173 155;
+}
+
+.repo-hero {
+  background: var(--repo-ground);
+}
+
+/* Phone menu toggle: two bars that cross into an X. */
+.menu-bars {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 12px;
+}
+.menu-bars > span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.menu-bars > span:first-child { top: 1px; }
+.menu-bars > span:last-child { top: 9px; }
+.menu-bars[data-open="true"] > span:first-child { top: 5px; transform: rotate(45deg); }
+.menu-bars[data-open="true"] > span:last-child { top: 5px; transform: rotate(-45deg); }
+
+/* Phone menu: each slab tilts up out of the ground, one after another, the way
+   dependent blocks rise in the home-page model. */
+.menu-sheet { animation: menu-sheet-in 0.25s ease-out both; }
+.menu-floor { perspective: 900px; perspective-origin: 50% 0%; }
+.menu-slab {
+  transform-origin: 50% 100%;
+  animation: menu-slab-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 55ms + 60ms);
+}
+
+@keyframes menu-sheet-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes menu-slab-rise {
+  from { opacity: 0; transform: rotateX(-72deg) translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-sheet, .menu-slab { animation: none; }
+  .menu-bars > span { transition: none; }
+}
+
+.repo-hero-scrim {
+  background: linear-gradient(90deg, var(--repo-ground) 55%, transparent);
 }
 
 html {
@@ -98,7 +210,7 @@ body {
   min-height: 100vh;
   background: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
   letter-spacing: -0.01em;
 }
 

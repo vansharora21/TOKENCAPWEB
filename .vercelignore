@@ -1,0 +1,4 @@
+# Never upload local secrets or tool state with `vercel deploy`.
+.env*
+.tokencap/
+.claude/

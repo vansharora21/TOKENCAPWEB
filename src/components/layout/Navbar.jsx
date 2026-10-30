@@ -1,325 +1,193 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
-import { useTheme } from "@/components/theme/ThemeProvider";
+import { cn } from "@/lib/utils";
+import { ThemePicker, ThemeRow } from "@/components/theme/ThemePicker";
+import { primaryNav, githubUrl } from "@/data/navigation";
 
-const docsDropdownItems = [
-  { label: "How to Install", href: "/downloads" },
-  { label: "Features", href: "/features" },
-  { label: "Benchmarks", href: "/benchmarks" },
-  { label: "CLI Reference", href: "/cli" },
-  { label: "All Documentation", href: "/docs" },
-];
+const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-repo-ink";
 
-const navItems = [
-  { label: "Downloads", href: "/downloads" },
-  { label: "Timeline", href: "/changelog" },
-  { label: "Resources", href: "/resources" },
-  { label: "About", href: "/about" },
-];
+function isActive(item, pathname) {
+  return (item.match || [item.href]).some((p) => pathname === p || pathname.startsWith(`${p}/`));
+}
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [docsOpen, setDocsOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const pathname = usePathname();
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+function openSearch() {
+  window.dispatchEvent(new CustomEvent("open-search"));
+}
 
-  // Close menus on Escape key
-  const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
-      setIsOpen(false);
-      setDocsOpen(false);
-    }
-  };
+/** Two bars that turn into an X; the motion lives in globals.css (.menu-bars). */
+function MenuIcon({ open }) {
+  return (
+    <span className="menu-bars" data-open={open} aria-hidden="true">
+      <span />
+      <span />
+    </span>
+  );
+}
 
-  // Close dropdown on route change
+/**
+ * Phone menu: a full-height sheet where each destination is a slab that rises
+ * out of the ground, the way dependents rise in the home-page model.
+ */
+function MobileMenu({ pathname, onClose, toggleRef }) {
+  const panelRef = useRef(null);
+
   useEffect(() => {
-    setDocsOpen(false);
-    setIsOpen(false);
-  }, [pathname]);
+    const panel = panelRef.current;
+    const toggle = toggleRef.current;
+    panel.querySelector("a")?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-  const isDocsActive =
-    pathname === "/docs" ||
-    pathname === "/features" ||
-    pathname === "/benchmarks" ||
-    pathname === "/cli" ||
-    pathname === "/vscode";
+    // Keep Tab inside the sheet and the toggle; Escape closes it.
+    const onKey = (e) => {
+      if (e.key === "Escape") { onClose(); return; }
+      if (e.key !== "Tab") return;
+      const focusable = [toggle, ...panel.querySelectorAll("a, button")];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+      toggle?.focus();
+    };
+  }, [onClose, toggleRef]);
 
   return (
-    <header className="sticky top-0 z-50 w-full flex justify-center pointer-events-none" onKeyDown={handleKeyDown}>
-      {/* Docked Top Notch Container: Solid Black in Light Mode / Solid White in Dark Mode */}
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 pointer-events-auto">
-        <div
-          className={`relative flex items-center justify-between px-5 sm:px-8 py-3 border-b border-x rounded-b-[28px] sm:rounded-b-[34px] shadow-2xl transition-colors duration-200 ${
-            isDark
-              ? "bg-white text-black border-zinc-200"
-              : "bg-black text-white border-zinc-800"
-          }`}
-        >
-          {/* Top-Left Inverted Fillet Curve */}
-          <div className="absolute -left-[20px] top-0 w-[20px] h-[20px] pointer-events-none hidden sm:block overflow-hidden">
-            <svg
-              className={`w-full h-full fill-current transition-colors duration-200 ${
-                isDark ? "text-white" : "text-black"
-              }`}
-              viewBox="0 0 20 20"
-            >
-              <path d="M20 0 L0 0 C 12 0, 20 8, 20 20 Z" />
-              <path
-                d="M0 0 C 12 0, 20 8, 20 20"
-                fill="none"
-                stroke={isDark ? "#e4e4e7" : "#27272a"}
-                strokeWidth="1.2"
-              />
-            </svg>
-          </div>
-
-          {/* Top-Right Inverted Fillet Curve */}
-          <div className="absolute -right-[20px] top-0 w-[20px] h-[20px] pointer-events-none hidden sm:block overflow-hidden">
-            <svg
-              className={`w-full h-full fill-current transition-colors duration-200 ${
-                isDark ? "text-white" : "text-black"
-              }`}
-              viewBox="0 0 20 20"
-            >
-              <path d="M0 0 L20 0 C 8 0, 0 8, 0 20 Z" />
-              <path
-                d="M20 0 C 8 0, 0 8, 0 20"
-                fill="none"
-                stroke={isDark ? "#e4e4e7" : "#27272a"}
-                strokeWidth="1.2"
-              />
-            </svg>
-          </div>
-
-          {/* Left: Brand name */}
-          <Link
-            href="/"
-            className={`flex items-center text-sm font-semibold tracking-tight transition shrink-0 ${
-              isDark ? "text-black hover:opacity-80" : "text-white hover:opacity-90"
-            }`}
-          >
-            <span className="text-base font-bold tracking-tight font-sans">
-              TokenCap
-            </span>
-          </Link>
-
-          {/* Middle: Centered Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2" aria-label="Main navigation">
-            
-            {/* Docs Dropdown */}
-            <div
-              ref={dropdownRef}
-              className="relative"
-              onMouseEnter={() => setDocsOpen(true)}
-              onMouseLeave={() => setDocsOpen(false)}
-            >
-              <button
-                type="button"
-                onClick={() => setDocsOpen((prev) => !prev)}
-                className={`
-                  flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full transition-colors cursor-pointer
-                  ${
-                    isDocsActive || docsOpen
-                      ? isDark
-                        ? "text-black bg-zinc-100 font-semibold"
-                        : "text-white bg-zinc-900 font-semibold"
-                      : isDark
-                      ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-900/70"
-                  }
-                `}
-                aria-expanded={docsOpen}
-              >
-                <span>Docs</span>
-                <span className={`material-symbols-outlined text-[13px] transition-transform duration-150 ${docsOpen ? "rotate-180" : ""}`}>
-                  expand_more
-                </span>
-              </button>
-
-              {/* Minimalist Dropdown Popover */}
-              {docsOpen && (
-                <div className="absolute top-full left-0 pt-2 w-52 z-50 animate-in fade-in duration-100">
-                  <div
-                    className={`p-2 rounded-2xl sm:rounded-[20px] shadow-2xl space-y-1 border ${
-                      isDark
-                        ? "bg-white border-zinc-200 text-black"
-                        : "bg-black border-zinc-800 text-white"
-                    }`}
-                  >
-                    {docsDropdownItems.map((item) => {
-                      const isActive = pathname === item.href;
-                      return (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className={`
-                            block px-3.5 py-2 text-xs font-medium rounded-xl transition-colors
-                            ${
-                              isActive
-                                ? isDark
-                                  ? "text-black bg-zinc-100 font-semibold"
-                                  : "text-white bg-zinc-900 font-semibold"
-                                : isDark
-                                ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                                : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                            }
-                          `}
-                        >
-                          {item.label}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Other Nav Links */}
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
+    <div
+      ref={panelRef}
+      id="mobile-menu"
+      className="menu-sheet fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto bg-repo-ground px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 md:hidden"
+    >
+      <nav aria-label="Main" className="menu-floor flex-1">
+        <ul className="space-y-1">
+          {primaryNav.map((item, i) => {
+            const active = isActive(item, pathname);
+            return (
+              <li key={item.href} className="menu-slab" style={{ "--i": i }}>
                 <Link
-                  key={item.href}
                   href={item.href}
-                  className={`
-                    px-3 py-1.5 text-xs font-medium rounded-full transition-colors
-                    ${
-                      isActive
-                        ? isDark
-                          ? "text-black bg-zinc-100 font-semibold"
-                          : "text-white bg-zinc-900 font-semibold"
-                        : isDark
-                        ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                        : "text-zinc-400 hover:text-white hover:bg-zinc-900/70"
-                    }
-                  `}
+                  onClick={onClose}
+                  aria-current={active ? "page" : undefined}
+                  className={cn("block rounded-lg px-2 py-3", focusRing)}
                 >
-                  {item.label}
+                  <span className={cn("block text-4xl font-semibold tracking-[-0.035em]", active ? "text-repo-accent" : "text-repo-ink")}>
+                    {item.label}
+                  </span>
+                  <span className="mt-1 block text-sm text-repo-muted">{item.hint}</span>
                 </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <div className="menu-slab mt-8" style={{ "--i": primaryNav.length }}>
+        <ThemeRow />
+      </div>
+
+      <div className="menu-slab mt-3 flex items-center gap-2" style={{ "--i": primaryNav.length + 1 }}>
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn("flex min-h-12 flex-1 items-center justify-center rounded-lg bg-repo-ink text-sm font-medium text-repo-ground", focusRing)}
+        >
+          GitHub
+        </a>
+        <button
+          type="button"
+          onClick={() => { onClose(); openSearch(); }}
+          aria-label="Search the docs"
+          className={cn("flex size-12 items-center justify-center rounded-lg bg-repo-panel text-repo-ink", focusRing)}
+        >
+          <span className="material-symbols-outlined text-[22px]" aria-hidden="true">search</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function Navbar() {
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const closeMenu = useRef(() => setMenuOpen(false)).current;
+
+  // A route change closes the phone menu.
+  useEffect(() => setMenuOpen(false), [pathname]);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-repo-ink/10 bg-repo-ground text-repo-ink">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-8 lg:px-10">
+        <Link href="/" className={cn("rounded text-[17px] font-semibold tracking-[-0.02em]", focusRing)}>
+          TokenCap
+        </Link>
+
+        <nav aria-label="Main" className="hidden md:block">
+          <ul className="flex items-center gap-1">
+            {primaryNav.map((item) => {
+              const active = isActive(item, pathname);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "rounded-md px-3 py-2 text-sm text-repo-muted transition-colors hover:text-repo-ink",
+                      active && "text-repo-ink",
+                      focusRing,
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
               );
             })}
-          </nav>
+          </ul>
+        </nav>
 
-          {/* Right: Actions (Review Button + Search + Theme) */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Review Button: White Pill in Light Theme / Black Pill in Dark Theme */}
-            <Link
-              href="/reviews"
-              className={`flex items-center gap-1.5 font-semibold text-xs px-3.5 sm:px-4 py-1.5 rounded-full transition-all active:scale-[0.97] shadow-sm shrink-0 ${
-                isDark
-                  ? "bg-black text-white hover:bg-zinc-800"
-                  : "bg-white text-black hover:bg-zinc-200"
-              }`}
-            >
-              <span className="material-symbols-outlined text-[13px]">
-                star
-              </span>
-              <span>Review</span>
-            </Link>
-
-            {/* Search Icon */}
+        <div className="ml-auto flex items-center gap-1">
+          <div className={cn("flex items-center gap-1", menuOpen && "invisible md:visible")}>
             <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-search"))}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                isDark
-                  ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-              }`}
-              aria-label="Search"
+              type="button"
+              onClick={openSearch}
+              aria-label="Search the docs"
+              className={cn("flex size-10 items-center justify-center rounded-md text-repo-muted hover:text-repo-ink", focusRing)}
             >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">search</span>
             </button>
-
-            {/* Theme Toggle Button */}
-            <div className={isDark ? "text-zinc-600 hover:text-black" : "text-zinc-400 hover:text-white"}>
-              <ThemeToggle />
-            </div>
-
-            {/* Mobile Hamburger Toggle Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-1.5 rounded-full transition cursor-pointer ${
-                isDark
-                  ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-              }`}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-            >
-              {isOpen ? (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+            <ThemePicker />
           </div>
-        </div>
-
-        {/* Minimalist Mobile Menu Dropdown */}
-        {isOpen && (
-          <div
-            id="mobile-menu"
-            className={`md:hidden mt-2 p-3 rounded-2xl shadow-2xl space-y-2 border animate-in fade-in duration-150 ${
-              isDark
-                ? "bg-white border-zinc-200 text-black"
-                : "bg-black border-zinc-800 text-white"
-            }`}
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn("ml-2 hidden rounded-md bg-repo-ink px-3.5 py-2 text-sm font-medium text-repo-ground sm:inline-block", focusRing)}
           >
-            <div className="space-y-0.5">
-              <div className={`px-3 py-1 text-[9px] font-mono uppercase tracking-[0.15em] ${isDark ? "text-zinc-400" : "text-zinc-500"}`}>
-                Docs
-              </div>
-              {docsDropdownItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-1.5 text-xs rounded-lg transition-colors ${
-                    isDark
-                      ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            <div className={`border-t pt-2 space-y-0.5 ${isDark ? "border-zinc-200" : "border-zinc-800"}`}>
-              <div className={`px-3 py-1 text-[9px] font-mono uppercase tracking-[0.15em] ${isDark ? "text-zinc-400" : "text-zinc-500"}`}>
-                Navigation
-              </div>
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-1.5 text-xs rounded-lg transition-colors ${
-                    isDark
-                      ? "text-zinc-600 hover:text-black hover:bg-zinc-100"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+            GitHub
+          </a>
+          <button
+            ref={toggleRef}
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className={cn("flex size-11 items-center justify-center rounded-md md:hidden", focusRing)}
+          >
+            <MenuIcon open={menuOpen} />
+          </button>
+        </div>
       </div>
+
+      {menuOpen && <MobileMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />}
     </header>
   );
 }

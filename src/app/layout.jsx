@@ -1,4 +1,4 @@
-import { Inter, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { GradientBackground } from "@/components/shared/GradientBackground";
@@ -7,8 +7,8 @@ import { siteConfig } from "@/lib/constants";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
@@ -50,7 +50,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" data-theme="studio" style={{ colorScheme: "light" }} className={`${geist.variable} ${geistMono.variable} light antialiased`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -92,18 +92,6 @@ export default function RootLayout({ children }) {
             <Navbar />
             <div id="main-content" className="relative flex-1">{children}</div>
             <Footer />
-            <a
-              href="https://chromewebstore.google.com/detail/tokencap-companion/opabefaobopdfpndkcbdhikihfccnkdi"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Get the TokenCap Companion Chrome extension"
-              title="Get TokenCap Companion for Chrome"
-              className="fixed bottom-5 right-5 z-40 inline-flex h-11 items-center justify-center gap-2 rounded-full border border-card-border bg-foreground px-4 text-xs font-bold text-background shadow-[0_12px_28px_rgba(0,0,0,0.24)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-foreground/90 hover:shadow-[0_16px_32px_rgba(0,0,0,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-y-0"
-            >
-              <span className="material-symbols-outlined text-[18px]" aria-hidden="true">extension</span>
-              <span className="hidden sm:inline">Get Chrome extension</span>
-              <span className="sr-only sm:hidden">Get TokenCap Companion for Chrome</span>
-            </a>
           </div>
         </ThemeProvider>
       </body>
