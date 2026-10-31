@@ -1,12 +1,11 @@
 "use client";
 
-import { Component, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Component, useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { CopyButton } from "@/components/shared/CopyButton";
 import { homeHero } from "@/data/homeHero";
-import { repoLayout, dependentsByDistance, impactSummary } from "./layout";
+import { repoLayout, dependentsByDistance } from "./layout";
 
 // WebGL only runs in the browser; the server renders the flat ground colour.
 const RepoModelScene = dynamic(() => import("./RepoModelScene"), { ssr: false });
@@ -17,6 +16,9 @@ const TOUR_IDS = homeHero.tour
 const TOUR_DELAY_MS = 10000;
 const TOUR_STEP_MS = 5000;
 const HOVER_CLEAR_MS = 600;
+// The camera alternates between the whole repo and a close view of one folder.
+const CAMERA_SHOTS = homeHero.focusFolders.flatMap((f) => [null, f.id]);
+const CAMERA_STEP_MS = 6000;
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -72,37 +74,16 @@ function useSiteTheme() {
   return theme;
 }
 
-function Readout({ selectedId, touring, touch }) {
-  const summary = useMemo(() => (selectedId === null ? null : impactSummary(selectedId)), [selectedId]);
-  const verb = touch ? "tap" : "hover";
-  if (!summary) return <p className="text-sm text-repo-muted">{homeHero.caption.replace("Hover", touch ? "Tap" : "Hover")}</p>;
-  const { file, direct, total, folders } = summary;
-  return (
-    <div aria-live="polite">
-      <p className="truncate font-mono text-[13px] text-repo-ink" title={file.path}>{file.path}</p>
-      <p className="mt-1 text-sm text-repo-muted">
-        {file.lines.toLocaleString("en-US")} lines{touring ? ` (example, ${verb} any block)` : ""}
-      </p>
-      <p className="mt-3 text-sm leading-relaxed text-repo-ink">
-        {total === 0
-          ? "Nothing else in the repo imports this file."
-          : `Imported directly by ${direct} ${direct === 1 ? "file" : "files"}, and ${total} in total across ${folders} ${folders === 1 ? "folder" : "folders"}.`}
-      </p>
-    </div>
-  );
-}
-
 export function RepoModelHero() {
   const reducedMotion = useReducedMotion();
   const theme = useSiteTheme();
   const device = useDevice();
   const [failed, setFailed] = useState(false);
   const fail = useCallback(() => setFailed(true), []);
-  // Without WebGL, or after a crash, the hero is the copy alone: no empty block, no readout.
+  // Without WebGL, or after a crash, the hero is the copy alone: no empty block.
   const showModel = !failed && device.webgl;
   const [focus, setFocus] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-  const [touring, setTouring] = useState(false);
   const selection = useRef({ dist: null });
   const lastHover = useRef(0);
 
@@ -133,7 +114,6 @@ export function RepoModelHero() {
     clearTimer.current = null;
     if (next === currentId.current) return;
     currentId.current = next;
-    setTouring(false);
     select(next);
   }, [select]);
   useEffect(() => () => clearTimeout(clearTimer.current), []);
@@ -145,13 +125,22 @@ export function RepoModelHero() {
     let step = 0;
     const timer = setInterval(() => {
       if (Date.now() - lastHover.current < TOUR_DELAY_MS) return;
-      setTouring(true);
       currentId.current = TOUR_IDS[step % TOUR_IDS.length];
       select(currentId.current);
       step += 1;
     }, TOUR_STEP_MS);
     return () => clearInterval(timer);
   }, [reducedMotion, select]);
+
+  useEffect(() => {
+    if (reducedMotion || CAMERA_SHOTS.length === 0) return;
+    let shot = 0;
+    const timer = setInterval(() => {
+      shot = (shot + 1) % CAMERA_SHOTS.length;
+      setFocus(CAMERA_SHOTS[shot]);
+    }, CAMERA_STEP_MS);
+    return () => clearInterval(timer);
+  }, [reducedMotion]);
 
   return (
     <section className="repo-hero relative isolate overflow-hidden" aria-labelledby="hero-title">
@@ -177,7 +166,7 @@ export function RepoModelHero() {
           </div>
         </div>
 
-        {/* Phones: a square model block in the flow, between the copy and the readout,
+        {/* Phones: a square model block in the flow, below the copy,
             its top and bottom edges faded into the ground so there is no seam.
             Wide screens: full bleed behind everything (absolute to the section). */}
         {showModel && (
@@ -201,29 +190,6 @@ export function RepoModelHero() {
         </div>
         )}
 
-        <div className={cn("pointer-events-auto flex-col gap-5 lg:col-span-12 lg:flex-row lg:items-end lg:justify-between", showModel ? "flex" : "hidden")}>
-          {/* Fixed size, so swapping files never resizes the panel or shifts the page. */}
-          <div className="min-h-[8.5rem] rounded-lg bg-repo-panel p-4 shadow-[0_1px_0_rgb(0_0_0/0.04),0_8px_24px_-12px_rgb(20_24_30/0.25)] lg:w-[24rem]">
-            <Readout selectedId={selectedId} touring={touring} touch={device.touch} />
-          </div>
-          <div className="hidden flex-wrap gap-1 self-start rounded-lg bg-repo-panel p-1 sm:flex lg:self-auto" role="group" aria-label="Move the camera to a folder">
-            {homeHero.focusFolders.map((folder) => (
-              <button
-                key={folder.id}
-                type="button"
-                aria-pressed={focus === folder.id}
-                onClick={() => setFocus(focus === folder.id ? null : folder.id)}
-                className={cn(
-                  "min-h-11 rounded-md px-3 font-mono text-[13px] text-repo-muted transition-colors hover:text-repo-ink lg:min-h-9",
-                  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-repo-ink",
-                  focus === folder.id && "bg-repo-ink text-repo-ground hover:text-repo-ground",
-                )}
-              >
-                src/{folder.label}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

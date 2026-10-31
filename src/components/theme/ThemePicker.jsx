@@ -70,8 +70,8 @@ export function ThemeRow() {
   return <ThemeOptions layout="row" />;
 }
 
-/** Desktop navbar: a palette button that opens the list. */
-export function ThemePicker() {
+/** Desktop navbar: a palette button that opens the list, below it or (`up`) above it. */
+export function ThemePicker({ placement = "down", buttonClassName = "flex size-10 items-center justify-center rounded-md" }) {
   const { theme } = useTheme();
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
@@ -101,12 +101,12 @@ export function ThemePicker() {
         aria-expanded={open}
         aria-haspopup="true"
         aria-label={`Theme: ${current.label}. Change theme`}
-        className={cn("flex size-10 items-center justify-center rounded-md", focusRing)}
+        className={cn(buttonClassName, focusRing)}
       >
         <Swatch theme={current} className="size-5" />
       </button>
       {open && (
-        <div className="absolute right-0 top-12 z-50 w-44 rounded-lg bg-repo-panel p-1.5 shadow-[0_12px_32px_-12px_rgb(0_0_0/0.45)] ring-1 ring-repo-ink/10">
+        <div className={cn("absolute right-0 z-50 w-44", placement === "up" ? "bottom-12" : "top-12", "rounded-lg bg-repo-panel p-1.5 shadow-[0_12px_32px_-12px_rgb(0_0_0/0.45)] ring-1 ring-repo-ink/10")}>
           <ThemeOptions layout="list" onPicked={() => setOpen(false)} />
         </div>
       )}

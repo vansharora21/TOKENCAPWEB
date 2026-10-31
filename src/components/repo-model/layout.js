@@ -95,16 +95,3 @@ export function dependentsByDistance(id) {
   }
   return dist;
 }
-
-/** Plain-language summary for the readout panel. */
-export function impactSummary(id) {
-  const file = repoLayout.files[id];
-  const dist = dependentsByDistance(id);
-  let direct = 0;
-  const folders = new Set();
-  for (const [other, d] of dist) {
-    if (d === 1) direct += 1;
-    if (d > 0) folders.add(repoLayout.files[other].dir);
-  }
-  return { file, direct, total: dist.size - 1, folders: folders.size };
-}

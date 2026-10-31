@@ -137,6 +137,9 @@ html[data-theme="terminal"] {
 
 .repo-hero {
   background: var(--repo-ground);
+  /* Run the ground up behind the floating navbar. */
+  margin-top: -4rem;
+  padding-top: 4rem;
 }
 
 /* Phone menu toggle: two bars that cross into an X. */
@@ -183,6 +186,59 @@ html[data-theme="terminal"] {
 @media (prefers-reduced-motion: reduce) {
   .menu-sheet, .menu-slab { animation: none; }
   .menu-bars > span { transition: none; }
+}
+
+/* Desktop menu pill: slides up from the bottom; the highlight glides between items. */
+.nav-pill {
+  translate: -50% 0;
+  animation: nav-pill-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.nav-pill-glide {
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-pill-item {
+  animation: nav-pill-item-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 35ms + 80ms);
+}
+@keyframes nav-pill-in {
+  from { opacity: 0; transform: translateY(32px) scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes nav-pill-item-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-pill, .nav-pill-item { animation: none; }
+  .nav-pill-glide { transition: none; }
+}
+
+/* Docs slider: the incoming topic slides in from the side it came from. */
+.docs-slide { animation: docs-slide-next 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.docs-slide[data-direction="prev"] { animation-name: docs-slide-prev; }
+@keyframes docs-slide-next {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes docs-slide-prev {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .docs-slide { animation: none; }
+}
+
+/* Search drops down from the top edge of the screen. */
+.search-drop {
+  transform-origin: 50% 0;
+  animation: search-drop 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes search-drop {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .search-drop { animation: none; }
 }
 
 .repo-hero-scrim {

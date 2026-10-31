@@ -5,8 +5,7 @@ export const homeHero = {
   body: "TokenCap maps every file and import in your repo, locally, then packs only what a task needs.",
   install: "npm install -g tokencap",
   docsLabel: "Read the docs",
-  caption: "This is TokenCap's own source: 280 files, 702 imports. Hover a block to see what depends on it.",
-  // Folders a visitor can jump to; each is a real src/ directory in the model.
+  // Folders the camera moves in on, in turn, between wide views.
   focusFolders: [
     { id: "security", label: "security" },
     { id: "graph", label: "graph" },

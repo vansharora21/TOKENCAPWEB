@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,9 @@ import { ThemePicker, ThemeRow } from "@/components/theme/ThemePicker";
 import { primaryNav, chromeCompanion, writeReview } from "@/data/navigation";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-repo-ink";
+// Header pieces float over the page, so each carries its own surface.
+const floating = "bg-repo-panel ring-1 ring-repo-ink/10 shadow-[0_8px_20px_-12px_rgb(0_0_0/0.35)]";
+const roundButton = "flex size-11 items-center justify-center rounded-full";
 
 function isActive(item, pathname) {
   return (item.match || [item.href]).some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -121,87 +124,158 @@ function MobileMenu({ pathname, onClose, toggleRef }) {
   );
 }
 
+/** True from the md breakpoint up; read on the client, false on the server. */
+function useDesktop() {
+  const [desktop, setDesktop] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 768px)");
+    const update = () => setDesktop(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  return desktop;
+}
+
+/**
+ * Desktop menu: a pill that slides up from the bottom of the screen. A
+ * highlight glides under whichever item the pointer or focus is on, and
+ * settles back on the current page when it leaves.
+ */
+function PillMenu({ pathname, onClose, toggleRef }) {
+  const rootRef = useRef(null);
+  const listRef = useRef(null);
+  const [glide, setGlide] = useState(null);
+
+  const moveTo = useCallback((el) => {
+    setGlide(el ? { left: el.offsetLeft, width: el.offsetWidth } : null);
+  }, []);
+  const restToCurrent = useCallback(() => moveTo(listRef.current?.querySelector('[aria-current="page"]')), [moveTo]);
+
+  useEffect(() => {
+    restToCurrent();
+    rootRef.current.querySelector("a")?.focus();
+    const onKey = (e) => { if (e.key === "Escape") { onClose(); toggleRef.current?.focus(); } };
+    const onDown = (e) => {
+      if (!rootRef.current.contains(e.target) && !toggleRef.current?.contains(e.target)) onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onDown);
+    };
+  }, [onClose, toggleRef, restToCurrent]);
+
+  const item = "relative z-10 flex h-10 items-center whitespace-nowrap rounded-full px-4 text-sm transition-colors";
+  const glideHandlers = { onPointerEnter: (e) => moveTo(e.currentTarget), onFocus: (e) => moveTo(e.currentTarget) };
+
+  return (
+    <div
+      ref={rootRef}
+      id="site-menu"
+      className="nav-pill fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 z-50 flex items-center gap-1 rounded-full bg-repo-panel p-1.5 text-repo-ink shadow-[0_18px_48px_-16px_rgb(0_0_0/0.45)] ring-1 ring-repo-ink/10"
+    >
+      <nav aria-label="Main">
+        <ul ref={listRef} className="relative flex items-center" onPointerLeave={restToCurrent} onBlur={restToCurrent}>
+          {glide && (
+            <li
+              aria-hidden="true"
+              className="nav-pill-glide pointer-events-none absolute inset-y-0 rounded-full bg-repo-ink/[0.08]"
+              style={{ left: glide.left, width: glide.width }}
+            />
+          )}
+          {primaryNav.map((nav, i) => {
+            const active = isActive(nav, pathname);
+            return (
+              <li key={nav.href} className="nav-pill-item" style={{ "--i": i }}>
+                <Link
+                  href={nav.href}
+                  onClick={onClose}
+                  aria-current={active ? "page" : undefined}
+                  {...glideHandlers}
+                  className={cn(item, active ? "font-medium text-repo-ink" : "text-repo-muted hover:text-repo-ink", focusRing)}
+                >
+                  {nav.label}
+                </Link>
+              </li>
+            );
+          })}
+          <li className="nav-pill-item" style={{ "--i": primaryNav.length }}>
+            <Link
+              href={writeReview.href}
+              onClick={onClose}
+              {...glideHandlers}
+              className={cn(item, "text-repo-muted hover:text-repo-ink", focusRing)}
+            >
+              {writeReview.label}
+            </Link>
+          </li>
+        </ul>
+      </nav>
+
+      <a
+        href={chromeCompanion.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn("nav-pill-item ml-1 flex h-10 items-center whitespace-nowrap rounded-full bg-repo-ink px-4 text-sm font-medium text-repo-ground", focusRing)}
+        style={{ "--i": primaryNav.length + 1 }}
+      >
+        {chromeCompanion.label}
+      </a>
+    </div>
+  );
+}
+
 function Navbar() {
   const pathname = usePathname();
+  const desktop = useDesktop();
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef(null);
   const closeMenu = useRef(() => setMenuOpen(false)).current;
 
-  // A route change closes the phone menu.
+  // A route change closes the menu.
   useEffect(() => setMenuOpen(false), [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-repo-ink/10 bg-repo-ground text-repo-ink">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-8 lg:px-10">
-        <Link href="/" className={cn("rounded text-[17px] font-semibold tracking-[-0.02em]", focusRing)}>
+    <header className="pointer-events-none sticky top-0 z-50 h-16 text-repo-ink">
+      {/* No bar: the name and three round buttons float over the page. */}
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-10">
+        <Link href="/" className={cn(floating, "pointer-events-auto flex h-11 items-center rounded-full px-5 text-[17px] font-semibold tracking-[-0.02em]", focusRing)}>
           TokenCap
         </Link>
 
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-1">
-            {primaryNav.map((item) => {
-              const active = isActive(item, pathname);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "rounded-md px-3 py-2 text-sm text-repo-muted transition-colors hover:text-repo-ink",
-                      active && "text-repo-ink",
-                      focusRing,
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        <div className="ml-auto flex items-center gap-1">
-          <div className={cn("flex items-center gap-1", menuOpen && "invisible md:visible")}>
-            <button
-              type="button"
-              onClick={openSearch}
-              aria-label="Search the docs"
-              className={cn("flex size-10 items-center justify-center rounded-md text-repo-muted hover:text-repo-ink", focusRing)}
-            >
-              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">search</span>
-            </button>
-            <ThemePicker />
-          </div>
-          {/* Shown from lg up so the bar stays on one line; the phone menu carries both. */}
-          <Link
-            href={writeReview.href}
-            className={cn("ml-1 hidden whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-repo-ink hover:bg-repo-ink/5 lg:inline-block", focusRing)}
+        <div className="pointer-events-auto flex items-center gap-2">
+          <button
+            type="button"
+            onClick={openSearch}
+            aria-label="Search the docs"
+            className={cn(floating, roundButton, "text-repo-muted hover:text-repo-ink", focusRing)}
           >
-            {writeReview.label}
-          </Link>
-          <a
-            href={chromeCompanion.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn("ml-1 hidden whitespace-nowrap rounded-md bg-repo-ink px-3.5 py-2 text-sm font-medium text-repo-ground lg:inline-block", focusRing)}
-          >
-            {chromeCompanion.label}
-          </a>
+            <span className="material-symbols-outlined text-[20px]" aria-hidden="true">search</span>
+          </button>
+          <ThemePicker buttonClassName={cn(floating, roundButton)} />
           <button
             ref={toggleRef}
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
+            aria-controls={desktop ? "site-menu" : "mobile-menu"}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className={cn("flex size-11 items-center justify-center rounded-md md:hidden", focusRing)}
+            className={cn(roundButton, "bg-repo-ink text-repo-ground shadow-[0_8px_20px_-10px_rgb(0_0_0/0.5)]", focusRing)}
           >
             <MenuIcon open={menuOpen} />
           </button>
         </div>
       </div>
 
-      {menuOpen && <MobileMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />}
+      {menuOpen && (
+        <div className="pointer-events-auto">
+          {desktop
+            ? <PillMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />
+            : <MobileMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />}
+        </div>
+      )}
     </header>
   );
 }

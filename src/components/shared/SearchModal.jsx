@@ -3,8 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { docsSections } from "@/data/docs";
-import { commands } from "@/data/commands";
+import { docsTopics, cliReference } from "@/data/docsTopics";
 import featuresData from "@/website-content/features.json";
 
 const GROUPS = [
@@ -16,8 +15,8 @@ const MAX_PER_GROUP = 6;
 
 // Everything searchable, built once at module scope.
 const INDEX = [
-  ...docsSections.map((d) => ({ group: "docs", title: d.title, text: d.content, url: `/docs#${d.slug}` })),
-  ...commands.map((c) => ({ group: "commands", title: c.command, text: c.description, url: "/docs#cli", mono: true })),
+  ...docsTopics.map((t) => ({ group: "docs", title: t.title, text: `${t.summary} ${t.body || ""}`, url: `/docs#${t.slug}` })),
+  ...cliReference.map((c) => ({ group: "commands", title: `tokencap ${c.name}`, text: `${c.summary} ${c.usage || ""}`, url: `/cli#cmd-${c.name}`, mono: true })),
   ...featuresData.map((f) => ({ group: "features", title: f.title, text: f.description, url: "/features" })),
 ];
 
@@ -112,15 +111,15 @@ function SearchModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 top-16 z-50 bg-repo-ink/20" role="presentation">
-      {/* Clicking the dimmed page closes search. */}
+    <div className="fixed inset-0 z-[60]" role="presentation">
+      {/* No backdrop: the page stays as it is, and a click anywhere on it closes search. */}
       <button type="button" tabIndex={-1} aria-hidden="true" className="absolute inset-0 cursor-default" onClick={() => setIsOpen(false)} />
 
       <div
         role="dialog"
         aria-modal="true"
         aria-label="Search"
-        className="relative mx-auto flex max-h-[min(70vh,36rem)] max-w-2xl flex-col border-x border-b border-repo-ink/10 bg-repo-ground text-repo-ink shadow-[0_24px_48px_-24px_rgb(0_0_0/0.4)] sm:rounded-b-xl"
+        className="search-drop relative mx-auto flex max-h-[min(75vh,38rem)] max-w-2xl flex-col rounded-b-2xl bg-repo-panel text-repo-ink shadow-[0_24px_48px_-20px_rgb(0_0_0/0.35)] ring-1 ring-repo-ink/10 md:w-[calc(100%-26rem)]"
       >
         <div className="flex items-center gap-3 border-b border-repo-ink/10 px-4">
           <span className="material-symbols-outlined text-[20px] text-repo-muted" aria-hidden="true">search</span>
@@ -136,7 +135,7 @@ function SearchModal() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={onInputKey}
-            className="h-14 flex-1 bg-transparent text-base text-repo-ink placeholder:text-repo-muted focus:outline-none"
+            className="h-16 flex-1 bg-transparent text-base text-repo-ink placeholder:text-repo-muted focus:outline-none"
           />
           <button
             type="button"
