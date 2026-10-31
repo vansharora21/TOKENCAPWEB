@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { ThemePicker, ThemeRow } from "@/components/theme/ThemePicker";
+import { ThemePicker } from "@/components/theme/ThemePicker";
 import { primaryNav, chromeCompanion, writeReview } from "@/data/navigation";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-repo-ink";
@@ -31,95 +31,91 @@ function MenuIcon({ open }) {
 }
 
 /**
- * Phone menu: a full-height sheet where each destination is a slab that rises
- * out of the ground, the way dependents rise in the home-page model.
+ * Phone menu: a rail that grows down from the menu button. Each destination
+ * is a round icon with its name in a chip beside it, and a highlight marks
+ * the current page, the vertical twin of the desktop pill.
  */
-function MobileMenu({ pathname, onClose, toggleRef }) {
-  const panelRef = useRef(null);
+function RailMenu({ pathname, onClose, toggleRef }) {
+  const rootRef = useRef(null);
+  const listRef = useRef(null);
+  const [glide, setGlide] = useState(null);
 
   useEffect(() => {
-    const panel = panelRef.current;
-    const toggle = toggleRef.current;
-    panel.querySelector("a")?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    // Keep Tab inside the sheet and the toggle; Escape closes it.
-    const onKey = (e) => {
-      if (e.key === "Escape") { onClose(); return; }
-      if (e.key !== "Tab") return;
-      const focusable = [toggle, ...panel.querySelectorAll("a, button")];
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    const current = listRef.current?.querySelector('[aria-current="page"]')?.closest("li");
+    if (current) setGlide({ top: current.offsetTop, height: current.offsetHeight });
+    rootRef.current.querySelector("a")?.focus();
+    const onKey = (e) => { if (e.key === "Escape") { onClose(); toggleRef.current?.focus(); } };
+    const onDown = (e) => {
+      if (!rootRef.current.contains(e.target) && !toggleRef.current?.contains(e.target)) onClose();
     };
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = previousOverflow;
-      toggle?.focus();
+      document.removeEventListener("pointerdown", onDown);
     };
   }, [onClose, toggleRef]);
 
+  const entries = [
+    ...primaryNav.map((nav) => ({ ...nav, active: isActive(nav, pathname) })),
+    { ...writeReview, active: isActive(writeReview, pathname) },
+    { ...chromeCompanion, external: true, primary: true },
+  ];
+
   return (
     <div
-      ref={panelRef}
+      ref={rootRef}
       id="mobile-menu"
-      className="menu-sheet fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto bg-repo-ground px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 md:hidden"
+      className="nav-rail fixed right-2.5 top-[4.25rem] z-50 rounded-full bg-repo-panel p-1.5 shadow-[0_18px_40px_-16px_rgb(0_0_0/0.45)] ring-1 ring-repo-ink/10 sm:right-[1.625rem] md:hidden"
     >
-      <nav aria-label="Main" className="menu-floor flex-1">
-        <ul className="space-y-1">
-          {primaryNav.map((item, i) => {
-            const active = isActive(item, pathname);
+      <nav aria-label="Main">
+        <ul ref={listRef} className="relative flex flex-col gap-1.5">
+          {glide && (
+            <li
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 rounded-full bg-repo-ink/[0.09]"
+              style={{ top: glide.top, height: glide.height }}
+            />
+          )}
+          {entries.map((entry, i) => {
+            const external = entry.external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+            const Tag = entry.external ? "a" : Link;
             return (
-              <li key={item.href} className="menu-slab" style={{ "--i": i }}>
-                <Link
-                  href={item.href}
+              <li key={entry.href} className="nav-rail-item relative" style={{ "--i": i }}>
+                <Tag
+                  href={entry.href}
                   onClick={onClose}
-                  aria-current={active ? "page" : undefined}
-                  className={cn("block rounded-lg px-2 py-3", focusRing)}
+                  aria-current={entry.active ? "page" : undefined}
+                  {...external}
+                  className={cn("group relative flex size-11 items-center justify-center rounded-full", focusRing)}
                 >
-                  <span className={cn("block text-4xl font-semibold tracking-[-0.035em]", active ? "text-repo-accent" : "text-repo-ink")}>
-                    {item.label}
+                  {/* The circle is its own span: .material-symbols-outlined forces
+                      inline-block, which would override flex centring. */}
+                  <span
+                    className={cn(
+                      "flex size-11 items-center justify-center rounded-full",
+                      entry.primary ? "bg-repo-ink text-repo-ground" : entry.active ? "text-repo-ink" : "text-repo-muted",
+                    )}
+                    aria-hidden="true"
+                  >
+                    <span className="material-symbols-outlined text-[22px]">{entry.icon}</span>
                   </span>
-                  <span className="mt-1 block text-sm text-repo-muted">{item.hint}</span>
-                </Link>
+                  {/* The name floats beside the rail, so the rail itself stays narrow. */}
+                  <span
+                    className={cn(
+                      "nav-rail-label absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap rounded-full px-3.5 py-2 text-sm shadow-[0_8px_20px_-12px_rgb(0_0_0/0.4)] ring-1 ring-repo-ink/10",
+                      entry.primary ? "bg-repo-ink font-medium text-repo-ground" : "bg-repo-panel",
+                      entry.active ? "font-medium text-repo-ink" : !entry.primary && "text-repo-ink/80",
+                    )}
+                  >
+                    {entry.label}
+                  </span>
+                </Tag>
               </li>
             );
           })}
         </ul>
       </nav>
-
-      <div className="menu-slab mt-8" style={{ "--i": primaryNav.length }}>
-        <ThemeRow />
-      </div>
-
-      <div className="menu-slab mt-3 grid grid-cols-[1fr_1fr_auto] gap-2" style={{ "--i": primaryNav.length + 1 }}>
-        <a
-          href={chromeCompanion.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn("flex min-h-12 items-center justify-center rounded-lg bg-repo-ink px-2 text-center text-sm font-medium text-repo-ground", focusRing)}
-        >
-          {chromeCompanion.label}
-        </a>
-        <Link
-          href={writeReview.href}
-          onClick={onClose}
-          className={cn("flex min-h-12 items-center justify-center rounded-lg bg-repo-panel px-2 text-center text-sm font-medium text-repo-ink", focusRing)}
-        >
-          {writeReview.label}
-        </Link>
-        <button
-          type="button"
-          onClick={() => { onClose(); openSearch(); }}
-          aria-label="Search the docs"
-          className={cn("flex size-12 items-center justify-center rounded-lg bg-repo-panel text-repo-ink", focusRing)}
-        >
-          <span className="material-symbols-outlined text-[22px]" aria-hidden="true">search</span>
-        </button>
-      </div>
     </div>
   );
 }
@@ -147,8 +143,11 @@ function PillMenu({ pathname, onClose, toggleRef }) {
   const listRef = useRef(null);
   const [glide, setGlide] = useState(null);
 
+  // Measure the <li>, whose offsetParent is the list; the link inside it is
+  // positioned itself, so its own offsetLeft is always about 0.
   const moveTo = useCallback((el) => {
-    setGlide(el ? { left: el.offsetLeft, width: el.offsetWidth } : null);
+    const item = el?.closest("li");
+    setGlide(item ? { left: item.offsetLeft, width: item.offsetWidth } : null);
   }, []);
   const restToCurrent = useCallback(() => moveTo(listRef.current?.querySelector('[aria-current="page"]')), [moveTo]);
 
@@ -273,7 +272,7 @@ function Navbar() {
         <div className="pointer-events-auto">
           {desktop
             ? <PillMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />
-            : <MobileMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />}
+            : <RailMenu pathname={pathname} onClose={closeMenu} toggleRef={toggleRef} />}
         </div>
       )}
     </header>

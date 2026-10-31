@@ -1,11 +1,11 @@
 // Top bar. Every entry is an existing route; `match` also lights the item for child pages.
-// `hint` is the one-line description shown under each item in the phone menu.
+// `icon` is the Material Symbol shown for each item in the phone menu.
 export const primaryNav = [
-  { label: "Docs", href: "/docs", match: ["/docs", "/features", "/vscode"], hint: "Guides and reference" },
-  { label: "CLI", href: "/cli", hint: "Every command and flag" },
-  { label: "MCP", href: "/mcp", hint: "Connect your AI tool" },
-  { label: "Benchmarks", href: "/benchmarks", hint: "100 real commits, measured" },
-  { label: "Changelog", href: "/changelog", match: ["/changelog", "/roadmap"], hint: "What shipped, release by release" },
+  { label: "Docs", icon: "menu_book", href: "/docs", match: ["/docs", "/features", "/vscode"] },
+  { label: "CLI", icon: "terminal", href: "/cli" },
+  { label: "MCP", icon: "hub", href: "/mcp" },
+  { label: "Benchmarks", icon: "monitoring", href: "/benchmarks" },
+  { label: "Changelog", icon: "history", href: "/changelog", match: ["/changelog", "/roadmap"] },
 ];
 
 export const githubUrl = "https://github.com/vansharora21/TOKENCAP";
@@ -13,9 +13,10 @@ export const githubUrl = "https://github.com/vansharora21/TOKENCAP";
 // Navbar actions, right of the links.
 export const chromeCompanion = {
   label: "Chrome companion",
+  icon: "extension",
   href: "https://chromewebstore.google.com/detail/tokencap-companion/opabefaobopdfpndkcbdhikihfccnkdi",
 };
-export const writeReview = { label: "Write a review", href: "/reviews" };
+export const writeReview = { label: "Write a review", icon: "rate_review", href: "/reviews" };
 
 export const mainNavigation = [
   { label: "Home", href: "/", description: "Overview and hero section" },

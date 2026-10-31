@@ -163,28 +163,7 @@ html[data-theme="terminal"] {
 .menu-bars[data-open="true"] > span:first-child { top: 5px; transform: rotate(45deg); }
 .menu-bars[data-open="true"] > span:last-child { top: 5px; transform: rotate(-45deg); }
 
-/* Phone menu: each slab tilts up out of the ground, one after another, the way
-   dependent blocks rise in the home-page model. */
-.menu-sheet { animation: menu-sheet-in 0.25s ease-out both; }
-.menu-floor { perspective: 900px; perspective-origin: 50% 0%; }
-.menu-slab {
-  transform-origin: 50% 100%;
-  animation: menu-slab-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--i, 0) * 55ms + 60ms);
-}
-
-@keyframes menu-sheet-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes menu-slab-rise {
-  from { opacity: 0; transform: rotateX(-72deg) translateY(18px); }
-  to { opacity: 1; transform: none; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .menu-sheet, .menu-slab { animation: none; }
   .menu-bars > span { transition: none; }
 }
 
@@ -239,6 +218,36 @@ html[data-theme="terminal"] {
 }
 @media (prefers-reduced-motion: reduce) {
   .search-drop { animation: none; }
+}
+
+/* Phone menu rail: grows down from the menu button, then each item and its
+   name chip slide in, one after another. */
+.nav-rail {
+  transform-origin: 50% 0;
+  animation: nav-rail-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.nav-rail-item {
+  animation: nav-rail-item-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 40ms + 60ms);
+}
+.nav-rail-label {
+  animation: nav-rail-label-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 40ms + 140ms);
+}
+@keyframes nav-rail-in {
+  from { opacity: 0; transform: scaleY(0.2); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes nav-rail-item-in {
+  from { opacity: 0; transform: translateY(-10px) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes nav-rail-label-in {
+  from { opacity: 0; transform: translateX(14px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-rail, .nav-rail-item, .nav-rail-label { animation: none; }
 }
 
 .repo-hero-scrim {
