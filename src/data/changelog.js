@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "3.2.0",
+    title: "Context Quality — Explained Packs, Index Freshness & History-Aware Retrieval",
+    date: "2026-11-07",
+    status: "released",
+    description: "Every task pack now says why each file is in it (the words it matched, the file that imports it, a file it is usually changed with, or the past commit that matched the task) and lists the best files it left out with the reason. tokencap make writes a build record, and the CLI, the pack header, MCP and the Companion report the index as fresh, behind, dirty, incomplete or missing with the command that fixes it; new builds reach the MCP server without a restart. Retrieval also follows git history and the paths and stack frames a task mentions. MCP responses are capped at about 15k tokens, with anything cut saved under .tokencap/mcp/cut/. On the same 100 real commits, packs hold the needed files 89% of the time (87% in 3.1.0) and 74% of the exact edited lines, at a median 18.4× fewer tokens than a keyword grep; the 80% edited-line goal moves to 3.3.0.",
+  },
+  {
     version: "3.1.0",
     title: "Learning — Explicit Feedback, Adaptive Task Packs & Measured Retrieval",
     date: "2026-10-30",

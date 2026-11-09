@@ -1,5 +1,45 @@
 export const blogPosts = [
   {
+    id: "tokencap-v32-release",
+    title: "TokenCap v3.2.0 Is Ready: Task Packs That Explain Themselves",
+    author: "Vansh Arora",
+    date: "November 7, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v3.2.0 makes every task pack say why each file is in it, what was left out, and whether your index is up to date, and adds git history and stack traces to retrieval.",
+    content: `TokenCap v3.2.0 is now ready. When an agent gets the wrong context you usually cannot tell why: was the right file missed, was the index out of date, or was something cut to fit the budget? This release makes the pack answer those questions itself.
+
+### What's New in v3.2.0:
+
+- **Explained Packs:** Every file in a task pack lists why it was chosen: the words it matched (\`matches:retry+token\`), the file that imports it or that it imports (\`imported-by:client.ts\`), a file it is usually changed with (\`co-changed:client.ts\`), or the past commit that matched the task. \`tokencap ask\` prints how many files came in as code and the best files it left out, with the reason: out of budget, over the file cap, or below relevance. \`tokencap ask --json\` carries the full explanation, with workspace-relative paths only.
+- **Index Freshness Everywhere:** \`tokencap make\` now writes a build record (\`.tokencap/build.json\`). One check reports the index as fresh, behind, dirty, incomplete or missing, with the one command that fixes it, in \`ask\`, the pack header, \`analyze\` health, MCP status, every stale MCP response, and the Companion. New builds reach the MCP server without a restart.
+- **History-Aware Retrieval:** Files that are usually changed together with the best matches, and files of past commits whose messages match the task, can join the pack. File paths, stack frames and code names in the task text are looked up directly, and the line a stack frame points at is shown first.
+- **Bounded MCP Responses:** Tool responses are capped at about 15k tokens. A larger one is shortened, and the full copy is saved under \`.tokencap/mcp/cut/\` and named in the response.
+
+### The Numbers
+
+Measured on the same 100 real commits as v3.1.0, at a 12,000-token budget:
+
+| Measure | v3.1.0 | v3.2.0 |
+| --- | --- | --- |
+| Needed files present as code | 87% | 89% |
+| Exact edited lines in the pack | 73% | 74% |
+| Median token saving vs a keyword grep | 18.9× | 18.4× |
+
+The saving dipped slightly because packs now carry their reasons. The goal for this release was 80% of edited lines in the pack, and it reached 74%; that work continues in v3.3.0. The benchmark also gained an 81-task tuning pool, a 54-task sealed split, and a check that packs are identical on Windows, Linux and every supported Node version. The method and the limits are in [Honest Numbers](https://github.com/vansharora21/TOKENCAP/blob/main/docs/HONEST-NUMBERS.md).
+
+### Upgrading:
+
+\`\`\`bash
+npm install -g tokencap@3.2.0
+tokencap make
+\`\`\`
+
+The VS Code extension updates to 3.2.0 from the Marketplace. TokenCap Companion stays at 3.1.0 and works with the 3.2.0 bridge.
+
+TokenCap remains local-first: no source upload, no API key, and no telemetry.`
+  },
+  {
     id: "tokencap-v31-release",
     title: "TokenCap v3.1.0 Is Ready: Task Packs That Learn, and Numbers We Can Prove",
     author: "Vansh Arora",

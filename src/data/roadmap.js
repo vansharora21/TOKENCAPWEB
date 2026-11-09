@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "3.2.0",
+    title: "Context Quality — Explained Packs, Index Freshness & History-Aware Retrieval",
+    description: "Task packs that explain why each file is in them and what was left out, one index-freshness state across the CLI, MCP and the Companion, git-history and stack-trace retrieval signals, bounded MCP responses, and a benchmark with tuning, held-out and sealed splits checked for identical packs across platforms.",
+    status: "shipped",
+    source: "Release v3.2.0",
+  },
+  {
     version: "3.1.0",
     title: "Learning — Explicit Feedback, Adaptive Task Packs & Measured Retrieval",
     description: "Explicit local feedback (CLI and Companion) feeding an opt-in adaptive ask, a rewritten task retrieval engine with multi-language imports and whole-function spans, and a 100-commit ground-truth benchmark gated in CI.",

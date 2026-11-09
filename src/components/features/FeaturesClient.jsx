@@ -53,7 +53,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V3.1.0 LEARNING RELEASE
+            V3.2.0 CONTEXT QUALITY RELEASE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -81,11 +81,11 @@ export function FeaturesClient() {
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-foreground">Task Pack Benchmark</span>
                 <span className="text-[10px] font-bold text-foreground bg-card border border-card-border px-2 py-0.5 rounded">
-                  18.9× Median
+                  18.4× Median
                 </span>
               </div>
               <p className="text-[11px] text-muted leading-relaxed font-sans">
-                100 real commits across nine repositories: needed files in 87% of packs at a median 18.9× fewer tokens than a keyword grep.
+                100 real commits across nine repositories: needed files in 89% of packs at a median 18.4× fewer tokens than a keyword grep.
               </p>
             </div>
 
@@ -143,6 +143,14 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          <VersionCard version="v3.2.0" title="Context Quality — Packs That Explain Themselves" date="November 7, 2026">
+            <li><strong>Explained Packs</strong> — Every file in a task pack says why it is there: the words it matched, the file that imports it, a file it is usually changed with, or the past commit that matched the task. <code>tokencap ask</code> lists the best files it left out and why (out of budget, over the file cap, below relevance).</li>
+            <li><strong>Index Freshness Everywhere</strong> — <code>tokencap make</code> writes a build record, and the CLI, the pack header, MCP and the Companion all report the index as fresh, behind, dirty, incomplete or missing, with the one command that fixes it. New builds reach the MCP server without a restart.</li>
+            <li><strong>History-Aware Retrieval</strong> — Files changed together with the best matches, files of past commits that match the task, and the paths and stack frames a task mentions can join the pack.</li>
+            <li><strong>Bounded MCP Responses</strong> — Tool responses are capped at about 15k tokens; anything cut is saved under <code>.tokencap/mcp/cut/</code> and named in the response.</li>
+            <li><strong>Measured Benchmark</strong> — On the same 100 real commits, packs hold the needed files 89% of the time (87% in v3.1.0) and 74% of the exact edited lines, at a median 18.4× fewer tokens than a keyword grep. The planned 80% edited-line goal was not reached and continues in v3.3.0.</li>
+          </VersionCard>
+
           <VersionCard version="v3.1.0" title="Learning — Explicit Feedback &amp; Adaptive Task Packs" date="October 30, 2026">
             <li><strong>Explicit Feedback</strong> — Mark a task pack helpful or report a missed file with <code>tokencap analyze --learning</code> or the Companion&apos;s <strong>Useful</strong> and <strong>Missed file</strong> buttons. Feedback stays in <code>.tokencap/learning/</code> with redacted task labels and workspace-relative paths only.</li>
             <li><strong>Adaptive Ask</strong> — <code>tokencap ask &quot;&lt;task&gt;&quot; --adaptive</code> re-ranks files using feedback from tasks with the same subject. Boosts are capped, baseline candidates are kept, and generic words such as &quot;fix&quot; or &quot;bug&quot; never link two tasks.</li>
@@ -521,10 +529,10 @@ export function FeaturesClient() {
           </div>
           <h3 className="text-base font-bold text-foreground font-mono mb-2">Token & Dollar Savings</h3>
           <p className="text-xs leading-relaxed text-muted mb-6 flex-grow">
-            Calculate exact token and dollar savings for every build in <code>.tokencap/savings.json</code>. Task packs are measured on 100 real commits: a median 18.9× fewer tokens than a keyword grep, with the needed files present 87% of the time.
+            Calculate exact token and dollar savings for every build in <code>.tokencap/savings.json</code>. Task packs are measured on 100 real commits: a median 18.4× fewer tokens than a keyword grep, with the needed files present 89% of the time.
           </p>
           <div className="bg-pre-bg border border-card-border p-3 overflow-hidden font-mono text-[11px] h-[84px] flex flex-col justify-center text-left">
-            <div className="text-emerald-400 font-bold">18.9× MEDIAN · 100 COMMITS</div>
+            <div className="text-emerald-400 font-bold">18.4× MEDIAN · 100 COMMITS</div>
             <div className="text-muted/80 mt-0.5">Saved: 97,094 tok ($0.24)</div>
             <div className="text-muted/65 text-[10px]">.tokencap/savings.json</div>
           </div>
