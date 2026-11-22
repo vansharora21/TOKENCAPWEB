@@ -1,5 +1,5 @@
 // Home-page sections below the hero. Figures come from data/benchmarks.js;
-// file names and commands match the TokenCap README for v3.2.0.
+// file names and commands match the TokenCap README for v3.3.0.
 
 export const proofSection = {
   figureLabel: "fewer tokens than reading the repo with grep.",

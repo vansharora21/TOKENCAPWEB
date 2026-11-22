@@ -21,7 +21,7 @@ const ordered = docsGroups.flatMap((g) => docsTopics.filter((t) => t.group === g
 export default function DocsPage() {
   return (
     <DocsShell
-      eyebrow="Docs for v3.2.0"
+      eyebrow="Docs for v3.3.0"
       title="Documentation"
       intro="One topic at a time. Pick a task, copy the command, then use the arrows or swipe for the next topic."
       groups={groups}

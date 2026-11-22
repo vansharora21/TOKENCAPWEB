@@ -1,5 +1,39 @@
 export const blogPosts = [
   {
+    id: "tokencap-v33-release",
+    title: "TokenCap v3.3.0: Project Memory That Knows When It Is Out of Date",
+    author: "Vansh Arora",
+    date: "November 11, 2026",
+    readTime: "4 min read",
+    category: "Release",
+    excerpt: "TokenCap v3.3.0 links your project's decisions to the code they are about, warns when that code changes, and ends every command with the one next step to take.",
+    content: `Agents forget why the code is the way it is. A decision made last week lives in a chat log, a PR comment or someone's head, and the next session undoes it. TokenCap v3.3.0 gives those decisions a home next to the code, and tells you when they may no longer hold.
+
+### What's New in v3.3.0:
+
+- **Project memory records:** Record a decision, constraint, gotcha or convention and link it to files and functions: \`tokencap analyze memory add --kind decision --title "Totals are rounded to cents" --anchor src/money.js\`. Records live in \`.tokencap/memory/records.json\`, and task packs for those files carry them, capped at 8 records and about 300 tokens. A project without records gets no extra section.
+- **Possibly stale:** When linked code changes, the record is flagged in packs and in change review. \`tokencap analyze memory confirm\` says it still holds; \`supersede\` replaces it, and replaced records leave the pack. Existing ADRs appear as \`adr-<n>\` without being migrated.
+- **Decisions from sessions:** Approving a session capture proposes its decisions as records. Nothing is accepted automatically; \`tokencap analyze memory approve\` does that.
+- **One next step:** \`make\`, \`ask\`, \`analyze review\`, \`diff\`, \`health\` and \`update\` end with a single \`Next:\` line. A stale index is always fixed first.
+- **Workflow playbooks:** Onboarding, change review, refactor planning, bug fix, verification and handoff are defined once, generated into the agent skill, listed by MCP, and run end to end in the test suite, so a playbook can't name a command that doesn't exist.
+- **Test guidance:** Change review lists the tests that cover the changed files and where a missing test would go, following the repository's own naming.
+
+### The Numbers
+
+v3.3.0 did not change retrieval. On all 235 benchmark tasks (tuning, pool, held-out and sealed splits) the results are identical to v3.2.0: 89% of needed files and 74% of edited lines on the published 100 tasks, at a median 18.4× fewer tokens than a keyword grep. The 91% and 80% quality targets remain open.
+
+### Upgrading:
+
+\`\`\`bash
+npm install -g tokencap@3.3.0
+tokencap make
+\`\`\`
+
+The VS Code extension updates to 3.3.0 from the Marketplace. TokenCap Companion stays at 3.1.0 and works with the 3.3.0 bridge.
+
+TokenCap remains local-first: no source upload, no API key, and no telemetry.`
+  },
+  {
     id: "tokencap-v32-release",
     title: "TokenCap v3.2.0 Is Ready: Task Packs That Explain Themselves",
     author: "Vansh Arora",

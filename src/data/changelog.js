@@ -1,5 +1,12 @@
 export const changelogItems = [
   {
+    version: "3.3.0",
+    title: "Reliable Workflows — Project Memory, Next Steps, Playbooks & Test Guidance",
+    date: "2026-11-11",
+    status: "released",
+    description: "Decisions, constraints, gotchas and conventions become typed memory records linked to the files and functions they are about, in .tokencap/memory/records.json. A record is flagged as possibly stale when its code changes, can be confirmed or replaced by a newer one, and task packs carry the accepted records for their files (at most 8, about 300 tokens). tokencap analyze memory and new tokencap_manage_adr actions manage them; existing ADRs are listed as adr-<n>. Approving a session capture proposes its decisions as records, never accepting them automatically. make, ask, analyze review, diff, health and update now end with one Next: line, fixing a stale index first. Six workflow playbooks (onboarding, change review, refactor planning, bug fix, verification, handoff) are defined once, generated into the agent skill and run end to end in tests. Change review lists the tests to run and where a missing test would go. Retrieval is unchanged: the benchmark matches 3.2.0 on all 235 tasks, and the 80% edited-line goal stays open.",
+  },
+  {
     version: "3.2.0",
     title: "Context Quality — Explained Packs, Index Freshness & History-Aware Retrieval",
     date: "2026-11-07",

@@ -1,7 +1,8 @@
-// v3.2.0 task-pack benchmark: the figures published in the TokenCap README
+// v3.3.0 task-pack benchmark: the figures published in the TokenCap README
+// (identical to v3.2.0 on all 235 benchmark tasks; v3.3.0 did not change retrieval)
 // (benchmarks/fair/ in the TokenCap repository). Keep them identical to it.
 export const benchmarkOverview = {
-  version: "v3.2.0",
+  version: "v3.3.0",
   tokenizer: "js-tiktoken (exact counts)",
   model: "gpt-4o ($2.50 / 1M input tokens)",
   budget: 12000,

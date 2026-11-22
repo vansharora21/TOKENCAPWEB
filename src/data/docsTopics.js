@@ -1,6 +1,6 @@
 // Short, task-first docs content for the redesigned /docs page.
 //
-// Mirrors TokenCap v3.2.0. Every command, flag, file path and MCP tool name
+// Mirrors TokenCap v3.3.0. Every command, flag, file path and MCP tool name
 // was checked against the TokenCap repo: bin/tokencap.js, src/cli/*.js,
 // src/cli/parseOptions.js, src/mcp/server.js (TOOL_SCHEMAS),
 // src/mcp/generateMcpConfig.js, src/capsule.js, src/security/config.js,
@@ -351,7 +351,7 @@ export const docsTopics = [
     steps: [
       {
         label: "Install the VSIX",
-        command: "code --install-extension tokencap-3.2.0.vsix",
+        command: "code --install-extension tokencap-3.3.0.vsix",
       },
     ],
     body:
@@ -373,7 +373,7 @@ export const docsTopics = [
       {
         label: "Check your version",
         command: "tokencap version",
-        output: "TokenCap v3.2.0",
+        output: "TokenCap v3.3.0",
         outputNote: EXAMPLE,
       },
     ],

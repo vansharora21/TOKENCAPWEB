@@ -1,5 +1,12 @@
 export const roadmapItems = [
   {
+    version: "3.3.0",
+    title: "Reliable Workflows — Project Memory, Next Steps, Playbooks & Test Guidance",
+    description: "Typed memory records linked to code that warn when their code changes, capture decisions proposed as records, one Next: line across the CLI, six tested workflow playbooks, and test guidance in change review. Retrieval quality targets (91% needed files, 80% edited lines) and a SWE-bench Lite run are deferred.",
+    status: "shipped",
+    source: "Release v3.3.0",
+  },
+  {
     version: "3.2.0",
     title: "Context Quality — Explained Packs, Index Freshness & History-Aware Retrieval",
     description: "Task packs that explain why each file is in them and what was left out, one index-freshness state across the CLI, MCP and the Companion, git-history and stack-trace retrieval signals, bounded MCP responses, and a benchmark with tuning, held-out and sealed splits checked for identical packs across platforms.",

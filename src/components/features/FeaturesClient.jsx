@@ -53,7 +53,7 @@ export function FeaturesClient() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
         <header className="lg:col-span-6 space-y-4">
           <div className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted">
-            V3.2.0 CONTEXT QUALITY RELEASE
+            V3.3.0 RELIABLE WORKFLOWS RELEASE
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] font-sans">
             Precision engineered features.
@@ -143,6 +143,14 @@ export function FeaturesClient() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-6"
         >
+          <VersionCard version="v3.3.0" title="Reliable Workflows — Memory That Knows Your Code" date="November 11, 2026">
+            <li><strong>Project Memory Records</strong> — Record a decision, constraint, gotcha or convention and link it to the files and functions it is about with <code>tokencap analyze memory add</code>. Task packs for those files carry it (at most 8 records, about 300 tokens).</li>
+            <li><strong>Stale Warnings</strong> — When the linked code changes, the record is marked <em>possibly stale</em> in packs and reviews. Confirm it still holds, or replace it with a newer record; replaced records drop out of packs.</li>
+            <li><strong>Decisions From Sessions</strong> — Approving a session capture proposes its decisions as records for you to accept, and the handoff lists them with the records for the files the session changed.</li>
+            <li><strong>One Next Step</strong> — <code>make</code>, <code>ask</code>, <code>analyze review</code>, <code>diff</code>, <code>health</code> and <code>update</code> end with a single <code>Next:</code> line, and a stale index always comes first.</li>
+            <li><strong>Playbooks &amp; Test Guidance</strong> — Six workflows (onboarding, change review, refactor planning, bug fix, verification, handoff) ship in the agent skill and are run end to end in tests. Change review names the tests to run and where a missing test would go. Retrieval is unchanged from v3.2.0.</li>
+          </VersionCard>
+
           <VersionCard version="v3.2.0" title="Context Quality — Packs That Explain Themselves" date="November 7, 2026">
             <li><strong>Explained Packs</strong> — Every file in a task pack says why it is there: the words it matched, the file that imports it, a file it is usually changed with, or the past commit that matched the task. <code>tokencap ask</code> lists the best files it left out and why (out of budget, over the file cap, below relevance).</li>
             <li><strong>Index Freshness Everywhere</strong> — <code>tokencap make</code> writes a build record, and the CLI, the pack header, MCP and the Companion all report the index as fresh, behind, dirty, incomplete or missing, with the one command that fixes it. New builds reach the MCP server without a restart.</li>
